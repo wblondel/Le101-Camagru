@@ -1,14 +1,22 @@
-<?php
+<?php declare(strict_types=1);
 
 use Core\Config;
 use Core\Database\MysqlDatabase;
+use Core\Session\Session;
 
+/**
+ * Class App
+ */
 class App
 {
     public $title = "Mon super site";
     private $db_instance;
+    private $session_instance;
     private static $_instance;
 
+    /**
+     * @return App
+     */
     public static function getInstance()
     {
         if (is_null(self::$_instance)) {
@@ -19,7 +27,6 @@ class App
 
     public static function load()
     {
-        session_start();
         require ROOT . '/app/Autoloader.php';
         App\Autoloader::register();
         require ROOT . '/core/Autoloader.php';
@@ -32,6 +39,9 @@ class App
         return new $class_name($this->getDb());
     }
 
+    /**
+     * @return MysqlDatabase
+     */
     public function getDb()
     {
         $config = Config::getInstance(ROOT . '/config/config.php');
@@ -44,5 +54,17 @@ class App
             );
         }
         return $this->db_instance;
+    }
+
+    /**
+     * @return Session
+     */
+    public function getSession()
+    {
+        $session = Session::getInstance();
+        if (is_null($this->session_instance)) {
+            $this->session_instance = $session;
+        };
+        return $this->session_instance;
     }
 }
