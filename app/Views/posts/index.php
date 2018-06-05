@@ -9,7 +9,7 @@
 
             <p><em><?= $post->category; ?></em></p>
 
-            <p><?= $post->extrait; ?></p>
+            <?= $post->extrait; ?>
         <?php endforeach; ?>
         </ul>
 
