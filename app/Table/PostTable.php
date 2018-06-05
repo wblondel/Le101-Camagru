@@ -1,18 +1,23 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Table;
 
 use Core\Table\Table;
 
-class PostTable extends Table {
-
+/**
+ * Class PostTable
+ * @package App\Table
+ */
+class PostTable extends Table
+{
     protected $table = 'articles';
 
     /**
      * Récupère les derniers articles.
      * @return array
      */
-    public function last() {
+    public function last()
+    {
         return $this->query("
             SELECT articles.id, articles.title, articles.text, articles.date, categories.name as category
             FROM articles
@@ -26,7 +31,8 @@ class PostTable extends Table {
      * @param $id int
      * @return \App\Entity\PostEntity
      */
-    public function findWithCategory(int $id) {
+    public function findWithCategory(int $id)
+    {
         return $this->query("
             SELECT articles.id, articles.title, articles.text, articles.date, categories.name as category
             FROM articles
@@ -39,7 +45,8 @@ class PostTable extends Table {
      * @param $category_id int
      * @return array
      */
-    public function lastByCategory(int $category_id) {
+    public function lastByCategory(int $category_id)
+    {
         return $this->query("
             SELECT articles.id, articles.title, articles.text, articles.date, categories.name as category
             FROM articles
