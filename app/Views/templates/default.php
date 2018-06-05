@@ -26,11 +26,18 @@
 </nav>
 
 <main role="main" class="container">
-
     <div class="starter-template" style="padding-top: 100px;">
+        <?php if (App::getInstance()->getSession()->hasFlashes()) : ?>
+            <?php foreach (App::getInstance()->getSession()->getFlashes() as $type => $message) : ?>
+                <div class="alert alert-<?= $type; ?>" role="alert">
+                    <?= $message; ?>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
         <?= $content; ?>
     </div>
 
 </main><!-- /.container -->
+<?php require "footer.php"; ?>
 </body>
 </html>

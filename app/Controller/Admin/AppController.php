@@ -16,8 +16,6 @@ class AppController extends \App\Controller\AppController
         parent::__construct();
         $app = App::getInstance();
         $auth = new DBAuth($app->getDb(), $app->getSession());
-        if (!$auth->isLogged()) {
-            $this->forbidden();
-        }
+        $auth->restrict();
     }
 }
