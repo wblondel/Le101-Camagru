@@ -1,12 +1,20 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace App\Entity;
 
 use Core\Entity\Entity;
 
-class CategoryEntity extends Entity {
-
-    public function getUrl() {
+/**
+ * Class CategoryEntity
+ * @package App\Entity
+ */
+class CategoryEntity extends Entity
+{
+    /**
+     * @return string
+     */
+    public function getUrl()
+    {
         return 'index.php?p=posts.category&id=' . $this->id;
     }
 }
