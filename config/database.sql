@@ -8,21 +8,7 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
--- -----------------------------------------------------
--- Schema blog
--- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `blog` ;
-
--- -----------------------------------------------------
--- Schema blog
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `blog` DEFAULT CHARACTER SET utf8mb4 ;
-USE `blog` ;
-
--- -----------------------------------------------------
--- Table `blog`.`users`
+-- Table `users`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `blog`.`users` ;
 
@@ -45,7 +31,7 @@ ROW_FORMAT = DYNAMIC;
 
 
 -- -----------------------------------------------------
--- Table `blog`.`images`
+-- Table `images`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `blog`.`images` ;
 
@@ -71,7 +57,7 @@ ROW_FORMAT = DYNAMIC;
 
 
 -- -----------------------------------------------------
--- Table `blog`.`tags`
+-- Table `tags`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `blog`.`tags` ;
 
@@ -87,7 +73,7 @@ ROW_FORMAT = DYNAMIC;
 
 
 -- -----------------------------------------------------
--- Table `blog`.`images_has_tags`
+-- Table `images_has_tags`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `blog`.`images_has_tags` ;
 
@@ -114,7 +100,7 @@ ROW_FORMAT = DYNAMIC;
 
 
 -- -----------------------------------------------------
--- Table `blog`.`comments`
+-- Table `comments`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `blog`.`comments` ;
 
@@ -143,7 +129,7 @@ ROW_FORMAT = DYNAMIC;
 
 
 -- -----------------------------------------------------
--- Table `blog`.`likes`
+-- Table `likes`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `blog`.`likes` ;
 
