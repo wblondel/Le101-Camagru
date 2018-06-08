@@ -8,15 +8,7 @@
 
 <?php require "shared/html.body.header.php"; ?>
 
-<?php if (App::getInstance()->getSession()->hasFlashes()) : ?>
-    <?php foreach (App::getInstance()->getSession()->getFlashes() as $type => $message) : ?>
-        <div class="alert alert-<?= $type; ?>" role="alert">
-            <?= $message; ?>
-        </div>
-    <?php endforeach; ?>
-<?php endif; ?>
-
-<?php require "default/html.body.main.php"; ?>
+<?php require "gallery/html.body.main.php"; ?>
 
 <?php require "shared/html.body.footer.php"; ?>
 

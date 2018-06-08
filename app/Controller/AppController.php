@@ -13,6 +13,7 @@ use \App;
 class AppController extends Controller
 {
     protected $template = 'default';
+    protected $logged = false;
 
     /**
      * AppController constructor.
@@ -21,7 +22,9 @@ class AppController extends Controller
     {
         $this->viewPath = ROOT . '/app/Views/';
         $auth = new DBAuth(App::getInstance()->getDb(), App::getInstance()->getSession());
-        if ($auth->isLogged() && !$auth->connectedUserExists()) {
+        $auth->connectFromCookie();
+        $this->logged = $auth->isLogged();
+        if ($this->logged && !$auth->connectedUserExists()) {
             $auth->logout();
         }
     }

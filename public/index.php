@@ -7,7 +7,7 @@ App::load();
 if (isset($_GET['p']) && (!empty($_GET['p']))) {
     $page = $_GET['p'];
 } else {
-    $page = "posts.index";
+    $page = "images.index";
 }
 
 $page = explode('.', $page);
