@@ -10,9 +10,9 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Table `users`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `blog`.`users` ;
+DROP TABLE IF EXISTS `users` ;
 
-CREATE TABLE IF NOT EXISTS `blog`.`users` (
+CREATE TABLE IF NOT EXISTS `users` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(255) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NOT NULL,
   `password` VARCHAR(255) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NOT NULL,
@@ -33,9 +33,9 @@ ROW_FORMAT = DYNAMIC;
 -- -----------------------------------------------------
 -- Table `images`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `blog`.`images` ;
+DROP TABLE IF EXISTS `images` ;
 
-CREATE TABLE IF NOT EXISTS `blog`.`images` (
+CREATE TABLE IF NOT EXISTS `images` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `description` LONGTEXT CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NOT NULL,
   `users_id` INT(11) NOT NULL,
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `blog`.`images` (
   UNIQUE INDEX `filename_UNIQUE` (`filename` ASC),
   CONSTRAINT `fk_images_users`
     FOREIGN KEY (`users_id`)
-    REFERENCES `blog`.`users` (`id`)
+    REFERENCES `users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -59,9 +59,9 @@ ROW_FORMAT = DYNAMIC;
 -- -----------------------------------------------------
 -- Table `tags`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `blog`.`tags` ;
+DROP TABLE IF EXISTS `tags` ;
 
-CREATE TABLE IF NOT EXISTS `blog`.`tags` (
+CREATE TABLE IF NOT EXISTS `tags` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NOT NULL,
   PRIMARY KEY (`id`),
@@ -75,9 +75,9 @@ ROW_FORMAT = DYNAMIC;
 -- -----------------------------------------------------
 -- Table `images_has_tags`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `blog`.`images_has_tags` ;
+DROP TABLE IF EXISTS `images_has_tags` ;
 
-CREATE TABLE IF NOT EXISTS `blog`.`images_has_tags` (
+CREATE TABLE IF NOT EXISTS `images_has_tags` (
   `images_id` INT(11) NOT NULL,
   `tags_id` INT(11) NOT NULL,
   PRIMARY KEY (`images_id`, `tags_id`),
@@ -85,12 +85,12 @@ CREATE TABLE IF NOT EXISTS `blog`.`images_has_tags` (
   INDEX `fk_images_has_tags_images1_idx` (`images_id` ASC),
   CONSTRAINT `fk_images_has_tags_images1`
     FOREIGN KEY (`images_id`)
-    REFERENCES `blog`.`images` (`id`)
+    REFERENCES `images` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_images_has_tags_tags1`
     FOREIGN KEY (`tags_id`)
-    REFERENCES `blog`.`tags` (`id`)
+    REFERENCES `tags` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -102,9 +102,9 @@ ROW_FORMAT = DYNAMIC;
 -- -----------------------------------------------------
 -- Table `comments`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `blog`.`comments` ;
+DROP TABLE IF EXISTS `comments` ;
 
-CREATE TABLE IF NOT EXISTS `blog`.`comments` (
+CREATE TABLE IF NOT EXISTS `comments` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `users_id` INT(11) NOT NULL,
   `images_id` INT(11) NOT NULL,
@@ -114,12 +114,12 @@ CREATE TABLE IF NOT EXISTS `blog`.`comments` (
   INDEX `fk_comments_images1_idx` (`images_id` ASC),
   CONSTRAINT `fk_comments_users1`
     FOREIGN KEY (`users_id`)
-    REFERENCES `blog`.`users` (`id`)
+    REFERENCES `users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_comments_images1`
     FOREIGN KEY (`images_id`)
-    REFERENCES `blog`.`images` (`id`)
+    REFERENCES `images` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
@@ -131,9 +131,9 @@ ROW_FORMAT = DYNAMIC;
 -- -----------------------------------------------------
 -- Table `likes`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `blog`.`likes` ;
+DROP TABLE IF EXISTS `likes` ;
 
-CREATE TABLE IF NOT EXISTS `blog`.`likes` (
+CREATE TABLE IF NOT EXISTS `likes` (
   `users_id` INT(11) NOT NULL,
   `images_id` INT(11) NOT NULL,
   `liked_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -141,12 +141,12 @@ CREATE TABLE IF NOT EXISTS `blog`.`likes` (
   INDEX `fk_likes_images1_idx` (`images_id` ASC),
   CONSTRAINT `fk_likes_users1`
     FOREIGN KEY (`users_id`)
-    REFERENCES `blog`.`users` (`id`)
+    REFERENCES `users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_likes_images1`
     FOREIGN KEY (`images_id`)
-    REFERENCES `blog`.`images` (`id`)
+    REFERENCES `images` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
