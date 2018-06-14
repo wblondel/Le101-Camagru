@@ -8,7 +8,7 @@
 
 <?php require "shared/html.body.header.php"; ?>
 
-<?php require "gallery/html.body.main.php"; ?>
+<?= $content; ?>
 
 <?php require "shared/html.body.footer.php"; ?>
 

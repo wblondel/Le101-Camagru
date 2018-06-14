@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Core\Controller\Controller;
+use Core\String\Lorem;
 
 /**
  * Class DebugController
@@ -21,9 +22,21 @@ class ImagesController extends AppController
     public function index()
     {
         $logged = $this->logged;
+
+        $pics = [];
+
+        // creation d'une liste random d'images
+        for ($x = 0; $x <= 30; $x++) {
+            $pics[] = [
+                "url" => "https://picsum.photos/348/225?random=" . $x,
+                "alt" => "Small desc",
+                "desc" =>  /*substr(*/Lorem::ipsum(1, 1, 6)/*, 0, 100) . '...'*/
+            ];
+        }
+
         $customjs = ["js/progressive-image.js"];
         $customcss = ["css/gallery.css", "css/progressive-image.css"];
-        $this->render('images.index', compact('customjs', 'customcss', 'logged'));
+        $this->render('images.index', compact('customjs', 'customcss', 'logged', 'pics'));
     }
 
     public function new()
