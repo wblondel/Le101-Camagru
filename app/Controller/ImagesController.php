@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Core\Controller\Controller;
 use Core\String\Lorem;
+use Core\String\Str;
 
 /**
  * Class DebugController
@@ -26,11 +27,15 @@ class ImagesController extends AppController
         $pics = [];
 
         // creation d'une liste random d'images
-        for ($x = 0; $x <= 30; $x++) {
+        for ($x = 0; $x <= 100; $x++) {
+            $date = mt_rand(1518959057,1528959057);
+
             $pics[] = [
                 "url" => "https://picsum.photos/348/225?random=" . $x,
                 "alt" => "Small desc",
-                "desc" =>  /*substr(*/Lorem::ipsum(1, 1, 6)/*, 0, 100) . '...'*/
+                "desc" =>  /*substr(*/Lorem::ipsum(1, 1, 4)/*, 0, 100) . '...'*/,
+                "created_at" => Str::time_elapsed_string('@' . $date),
+                "created_at_nat" => date('d/m/Y', $date)
             ];
         }
 

@@ -25,7 +25,9 @@
                                         <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                                         <button type="button" class="btn btn-sm btn-outline-secondary">Like</button>
                                     </div>
-                                    <small class="text-muted">9 mins</small>
+                                    <small class="text-muted my-tooltip"><?= $pic['created_at'] ?>
+                                        <span class="my-tooltiptext"><?= $pic['created_at_nat'] ?></span>
+                                    </small>
                                 </div>
                             </div>
                         </div>
