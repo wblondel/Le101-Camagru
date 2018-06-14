@@ -26,8 +26,8 @@
     display:block;
 }
 
-#startbutton {
-    display:block;
+#startbutton, #uploadbutton {
+    display:inline-block;
     position:relative;
     margin-left:auto;
     margin-right:auto;
