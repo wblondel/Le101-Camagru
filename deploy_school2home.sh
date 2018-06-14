@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 echo "Compressing project... "
-tar --exclude='.git' --exclude='.idea' --exclude='*.bak' --exclude='*.example' --exclude='*.sh' --exclude='*.iml' --exclude='.gitignore' --exclude='.gitmodules' -czvf /tmp/camagru.tar.gz .
+tar --exclude='.git' --exclude='.idea' --exclude='*.bak' --exclude='*.example' --exclude='*.sh' --exclude='*.iml' --exclude='.gitignore' --exclude='.gitmodules' --disable-copyfile -czvf /tmp/camagru.tar.gz .
 echo "DONE"
 
 echo "Removing distant folder"
