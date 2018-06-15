@@ -27,12 +27,12 @@ class ImagesController extends AppController
         $pics = [];
 
         // creation d'une liste random d'images
-        for ($x = 0; $x <= 67; $x++) {
-            $date = mt_rand(1518959057,1528959057);
+        for ($x = 0; $x <= 100; $x++) {
+            $date = mt_rand(1518959057, 1528959057);
 
             $pics[] = [
                 /*"url" => "https://picsum.photos/348/225?random=" . $x,*/
-                "url" => "img/gallery/225 - " . ($x + 1) . ".jpeg",
+                "url" => "img/gallery/225 - " . mt_rand(1, 68) . ".jpeg?" . mt_rand(1, 1000000),
                 "alt" => "Small desc",
                 "desc" =>  /*substr(*/Lorem::ipsum(1, 1, 4)/*, 0, 100) . '...'*/,
                 "created_at" => Str::time_elapsed_string('@' . $date),
