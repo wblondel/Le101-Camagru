@@ -18,53 +18,56 @@ class ImagesController extends AppController
     {
         parent::__construct();
         $this->loadModel('Image');
+        $this->loadModel('Tag');
     }
 
     public function index()
     {
         $logged = $this->logged;
 
-        $pics = [];
+        //$images = $this->Image->lastWithTags();
+        $images = $this->Image->last();
 
-        // creation d'une liste random d'images
-        for ($x = 0; $x <= 100; $x++) {
-            $date = mt_rand(1518959057, 1528959057);
-
-            $pics[] = [
-                /*"url" => "https://picsum.photos/348/225?random=" . $x,*/
-                "url" => "img/gallery/225 - " . mt_rand(1, 68) . ".jpeg?" . mt_rand(1, 1000000),
-                "alt" => "Small desc",
-                "desc" =>  /*substr(*/Lorem::ipsum(1, 1, 4)/*, 0, 100) . '...'*/,
-                "created_at" => Str::time_elapsed_string('@' . $date),
-                "created_at_nat" => date('d/m/Y', $date)
-            ];
-        }
-
-        $customjs = ["js/progressive-image.js"];
-        $customcss = ["css/gallery.css", "css/progressive-image.css"];
-        $this->render('images.index', compact('customjs', 'customcss', 'logged', 'pics'));
+        $customjs = ["/js/progressive-image.js"];
+        $customcss = ["/css/gallery.css", "/css/progressive-image.css"];
+        $this->render('images.index', compact('customjs', 'customcss', 'logged', 'images'));
     }
 
     public function new()
     {
         $logged = $this->logged;
         $this->template = 'default';
-        $customjs = ["js/camera.js"];
-        $customcss = ["css/camera.css"];
+        $customjs = ["/js/camera.js"];
+        $customcss = ["/css/camera.css"];
         $this->render('images.new', compact('customjs', 'customcss', 'logged'));
     }
 
-    public function show()
+    public function tag(int $id)
     {
-        if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-            $image = $this->Image->find($_GET['id']);
-            if ($image === false) {
-                $this->notFound();
-            }
-            $this->render('images.show', compact('image'));
-        } else {
-            $this->badRequest();
+        $tag = $this->Tag->find($id);
+        if ($tag === false) {
+            $this->notFound();
+        }
+        $images = $this->Image->lastByTag($id);
+        $tags = $this->Tag->all();
+
+        $customjs = ["/js/progressive-image.js"];
+        $customcss = ["/css/gallery.css", "/css/progressive-image.css"];
+        $this->render('images.tag', compact('images', 'tags', 'tag', 'customjs', 'customcss'));
+    }
+
+    public function show(int $id)
+    {
+        $logged = $this->logged;
+
+        $image = $this->Image->find($id);
+        if ($image === false) {
+            $this->notFound();
         }
 
+        $customjs = ["/js/progressive-image.js"];
+        $customcss = ["/css/gallery.css", "/css/progressive-image.css"];
+
+        $this->render('images.show', compact('image', 'logged', 'customjs', 'customcss'));
     }
 }

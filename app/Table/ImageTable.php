@@ -10,21 +10,62 @@ use Core\Table\Table;
  */
 class ImageTable extends Table
 {
-    protected $table = 'articles';
+    protected $table = 'images';
 
     /**
-     * Récupère une image en liant la catégorie associée
+     * Récupère les dernières images.
+     * @return array
+     */
+    public function last()
+    {
+        return $this->query("
+            SELECT images.id, images.description, images.users_id, images.created_at, images.modified_at, images.filename
+            FROM images
+            ORDER BY images.created_at DESC
+        ");
+    }
+
+    /**
+     * Récupère les dernières images avec les tags associés.
+     * @return array
+     */
+    public function lastWithTags()
+    {
+        // TODO: [SQL] Récupère toutes les images avec les tags associés (les plus récentes d'abord)
+        return $this->query("
+            SELECT *
+            FROM images
+            WHERE 1 = 0
+        ");
+    }
+
+    /**
+     * Récupère une image en liant les tags associés
      * @param $id int
      * @return \App\Entity\ImageEntity
      */
-    public function findWithCategory(int $id)
+    public function findWithTags(int $id)
     {
+        // TODO: [SQL] Récupère une image en liant les tags associés
         return $this->query("
-            SELECT images.id, images.title, images.text, images.date, tags.name as category
-            FROM articles
-            LEFT JOIN tags ON category_id = tags.id
-            WHERE articles.id = ?", [$id], true);
+            SELECT *
+            FROM images
+            WHERE 1 = 0
+        ");
     }
 
-
+    /**
+     * Récupère les dernières images du tag donné
+     * @param $tag_id int
+     * @return array
+     */
+    public function lastByTag(int $tag_id)
+    {
+        // TODO: [SQL] Récupère les dernières images du tag donné
+        return $this->query("
+            SELECT *
+            FROM images
+            WHERE 1 = 0
+        ");
+    }
 }

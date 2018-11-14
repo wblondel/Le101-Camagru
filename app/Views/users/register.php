@@ -1,33 +1,33 @@
-<h4 class="card-title">Register</h4>
+<h4 class="card-title"><?= _("Register") ?></h4>
 <form method="POST">
 
     <div class="form-group">
-        <label for="username">Username</label>
+        <label for="username"><?= _("Username") ?></label>
         <input id="username" type="text" class="form-control" name="username" required autofocus>
     </div>
 
     <div class="form-group">
-        <label for="email">E-Mail Address</label>
+        <label for="email"><?= _("E-Mail Address") ?></label>
         <input id="email" type="email" class="form-control" name="email" required>
     </div>
 
     <div class="form-group">
-        <label for="password">Password</label>
+        <label for="password"><?= _("Password") ?></label>
         <input id="password" type="password" class="form-control" name="password" required data-eye>
     </div>
 
     <div class="form-group">
         <label>
-            <input type="checkbox" name="aggree" value="1"> I agree to the Terms and Conditions
+            <input type="checkbox" name="agree" value="1"> <?= _("I agree to the Terms and Conditions") ?>
         </label>
     </div>
 
     <div class="form-group no-margin">
         <button type="submit" class="btn btn-primary btn-block">
-            Register
+            <?= _("Register") ?>
         </button>
     </div>
     <div class="margin-top20 text-center">
-        Already have an account? <a href="index.php?p=users.login">Login</a>
+        <?= _("Already have an account?") ?> <a href="/users/login">Login</a>
     </div>
 </form>

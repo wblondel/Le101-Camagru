@@ -3,8 +3,8 @@
         <div class="row justify-content-md-center h-100">
             <div class="card-wrapper">
                 <div class="brand">
-                    <a href="index.php?p=images">
-                        <img src="img/logo.jpg">
+                    <a href="/">
+                        <img src="/img/logo.jpg">
                     </a>
                 </div>
                 <?php require ROOT . '/app/Views/templates/shared/flashes.php'; ?>

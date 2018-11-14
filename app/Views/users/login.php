@@ -1,15 +1,15 @@
-<h4 class="card-title">Login</h4>
+<h4 class="card-title"><?= _("Login") ?></h4>
 <form method="POST">
 
     <div class="form-group">
-        <label for="username">Username</label>
+        <label for="username"><?= _("Username") ?></label>
         <input id="username" type="text" class="form-control" name="username" value="" required autofocus>
     </div>
 
     <div class="form-group">
-        <label for="password">Password
-            <a href="index.php?p=users.forgot" class="float-right">
-                Forgot Password?
+        <label for="password"><?= _("Password") ?>
+            <a href="/users/forgot" class="float-right">
+                <?= _("Forgot Password?") ?>
             </a>
         </label>
         <input id="password" type="password" class="form-control" name="password" required data-eye>
@@ -17,16 +17,16 @@
 
     <div class="form-group">
         <label>
-            <input type="checkbox" name="remember"> Remember Me
+            <input type="checkbox" name="remember"> <?= _("Remember Me") ?>
         </label>
     </div>
 
     <div class="form-group no-margin">
         <button type="submit" class="btn btn-primary btn-block">
-            Login
+            <?= _("Login") ?>
         </button>
     </div>
     <div class="margin-top20 text-center">
-        Don't have an account? <a href="index.php?p=users.register">Create One</a>
+        <?= _("Don't have an account?") ?> <a href="/users/register"><?= _("Create One") ?></a>
     </div>
 </form>

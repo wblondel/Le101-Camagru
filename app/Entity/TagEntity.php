@@ -5,16 +5,16 @@ namespace App\Entity;
 use Core\Entity\Entity;
 
 /**
- * Class CategoryEntity
+ * Class TagEntity
  * @package App\Entity
  */
-class CategoryEntity extends Entity
+class TagEntity extends Entity
 {
     /**
      * @return string
      */
     public function getUrl()
     {
-        return 'index.php?p=posts.category&id=' . $this->id;
+        return 'images/tag/' . $this->id;
     }
 }

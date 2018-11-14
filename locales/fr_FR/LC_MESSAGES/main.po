@@ -1,0 +1,219 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Camagru\n"
+"POT-Creation-Date: 2018-11-14 08:53+0100\n"
+"PO-Revision-Date: 2018-11-14 08:54+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2\n"
+"X-Poedit-Basepath: ../../../app\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: App.php:25
+msgid "Camagru.fr - Where cats rule the world"
+msgstr "Camagru.fr - Où les chats dominent le monde"
+
+#: Controller/UsersController.php:35
+msgid "Welcome to Camagru - Confirm your account"
+msgstr "Bienvenue sur Camagru - Confirmez votre compte"
+
+#: Controller/UsersController.php:37
+msgid "To confirm your account, please click on this link:"
+msgstr "Pour confirmer votre compte, veuillez cliquer sur ce lien :"
+
+#: Controller/UsersController.php:39
+msgid "Confirm my account"
+msgstr "Confirmer mon compte"
+
+#: Controller/UsersController.php:44
+msgid "Please check your emails to activate your account."
+msgstr "Consultez votre boîte mail pour confirmer votre compte."
+
+#: Controller/UsersController.php:46
+msgid ""
+"You've been registered, but the confirmation email couldn't be sent.\n"
+"Please contact the administrators."
+msgstr ""
+"Votre compte a été créé, mais l'envoi du mail de confirmation a échoué.\n"
+"Veuillez contacter un administrateur."
+
+#: Controller/UsersController.php:51
+msgid "Error while registering."
+msgstr "Erreur lors de l'inscription."
+
+#: Controller/UsersController.php:59 Controller/UsersController.php:89
+#: Controller/UsersController.php:114
+msgid "You're already logged in."
+msgstr "Vous êtes déjà connecté."
+
+#: Controller/UsersController.php:76
+msgid "You are now logged in."
+msgstr "Vous êtes maintenant connecté."
+
+#: Controller/UsersController.php:80
+msgid "Invalid credentials."
+msgstr "Identifiants incorrects."
+
+#: Controller/UsersController.php:103
+msgid "Your account is now activated. You can log in."
+msgstr "Votre compte est maintenant activé. Vous pouvez vous connecter."
+
+#: Controller/UsersController.php:107
+msgid "We couldn't activate your account."
+msgstr "Votre compte n'a pas pu être activé."
+
+#: Controller/UsersController.php:129
+msgid "You're now logged out."
+msgstr "Vous êtes maintenant déconnecté."
+
+#: Controller/UsersController.php:131
+msgid "You're not logged in."
+msgstr "Vous n'êtes pas connecté."
+
+#: Views/images/index.php:4
+msgid "You can be cool too"
+msgstr "Vous aussi, soyez cool"
+
+#: Views/images/index.php:5
+msgid ""
+"Show off how cool you are by donec suscipit nulla ut massa fringilla aliquet "
+"a id elit. Sed porta lobortis lectus ac scelerisque. Aenean eget urna nulla. "
+"Vestibulum sed nisl eu tortor dignissim ultricies."
+msgstr ""
+"Montrez votre swag en donec suscipit nulla ut massa fringilla aliquet a id "
+"elit. Sed porta lobortis lectus ac scelerisque. Aenean eget urna nulla. "
+"Vestibulum sed nisl eu tortor dignissim ultricies."
+
+#: Views/images/index.php:7
+msgid "Take a picture"
+msgstr "Prendre une photo"
+
+#: Views/images/index.php:25 Views/images/show.php:14 Views/images/tag.php:15
+msgid "View"
+msgstr "Voir"
+
+#: Views/images/index.php:26 Views/images/show.php:15 Views/images/tag.php:16
+msgid "Like"
+msgstr "Aimer"
+
+#: Views/images/new.php:6
+msgid "Video stream not available."
+msgstr "Le flux vidéo n'est pas disponible."
+
+#: Views/images/new.php:8
+msgid "Take photo"
+msgstr "Prendre une photo"
+
+#: Views/images/new.php:10
+msgid "Upload photo"
+msgstr "Charger une photo"
+
+#: Views/images/new.php:16
+msgid "The screen capture will appear in this box."
+msgstr "La photo capturée apparaîtra dans ce cadre."
+
+#: Views/templates/shared/html.body.footer.php:4
+msgid "ADMIN"
+msgstr "ADMINISTRATION"
+
+#: Views/templates/shared/html.body.footer.php:5
+msgid "REGISTER"
+msgstr "S'INSCRIRE"
+
+#: Views/templates/shared/html.body.footer.php:6
+msgid "LOGIN"
+msgstr "SE CONNECTER"
+
+#: Views/templates/shared/html.body.footer.php:7
+msgid "LOGOUT"
+msgstr "SE DECONNECTER"
+
+#: Views/templates/shared/html.body.footer.php:10
+msgid "Le 101 is a joke."
+msgstr "Le 101 est une blague."
+
+#: Views/templates/shared/html.body.header.php:10
+msgid "Home"
+msgstr "Accueil"
+
+#: Views/templates/shared/html.body.header.php:10
+msgid "(current)"
+msgstr "(courant)"
+
+#: Views/templates/shared/html.body.header.php:13
+msgid "A page..."
+msgstr "Une page..."
+
+#: Views/templates/shared/html.body.header.php:16
+msgid "Another page..."
+msgstr "Une autre page..."
+
+#: Views/templates/shared/html.body.header.php:23 Views/users/login.php:1
+#: Views/users/login.php:26
+msgid "Login"
+msgstr "Connexion"
+
+#: Views/templates/shared/html.body.header.php:26 Views/users/register.php:1
+#: Views/users/register.php:27
+msgid "Register"
+msgstr "S'inscrire"
+
+#: Views/templates/shared/html.body.header.php:30
+msgid "Logout"
+msgstr "Se déconnecter"
+
+#: Views/users/forgot.php:1
+msgid "Forgot Password"
+msgstr "Mot de passe oublié"
+
+#: Views/users/forgot.php:5 Views/users/register.php:10
+msgid "E-Mail Address"
+msgstr "Adresse email"
+
+#: Views/users/forgot.php:8
+msgid "By clicking \"Reset Password\" we will send a password reset link"
+msgstr ""
+"Cliquer sur \"Réinitialiser mon mot de passe\" et nous vous enverrons les "
+"instructions par mail"
+
+#: Views/users/forgot.php:14
+msgid "Reset Password"
+msgstr "Réinitialiser mon mot de passe"
+
+#: Views/users/login.php:5 Views/users/register.php:5
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: Views/users/login.php:10 Views/users/register.php:15
+msgid "Password"
+msgstr "Mot de passe"
+
+#: Views/users/login.php:12
+msgid "Forgot Password?"
+msgstr "Mot de passe oublié ?"
+
+#: Views/users/login.php:20
+msgid "Remember Me"
+msgstr "Rester connecté"
+
+#: Views/users/login.php:30
+msgid "Don't have an account?"
+msgstr "Vous n'avez pas de compte ?"
+
+#: Views/users/login.php:30
+msgid "Create One"
+msgstr "Créez-en un"
+
+#: Views/users/register.php:21
+msgid "I agree to the Terms and Conditions"
+msgstr "J'accepte les conditions d'utilisation"
+
+#: Views/users/register.php:31
+msgid "Already have an account?"
+msgstr "Vous avez déjà un compte ?"

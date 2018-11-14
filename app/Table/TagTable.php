@@ -5,10 +5,11 @@ namespace App\Table;
 use Core\Table\Table;
 
 /**
- * Class CategoryTable
+ * Class TagTable
  * @package App\Table
  */
-class CategoryTable extends Table
+class TagTable extends Table
 {
-    protected $table = "categories";
+    protected $table = 'tags';
+
 }

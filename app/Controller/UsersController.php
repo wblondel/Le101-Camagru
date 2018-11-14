@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Core\Auth\DBAuth;
 use Core\HTML\BootstrapForm;
+use Core\Email\Email;
 use \App;
 use Core\String\Str;
 
@@ -28,26 +29,35 @@ class UsersController extends AppController
                 $token = Str::random(60);
                 $user_id = $auth->register($_POST['username'], $_POST['password'], $_POST['email'], $token);
                 if ($user_id) {
-                    mail(
-                        $_POST['email'],
-                        'Confirm your account',
-                        "To confirm your account, please click on this link\n\n
-                        https://camagru.2566335.xyz/?p=users.confirm&id=$user_id&token=$token"
-                    );
-                    $session->setFlash('success', 'Please check your emails to activate your account.');
-                    header('Location: index.php');
+                    $mailer = Email::make()
+                        ->setTo($_POST['email'], $_POST['username'])
+                        ->setFrom('contact@camagru.fr', 'Camagru.fr')
+                        ->setSubject(_("Welcome to Camagru - Confirm your account"))
+                        ->setMessage('<strong>'.
+                                     _("To confirm your account, please click on this link:").
+                                     '</strong><br><a href="https://camagru.fr/users/confirm/?id='.$user_id.
+                                     '&token='.$token.'">' . _("Confirm my account") . '</a>')
+                        ->setReplyTo('contact@camagru.fr')
+                        ->setHtml()
+                        ->send();
+                    if ($mailer) {
+                        $session->setFlash('success', _("Please check your emails to activate your account."));
+                    } else {
+                        $session->setFlash('error', _("You've been registered, but the confirmation email couldn't be sent.\nPlease contact the administrators."));
+                    }
+                    header('Location: /');
                     exit();
                 } else {
-                    $session->setFlash('danger', "Error while registering.");
+                    $session->setFlash('danger', _("Error while registering."));
                 }
             }
             $form = new BootstrapForm($_POST);
-            $customcss = ["css/login-register.css"];
-            $customjs = ["js/login-register.js"];
+            $customcss = ["/css/login-register.css"];
+            $customjs = ["/js/login-register.js"];
             $this->render('users.register', compact('form', 'customcss', 'customjs'));
         } else {
-            $session->setFlash('success', "You're already connected.");
-            header('Location: index.php');
+            $session->setFlash('success', _("You're already logged in."));
+            header('Location: /');
             exit();
         }
     }
@@ -63,21 +73,21 @@ class UsersController extends AppController
         if ($this->logged  === false) {
             if (!empty($_POST)) {
                 if ($auth->login($_POST['username'], $_POST['password'], isset($_POST['remember']))) {
-                    $session->setFlash('success', "You're connected.");
-                    header('Location: index.php');
+                    $session->setFlash('success', _("You are now logged in."));
+                    header('Location: /');
                     exit();
                 } else {
-                    $session->setFlash('danger', "Invalid credentials.");
+                    $session->setFlash('danger', _("Invalid credentials."));
                 }
             }
 
             $form = new BootstrapForm($_POST);
-            $customcss = ["css/login-register.css"];
-            $customjs = ["js/login-register.js"];
+            $customcss = ["/css/login-register.css"];
+            $customjs = ["/js/login-register.js"];
             $this->render('users.login', compact('form', 'customcss', 'customjs'));
         } else {
-            $session->setFlash('success', "You're already connected.");
-            header('Location: index.php');
+            $session->setFlash('success', _("You're already logged in."));
+            header('Location: /');
             exit();
         }
     }
@@ -88,21 +98,22 @@ class UsersController extends AppController
         $auth = new DBAuth(App::getInstance()->getDb(), $session);
 
         if ($this->logged  === false) {
-            if (isset($_GET['id']) && ctype_digit($_GET['id']) && isset($_GET['token'])) {
+            if (isset($_GET['id']) && ctype_digit($_GET['id']) && isset($_GET['token']) && !empty($_GET['token'])) {
                 if ($auth->confirm($_GET['id'], $_GET['token'])) {
-                    $session->setFlash('success', 'Your account is now activated. You can log in.');
-                    header('Location: index.php?p=users.login');
+                    $session->setFlash('success', _("Your account is now activated. You can log in."));
+                    header('Location: /users/login');
                     exit();
                 } else {
-                    $session->setFlash('danger', "We couldn't activate your account.");
+                    $session->setFlash('danger', _("We couldn't activate your account."));
                 }
             } else {
-                $session->setFlash('danger', "We couldn't activate your account.");
+                //$session->setFlash('danger', _("We couldn't activate your account."));
+                $this->badRequest();
             }
         } else {
-            $session->setFlash('success', "You're already connected.");
+            $session->setFlash('success', _("You're already logged in."));
         }
-        header('Location: index.php');
+        header('Location: /');
         exit();
     }
 
@@ -115,11 +126,11 @@ class UsersController extends AppController
 
         if ($this->logged  === true) {
             $auth->logout();
-            App::getInstance()->getSession()->setFlash('success', "You're now logged out.");
+            App::getInstance()->getSession()->setFlash('success', _("You're now logged out."));
         } else {
-            App::getInstance()->getSession()->setFlash('danger', "You're not connected.");
+            App::getInstance()->getSession()->setFlash('danger', _("You're not logged in."));
         }
-        header('Location: index.php');
+        header('Location: /');
         exit();
     }
 
@@ -127,11 +138,11 @@ class UsersController extends AppController
     {
         if ($this->logged === false) {
             $form = new BootstrapForm($_POST);
-            $customcss = ["css/login-register.css"];
-            $customjs = ["js/login-register.js"];
+            $customcss = ["/css/login-register.css"];
+            $customjs = ["/js/login-register.js"];
             $this->render('users.forgot', compact('form', 'customcss', 'customjs'));
         } else {
-            header('Location: index.php');
+            header('Location: /');
             exit();
         }
     }
