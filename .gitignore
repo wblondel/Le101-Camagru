@@ -107,3 +107,4 @@ tags
 
 # personal
 config/database.php
+public/uploads
