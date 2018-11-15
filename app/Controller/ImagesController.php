@@ -19,6 +19,7 @@ class ImagesController extends AppController
         parent::__construct();
         $this->loadModel('Image');
         $this->loadModel('Tag');
+        $this->loadModel('User');
     }
 
     public function index()
@@ -62,11 +63,14 @@ class ImagesController extends AppController
         $logged = $this->logged;
 
         $single_image = $this->Image->find($id);
+        $user_info = $this->User->find($single_image->users_id);
+
         if ($single_image === false) {
             $this->notFound();
         }
 
         var_dump($single_image);
+        var_dump($user_info);
 
         $customjs = ["/js/progressive-image.js"];
         $customcss = ["/css/gallery.css", "/css/progressive-image.css"];
