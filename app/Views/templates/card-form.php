@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title><?php if (isset($page_title)) { echo $page_title; ?> | <?php}?><?= App::getInstance()->title;?></title>
+    <title><?php if (isset($page_title)) { echo $page_title . ' | '; }?><?= App::getInstance()->title;?></title>
 </head>
 
 <body>
