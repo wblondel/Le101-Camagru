@@ -4,7 +4,7 @@
 <title>
     <?php if (isset($single_image)) : ?>
         <?php
-            $title = $user->username . " " . _("on") . " " . App::getInstance()->title . _(':') . ' &#34;' . $single_image->getLongDesc() . '&#34;';
+            $title = $user_info->username . " " . _("on") . " " . App::getInstance()->title . _(':') . ' &#34;' . $single_image->getLongDesc() . '&#34;';
             $description = sprintf(ngettext("%d Like", "%d Likes", $single_image->likesNb), $single_image->likesNb) . ", " . sprintf(ngettext("%d Comment", "%d Comments", $single_image->commentsNb), $single_image->commentsNb) . " - " . $title;
             echo $title;
         ?>
