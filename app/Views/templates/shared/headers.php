@@ -29,11 +29,10 @@ if (isset($image)) { ?>
     <meta name="medium" content="image"/>
 <?php}?>
 
-<!--<link rel="alternate" href="<?php //echo $current_url_no_param;?>" hreflang="x-default" />-->
+<!--<link rel="alternate" href="echo $current_url_no_param;" hreflang="x-default" />-->
 
-<?php
-// for locale in locales
-// {
-?>
-<!--<link rel="alternate" href="<?php //echo $current_url_no_param . "?hl=" . $locale;?>" hreflang="<?php //echo $locale;?>" />-->
-<?php // } ?>
+
+<!-- for locale in locales
+{
+<link rel="alternate" href="echo $current_url_no_param . "?hl=" . $locale;?>" hreflang="echo $locale;" />
+}-->
