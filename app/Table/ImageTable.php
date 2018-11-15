@@ -32,7 +32,7 @@ class ImageTable extends Table
     public function findWithUser(int $id)
     {
         return $this->query("
-            SELECT images.*, users.username
+            SELECT images.*, users.username as `users.username`
             FROM images
             JOIN users ON images.users_id=users.id
             WHERE images.id = ?", [$id], true);
