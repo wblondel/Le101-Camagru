@@ -11,7 +11,13 @@
 
     <div class="album py-5 bg-light">
         <div class="container">
-            <?php require ROOT . '/app/Views/templates/shared/flashes.php'; ?>
+            <?php if (App::getInstance()->getSession()->hasFlashes()) : ?>
+                <?php foreach (App::getInstance()->getSession()->getFlashes() as $type => $message) : ?>
+                    <div class="alert alert-<?= $type; ?>" role="alert">
+                        <?= $message; ?>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
             <div class="row">
                 <?php foreach ($images as $image) : ?>
                     <div class="col-md-4">
