@@ -25,4 +25,4 @@ if (isset($image)) { ?>
     <meta property="og:description" content="<?= $description ?>" />
     <meta property="og:url" content="https://camagru.fr/images/<?= $image->id?>/"/>
     <meta name="medium" content="image"/>
-<?php}?>
+<?php}
