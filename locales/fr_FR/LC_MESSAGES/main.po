@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Camagru\n"
-"POT-Creation-Date: 2018-11-15 13:51+0100\n"
-"PO-Revision-Date: 2018-11-15 13:54+0100\n"
+"POT-Creation-Date: 2018-11-15 14:02+0100\n"
+"PO-Revision-Date: 2018-11-15 14:03+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -14,10 +14,6 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
-
-#: App.php:25
-msgid "Camagru.fr - Where cats rule the world"
-msgstr "Camagru.fr - Où les chats dominent le monde"
 
 #: Controller/ImagesController.php:42
 msgid "Share a picture"
@@ -233,6 +229,3 @@ msgstr "J'accepte les conditions d'utilisation"
 #: Views/users/register.php:31
 msgid "Already have an account?"
 msgstr "Vous avez déjà un compte ?"
-
-#~ msgid "Publier une photo"
-#~ msgstr "P"
