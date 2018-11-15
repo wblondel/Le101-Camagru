@@ -46,7 +46,6 @@
         <link rel="stylesheet" href="<?= $filename ?>" type="text/css" media="all">
     <?php endforeach; ?>
 <?php endif ?>
-
 <?php if (isset($customjs)) : ?>
     <?php foreach ($customjs as $filename) : ?>
         <script src="<?= $filename; ?>"></script>
