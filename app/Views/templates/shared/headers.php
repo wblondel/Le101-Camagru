@@ -26,11 +26,3 @@ if (isset($image)) { ?>
     <meta property="og:url" content="https://camagru.fr/images/<?= $image->id?>/"/>
     <meta name="medium" content="image"/>
 <?php}?>
-
-<!--<link rel="alternate" href="echo $current_url_no_param;" hreflang="x-default" />-->
-
-
-<!-- for locale in locales
-{
-<link rel="alternate" href="echo $current_url_no_param . "?hl=" . $locale;?>" hreflang="echo $locale;" />
-}-->
