@@ -4,8 +4,8 @@
 <title>
     <?php if (isset($single_image)) : ?>
         <?php
-            $title = $user->username . " sur " . App::getInstance()->title . ' : ' . '&#34;' . $single_image->getLongDesc() . '&#34;';
-            $description = $single_image->likesNb . "mentions J'aime, " . $single_image->commentsNb . " commentaires - " . $title;
+            $title = $user->username . " " . _("on") . " " . App::getInstance()->title . _(':') . ' &#34;' . $single_image->getLongDesc() . '&#34;';
+            $description = ngettext("%d Like", "%d Likes", $single_image->likesNb) . ", " . ngettext("%d Comment", "%d Comments", $single_image->commentsNb) . " - " . $title;
             echo $title;
         ?>
     <?php else : ?>

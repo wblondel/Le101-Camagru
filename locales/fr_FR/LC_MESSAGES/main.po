@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Camagru\n"
-"POT-Creation-Date: 2018-11-15 14:02+0100\n"
-"PO-Revision-Date: 2018-11-15 14:03+0100\n"
+"POT-Creation-Date: 2018-11-15 18:03+0100\n"
+"PO-Revision-Date: 2018-11-15 18:05+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -130,55 +130,77 @@ msgstr "Charger une photo"
 msgid "The screen capture will appear in this box."
 msgstr "La photo capturée apparaîtra dans ce cadre."
 
-#: Views/templates/default.php:21 Views/templates/gallery.php:21
-msgid "Home"
-msgstr "Accueil"
-
-#: Views/templates/default.php:21 Views/templates/gallery.php:21
-msgid "(current)"
-msgstr "(courant)"
-
-#: Views/templates/default.php:24 Views/templates/gallery.php:24
-msgid "A page..."
-msgstr "Une page..."
-
-#: Views/templates/default.php:27 Views/templates/gallery.php:27
-msgid "Another page..."
-msgstr "Une autre page..."
-
-#: Views/templates/default.php:33 Views/templates/gallery.php:33
-#: Views/users/login.php:1 Views/users/login.php:26
-msgid "Login"
-msgstr "Connexion"
-
-#: Views/templates/default.php:36 Views/templates/gallery.php:36
-#: Views/users/register.php:1 Views/users/register.php:27
-msgid "Register"
-msgstr "S'inscrire"
-
-#: Views/templates/default.php:40 Views/templates/gallery.php:40
-msgid "Logout"
-msgstr "Se déconnecter"
-
-#: Views/templates/default.php:61 Views/templates/gallery.php:53
+#: Views/templates/shared/footer.php:4
 msgid "ADMIN"
 msgstr "ADMINISTRATION"
 
-#: Views/templates/default.php:62 Views/templates/gallery.php:54
+#: Views/templates/shared/footer.php:5
 msgid "REGISTER"
 msgstr "S'INSCRIRE"
 
-#: Views/templates/default.php:63 Views/templates/gallery.php:55
+#: Views/templates/shared/footer.php:6
 msgid "LOGIN"
 msgstr "SE CONNECTER"
 
-#: Views/templates/default.php:64 Views/templates/gallery.php:56
+#: Views/templates/shared/footer.php:7
 msgid "LOGOUT"
 msgstr "SE DECONNECTER"
 
-#: Views/templates/default.php:67 Views/templates/gallery.php:59
+#: Views/templates/shared/footer.php:10
 msgid "Le 101 is a joke."
 msgstr "Le 101 est une blague."
+
+#: Views/templates/shared/headers.php:7
+msgid "on"
+msgstr "sur"
+
+#: Views/templates/shared/headers.php:7
+msgid ":"
+msgstr " :"
+
+#: Views/templates/shared/headers.php:8
+#, php-format
+msgid "%d Like"
+msgid_plural "%d Likes"
+msgstr[0] "%d mention J'aime"
+msgstr[1] "%d mentions J'aime"
+
+#: Views/templates/shared/headers.php:8
+#, php-format
+msgid "%d Comment"
+msgid_plural "%d Comments"
+msgstr[0] "%d commentaire"
+msgstr[1] "%d commentaires"
+
+#: Views/templates/shared/top_navbar.php:10
+msgid "Home"
+msgstr "Accueil"
+
+#: Views/templates/shared/top_navbar.php:10
+msgid "(current)"
+msgstr "(courant)"
+
+#: Views/templates/shared/top_navbar.php:13
+msgid "A page..."
+msgstr "Une page..."
+
+#: Views/templates/shared/top_navbar.php:16
+msgid "Another page..."
+msgstr "Une autre page..."
+
+#: Views/templates/shared/top_navbar.php:22 Views/users/login.php:1
+#: Views/users/login.php:26
+msgid "Login"
+msgstr "Connexion"
+
+#: Views/templates/shared/top_navbar.php:25 Views/users/register.php:1
+#: Views/users/register.php:27
+msgid "Register"
+msgstr "S'inscrire"
+
+#: Views/templates/shared/top_navbar.php:29
+msgid "Logout"
+msgstr "Se déconnecter"
 
 #: Views/users/forgot.php:1
 msgid "Forgot Password"
