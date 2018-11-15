@@ -66,6 +66,7 @@ class ImagesController extends AppController
             $this->notFound();
         }
 
+        var_dump($single_image);
 
         $customjs = ["/js/progressive-image.js"];
         $customcss = ["/css/gallery.css", "/css/progressive-image.css"];
