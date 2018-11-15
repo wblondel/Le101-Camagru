@@ -11,17 +11,17 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="card mb-4 box-shadow">
-                        <img class="card-img-top lazy-load" data-src="<?= $image->getFilePath() ?>" src="" alt="<?= $image->getAlt() ?>">
-                        <noscript><img class="card-img" src="<?= $image->getFilePath() ?>" alt="<?= $image->getAlt() ?>"></noscript>
+                        <img class="card-img-top lazy-load" data-src="<?= $single_image->getFilePath() ?>" src="" alt="<?= $single_image->getAlt() ?>">
+                        <noscript><img class="card-img" src="<?= $single_image->getFilePath() ?>" alt="<?= $single_image->getAlt() ?>"></noscript>
                         <div class="card-body">
-                            <p class="card-text"><?= $image->getShortDesc() ?></p>
+                            <p class="card-text"><?= $single_image->getShortDesc() ?></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a href="<?= $image->getURL() ?>"><button type="button" class="btn btn-sm btn-outline-secondary"><?= _("View") ?></button></a>
+                                    <a href="<?= $single_image->getURL() ?>"><button type="button" class="btn btn-sm btn-outline-secondary"><?= _("View") ?></button></a>
                                     <button type="button" class="btn btn-sm btn-outline-secondary"><?= _("Like") ?></button>
                                 </div>
-                                <small class="text-muted my-tooltip"><?= $image->getElaspedTime() ?>
-                                    <span class="my-tooltiptext"><?= $image->getCreationDate() ?></span>
+                                <small class="text-muted my-tooltip"><?= $single_image->getElaspedTime() ?>
+                                    <span class="my-tooltiptext"><?= $single_image->getCreationDate() ?></span>
                                 </small>
                             </div>
                         </div>

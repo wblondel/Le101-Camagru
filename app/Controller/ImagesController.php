@@ -61,13 +61,13 @@ class ImagesController extends AppController
     {
         $logged = $this->logged;
 
-        $image = $this->Image->find($id);
-        if ($image === false) {
+        $single_image = $this->Image->find($id);
+        if ($single_image === false) {
             $this->notFound();
         }
 
         $customjs = ["/js/progressive-image.js"];
         $customcss = ["/css/gallery.css", "/css/progressive-image.css"];
-        $this->render('images.show', compact('image', 'logged', 'customjs', 'customcss'));
+        $this->render('images.show', compact('single_image', 'logged', 'customjs', 'customcss'));
     }
 }
