@@ -25,6 +25,19 @@ class ImageTable extends Table
         ");
     }
 
+    /*
+     * Récupère une image avec le user associé
+     * @return array
+     */
+    public function findWithUser(int $id)
+    {
+        return $this->query("
+            SELECT images.*, users.*
+            FROM images
+            JOIN users ON images.users_id=users.id
+            WHERE id = ?", [$id], true);
+    }
+
     /**
      * Récupère les dernières images avec les tags associés.
      * @return array

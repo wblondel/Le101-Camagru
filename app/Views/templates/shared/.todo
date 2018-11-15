@@ -1,0 +1,7 @@
+<!--<link rel="alternate" href="echo $current_url_no_param;" hreflang="x-default" />-->
+
+
+<!-- for locale in locales
+{
+<link rel="alternate" href="echo $current_url_no_param . "?hl=" . $locale;?>" hreflang="echo $locale;" />
+}-->
