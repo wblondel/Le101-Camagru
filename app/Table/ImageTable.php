@@ -35,7 +35,7 @@ class ImageTable extends Table
             SELECT images.*, users.*
             FROM images
             JOIN users ON images.users_id=users.id
-            WHERE id = ?", [$id], true);
+            WHERE images.id = ?", [$id], true);
     }
 
     /**
