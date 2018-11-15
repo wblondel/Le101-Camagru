@@ -5,7 +5,7 @@
 </head>
 
 <body>
-<? require 'shared/top_navbar.php'; ?>
+<?php require 'shared/top_navbar.php'; ?>
 
 <?= $content; ?>
 

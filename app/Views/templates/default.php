@@ -5,7 +5,7 @@
 </head>
 
 <body>
-<? require 'shared/top_navbar.php'; ?>
+<?php require 'shared/top_navbar.php'; ?>
 
 <?php if (App::getInstance()->getSession()->hasFlashes()) : ?>
     <?php foreach (App::getInstance()->getSession()->getFlashes() as $type => $message) : ?>
