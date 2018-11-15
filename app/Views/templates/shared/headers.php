@@ -4,7 +4,7 @@
 <title>
     <?php if (isset($single_image)) : ?>
         <?php
-            $title = $user->username . " sur " . App::getInstance()->title . ' : ' . '"' . $single_image->getLongDesc() . '"';
+            $title = $user->username . " sur " . App::getInstance()->title . ' : ' . '&#34;' . $single_image->getLongDesc() . '&#34;';
             $description = $single_image->likesNb . "mentions J'aime, " . $single_image->commentsNb . " commentaires - " . $title;
             echo $title;
         ?>
