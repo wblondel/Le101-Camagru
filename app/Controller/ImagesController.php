@@ -61,7 +61,7 @@ class ImagesController extends AppController
     {
         $logged = $this->logged;
 
-        $single_image = $this->Image->findWithUser($id);
+        $single_image = $this->Image->find($id);
         if ($single_image === false) {
             $this->notFound();
         }
