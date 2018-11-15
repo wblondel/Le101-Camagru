@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title><?= App::getInstance()->title;?></title>
+    <title><?= $page_title; ?> | <?= App::getInstance()->title;?></title>
 </head>
 
 <body>

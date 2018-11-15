@@ -30,7 +30,7 @@ class ImagesController extends AppController
 
         $customjs = ["/js/progressive-image.js"];
         $customcss = ["/css/gallery.css", "/css/progressive-image.css"];
-        $this->render('images.index', compact('customjs', 'customcss', 'logged', 'images'));
+        $this->render('images.index', compact( 'customjs', 'customcss', 'logged', 'images'));
     }
 
     public function new()
@@ -39,7 +39,8 @@ class ImagesController extends AppController
         $this->template = 'default';
         $customjs = ["/js/camera.js"];
         $customcss = ["/css/camera.css"];
-        $this->render('images.new', compact('customjs', 'customcss', 'logged'));
+        $page_title = _("Share a picture");
+        $this->render('images.new', compact('page_title', 'customjs', 'customcss', 'logged'));
     }
 
     public function tag(int $id)
@@ -67,7 +68,6 @@ class ImagesController extends AppController
 
         $customjs = ["/js/progressive-image.js"];
         $customcss = ["/css/gallery.css", "/css/progressive-image.css"];
-
         $this->render('images.show', compact('image', 'logged', 'customjs', 'customcss'));
     }
 }

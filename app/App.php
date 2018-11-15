@@ -9,7 +9,7 @@ use Core\Session\Session;
  */
 class App
 {
-    public $title = "Camagru.fr - Where cats rule the world";
+    public $title = "Camagru.fr";
     private $db_instance;
     private $session_instance;
     private static $_instance;

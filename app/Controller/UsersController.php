@@ -54,7 +54,8 @@ class UsersController extends AppController
             $form = new BootstrapForm($_POST);
             $customcss = ["/css/login-register.css"];
             $customjs = ["/js/login-register.js"];
-            $this->render('users.register', compact('form', 'customcss', 'customjs'));
+            $page_title = _("Create an account");
+            $this->render('users.register', compact('page_title','form', 'customcss', 'customjs'));
         } else {
             $session->setFlash('success', _("You're already logged in."));
             header('Location: /');
@@ -84,7 +85,8 @@ class UsersController extends AppController
             $form = new BootstrapForm($_POST);
             $customcss = ["/css/login-register.css"];
             $customjs = ["/js/login-register.js"];
-            $this->render('users.login', compact('form', 'customcss', 'customjs'));
+            $page_title = _("Log in");
+            $this->render('users.login', compact('page_title', 'form', 'customcss', 'customjs'));
         } else {
             $session->setFlash('success', _("You're already logged in."));
             header('Location: /');
@@ -107,7 +109,6 @@ class UsersController extends AppController
                     $session->setFlash('danger', _("We couldn't activate your account."));
                 }
             } else {
-                //$session->setFlash('danger', _("We couldn't activate your account."));
                 $this->badRequest();
             }
         } else {
@@ -140,7 +141,8 @@ class UsersController extends AppController
             $form = new BootstrapForm($_POST);
             $customcss = ["/css/login-register.css"];
             $customjs = ["/js/login-register.js"];
-            $this->render('users.forgot', compact('form', 'customcss', 'customjs'));
+            $page_title = _("Reset your password");
+            $this->render('users.forgot', compact('page_title', 'form', 'customcss', 'customjs'));
         } else {
             header('Location: /');
             exit();

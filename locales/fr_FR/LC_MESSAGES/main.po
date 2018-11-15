@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Camagru\n"
-"POT-Creation-Date: 2018-11-14 08:53+0100\n"
-"PO-Revision-Date: 2018-11-14 08:54+0100\n"
+"POT-Creation-Date: 2018-11-15 13:51+0100\n"
+"PO-Revision-Date: 2018-11-15 13:54+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -18,6 +18,10 @@ msgstr ""
 #: App.php:25
 msgid "Camagru.fr - Where cats rule the world"
 msgstr "Camagru.fr - Où les chats dominent le monde"
+
+#: Controller/ImagesController.php:42
+msgid "Share a picture"
+msgstr "Publier une photo"
 
 #: Controller/UsersController.php:35
 msgid "Welcome to Camagru - Confirm your account"
@@ -47,34 +51,46 @@ msgstr ""
 msgid "Error while registering."
 msgstr "Erreur lors de l'inscription."
 
-#: Controller/UsersController.php:59 Controller/UsersController.php:89
-#: Controller/UsersController.php:114
+#: Controller/UsersController.php:57
+msgid "Create an account"
+msgstr "Créer un compte"
+
+#: Controller/UsersController.php:60 Controller/UsersController.php:91
+#: Controller/UsersController.php:115
 msgid "You're already logged in."
 msgstr "Vous êtes déjà connecté."
 
-#: Controller/UsersController.php:76
+#: Controller/UsersController.php:77
 msgid "You are now logged in."
 msgstr "Vous êtes maintenant connecté."
 
-#: Controller/UsersController.php:80
+#: Controller/UsersController.php:81
 msgid "Invalid credentials."
 msgstr "Identifiants incorrects."
 
-#: Controller/UsersController.php:103
+#: Controller/UsersController.php:88
+msgid "Log in"
+msgstr "Connexion"
+
+#: Controller/UsersController.php:105
 msgid "Your account is now activated. You can log in."
 msgstr "Votre compte est maintenant activé. Vous pouvez vous connecter."
 
-#: Controller/UsersController.php:107
+#: Controller/UsersController.php:109
 msgid "We couldn't activate your account."
 msgstr "Votre compte n'a pas pu être activé."
 
-#: Controller/UsersController.php:129
+#: Controller/UsersController.php:130
 msgid "You're now logged out."
 msgstr "Vous êtes maintenant déconnecté."
 
-#: Controller/UsersController.php:131
+#: Controller/UsersController.php:132
 msgid "You're not logged in."
 msgstr "Vous n'êtes pas connecté."
+
+#: Controller/UsersController.php:144
+msgid "Reset your password"
+msgstr "Réinitialiser le mot de passe"
 
 #: Views/images/index.php:4
 msgid "You can be cool too"
@@ -94,11 +110,11 @@ msgstr ""
 msgid "Take a picture"
 msgstr "Prendre une photo"
 
-#: Views/images/index.php:25 Views/images/show.php:14 Views/images/tag.php:15
+#: Views/images/index.php:31 Views/images/show.php:20 Views/images/tag.php:21
 msgid "View"
 msgstr "Voir"
 
-#: Views/images/index.php:26 Views/images/show.php:15 Views/images/tag.php:16
+#: Views/images/index.php:32 Views/images/show.php:21 Views/images/tag.php:22
 msgid "Like"
 msgstr "Aimer"
 
@@ -118,55 +134,55 @@ msgstr "Charger une photo"
 msgid "The screen capture will appear in this box."
 msgstr "La photo capturée apparaîtra dans ce cadre."
 
-#: Views/templates/shared/html.body.footer.php:4
-msgid "ADMIN"
-msgstr "ADMINISTRATION"
-
-#: Views/templates/shared/html.body.footer.php:5
-msgid "REGISTER"
-msgstr "S'INSCRIRE"
-
-#: Views/templates/shared/html.body.footer.php:6
-msgid "LOGIN"
-msgstr "SE CONNECTER"
-
-#: Views/templates/shared/html.body.footer.php:7
-msgid "LOGOUT"
-msgstr "SE DECONNECTER"
-
-#: Views/templates/shared/html.body.footer.php:10
-msgid "Le 101 is a joke."
-msgstr "Le 101 est une blague."
-
-#: Views/templates/shared/html.body.header.php:10
+#: Views/templates/default.php:21 Views/templates/gallery.php:21
 msgid "Home"
 msgstr "Accueil"
 
-#: Views/templates/shared/html.body.header.php:10
+#: Views/templates/default.php:21 Views/templates/gallery.php:21
 msgid "(current)"
 msgstr "(courant)"
 
-#: Views/templates/shared/html.body.header.php:13
+#: Views/templates/default.php:24 Views/templates/gallery.php:24
 msgid "A page..."
 msgstr "Une page..."
 
-#: Views/templates/shared/html.body.header.php:16
+#: Views/templates/default.php:27 Views/templates/gallery.php:27
 msgid "Another page..."
 msgstr "Une autre page..."
 
-#: Views/templates/shared/html.body.header.php:23 Views/users/login.php:1
-#: Views/users/login.php:26
+#: Views/templates/default.php:33 Views/templates/gallery.php:33
+#: Views/users/login.php:1 Views/users/login.php:26
 msgid "Login"
 msgstr "Connexion"
 
-#: Views/templates/shared/html.body.header.php:26 Views/users/register.php:1
-#: Views/users/register.php:27
+#: Views/templates/default.php:36 Views/templates/gallery.php:36
+#: Views/users/register.php:1 Views/users/register.php:27
 msgid "Register"
 msgstr "S'inscrire"
 
-#: Views/templates/shared/html.body.header.php:30
+#: Views/templates/default.php:40 Views/templates/gallery.php:40
 msgid "Logout"
 msgstr "Se déconnecter"
+
+#: Views/templates/default.php:61 Views/templates/gallery.php:53
+msgid "ADMIN"
+msgstr "ADMINISTRATION"
+
+#: Views/templates/default.php:62 Views/templates/gallery.php:54
+msgid "REGISTER"
+msgstr "S'INSCRIRE"
+
+#: Views/templates/default.php:63 Views/templates/gallery.php:55
+msgid "LOGIN"
+msgstr "SE CONNECTER"
+
+#: Views/templates/default.php:64 Views/templates/gallery.php:56
+msgid "LOGOUT"
+msgstr "SE DECONNECTER"
+
+#: Views/templates/default.php:67 Views/templates/gallery.php:59
+msgid "Le 101 is a joke."
+msgstr "Le 101 est une blague."
 
 #: Views/users/forgot.php:1
 msgid "Forgot Password"
@@ -217,3 +233,6 @@ msgstr "J'accepte les conditions d'utilisation"
 #: Views/users/register.php:31
 msgid "Already have an account?"
 msgstr "Vous avez déjà un compte ?"
+
+#~ msgid "Publier une photo"
+#~ msgstr "P"
