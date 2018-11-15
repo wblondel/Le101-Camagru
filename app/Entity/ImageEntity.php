@@ -35,6 +35,11 @@ class ImageEntity extends Entity
         return substr($this->description, 0, 30) . '...';
     }
 
+    public function getLongDesc()
+    {
+        return substr($this->description, 0, 80) . '...';
+    }
+
     public function getAlt()
     {
         return "Small desc";
@@ -48,5 +53,17 @@ class ImageEntity extends Entity
     public function getCreationDate()
     {
         return date('d/m/Y', strtotime($this->created_at));
+    }
+
+    public function getLikesNb()
+    {
+        // TODO: Remove this override so that it returns the true number of likes
+        return 0;
+    }
+
+    public function getCommentsNb()
+    {
+        // TODO: Remove this override so that it returns the true number of comments
+        return 0;
     }
 }
