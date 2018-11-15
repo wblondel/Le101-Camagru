@@ -29,8 +29,6 @@ class ImagesController extends AppController
         //$images = $this->Image->lastWithTags();
         $images = $this->Image->last();
 
-        var_dump($images);
-
         $customjs = ["/js/progressive-image.js"];
         $customcss = ["/css/gallery.css", "/css/progressive-image.css"];
         $this->render('images.index', compact( 'customjs', 'customcss', 'logged', 'images'));
