@@ -4,12 +4,10 @@
 <title>
     <?php
     if (isset($image)) {
-        // This means we are viewing an image
-        $title = $user->username . _(" sur ") . App::getInstance()->title . _(' : ') . '"' . $image->getLongDesc() . '"';
+        $title = $user->username . " sur " . App::getInstance()->title . ' : ' . '"' . $image->getLongDesc() . '"';
         $description = $image->likesNb . "mentions J'aime, " . $image->commentsNb . " commentaires - " . $title;
         echo $title;
     } else {
-        // Show the page title before the app name, if there is one
         if (isset($page_title)) {
             echo $page_title . ' &bull; ';
         }
