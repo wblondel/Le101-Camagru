@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang=<?= $current_language ?>>
+<html lang="<?= substr($lang, 0, 2); ?>">
 <head>
     <?php require 'shared/headers.php';?>
 </head>
