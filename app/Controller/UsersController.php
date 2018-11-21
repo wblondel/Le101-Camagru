@@ -7,6 +7,7 @@ use Core\HTML\BootstrapForm;
 use Core\Email\Email;
 use \App;
 use Core\String\Str;
+use Core\Validator\Validator;
 
 /**
  * Class UsersController
@@ -137,12 +138,83 @@ class UsersController extends AppController
 
     public function forgot()
     {
+        $session = App::getInstance()->getSession();
+        $auth = new DBAuth(App::getInstance()->getDb(), $session);
+
         if ($this->logged === false) {
+            if (!empty($_POST) && !empty($_POST['email'])) {
+                $token = Str::random(60);
+                $user = $auth->setResetPasswordToken($_POST['email'], $token);
+                if ($user) {
+                    $mailer = Email::make()
+                        ->setTo($user->email, $user->username)
+                        ->setFrom('contact@camagru.fr', 'Camagru.fr')
+                        ->setSubject(_("Camagru - Reset your password"))
+                        ->setMessage('<strong>'.
+                            _("To reset your password, please click on this link:").
+                            '</strong><br><a href="https://camagru.fr/users/reset/?id='.$user->id.
+                            '&token='.$token.'">' . _("Reset my password") . '</a>')
+                        ->setReplyTo('contact@camagru.fr')
+                        ->setHtml()
+                        ->send();
+                    if ($mailer) {
+                        $session->setFlash('success', _("Please check your inbox for an email we just sent you with instructions for how to reset your password and log into your account."));
+                        header('Location: /');
+                        exit();
+                    } else {
+                        $session->setFlash('danger', _("The reset instructions couldn't be sent.\nPlease contact the administrators."));
+                    }
+                } else {
+                    $session->setFlash('danger', _("This email doesn't match any registered account."));
+                }
+            }
+
             $form = new BootstrapForm($_POST);
             $customcss = ["/css/login-register.css"];
             $customjs = ["/js/login-register.js"];
             $page_title = _("Reset your password");
             $this->render('users.forgot', compact('page_title', 'form', 'customcss', 'customjs'));
+        } else {
+            header('Location: /');
+            exit();
+        }
+    }
+
+    public function reset()
+    {
+        $session = App::getInstance()->getSession();
+        $db = App::getInstance()->getDb();
+        $auth = new DBAuth($db, $session);
+
+        if ($this->logged === false) {
+            if (isset($_GET['id']) && ctype_digit($_GET['id']) && isset($_GET['token']) && !empty($_GET['token'])) {
+                $user = $auth->checkPasswordResetToken($_GET['id'], $_GET['token']);
+                if ($user) {
+                    if (!empty($_POST)) {
+                        $validator = new Validator($_POST);
+                        $validator->isConfirmed('password');
+                        if ($validator->isValid()) {
+                            $password = $auth->hashPassword($_POST['password']);
+                            $auth->resetPassword($_GET['id'], $password);
+                            $session->setFlash('success', _("Your password has been modified. Please log in."));
+                            header('Location: /users/login');
+                            exit();
+                        }
+                    }
+
+                    $form = new BootstrapForm($_POST);
+                    $customcss = ["/css/login-register.css"];
+                    $customjs = ["/js/login-register.js"];
+                    $page_title = _("Set your new password");
+                    $this->render('users.reset', compact('page_title', 'form', 'customcss', 'customjs'));
+                } else {
+                    $session->setFlash('danger', _("Invalid token."));
+                    header('Location: /');
+                    exit();
+                }
+            } else {
+                $this->badRequest();
+            }
         } else {
             header('Location: /');
             exit();
