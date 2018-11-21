@@ -78,7 +78,7 @@ class App
 
 
         if (is_null($this->lang_instance)) {
-            $default_lang = "fr_FR-utf8";
+            $default_lang = "fr_FR.utf8";
 
             // here we define the global system locale given the found language
             putenv("LANG=" .$default_lang);
