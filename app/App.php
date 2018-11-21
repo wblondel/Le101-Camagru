@@ -11,7 +11,7 @@ class App
 {
     public $title = "Camagru";
 
-    private $lang;
+    private $lang_instance;
     private $db_instance;
     private $session_instance;
     private static $_instance;
@@ -76,14 +76,15 @@ class App
         // = locale =
         // ==========
 
-        if (is_null($this->lang)) {
+
+        if (is_null($this->lang_instance)) {
             $default_lang = "fr_FR-utf8";
 
             // here we define the global system locale given the found language
             putenv("LANG=" .$default_lang);
 
             // this might be useful for date functions (LC_TIME) or money formatting (LC_MONETARY), for instance
-            setlocale(LC_ALL, $lang);
+            setlocale(LC_ALL, $default_lang);
 
             // this will make Gettext look for /locales/<lang>/LC_MESSAGES/main.mo
             bindtextdomain('main', ROOT . '/locales');
@@ -94,8 +95,8 @@ class App
             // here we indicate the default domain the gettext() calls will respond to
             textdomain('main');
 
-            $this->lang = $default_lang;
+            $this->lang_instance = $default_lang;
         }
-        return $this->lang;
+        return $this->lang_instance;
     }
 }
