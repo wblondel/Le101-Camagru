@@ -5,35 +5,7 @@ define('ROOT', dirname(__DIR__));
 require ROOT . '/app/App.php';
 App::load();
 
-// ==========
-// = locale =
-// ==========
-
-// select default locale
-$lang = "fr_FR.utf8";
-
-// here we define the global system locale given the found language
-putenv("LANG=$lang");
-
-// this might be useful for date functions (LC_TIME) or money formatting (LC_MONETARY), for instance
-setlocale(LC_ALL, $lang);
-
-// this will make Gettext look for /locales/<lang>/LC_MESSAGES/main.mo
-bindtextdomain('main', ROOT . '/locales');
-
-// indicates in what encoding the file should be read
-bind_textdomain_codeset('main', 'UTF-8');
-
-// here we indicate the default domain the gettext() calls will respond to
-textdomain('main');
-
-# We get the controller:action to call from the p URL parameter
-# If no p parameter is given, default is images
-#if (isset($_GET['p']) && (!empty($_GET['p']))) {
-#    $page = $_GET['p'];
-#} else {
-#    $page = "images";
-#}
+# URL parsing
 
 $url = $_SERVER['REQUEST_URI'];
 $urlPathParts = explode('/', ltrim(parse_url($url,  PHP_URL_PATH), '/'));
