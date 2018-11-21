@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="<?= substr($lang, 0, 2); ?>">
+<html lang="<?= substr(App::getInstance()->getLang(), 0, 2); ?>">
 <head>
     <?php require 'shared/headers.php';?>
 </head>
