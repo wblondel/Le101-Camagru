@@ -81,11 +81,11 @@ class App
             $default_lang = "fr_FR.utf8";
 
             // here we define the global system locale given the found language
-            putenv("LANG=" .$default_lang);
+            putenv("LANG=" . $default_lang);
 
             // this might be useful for date functions (LC_TIME) or money formatting (LC_MONETARY), for instance
             setlocale(LC_ALL, $default_lang);
-            var_dump(ROOT . '/locales');
+
             // this will make Gettext look for /locales/<lang>/LC_MESSAGES/main.mo
             bindtextdomain('main', ROOT . '/locales');
 
