@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `images` (
   `filename` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`, `users_id`),
   INDEX `fk_images_users_idx` (`users_id` ASC),
-  UNIQUE INDEX `filename_UNIQUE` (`filename` ASC),
+  -- UNIQUE INDEX `filename_UNIQUE` (`filename` ASC),
   CONSTRAINT `fk_images_users`
     FOREIGN KEY (`users_id`)
     REFERENCES `users` (`id`)
