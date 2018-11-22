@@ -2,13 +2,13 @@
 <link rel="stylesheet" href="/css/common.css" type="text/css" media="all">
 
 <?php if (isset($res)) : ?>
-    <? if (array_key_exists('css', $res)) : ?>
+    <?php if (array_key_exists('css', $res)) : ?>
         <?php foreach ($res['css'] as $filename) : ?>
             <link rel="stylesheet" href="<?= $filename ?>" type="text/css" media="all">
         <?php endforeach; ?>
     <?php endif ?>
 
-    <? if (array_key_exists('js', $res)) : ?>
+    <?php if (array_key_exists('js', $res)) : ?>
         <?php foreach ($res['js'] as $filename) : ?>
             <script src="<?= $filename; ?>"></script>
         <?php endforeach; ?>
