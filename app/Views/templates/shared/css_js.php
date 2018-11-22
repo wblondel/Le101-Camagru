@@ -4,13 +4,13 @@
 <?php if (isset($res)) : ?>
     <?php if (array_key_exists('css', $res)) : ?>
         <?php foreach ($res['css'] as $filename) : ?>
-            <link rel="stylesheet" href="<?= $filename ?>" type="text/css" media="all">
+            <link rel="stylesheet" href="/css/<?= $filename ?>" type="text/css" media="all">
         <?php endforeach; ?>
     <?php endif ?>
 
     <?php if (array_key_exists('js', $res)) : ?>
         <?php foreach ($res['js'] as $filename) : ?>
-            <script src="<?= $filename; ?>"></script>
+            <script src="/js/<?= $filename; ?>"></script>
         <?php endforeach; ?>
     <?php endif ?>
 <?php endif ?>
