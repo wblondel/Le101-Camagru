@@ -38,8 +38,7 @@ if (!array_key_exists(0, $urlPathParts) || empty($urlPathParts[0])) {
 
 # Exit if we find any special characters in the page variable
 if(preg_grep('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $urlPathParts)){
-    header('HTTP/1.0 404 Not Found');
-    die('404 Not Found (MOD_SECURITY_UNSAFE_URL)');
+    exit(http_response_code(404));
 }
 
 # Find the controller to load in the "Admin" controller group if page[0] is "admin"
@@ -72,6 +71,5 @@ if (class_exists($controller)) {
     $controller = new $controller();
     $controller->$action($arg);
 } else {
-    header('HTTP/1.0 404 Not Found');
-    die('404 Not Found (CONTROLLER_NOT_FOUND)');
+    exit(http_response_code(404));
 }
