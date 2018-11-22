@@ -23,32 +23,47 @@ class UsersController extends AppController
     public function register()
     {
         $session = App::getInstance()->getSession();
-        $auth = new DBAuth(App::getInstance()->getDb(), $session);
+        $db = App::getInstance()->getDb();
+        $auth = new DBAuth($db, $session);
 
         if ($this->logged === false) {
             if (!empty($_POST)) {
-                $token = Str::random(60);
-                $user_id = $auth->register($_POST['username'], $_POST['password'], $_POST['email'], $token);
-                if ($user_id) {
-                    $mailer = Email::make()
-                        ->setTo($_POST['email'], $_POST['username'])
-                        ->setFrom('contact@camagru.fr', 'Camagru.fr')
-                        ->setSubject(_("Welcome to Camagru - Confirm your account"))
-                        ->setMessage('<strong>'.
-                                     _("To confirm your account, please click on this link:").
-                                     '</strong><br><a href="https://camagru.fr/users/confirm/?id='.$user_id.
-                                     '&token='.$token.'">' . _("Confirm my account") . '</a>')
-                        ->setReplyTo('contact@camagru.fr')
-                        ->setHtml()
-                        ->send();
-                    if ($mailer) {
-                        $session->setFlash('success', _("Please check your emails to activate your account."));
+                $validator = new Validator($_POST);
+
+                if ($validator->isAlphaNum('username', _("Your username should contain letters and numbers only."))) {
+                    $validator->isUnique('username', $db, 'users', _("This username is already taken."));
+                }
+                if ($validator->isEmail('email', _("Your email isn't valid."))) {
+                    $validator->isUnique('email', $db, 'users', _("This email is already taken."));
+                }
+                $validator->isConfirmed('password', _("Passwords don't match."));
+
+                if ($validator->isValid()) {
+                    $token = Str::random(60);
+                    $user_id = $auth->register($_POST['username'], $_POST['password'], $_POST['email'], $token);
+                    if ($user_id) {
+                        $mailer = Email::make()
+                            ->setTo($_POST['email'], $_POST['username'])
+                            ->setFrom('contact@camagru.fr', 'Camagru.fr')
+                            ->setSubject(_("Welcome to Camagru - Confirm your account"))
+                            ->setMessage('<strong>'.
+                                _("To confirm your account, please click on this link:").
+                                '</strong><br><a href="https://camagru.fr/users/confirm/?id='.$user_id.
+                                '&token='.$token.'">' . _("Confirm my account") . '</a>')
+                            ->setReplyTo('contact@camagru.fr')
+                            ->setHtml()
+                            ->send();
+                        if ($mailer) {
+                            $session->setFlash('success', _("Please check your emails to activate your account."));
+                        } else {
+                            $session->setFlash('error', _("You've been registered, but the confirmation email couldn't be sent.\nPlease contact the administrators."));
+                        }
+                        $this->redirect();
                     } else {
-                        $session->setFlash('error', _("You've been registered, but the confirmation email couldn't be sent.\nPlease contact the administrators."));
+                        $session->setFlash('danger', _("Error while registering."));
                     }
-                    $this->redirect();
                 } else {
-                    $session->setFlash('danger', _("Error while registering."));
+                    $errors = $validator->getErrors();
                 }
             }
             $form = new BootstrapForm($_POST);
@@ -59,7 +74,7 @@ class UsersController extends AppController
             ];
 
             $page_title = _("Create an account");
-            $this->render('users.register', compact('page_title','form', 'res'));
+            $this->render('users.register', compact('page_title','form', 'errors', 'res'));
         } else {
             $session->setFlash('success', _("You're already logged in."));
             $this->redirect();
