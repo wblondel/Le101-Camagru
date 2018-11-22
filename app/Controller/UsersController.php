@@ -46,21 +46,23 @@ class UsersController extends AppController
                     } else {
                         $session->setFlash('error', _("You've been registered, but the confirmation email couldn't be sent.\nPlease contact the administrators."));
                     }
-                    header('Location: /');
-                    exit();
+                    $this->redirect();
                 } else {
                     $session->setFlash('danger', _("Error while registering."));
                 }
             }
             $form = new BootstrapForm($_POST);
-            $customcss = ["/css/login-register.css"];
-            $customjs = ["/js/login-register.js"];
+
+            $res = [
+                'js' => ['login-register.js'],
+                'css' => ['login-register.css']
+            ];
+
             $page_title = _("Create an account");
-            $this->render('users.register', compact('page_title','form', 'customcss', 'customjs'));
+            $this->render('users.register', compact('page_title','form', 'res'));
         } else {
             $session->setFlash('success', _("You're already logged in."));
-            header('Location: /');
-            exit();
+            $this->redirect();
         }
     }
 
@@ -76,22 +78,24 @@ class UsersController extends AppController
             if (!empty($_POST)) {
                 if ($auth->login($_POST['username'], $_POST['password'], isset($_POST['remember']))) {
                     $session->setFlash('success', _("You are now logged in."));
-                    header('Location: /');
-                    exit();
+                    $this->redirect();
                 } else {
                     $session->setFlash('danger', _("Invalid credentials."));
                 }
             }
 
             $form = new BootstrapForm($_POST);
-            $customcss = ["/css/login-register.css"];
-            $customjs = ["/js/login-register.js"];
+
+            $res = [
+                'js' => ['login-register.js'],
+                'css' => ['login-register.css']
+            ];
+
             $page_title = _("Log in");
-            $this->render('users.login', compact('page_title', 'form', 'customcss', 'customjs'));
+            $this->render('users.login', compact('page_title', 'form', 'res'));
         } else {
             $session->setFlash('success', _("You're already logged in."));
-            header('Location: /');
-            exit();
+            $this->redirect();
         }
     }
 
@@ -104,8 +108,7 @@ class UsersController extends AppController
             if (isset($_GET['id']) && ctype_digit($_GET['id']) && isset($_GET['token']) && !empty($_GET['token'])) {
                 if ($auth->confirm($_GET['id'], $_GET['token'])) {
                     $session->setFlash('success', _("Your account is now activated. You can log in."));
-                    header('Location: /users/login');
-                    exit();
+                    $this->redirect('users', 'login');
                 } else {
                     $session->setFlash('danger', _("We couldn't activate your account."));
                 }
@@ -115,8 +118,7 @@ class UsersController extends AppController
         } else {
             $session->setFlash('success', _("You're already logged in."));
         }
-        header('Location: /');
-        exit();
+        $this->redirect();
     }
 
     /**
@@ -125,15 +127,11 @@ class UsersController extends AppController
     public function logout()
     {
         $auth = new DBAuth(App::getInstance()->getDb(), App::getInstance()->getSession());
+        $auth->restrict();
 
-        if ($this->logged  === true) {
-            $auth->logout();
-            App::getInstance()->getSession()->setFlash('success', _("You're now logged out."));
-        } else {
-            App::getInstance()->getSession()->setFlash('danger', _("You're not logged in."));
-        }
-        header('Location: /');
-        exit();
+        $auth->logout();
+        App::getInstance()->getSession()->setFlash('success', _("You're now logged out."));
+        $this->redirect();
     }
 
     public function forgot()
@@ -159,8 +157,7 @@ class UsersController extends AppController
                         ->send();
                     if ($mailer) {
                         $session->setFlash('success', _("Please check your inbox for an email we just sent you with instructions for how to reset your password and log into your account."));
-                        header('Location: /');
-                        exit();
+                        $this->redirect();
                     } else {
                         $session->setFlash('danger', _("The reset instructions couldn't be sent.\nPlease contact the administrators."));
                     }
@@ -170,13 +167,16 @@ class UsersController extends AppController
             }
 
             $form = new BootstrapForm($_POST);
-            $customcss = ["/css/login-register.css"];
-            $customjs = ["/js/login-register.js"];
+
+            $res = [
+                'js' => ['login-register.js'],
+                'css' => ['login-register.css']
+            ];
+
             $page_title = _("Reset your password");
-            $this->render('users.forgot', compact('page_title', 'form', 'customcss', 'customjs'));
+            $this->render('users.forgot', compact('page_title', 'form', 'res'));
         } else {
-            header('Location: /');
-            exit();
+            $this->redirect();
         }
     }
 
@@ -197,27 +197,28 @@ class UsersController extends AppController
                             $password = $auth->hashPassword($_POST['password']);
                             $auth->resetPassword($_GET['id'], $password);
                             $session->setFlash('success', _("Your password has been modified. Please log in."));
-                            header('Location: /users/login');
-                            exit();
+                            $this->redirect('users', 'login');
                         }
                     }
 
                     $form = new BootstrapForm($_POST);
-                    $customcss = ["/css/login-register.css"];
-                    $customjs = ["/js/login-register.js"];
+
+                    $res = [
+                        'js' => ['login-register.js'],
+                        'css' => ['login-register.css']
+                    ];
+
                     $page_title = _("Set your new password");
-                    $this->render('users.reset', compact('page_title', 'form', 'customcss', 'customjs'));
+                    $this->render('users.reset', compact('page_title', 'form', 'res'));
                 } else {
                     $session->setFlash('danger', _("Invalid token."));
-                    header('Location: /');
-                    exit();
+                    $this->redirect();
                 }
             } else {
                 $this->badRequest();
             }
         } else {
-            header('Location: /');
-            exit();
+            $this->redirect();
         }
     }
 }

@@ -45,7 +45,7 @@ class ImageEntity extends Entity
         return "Small desc";
     }
 
-    public function getElaspedTime()
+    public function getElapsedTime()
     {
         return Str::time_elapsed_string($this->created_at);
     }

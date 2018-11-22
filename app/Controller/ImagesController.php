@@ -2,9 +2,8 @@
 
 namespace App\Controller;
 
-use Core\Controller\Controller;
-use Core\String\Lorem;
-use Core\String\Str;
+use \App;
+use Core\Auth\DBAuth;
 
 /**
  * Class DebugController
@@ -29,33 +28,48 @@ class ImagesController extends AppController
         //$images = $this->Image->lastWithTags();
         $images = $this->Image->last();
 
-        $customjs = ["/js/progressive-image.js"];
-        $customcss = ["/css/gallery.css", "/css/progressive-image.css"];
-        $this->render('images.index', compact( 'customjs', 'customcss', 'logged', 'images'));
+        $res = [
+            'js' => ['progressive-image.js'],
+            'css' => ['gallery.css', 'progressive-image.css']
+        ];
+
+        $this->render('images.index', compact(  'images', 'logged', 'res'));
     }
 
     public function new()
     {
-        $logged = $this->logged;
+        $session = App::getInstance()->getSession();
+        $db = App::getInstance()->getDb();
+        $auth = new DBAuth($db, $session);
+        $auth->restrict();
+
         $this->template = 'default';
-        $customjs = ["/js/camera.js"];
-        $customcss = ["/css/camera.css"];
+
+        $res = [
+            'js' => ['camera.js'],
+            'css' => ['camera.css']
+        ];
+
         $page_title = _("Share a picture");
-        $this->render('images.new', compact('page_title', 'customjs', 'customcss', 'logged'));
+        $this->render('images.new', compact('page_title', 'res'));
     }
 
     public function tag(int $id)
     {
-        $tag = $this->Tag->find($id);
-        if ($tag === false) {
+        $logged = $this->logged;
+
+        if (($tag = $this->Tag->find($id)) === false) {
             $this->notFound();
         }
-        $images = $this->Image->lastByTag($id);
-        $tags = $this->Tag->all();
 
-        $customjs = ["/js/progressive-image.js"];
-        $customcss = ["/css/gallery.css", "/css/progressive-image.css"];
-        $this->render('images.tag', compact('images', 'tags', 'tag', 'customjs', 'customcss'));
+        $images = $this->Image->lastByTag($id);
+
+        $res = [
+            'js' => ['progressive-image.js'],
+            'css' => ['gallery.css', 'progressive-image.css']
+        ];
+
+        $this->render('images.tag', compact('images', 'tag', 'logged', 'res'));
     }
 
     public function show(int $id)
@@ -69,8 +83,11 @@ class ImagesController extends AppController
             $this->notFound();
         }
 
-        $customjs = ["/js/progressive-image.js"];
-        $customcss = ["/css/gallery.css", "/css/progressive-image.css"];
-        $this->render('images.show', compact('user_info', 'single_image', 'logged', 'customjs', 'customcss'));
+        $res = [
+            'js' => ['progressive-image.js'],
+            'css' => ['gallery.css', 'progressive-image.css']
+        ];
+
+        $this->render('images.show', compact('user_info', 'single_image', 'logged', 'res'));
     }
 }

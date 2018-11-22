@@ -12,16 +12,16 @@
                 <?php foreach ($images as $image) : ?>
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
-                            <img class="card-img-top lazy-load" data-src="<?= $image['url'] ?>" src="" alt="<?= $image['alt'] ?>">
-                            <noscript><img class="card-img" src="<?= $image['url'] ?>" alt="<?= $image['alt'] ?>"></noscript>
+                            <img class="card-img-top lazy-load" data-src="<?= $image->getFilePath() ?>" src="" alt="<?= $image->getAlt() ?>">
+                            <noscript><img class="card-img" src="<?= $image->getFilePath() ?>" alt="<?= $image->getAlt() ?>"></noscript>
                             <div class="card-body">
-                                <p class="card-text"><?= $image['desc'] ?></p>
+                                <p class="card-text"><?= $image->getShortDesc() ?></p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary"><?= _("View") ?></button>
+                                        <a href="<?= $image->getURL() ?>"><button type="button" class="btn btn-sm btn-outline-secondary"><?= _("View") ?></button></a>
                                         <button type="button" class="btn btn-sm btn-outline-secondary"><?= _("Like") ?></button>
                                     </div>
-                                    <small class="text-muted my-tooltip"><?= $image['created_at'] ?>
+                                    <small class="text-muted my-tooltip"><?= $image->getElapsedTime() ?>
                                         <span class="my-tooltiptext"><?= $image['created_at_nat'] ?></span>
                                     </small>
                                 </div>

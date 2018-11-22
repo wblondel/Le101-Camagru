@@ -31,7 +31,7 @@
                                         <a href="<?= $image->getURL() ?>"><button type="button" class="btn btn-sm btn-outline-secondary"><?= _("View") ?></button></a>
                                         <button type="button" class="btn btn-sm btn-outline-secondary"><?= _("Like") ?></button>
                                     </div>
-                                    <small class="text-muted my-tooltip"><?= $image->getElaspedTime() ?>
+                                    <small class="text-muted my-tooltip"><?= $image->getElapsedTime() ?>
                                         <span class="my-tooltiptext"><?= $image->getCreationDate() ?></span>
                                     </small>
                                 </div>
