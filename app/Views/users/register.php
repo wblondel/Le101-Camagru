@@ -4,7 +4,7 @@
     <div class="form-group">
         <label for="username"><?= _("Username") ?></label>
         <input id="username" type="text" class="form-control" name="username" required autofocus>
-        <?php if isset($errors->["username"]) : ?>
+        <?php if (isset($errors->["username"])) : ?>
         <div class="invalid-feedback"><?= $errors->["username"]; ?></div>
         <?php endif ?>
     </div>
@@ -12,7 +12,7 @@
     <div class="form-group">
         <label for="email"><?= _("E-Mail Address") ?></label>
         <input id="email" type="email" class="form-control" name="email" required>
-        <?php if isset($errors->["email"]) : ?>
+        <?php if (isset($errors->["email"])) : ?>
             <div class="invalid-feedback"><?= $errors->["email"]; ?></div>
         <?php endif ?>
     </div>
@@ -20,7 +20,7 @@
     <div class="form-group">
         <label for="password"><?= _("Password") ?></label>
         <input id="password" type="password" class="form-control" name="password" required data-eye>
-        <?php if isset($errors->["password"]) : ?>
+        <?php if (isset($errors->["password"])) : ?>
             <div class="invalid-feedback"><?= $errors->["password"]; ?></div>
         <?php endif ?>
     </div>
