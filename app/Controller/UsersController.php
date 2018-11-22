@@ -36,7 +36,6 @@ class UsersController extends AppController
                 if ($validator->isEmail('email', _("Your email isn't valid."))) {
                     $validator->isUnique('email', $db, 'users', _("This email is already taken."));
                 }
-                $validator->isConfirmed('password', _("Passwords don't match."));
 
                 if ($validator->isValid()) {
                     $token = Str::random(60);
