@@ -48,10 +48,19 @@ $router->get('/images/new', "Images#new");
 $router->get('/images/tag/:id', "Images#tag")->with('id', '[0-9]+');
 
 $router->get('/users/register', "Users#register");
+$router->post('/users/register', "Users#register");
+
 $router->get('/users/login', "Users#login");
+$router->post('/users/login', "Users#login");
+
 $router->get('/users/confirm', "Users#confirm");
+
 $router->get('/users/logout', "Users#logout");
+
 $router->get('/users/forgot', "Users#forgot");
+$router->get('/users/forgot', "Users#forgot");
+
 $router->get('/users/reset', "Users#reset");
+$router->post('/users/reset', "Users#reset");
 
 $router->run();
