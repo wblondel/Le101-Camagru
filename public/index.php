@@ -37,6 +37,10 @@ textdomain('main');
 // = router =
 // ==========
 
+if (!isset($_GET['url'])) {
+    $_GET['url'] = '/';
+}
+
 $router = new Router\Router($_GET['url']);
 $router->get('/', "Images#index");
 $router->get('/images/:id', "Images#show")->with('id', '[0-9]+');
