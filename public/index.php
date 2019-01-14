@@ -58,7 +58,7 @@ $router->get('/users/confirm', "Users#confirm");
 $router->get('/users/logout', "Users#logout");
 
 $router->get('/users/forgot', "Users#forgot");
-$router->get('/users/forgot', "Users#forgot");
+$router->post('/users/forgot', "Users#forgot");
 
 $router->get('/users/reset', "Users#reset");
 $router->post('/users/reset', "Users#reset");
