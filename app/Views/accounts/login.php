@@ -8,7 +8,7 @@
 
     <div class="form-group">
         <label for="password"><?= _("Password") ?>
-            <a href="/users/forgot" class="float-right">
+            <a href="/accounts/forgot" class="float-right">
                 <?= _("Forgot Password?") ?>
             </a>
         </label>
@@ -27,6 +27,6 @@
         </button>
     </div>
     <div class="margin-top20 text-center">
-        <?= _("Don't have an account?") ?> <a href="/users/register"><?= _("Create One") ?></a>
+        <?= _("Don't have an account?") ?> <a href="/accounts/register"><?= _("Create One") ?></a>
     </div>
 </form>

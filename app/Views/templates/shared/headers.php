@@ -22,6 +22,6 @@
     <meta property="og:title" content="<?= $title;?>" />
     <meta property="og:image" content="https://camagru.fr<?= $single_image->getFilePath(); ?>" />
     <meta property="og:description" content="<?= $description ?>" />
-    <meta property="og:url" content="https://camagru.fr/images/<?= $single_image->id?>/"/>
+    <meta property="og:url" content="https://camagru.fr/i/<?= $single_image->id?>/"/>
     <meta name="medium" content="image"/>
 <?php endif ?>

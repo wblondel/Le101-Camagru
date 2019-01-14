@@ -15,6 +15,6 @@ class TagEntity extends Entity
      */
     public function getUrl()
     {
-        return 'images/tag/' . $this->id;
+        return '/t/' . $this->id;
     }
 }

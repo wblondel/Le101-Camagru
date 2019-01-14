@@ -24,7 +24,7 @@ class ImageEntity extends Entity
      */
     public function getUrl()
     {
-        return '/images/' . $this->id;
+        return '/i/' . $this->id;
     }
 
     /**

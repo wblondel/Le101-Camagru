@@ -42,25 +42,30 @@ if (!isset($_GET['url'])) {
 }
 
 $router = new Router\Router($_GET['url']);
+
+# Images
 $router->get('/', "Images#index");
-$router->get('/images/:id', "Images#show")->with('id', '[0-9]+');
-$router->get('/images/new', "Images#new");
-$router->get('/images/tag/:id', "Images#tag")->with('id', '[0-9]+');
+$router->get('/i/:id', "Images#show")->with('id', '[0-9]+');
+$router->get('/i/new', "Images#new");
 
-$router->get('/users/register', "Users#register");
-$router->post('/users/register', "Users#register");
+# Tags
+$router->get('/t/:id', "Images#tag")->with('id', '[0-9]+');
 
-$router->get('/users/login', "Users#login");
-$router->post('/users/login', "Users#login");
+# Users
+$router->get('/u/:id', 'Users#show');
 
-$router->get('/users/confirm', "Users#confirm");
 
-$router->get('/users/logout', "Users#logout");
+# Accounts
+$router->get('/accounts/register', "Accounts#register");
+$router->post('/accounts/register', "Accounts#register");
+$router->get('/accounts/login', "Accounts#login");
+$router->post('/accounts/login', "Accounts#login");
+$router->get('/accounts/confirm', "Accounts#confirm");
+$router->get('/accounts/logout', "Accounts#logout");
+$router->get('/accounts/forgot', "Accounts#forgot");
+$router->post('/accounts/forgot', "Accounts#forgot");
+$router->get('/accounts/reset', "Accounts#reset");
+$router->post('/accounts/reset', "Accounts#reset");
 
-$router->get('/users/forgot', "Users#forgot");
-$router->post('/users/forgot', "Users#forgot");
-
-$router->get('/users/reset', "Users#reset");
-$router->post('/users/reset', "Users#reset");
-
+# execute
 $router->run();

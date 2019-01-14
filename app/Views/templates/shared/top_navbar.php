@@ -19,14 +19,14 @@
         <ul class="navbar-nav">
             <?php if ($logged === false) : ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="/users/login"><?= _("Login") ?></a>
+                    <a class="nav-link" href="/accounts/login"><?= _("Login") ?></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/users/register"><?= _("Register") ?></a>
+                    <a class="nav-link" href="/accounts/register"><?= _("Register") ?></a>
                 </li>
             <?php else : ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="/users/logout"><?= _("Logout") ?></a>
+                    <a class="nav-link" href="/accounts/logout"><?= _("Logout") ?></a>
                 </li>
             <?php endif; ?>
         </ul>
