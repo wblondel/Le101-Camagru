@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Camagru\n"
-"POT-Creation-Date: 2019-01-14 20:13+0100\n"
-"PO-Revision-Date: 2019-01-14 20:13+0100\n"
+"POT-Creation-Date: 2019-01-14 20:19+0100\n"
+"PO-Revision-Date: 2019-01-14 20:20+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -114,6 +114,8 @@ msgid ""
 "Please check your inbox for an email we just sent you with instructions for "
 "how to reset your password and log into your account."
 msgstr ""
+"Les instructions pour réinitialiser votre mot de passe vous ont été envoyées "
+"par email."
 
 #: Controller/UsersController.php:176
 msgid ""
@@ -306,6 +308,10 @@ msgstr "J'accepte les conditions d'utilisation"
 #: Views/users/register.php:40
 msgid "Already have an account?"
 msgstr "Vous avez déjà un compte ?"
+
+#: Views/users/register.php:40
+msgid "Log in here."
+msgstr "Connectez-vous."
 
 #: Views/users/reset.php:10
 msgid "Password (confirmation)"

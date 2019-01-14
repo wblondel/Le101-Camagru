@@ -37,6 +37,6 @@
         </button>
     </div>
     <div class="margin-top20 text-center">
-        <?= _("Already have an account?") ?> <a href="/users/login">Login</a>
+        <?= _("Already have an account?") ?> <a href="/users/login"><?= _("Log in here.") ?></a>
     </div>
 </form>
