@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Camagru\n"
-"POT-Creation-Date: 2019-01-14 20:19+0100\n"
-"PO-Revision-Date: 2019-01-14 20:22+0100\n"
+"POT-Creation-Date: 2019-01-14 20:52+0100\n"
+"PO-Revision-Date: 2019-01-14 20:52+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -10,49 +10,50 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 2.2\n"
-"X-Poedit-Basepath: ../../../app\n"
+"X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-0: app\n"
+"X-Poedit-SearchPath-1: core\n"
 
-#: Controller/ImagesController.php:53
+#: app/Controller/ImagesController.php:53
 msgid "Share a picture"
 msgstr "Publier une photo"
 
-#: Controller/UsersController.php:33
+#: app/Controller/UsersController.php:33
 msgid "Your username should contain letters and numbers only."
 msgstr ""
 "Votre nom d'utilisateur ne doit contenir que des caractères alphanumériques."
 
-#: Controller/UsersController.php:34
+#: app/Controller/UsersController.php:34
 msgid "This username is already taken."
 msgstr "Ce nom d'utilisateur est déjà pris."
 
-#: Controller/UsersController.php:36
+#: app/Controller/UsersController.php:36
 msgid "Your email isn't valid."
 msgstr "Votre adresse email n'est pas valide."
 
-#: Controller/UsersController.php:37
+#: app/Controller/UsersController.php:37
 msgid "This email is already taken."
 msgstr "Cette adresse email est déjà prise."
 
-#: Controller/UsersController.php:47
+#: app/Controller/UsersController.php:47
 msgid "Welcome to Camagru - Confirm your account"
 msgstr "Bienvenue sur Camagru - Confirmez votre compte"
 
-#: Controller/UsersController.php:49
+#: app/Controller/UsersController.php:49
 msgid "To confirm your account, please click on this link:"
 msgstr "Pour confirmer votre compte, veuillez cliquer sur ce lien :"
 
-#: Controller/UsersController.php:51
+#: app/Controller/UsersController.php:51
 msgid "Confirm my account"
 msgstr "Confirmer mon compte"
 
-#: Controller/UsersController.php:56
+#: app/Controller/UsersController.php:56
 msgid "Please check your emails to activate your account."
 msgstr "Consultez votre boîte mail pour confirmer votre compte."
 
-#: Controller/UsersController.php:58
+#: app/Controller/UsersController.php:58
 msgid ""
 "You've been registered, but the confirmation email couldn't be sent.\n"
 "Please contact the administrators."
@@ -60,56 +61,56 @@ msgstr ""
 "Votre compte a été créé, mais l'envoi du mail de confirmation a échoué.\n"
 "Veuillez contacter un administrateur."
 
-#: Controller/UsersController.php:62
+#: app/Controller/UsersController.php:62
 msgid "Error while registering."
 msgstr "Erreur lors de l'inscription."
 
-#: Controller/UsersController.php:75
+#: app/Controller/UsersController.php:75
 msgid "Create an account"
 msgstr "Créer un compte"
 
-#: Controller/UsersController.php:78 Controller/UsersController.php:111
-#: Controller/UsersController.php:133
+#: app/Controller/UsersController.php:78 app/Controller/UsersController.php:111
+#: app/Controller/UsersController.php:133
 msgid "You're already logged in."
 msgstr "Vous êtes déjà connecté."
 
-#: Controller/UsersController.php:94
+#: app/Controller/UsersController.php:94
 msgid "You are now logged in."
 msgstr "Vous êtes maintenant connecté."
 
-#: Controller/UsersController.php:97
+#: app/Controller/UsersController.php:97
 msgid "Invalid credentials."
 msgstr "Identifiants incorrects."
 
-#: Controller/UsersController.php:108
+#: app/Controller/UsersController.php:108
 msgid "Log in"
 msgstr "Connexion"
 
-#: Controller/UsersController.php:124
+#: app/Controller/UsersController.php:124
 msgid "Your account is now activated. You can log in."
 msgstr "Votre compte est maintenant activé. Vous pouvez vous connecter."
 
-#: Controller/UsersController.php:127
+#: app/Controller/UsersController.php:127
 msgid "We couldn't activate your account."
 msgstr "Votre compte n'a pas pu être activé."
 
-#: Controller/UsersController.php:147
+#: app/Controller/UsersController.php:147
 msgid "You're now logged out."
 msgstr "Vous êtes maintenant déconnecté."
 
-#: Controller/UsersController.php:164
+#: app/Controller/UsersController.php:164
 msgid "Camagru - Reset your password"
 msgstr "Camagru - Réinitialiser le mot de passe"
 
-#: Controller/UsersController.php:166
+#: app/Controller/UsersController.php:166
 msgid "To reset your password, please click on this link:"
 msgstr "Pour modifier votre mot de passe, veuillez cliquer sur ce lien :"
 
-#: Controller/UsersController.php:168
+#: app/Controller/UsersController.php:168
 msgid "Reset my password"
 msgstr "Réinitialiser le mot de passe"
 
-#: Controller/UsersController.php:173
+#: app/Controller/UsersController.php:173
 msgid ""
 "Please check your inbox for an email we just sent you with instructions for "
 "how to reset your password and log into your account."
@@ -117,7 +118,7 @@ msgstr ""
 "Les instructions pour réinitialiser votre mot de passe vous ont été envoyées "
 "par email."
 
-#: Controller/UsersController.php:176
+#: app/Controller/UsersController.php:176
 msgid ""
 "The reset instructions couldn't be sent.\n"
 "Please contact the administrators."
@@ -125,31 +126,31 @@ msgstr ""
 "Votre compte a été créé, mais l'envoi du mail de confirmation a échoué.\n"
 "Veuillez contacter un administrateur."
 
-#: Controller/UsersController.php:179
+#: app/Controller/UsersController.php:179
 msgid "This email doesn't match any registered account."
 msgstr "Cet email ne correspond à aucun compte enregistré."
 
-#: Controller/UsersController.php:190
+#: app/Controller/UsersController.php:190
 msgid "Reset your password"
 msgstr "Réinitialiser le mot de passe"
 
-#: Controller/UsersController.php:213
+#: app/Controller/UsersController.php:213
 msgid "Your password has been modified. Please log in."
 msgstr "Votre mot de passe a été modifié. Vous pouvez vous connecter."
 
-#: Controller/UsersController.php:225
+#: app/Controller/UsersController.php:225
 msgid "Set your new password"
 msgstr "Réinitialiser mon mot de passe"
 
-#: Controller/UsersController.php:228
+#: app/Controller/UsersController.php:228
 msgid "Invalid token."
 msgstr "Jeton incorrect."
 
-#: Views/images/index.php:4
+#: app/Views/images/index.php:4
 msgid "You can be cool too"
 msgstr "Vous aussi, soyez cool"
 
-#: Views/images/index.php:5
+#: app/Views/images/index.php:5
 msgid ""
 "Show off how cool you are by donec suscipit nulla ut massa fringilla aliquet "
 "a id elit. Sed porta lobortis lectus ac scelerisque. Aenean eget urna nulla. "
@@ -159,167 +160,174 @@ msgstr ""
 "elit. Sed porta lobortis lectus ac scelerisque. Aenean eget urna nulla. "
 "Vestibulum sed nisl eu tortor dignissim ultricies."
 
-#: Views/images/index.php:7
+#: app/Views/images/index.php:7
 msgid "Take a picture"
 msgstr "Prendre une photo"
 
-#: Views/images/index.php:31 Views/images/show.php:20 Views/images/tag.php:21
+#: app/Views/images/index.php:31 app/Views/images/show.php:20
+#: app/Views/images/tag.php:21
 msgid "View"
 msgstr "Voir"
 
-#: Views/images/index.php:32 Views/images/show.php:21 Views/images/tag.php:22
+#: app/Views/images/index.php:32 app/Views/images/show.php:21
+#: app/Views/images/tag.php:22
 msgid "Like"
 msgstr "Aimer"
 
-#: Views/images/new.php:6
+#: app/Views/images/new.php:6
 msgid "Video stream not available."
 msgstr "Le flux vidéo n'est pas disponible."
 
-#: Views/images/new.php:8
+#: app/Views/images/new.php:8
 msgid "Take photo"
 msgstr "Prendre une photo"
 
-#: Views/images/new.php:10
+#: app/Views/images/new.php:10
 msgid "Upload photo"
 msgstr "Charger une photo"
 
-#: Views/images/new.php:16
+#: app/Views/images/new.php:16
 msgid "The screen capture will appear in this box."
 msgstr "La photo capturée apparaîtra dans ce cadre."
 
-#: Views/templates/shared/footer.php:4
+#: app/Views/templates/shared/footer.php:4
 msgid "ADMIN"
 msgstr "ADMINISTRATION"
 
-#: Views/templates/shared/footer.php:5
+#: app/Views/templates/shared/footer.php:5
 msgid "REGISTER"
 msgstr "S'INSCRIRE"
 
-#: Views/templates/shared/footer.php:6
+#: app/Views/templates/shared/footer.php:6
 msgid "LOGIN"
 msgstr "SE CONNECTER"
 
-#: Views/templates/shared/footer.php:7
+#: app/Views/templates/shared/footer.php:7
 msgid "LOGOUT"
 msgstr "SE DECONNECTER"
 
-#: Views/templates/shared/footer.php:10
+#: app/Views/templates/shared/footer.php:10
 msgid "Le 101 is a joke."
 msgstr "Le 101 est une blague."
 
-#: Views/templates/shared/headers.php:7
+#: app/Views/templates/shared/headers.php:7
 msgid "on"
 msgstr "sur"
 
-#: Views/templates/shared/headers.php:7
+#: app/Views/templates/shared/headers.php:7
 msgid ":"
 msgstr " :"
 
-#: Views/templates/shared/headers.php:8
+#: app/Views/templates/shared/headers.php:8
 #, php-format
 msgid "%d Like"
 msgid_plural "%d Likes"
 msgstr[0] "%d mention J'aime"
 msgstr[1] "%d mentions J'aime"
 
-#: Views/templates/shared/headers.php:8
+#: app/Views/templates/shared/headers.php:8
 #, php-format
 msgid "%d Comment"
 msgid_plural "%d Comments"
 msgstr[0] "%d commentaire"
 msgstr[1] "%d commentaires"
 
-#: Views/templates/shared/top_navbar.php:10
+#: app/Views/templates/shared/top_navbar.php:10
 msgid "Home"
 msgstr "Accueil"
 
-#: Views/templates/shared/top_navbar.php:10
+#: app/Views/templates/shared/top_navbar.php:10
 msgid "(current)"
 msgstr "(courant)"
 
-#: Views/templates/shared/top_navbar.php:13
+#: app/Views/templates/shared/top_navbar.php:13
 msgid "A page..."
 msgstr "Une page..."
 
-#: Views/templates/shared/top_navbar.php:16
+#: app/Views/templates/shared/top_navbar.php:16
 msgid "Another page..."
 msgstr "Une autre page..."
 
-#: Views/templates/shared/top_navbar.php:22 Views/users/login.php:1
-#: Views/users/login.php:26
+#: app/Views/templates/shared/top_navbar.php:22 app/Views/users/login.php:1
+#: app/Views/users/login.php:26
 msgid "Login"
 msgstr "Connexion"
 
-#: Views/templates/shared/top_navbar.php:25 Views/users/register.php:1
-#: Views/users/register.php:36
+#: app/Views/templates/shared/top_navbar.php:25 app/Views/users/register.php:1
+#: app/Views/users/register.php:36
 msgid "Register"
 msgstr "S'inscrire"
 
-#: Views/templates/shared/top_navbar.php:29
+#: app/Views/templates/shared/top_navbar.php:29
 msgid "Logout"
 msgstr "Se déconnecter"
 
-#: Views/users/forgot.php:1
+#: app/Views/users/forgot.php:1
 msgid "Forgot Password"
 msgstr "Mot de passe oublié"
 
-#: Views/users/forgot.php:5 Views/users/register.php:13
+#: app/Views/users/forgot.php:5 app/Views/users/register.php:13
 msgid "E-Mail Address"
 msgstr "Adresse email"
 
-#: Views/users/forgot.php:8
+#: app/Views/users/forgot.php:8
 msgid "By clicking \"Reset Password\" we will send a password reset link"
 msgstr ""
 "Cliquer sur \"Réinitialiser mon mot de passe\" et nous vous enverrons les "
 "instructions par mail"
 
-#: Views/users/forgot.php:14 Views/users/reset.php:1
+#: app/Views/users/forgot.php:14 app/Views/users/reset.php:1
 msgid "Reset Password"
 msgstr "Réinitialiser mon mot de passe"
 
-#: Views/users/login.php:5 Views/users/register.php:5
+#: app/Views/users/login.php:5 app/Views/users/register.php:5
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
-#: Views/users/login.php:10 Views/users/register.php:21 Views/users/reset.php:5
+#: app/Views/users/login.php:10 app/Views/users/register.php:21
+#: app/Views/users/reset.php:5
 msgid "Password"
 msgstr "Mot de passe"
 
-#: Views/users/login.php:12
+#: app/Views/users/login.php:12
 msgid "Forgot Password?"
 msgstr "Mot de passe oublié ?"
 
-#: Views/users/login.php:20
+#: app/Views/users/login.php:20
 msgid "Remember Me"
 msgstr "Rester connecté"
 
-#: Views/users/login.php:30
+#: app/Views/users/login.php:30
 msgid "Don't have an account?"
 msgstr "Vous n'avez pas de compte ?"
 
-#: Views/users/login.php:30
+#: app/Views/users/login.php:30
 msgid "Create One"
 msgstr "Créez-en un"
 
-#: Views/users/register.php:30
+#: app/Views/users/register.php:30
 msgid "I agree to the Terms and Conditions"
 msgstr "J'accepte les conditions d'utilisation"
 
-#: Views/users/register.php:40
+#: app/Views/users/register.php:40
 msgid "Already have an account?"
 msgstr "Vous avez déjà un compte ?"
 
-#: Views/users/register.php:40
+#: app/Views/users/register.php:40
 msgid "Log in here."
 msgstr "Connectez-vous."
 
-#: Views/users/reset.php:10
+#: app/Views/users/reset.php:10
 msgid "Password (confirmation)"
 msgstr "Mot de passe (confirmation)"
 
-#: Views/users/reset.php:16
+#: app/Views/users/reset.php:16
 msgid "Change password"
 msgstr "Modifier mon mot de passe"
+
+#: core/Auth/Auth.php:39
+msgid "You can't access this page."
+msgstr "Vous n'avez pas accès à cette page."
 
 #~ msgid "You're not logged in."
 #~ msgstr "Vous n'êtes pas connecté."
