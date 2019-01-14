@@ -2,6 +2,7 @@
 <html lang="<?= substr("fr-FR.utf8", 0, 2); ?>">
 <head>
     <?php require 'shared/headers.php';?>
+    <?php require 'shared/css.php';?>
 </head>
 
 <body>
@@ -10,6 +11,6 @@
 <?= $content; ?>
 
 <?php require 'shared/footer.php';?>
-<?php require 'shared/css_js.php';?>
+<?php require 'shared/js.php';?>
 </body>
 </html>
