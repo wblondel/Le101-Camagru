@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Camagru\n"
 "POT-Creation-Date: 2019-01-14 20:19+0100\n"
-"PO-Revision-Date: 2019-01-14 20:20+0100\n"
+"PO-Revision-Date: 2019-01-14 20:22+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -103,7 +103,7 @@ msgstr "Camagru - Réinitialiser le mot de passe"
 
 #: Controller/UsersController.php:166
 msgid "To reset your password, please click on this link:"
-msgstr "Pour confirmer votre compte, veuillez cliquer sur ce lien :"
+msgstr "Pour modifier votre mot de passe, veuillez cliquer sur ce lien :"
 
 #: Controller/UsersController.php:168
 msgid "Reset my password"
