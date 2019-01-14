@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Camagru\n"
-"POT-Creation-Date: 2018-11-21 11:37+0100\n"
-"PO-Revision-Date: 2018-11-21 11:37+0100\n"
+"POT-Creation-Date: 2019-01-14 20:13+0100\n"
+"PO-Revision-Date: 2019-01-14 20:13+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -15,27 +15,44 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: Controller/ImagesController.php:43
+#: Controller/ImagesController.php:53
 msgid "Share a picture"
 msgstr "Publier une photo"
 
-#: Controller/UsersController.php:35
+#: Controller/UsersController.php:33
+msgid "Your username should contain letters and numbers only."
+msgstr ""
+"Votre nom d'utilisateur ne doit contenir que des caractères alphanumériques."
+
+#: Controller/UsersController.php:34
+msgid "This username is already taken."
+msgstr "Ce nom d'utilisateur est déjà pris."
+
+#: Controller/UsersController.php:36
+msgid "Your email isn't valid."
+msgstr "Votre adresse email n'est pas valide."
+
+#: Controller/UsersController.php:37
+msgid "This email is already taken."
+msgstr "Cette adresse email est déjà prise."
+
+#: Controller/UsersController.php:47
 msgid "Welcome to Camagru - Confirm your account"
 msgstr "Bienvenue sur Camagru - Confirmez votre compte"
 
-#: Controller/UsersController.php:37
+#: Controller/UsersController.php:49
 msgid "To confirm your account, please click on this link:"
 msgstr "Pour confirmer votre compte, veuillez cliquer sur ce lien :"
 
-#: Controller/UsersController.php:39
+#: Controller/UsersController.php:51
 msgid "Confirm my account"
 msgstr "Confirmer mon compte"
 
-#: Controller/UsersController.php:44
+#: Controller/UsersController.php:56
 msgid "Please check your emails to activate your account."
 msgstr "Consultez votre boîte mail pour confirmer votre compte."
 
-#: Controller/UsersController.php:46
+#: Controller/UsersController.php:58
 msgid ""
 "You've been registered, but the confirmation email couldn't be sent.\n"
 "Please contact the administrators."
@@ -43,50 +60,88 @@ msgstr ""
 "Votre compte a été créé, mais l'envoi du mail de confirmation a échoué.\n"
 "Veuillez contacter un administrateur."
 
-#: Controller/UsersController.php:51
+#: Controller/UsersController.php:62
 msgid "Error while registering."
 msgstr "Erreur lors de l'inscription."
 
-#: Controller/UsersController.php:57
+#: Controller/UsersController.php:75
 msgid "Create an account"
 msgstr "Créer un compte"
 
-#: Controller/UsersController.php:60 Controller/UsersController.php:91
-#: Controller/UsersController.php:115
+#: Controller/UsersController.php:78 Controller/UsersController.php:111
+#: Controller/UsersController.php:133
 msgid "You're already logged in."
 msgstr "Vous êtes déjà connecté."
 
-#: Controller/UsersController.php:77
+#: Controller/UsersController.php:94
 msgid "You are now logged in."
 msgstr "Vous êtes maintenant connecté."
 
-#: Controller/UsersController.php:81
+#: Controller/UsersController.php:97
 msgid "Invalid credentials."
 msgstr "Identifiants incorrects."
 
-#: Controller/UsersController.php:88
+#: Controller/UsersController.php:108
 msgid "Log in"
 msgstr "Connexion"
 
-#: Controller/UsersController.php:105
+#: Controller/UsersController.php:124
 msgid "Your account is now activated. You can log in."
 msgstr "Votre compte est maintenant activé. Vous pouvez vous connecter."
 
-#: Controller/UsersController.php:109
+#: Controller/UsersController.php:127
 msgid "We couldn't activate your account."
 msgstr "Votre compte n'a pas pu être activé."
 
-#: Controller/UsersController.php:130
+#: Controller/UsersController.php:147
 msgid "You're now logged out."
 msgstr "Vous êtes maintenant déconnecté."
 
-#: Controller/UsersController.php:132
-msgid "You're not logged in."
-msgstr "Vous n'êtes pas connecté."
+#: Controller/UsersController.php:164
+msgid "Camagru - Reset your password"
+msgstr "Camagru - Réinitialiser le mot de passe"
 
-#: Controller/UsersController.php:144
+#: Controller/UsersController.php:166
+msgid "To reset your password, please click on this link:"
+msgstr "Pour confirmer votre compte, veuillez cliquer sur ce lien :"
+
+#: Controller/UsersController.php:168
+msgid "Reset my password"
+msgstr "Réinitialiser le mot de passe"
+
+#: Controller/UsersController.php:173
+msgid ""
+"Please check your inbox for an email we just sent you with instructions for "
+"how to reset your password and log into your account."
+msgstr ""
+
+#: Controller/UsersController.php:176
+msgid ""
+"The reset instructions couldn't be sent.\n"
+"Please contact the administrators."
+msgstr ""
+"Votre compte a été créé, mais l'envoi du mail de confirmation a échoué.\n"
+"Veuillez contacter un administrateur."
+
+#: Controller/UsersController.php:179
+msgid "This email doesn't match any registered account."
+msgstr "Cet email ne correspond à aucun compte enregistré."
+
+#: Controller/UsersController.php:190
 msgid "Reset your password"
 msgstr "Réinitialiser le mot de passe"
+
+#: Controller/UsersController.php:213
+msgid "Your password has been modified. Please log in."
+msgstr "Votre mot de passe a été modifié. Vous pouvez vous connecter."
+
+#: Controller/UsersController.php:225
+msgid "Set your new password"
+msgstr "Réinitialiser mon mot de passe"
+
+#: Controller/UsersController.php:228
+msgid "Invalid token."
+msgstr "Jeton incorrect."
 
 #: Views/images/index.php:4
 msgid "You can be cool too"
@@ -194,7 +249,7 @@ msgid "Login"
 msgstr "Connexion"
 
 #: Views/templates/shared/top_navbar.php:25 Views/users/register.php:1
-#: Views/users/register.php:27
+#: Views/users/register.php:36
 msgid "Register"
 msgstr "S'inscrire"
 
@@ -206,7 +261,7 @@ msgstr "Se déconnecter"
 msgid "Forgot Password"
 msgstr "Mot de passe oublié"
 
-#: Views/users/forgot.php:5 Views/users/register.php:10
+#: Views/users/forgot.php:5 Views/users/register.php:13
 msgid "E-Mail Address"
 msgstr "Adresse email"
 
@@ -216,7 +271,7 @@ msgstr ""
 "Cliquer sur \"Réinitialiser mon mot de passe\" et nous vous enverrons les "
 "instructions par mail"
 
-#: Views/users/forgot.php:14
+#: Views/users/forgot.php:14 Views/users/reset.php:1
 msgid "Reset Password"
 msgstr "Réinitialiser mon mot de passe"
 
@@ -224,7 +279,7 @@ msgstr "Réinitialiser mon mot de passe"
 msgid "Username"
 msgstr "Nom d'utilisateur"
 
-#: Views/users/login.php:10 Views/users/register.php:15
+#: Views/users/login.php:10 Views/users/register.php:21 Views/users/reset.php:5
 msgid "Password"
 msgstr "Mot de passe"
 
@@ -244,10 +299,21 @@ msgstr "Vous n'avez pas de compte ?"
 msgid "Create One"
 msgstr "Créez-en un"
 
-#: Views/users/register.php:21
+#: Views/users/register.php:30
 msgid "I agree to the Terms and Conditions"
 msgstr "J'accepte les conditions d'utilisation"
 
-#: Views/users/register.php:31
+#: Views/users/register.php:40
 msgid "Already have an account?"
 msgstr "Vous avez déjà un compte ?"
+
+#: Views/users/reset.php:10
+msgid "Password (confirmation)"
+msgstr "Mot de passe (confirmation)"
+
+#: Views/users/reset.php:16
+msgid "Change password"
+msgstr "Modifier mon mot de passe"
+
+#~ msgid "You're not logged in."
+#~ msgstr "Vous n'êtes pas connecté."
