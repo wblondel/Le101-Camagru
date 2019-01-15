@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="card mb-4 box-shadow">
-                        <img class="card-img-top lazy-load" data-src="<?= $single_image->getFilePath() ?>" src="" alt="<?= $single_image->getAlt() ?>">
+                        <img class="card-img-top lazy-load" height="0"  data-src="<?= $single_image->getFilePath() ?>" src="" alt="<?= $single_image->getAlt() ?>">
                         <noscript><img class="card-img-top" src="<?= $single_image->getFilePath() ?>" alt="<?= $single_image->getAlt() ?>"></noscript>
                         <div class="card-body">
                             <p class="card-text"><?= $single_image->getShortDesc() ?></p>

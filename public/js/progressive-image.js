@@ -57,6 +57,7 @@
 
                     image.removeAttribute('data-src');
                     image.removeAttribute('data-src-mobile');
+                    image.removeAttribute('height');
 
                     lazyLoader.cache.splice(i, 1);
                     continue;
