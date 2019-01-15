@@ -13,7 +13,7 @@
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
                             <img class="card-img-top lazy-load" data-src="<?= $image->getFilePath() ?>" src="" alt="<?= $image->getAlt() ?>">
-                            <noscript><img class="card-img" src="<?= $image->getFilePath() ?>" alt="<?= $image->getAlt() ?>"></noscript>
+                            <noscript><img class="card-img-top" src="<?= $image->getFilePath() ?>" alt="<?= $image->getAlt() ?>"></noscript>
                             <div class="card-body">
                                 <p class="card-text"><?= $image->getShortDesc() ?></p>
                                 <div class="d-flex justify-content-between align-items-center">
