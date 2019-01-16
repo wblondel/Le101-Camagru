@@ -30,11 +30,13 @@ class AccountsController extends AppController
             if (!empty($_POST)) {
                 $validator = new Validator($_POST);
 
-                if ($validator->isAlphaNum('username', _("Your username should contain letters and numbers only."))) {
-                    $validator->isUnique('username', $db, 'users', _("This username is already taken."));
-                }
-                if ($validator->isEmail('email', _("Your email isn't valid."))) {
-                    $validator->isUnique('email', $db, 'users', _("This email is already taken."));
+                if ($validator->isConfirmed('password', _('Les mots de passe ne correspondent pas.'))) {
+                    if ($validator->isAlphaNum('username', _("Your username should contain letters and numbers only."))) {
+                        $validator->isUnique('username', $db, 'users', _("This username is already taken."));
+                    }
+                    if ($validator->isEmail('email', _("Your email isn't valid."))) {
+                        $validator->isUnique('email', $db, 'users', _("This email is already taken."));
+                    }
                 }
 
                 if ($validator->isValid()) {
