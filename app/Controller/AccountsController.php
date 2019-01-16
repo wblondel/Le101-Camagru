@@ -217,7 +217,7 @@ class AccountsController extends AppController
                     if (!empty($_POST)) {
                         $validator = new Validator($_POST);
 
-                        $validator->isConfirmed('password');
+                        $validator->isConfirmed('password', _('Les mots de passe ne correspondent pas.'));
 
                         if ($validator->isValid()) {
                             $password = $auth->hashPassword($_POST['password']);
