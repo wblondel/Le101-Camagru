@@ -154,30 +154,40 @@ class AccountsController extends AppController
         $auth = new DBAuth(App::getInstance()->getDb(), $session);
 
         if ($this->logged === false) {
-            if (!empty($_POST) && !empty($_POST['email'])) {
-                $token = Str::random(60);
-                $user = $auth->setResetPasswordToken($_POST['email'], $token);
-                if ($user) {
-                    $mailer = Email::make()
-                        ->setTo($user->email, $user->username)
-                        ->setFrom('contact@camagru.fr', 'Camagru.fr')
-                        ->setSubject(_("Camagru - Reset your password"))
-                        ->setMessage('<strong>'.
-                            _("To reset your password, please click on this link:").
-                            '</strong><br><a href="https://camagru.fr/accounts/reset/?id='.$user->id.
-                            '&token='.$token.'">' . _("Reset my password") . '</a>')
-                        ->setReplyTo('contact@camagru.fr')
-                        ->setHtml()
-                        ->send();
-                    if ($mailer) {
-                        $session->setFlash('success', _("Please check your inbox for an email we just sent you with instructions for how to reset your password and log into your account."));
-                        $this->redirect();
+            if (!empty($_POST)) {
+                $validator = new Validator($_POST);
+
+                $validator->isEmail('email', _("Your email isn't valid."));
+
+                if ($validator->isValid()) {
+                    $token = Str::random(60);
+                    $user = $auth->setResetPasswordToken($_POST['email'], $token);
+
+                    if ($user) {
+                        $mailer = Email::make()
+                            ->setTo($user->email, $user->username)
+                            ->setFrom('contact@camagru.fr', 'Camagru.fr')
+                            ->setSubject(_("Camagru - Reset your password"))
+                            ->setMessage('<strong>'.
+                                _("To reset your password, please click on this link:").
+                                '</strong><br><a href="https://camagru.fr/accounts/reset/?id='.$user->id.
+                                '&token='.$token.'">' . _("Reset my password") . '</a>')
+                            ->setReplyTo('contact@camagru.fr')
+                            ->setHtml()
+                            ->send();
+                        if ($mailer) {
+                            $session->setFlash('success', _("Please check your inbox for an email we just sent you with instructions for how to reset your password and log into your account."));
+                            $this->redirect();
+                        } else {
+                            $session->setFlash('danger', _("The reset instructions couldn't be sent.\nPlease contact the administrators."));
+                        }
                     } else {
-                        $session->setFlash('danger', _("The reset instructions couldn't be sent.\nPlease contact the administrators."));
+                        $session->setFlash('danger', _("This email doesn't match any registered account."));
                     }
                 } else {
-                    $session->setFlash('danger', _("This email doesn't match any registered account."));
+                    $errors = $validator->getErrors();
                 }
+
             }
 
             $form = new BootstrapForm($_POST);
@@ -188,7 +198,7 @@ class AccountsController extends AppController
             ];
 
             $page_title = _("Reset your password");
-            $this->render('accounts.forgot', compact('page_title', 'form', 'res'));
+            $this->render('accounts.forgot', compact('page_title', 'form', 'errors', 'res'));
         } else {
             $this->redirect();
         }
@@ -206,12 +216,16 @@ class AccountsController extends AppController
                 if ($user) {
                     if (!empty($_POST)) {
                         $validator = new Validator($_POST);
+
                         $validator->isConfirmed('password');
+
                         if ($validator->isValid()) {
                             $password = $auth->hashPassword($_POST['password']);
                             $auth->resetPassword($_GET['id'], $password);
                             $session->setFlash('success', _("Your password has been modified. Please log in."));
                             $this->redirect('accounts', 'login');
+                        } else {
+                            $errors = $validator->getErrors();
                         }
                     }
 
@@ -223,7 +237,7 @@ class AccountsController extends AppController
                     ];
 
                     $page_title = _("Set your new password");
-                    $this->render('accounts.reset', compact('page_title', 'form', 'res'));
+                    $this->render('accounts.reset', compact('page_title', 'form', 'errors', 'res'));
                 } else {
                     $session->setFlash('danger', _("Invalid token."));
                     $this->redirect();

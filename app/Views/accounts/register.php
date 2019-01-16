@@ -26,6 +26,14 @@
     </div>
 
     <div class="form-group">
+        <label for="password_confirm"><?= _("Password (confirmation)") ?></label>
+        <input id="password_confirm" type="password" class="form-control" name="password_confirm" required data-eye>
+        <?php if(isset($errors["password_confirm"])) : ?>
+            <div class="invalid-feedback" style="display:block;"><?= $errors["password_confirm"]; ?></div>
+        <?php endif ?>
+    </div>
+
+    <div class="form-group">
         <label>
             <input type="checkbox" name="agree" value="1"> <?= _("I agree to the Terms and Conditions") ?>
         </label>
