@@ -2,12 +2,12 @@
 <form method="POST">
 
     <div class="form-group">
-        <label for="username"><?= _("Password") ?></label>
+        <label for="password"><?= _("Password") ?></label>
         <input id="password" type="password" class="form-control" name="password" value="" required autofocus data-eye>
     </div>
 
     <div class="form-group">
-        <label for="password"><?= _("Password (confirmation)") ?></label>
+        <label for="password_confirm"><?= _("Password (confirmation)") ?></label>
         <input id="password_confirm" type="password" class="form-control" name="password_confirm" required data-eye>
     </div>
 
