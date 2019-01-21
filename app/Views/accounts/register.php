@@ -52,4 +52,8 @@
     <div class="margin-top20 text-center">
         <?= _("Already have an account?") ?> <a href="/accounts/login"><?= _("Log in here.") ?></a>
     </div>
+
+    <div class="form-group">
+        <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+    </div>
 </form>

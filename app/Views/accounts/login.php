@@ -29,4 +29,8 @@
     <div class="margin-top20 text-center">
         <?= _("Don't have an account?") ?> <a href="/accounts/register" tabindex="6"><?= _("Create One") ?></a>
     </div>
+
+    <div class="form-group">
+        <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+    </div>
 </form>

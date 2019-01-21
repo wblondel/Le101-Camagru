@@ -27,4 +27,8 @@
             <?= _("Change password") ?>
         </button>
     </div>
+
+    <div class="form-group">
+        <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+    </div>
 </form>

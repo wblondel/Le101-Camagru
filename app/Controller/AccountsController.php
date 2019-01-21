@@ -25,49 +25,66 @@ class AccountsController extends AppController
         $session = App::getInstance()->getSession();
         $db = App::getInstance()->getDb();
         $auth = new DBAuth($db, $session);
+        $api_keys = App::getInstance()->getApiKeys();
 
         if ($this->logged === false) {
             if (!empty($_POST)) {
-                $validator = new Validator($_POST);
+                // Build POST request:
+                $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
 
-                if ($validator->isConfirmed('password', _("The passwords do not match."))) {
-                    if ($validator->isAlphaNum('username', _("Your username should contain letters and numbers only."))) {
-                        $validator->isUnique('username', $db, 'users', _("This username is already taken."));
-                    }
-                    if ($validator->isEmail('email', _("Your email isn't valid."))) {
-                        $validator->isUnique('email', $db, 'users', _("This email is already taken."));
-                    }
-                    $validator->isPasswordStrong('password', _("The password you chose isn't strong enough."));
-                }
+                $recaptcha_secret = $api_keys->getStg('google_recaptcha3');
+                $recaptcha_response = $_POST['recaptcha_response'];
 
-                if ($validator->isValid()) {
-                    $token = Str::random(60);
-                    $user_id = $auth->register($_POST['username'], $_POST['password'], $_POST['email'], $token);
-                    if ($user_id) {
-                        $mailer = Email::make()
-                            ->setTo($_POST['email'], $_POST['username'])
-                            ->setFrom('contact@camagru.fr', 'Camagru.fr')
-                            ->setSubject(_("Welcome to Camagru - Confirm your account"))
-                            ->setMessage('<strong>'.
-                                _("To confirm your account, please click on this link:").
-                                '</strong><br><a href="https://camagru.fr/accounts/confirm/?id='.$user_id.
-                                '&token='.$token.'">' . _("Confirm my account") . '</a>')
-                            ->setReplyTo('contact@camagru.fr')
-                            ->setHtml()
-                            ->send();
-                        if ($mailer) {
-                            $session->setFlash('success', _("Please check your emails to activate your account."));
-                        } else {
-                            $session->setFlash('error', _("You've been registered, but the confirmation email couldn't be sent.\nPlease contact the administrators."));
+                // Make and decode POST request:
+                $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
+                $recaptcha = json_decode($recaptcha);
+
+                // Take action based on the score returned:
+                if ($recaptcha->score >= 0.5) {
+                    $validator = new Validator($_POST);
+
+                    if ($validator->isConfirmed('password', _("The passwords do not match."))) {
+                        if ($validator->isAlphaNum('username', _("Your username should contain letters and numbers only."))) {
+                            $validator->isUnique('username', $db, 'users', _("This username is already taken."));
                         }
-                        $this->redirect();
+                        if ($validator->isEmail('email', _("Your email isn't valid."))) {
+                            $validator->isUnique('email', $db, 'users', _("This email is already taken."));
+                        }
+                        $validator->isPasswordStrong('password', _("The password you chose isn't strong enough."));
+                    }
+
+                    if ($validator->isValid()) {
+                        $token = Str::random(60);
+                        $user_id = $auth->register($_POST['username'], $_POST['password'], $_POST['email'], $token);
+                        if ($user_id) {
+                            $mailer = Email::make()
+                                ->setTo($_POST['email'], $_POST['username'])
+                                ->setFrom('contact@camagru.fr', 'Camagru.fr')
+                                ->setSubject(_("Welcome to Camagru - Confirm your account"))
+                                ->setMessage('<strong>'.
+                                    _("To confirm your account, please click on this link:").
+                                    '</strong><br><a href="https://camagru.fr/accounts/confirm/?id='.$user_id.
+                                    '&token='.$token.'">' . _("Confirm my account") . '</a>')
+                                ->setReplyTo('contact@camagru.fr')
+                                ->setHtml()
+                                ->send();
+                            if ($mailer) {
+                                $session->setFlash('success', _("Please check your emails to activate your account."));
+                            } else {
+                                $session->setFlash('error', _("You've been registered, but the confirmation email couldn't be sent.\nPlease contact the administrators."));
+                            }
+                            $this->redirect();
+                        } else {
+                            $session->setFlash('danger', _("Error while registering."));
+                        }
                     } else {
-                        $session->setFlash('danger', _("Error while registering."));
+                        $errors = $validator->getErrors();
                     }
                 } else {
-                    $errors = $validator->getErrors();
+                    $this->forbidden();
                 }
             }
+
             $form = new BootstrapForm($_POST);
 
             $res = [

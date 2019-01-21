@@ -3,6 +3,18 @@
 <head>
     <?php require 'shared/headers.php';?>
     <?php require 'shared/css.php';?>
+
+    <script src='https://www.google.com/recaptcha/api.js?render=6LfuiosUAAAAABVTWn8C4YVGPOMvflgbvyftzCI3'></script>
+
+    <script>
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LfuiosUAAAAABVTWn8C4YVGPOMvflgbvyftzCI3', {action: 'action_name'})
+                .then(function(token) {
+                    var recaptchaResponse = document.getElementById('recaptchaResponse');
+                    recaptchaResponse.value = token;
+                });
+        });
+    </script>
 </head>
 
 <body>
