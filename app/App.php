@@ -13,7 +13,6 @@ class App
 
     private $db_instance;
     private $session_instance;
-    private $api_keys;
     private static $_instance;
 
     /**
@@ -56,15 +55,6 @@ class App
             );
         }
         return $this->db_instance;
-    }
-
-    public function getApiKeys()
-    {
-        $config = Config::getInstance(ROOT . '/config/apis.php');
-        if (is_null($this->api_keys)) {
-            $this->api_keys = $config;
-        }
-        return $this->api_keys;
     }
 
     /**

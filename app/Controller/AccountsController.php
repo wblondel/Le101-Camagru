@@ -25,14 +25,12 @@ class AccountsController extends AppController
         $session = App::getInstance()->getSession();
         $db = App::getInstance()->getDb();
         $auth = new DBAuth($db, $session);
-        $api_keys = App::getInstance()->getApiKeys();
 
         if ($this->logged === false) {
             if (!empty($_POST)) {
                 // Build POST request:
                 $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
-
-                $recaptcha_secret = $api_keys->getStg('google_recaptcha3');
+                $recaptcha_secret = "SECRET_KEY";
                 $recaptcha_response = $_POST['recaptcha_response'];
 
                 // Make and decode POST request:
