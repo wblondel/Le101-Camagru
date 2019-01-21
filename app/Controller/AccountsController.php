@@ -30,13 +30,14 @@ class AccountsController extends AppController
             if (!empty($_POST)) {
                 $validator = new Validator($_POST);
 
-                if ($validator->isConfirmed('password', _('Les mots de passe ne correspondent pas.'))) {
+                if ($validator->isConfirmed('password', _("The passwords do not match."))) {
                     if ($validator->isAlphaNum('username', _("Your username should contain letters and numbers only."))) {
                         $validator->isUnique('username', $db, 'users', _("This username is already taken."));
                     }
                     if ($validator->isEmail('email', _("Your email isn't valid."))) {
                         $validator->isUnique('email', $db, 'users', _("This email is already taken."));
                     }
+                    $validator->isPasswordStrong('password', _("The password you chose isn't strong enough."));
                 }
 
                 if ($validator->isValid()) {
@@ -219,7 +220,9 @@ class AccountsController extends AppController
                     if (!empty($_POST)) {
                         $validator = new Validator($_POST);
 
-                        $validator->isConfirmed('password', _('Les mots de passe ne correspondent pas.'));
+                        if ($validator->isConfirmed('password', _("The passwords do not match."))) {
+                            $validator->isPasswordStrong('password', _("The password you chose isn't strong enough."));
+                        }
 
                         if ($validator->isValid()) {
                             $password = $auth->hashPassword($_POST['password']);

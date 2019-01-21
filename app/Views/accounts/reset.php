@@ -17,6 +17,11 @@
         <?php endif ?>
     </div>
 
+    <div class="form-text text-muted">
+        <?= _('Your password must be at least 8 characters, and contain at least one uppercase letter,
+                one lowercase letter, one digit, and one special character.') ?>
+    </div>
+
     <div class="form-group no-margin">
         <button type="submit" class="btn btn-primary btn-block">
             <?= _("Change password") ?>

@@ -33,6 +33,11 @@
         <?php endif ?>
     </div>
 
+    <div class="form-text text-muted">
+        <?= _('Your password must be at least 8 characters, and contain at least one uppercase letter,
+                one lowercase letter, one digit, and one special character.') ?>
+    </div>
+
     <div class="form-group">
         <label>
             <input type="checkbox" name="agree" value="1"> <?= _("I agree to the Terms and Conditions") ?>
