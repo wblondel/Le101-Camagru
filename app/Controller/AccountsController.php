@@ -108,11 +108,25 @@ class AccountsController extends AppController
 
         if ($this->logged  === false) {
             if (!empty($_POST)) {
-                if ($auth->login($_POST['username'], $_POST['password'], isset($_POST['remember']))) {
-                    $session->setFlash('success', _("You are now logged in."));
-                    $this->redirect();
+                // Build POST request:
+                $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
+                $recaptcha_secret = "SECRET_KEY";
+                $recaptcha_response = $_POST['recaptcha_response'];
+
+                // Make and decode POST request:
+                $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
+                $recaptcha = json_decode($recaptcha);
+
+                // Take action based on the score returned:
+                if ($recaptcha->score >= 0.5) {
+                    if ($auth->login($_POST['username'], $_POST['password'], isset($_POST['remember']))) {
+                        $session->setFlash('success', _("You are now logged in."));
+                        $this->redirect();
+                    } else {
+                        $session->setFlash('danger', _("Invalid credentials."));
+                    }
                 } else {
-                    $session->setFlash('danger', _("Invalid credentials."));
+                    $this->forbidden();
                 }
             }
 
@@ -173,39 +187,52 @@ class AccountsController extends AppController
 
         if ($this->logged === false) {
             if (!empty($_POST)) {
-                $validator = new Validator($_POST);
+                // Build POST request:
+                $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
+                $recaptcha_secret = "SECRET_KEY";
+                $recaptcha_response = $_POST['recaptcha_response'];
 
-                $validator->isEmail('email', _("Your email isn't valid."));
+                // Make and decode POST request:
+                $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
+                $recaptcha = json_decode($recaptcha);
 
-                if ($validator->isValid()) {
-                    $token = Str::random(60);
-                    $user = $auth->setResetPasswordToken($_POST['email'], $token);
+                // Take action based on the score returned:
+                if ($recaptcha->score >= 0.5) {
+                    $validator = new Validator($_POST);
 
-                    if ($user) {
-                        $mailer = Email::make()
-                            ->setTo($user->email, $user->username)
-                            ->setFrom('contact@camagru.fr', 'Camagru.fr')
-                            ->setSubject(_("Camagru - Reset your password"))
-                            ->setMessage('<strong>'.
-                                _("To reset your password, please click on this link:").
-                                '</strong><br><a href="https://camagru.fr/accounts/reset/?id='.$user->id.
-                                '&token='.$token.'">' . _("Reset my password") . '</a>')
-                            ->setReplyTo('contact@camagru.fr')
-                            ->setHtml()
-                            ->send();
-                        if ($mailer) {
-                            $session->setFlash('success', _("Please check your inbox for an email we just sent you with instructions for how to reset your password and log into your account."));
-                            $this->redirect();
+                    $validator->isEmail('email', _("Your email isn't valid."));
+
+                    if ($validator->isValid()) {
+                        $token = Str::random(60);
+                        $user = $auth->setResetPasswordToken($_POST['email'], $token);
+
+                        if ($user) {
+                            $mailer = Email::make()
+                                ->setTo($user->email, $user->username)
+                                ->setFrom('contact@camagru.fr', 'Camagru.fr')
+                                ->setSubject(_("Camagru - Reset your password"))
+                                ->setMessage('<strong>' .
+                                    _("To reset your password, please click on this link:") .
+                                    '</strong><br><a href="https://camagru.fr/accounts/reset/?id=' . $user->id .
+                                    '&token=' . $token . '">' . _("Reset my password") . '</a>')
+                                ->setReplyTo('contact@camagru.fr')
+                                ->setHtml()
+                                ->send();
+                            if ($mailer) {
+                                $session->setFlash('success', _("Please check your inbox for an email we just sent you with instructions for how to reset your password and log into your account."));
+                                $this->redirect();
+                            } else {
+                                $session->setFlash('danger', _("The reset instructions couldn't be sent.\nPlease contact the administrators."));
+                            }
                         } else {
-                            $session->setFlash('danger', _("The reset instructions couldn't be sent.\nPlease contact the administrators."));
+                            $session->setFlash('danger', _("This email doesn't match any registered account."));
                         }
                     } else {
-                        $session->setFlash('danger', _("This email doesn't match any registered account."));
+                        $errors = $validator->getErrors();
                     }
                 } else {
-                    $errors = $validator->getErrors();
+                    $this->forbidden();
                 }
-
             }
 
             $form = new BootstrapForm($_POST);
@@ -233,19 +260,33 @@ class AccountsController extends AppController
                 $user = $auth->checkPasswordResetToken($_GET['id'], $_GET['token']);
                 if ($user) {
                     if (!empty($_POST)) {
-                        $validator = new Validator($_POST);
+                        // Build POST request:
+                        $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
+                        $recaptcha_secret = "SECRET_KEY";
+                        $recaptcha_response = $_POST['recaptcha_response'];
 
-                        if ($validator->isConfirmed('password', _("The passwords do not match."))) {
-                            $validator->isPasswordStrong('password', _("The password you chose isn't strong enough."));
-                        }
+                        // Make and decode POST request:
+                        $recaptcha = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
+                        $recaptcha = json_decode($recaptcha);
 
-                        if ($validator->isValid()) {
-                            $password = $auth->hashPassword($_POST['password']);
-                            $auth->resetPassword($_GET['id'], $password);
-                            $session->setFlash('success', _("Your password has been modified. Please log in."));
-                            $this->redirect('accounts', 'login');
+                        // Take action based on the score returned:
+                        if ($recaptcha->score >= 0.5) {
+                            $validator = new Validator($_POST);
+
+                            if ($validator->isConfirmed('password', _("The passwords do not match."))) {
+                                $validator->isPasswordStrong('password', _("The password you chose isn't strong enough."));
+                            }
+
+                            if ($validator->isValid()) {
+                                $password = $auth->hashPassword($_POST['password']);
+                                $auth->resetPassword($_GET['id'], $password);
+                                $session->setFlash('success', _("Your password has been modified. Please log in."));
+                                $this->redirect('accounts', 'login');
+                            } else {
+                                $errors = $validator->getErrors();
+                            }
                         } else {
-                            $errors = $validator->getErrors();
+                            $this->forbidden();
                         }
                     }
 
