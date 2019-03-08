@@ -1,5 +1,6 @@
 <?php
 
+require('tools/sql_import.php');
 $config = require('database.php');
 $filePath = 'database.sql';
 
