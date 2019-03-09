@@ -6,7 +6,7 @@ function ask_user($message, $expected_answer = "yes")
     $handle = fopen("php://stdin", "r");
     $line = fgets($handle);
     fclose($handle);
-    return trim($line) != 'yes';
+    return trim($line) == 'yes';
 }
 
 require('tools/sql_import.php');
