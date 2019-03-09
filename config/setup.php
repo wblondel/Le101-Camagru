@@ -2,7 +2,7 @@
 
 function ask_user($message, $expected_answer = "yes")
 {
-    echo $message . "Type '" . $expected_answer . "' to continue: ";
+    echo $message . " Type '" . $expected_answer . "' to continue: ";
     $handle = fopen("php://stdin", "r");
     $line = fgets($handle);
     fclose($handle);
@@ -13,7 +13,7 @@ require('tools/sql_import.php');
 $config = require('database.php');
 $filePath = 'database.sql';
 
-if (ask_user("Restoring database to default state - are you sure")) {
+if (ask_user("Restoring database to default state - are you sure?") === true) {
     // PDO connection
     $driver = 'mysql';
     $port = 3306;
@@ -44,7 +44,7 @@ if (ask_user("Restoring database to default state - are you sure")) {
     }
     echo ("DONE\n");
 
-    if (ask_user("Do you want to import the demo content (users and images)?")) {
+    if (ask_user("Do you want to import the demo content (users and images)?") === true) {
         $filePath = 'demo_content.sql';
 
         // Downloading random images
