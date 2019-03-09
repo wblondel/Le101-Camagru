@@ -47,12 +47,14 @@ if (ask_user("Restoring database to default state - are you sure?") === true) {
     if (ask_user("Do you want to import the demo content (users and images)?") === true) {
         $filePath = 'demo_content.sql';
 
-        // Downloading random images
-        echo "Downloading images...\n";
-        $dir = "../public/uploads/pictures/";
+        if (ask_user("Do you want to DOWNLOAD random images?") === true) {
+            // Downloading random images
+            echo "Downloading images...\n";
+            $dir = "../public/uploads/pictures/";
 
-        for ($i = 1; $i <= 100; $i++) {
-            file_put_contents($dir . $i . ".jpg", fopen("https://picsum.photos/200/300/?random", 'r'));
+            for ($i = 1; $i <= 100; $i++) {
+                file_put_contents($dir . $i . ".jpg", fopen("https://picsum.photos/200/300/?random", 'r'));
+            }
         }
 
         echo "Importing SQL file...\n";
