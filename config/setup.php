@@ -4,6 +4,16 @@ require('tools/sql_import.php');
 $config = require('database.php');
 $filePath = 'database.sql';
 
+echo "Restoring database to default state - are you sure? Type 'yes' to continue: ";
+$handle = fopen("php://stdin", "r");
+$line = fgets($handle);
+if (trim($line) != 'yes') {
+    echo "ABORTING!\n";
+    exit;
+}
+fclose($handle);
+echo "Continuing...\n";
+
 // PDO connection
 $driver = 'mysql';
 $port = 3306;
@@ -32,3 +42,25 @@ $res = importSqlFile($pdo, $filePath);
 if ($res === false) {
     die('ERROR');
 }
+echo ("DONE\n");
+
+// =============================
+
+echo "Do you want to import the demo content (users and images) ? Type 'yes' to continue: ";
+$handle = fopen("php://stdin", "r");
+$line = fgets($handle);
+if (trim($line) != 'yes') {
+    echo "ABORTING!\n";
+    exit;
+}
+fclose($handle);
+echo "Continuing...\n";
+
+$filePath = 'demo_content.sql';
+
+// Import the SQL file
+$res = importSqlFile($pdo, $filePath);
+if ($res === false) {
+    die('ERROR');
+}
+echo ("DONE\n");
