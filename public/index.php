@@ -37,35 +37,4 @@ textdomain('main');
 // = router =
 // ==========
 
-if (!isset($_GET['url'])) {
-    $_GET['url'] = '/';
-}
-
-$router = new Router\Router($_GET['url']);
-
-# Images
-$router->get('/', "Images#index");
-$router->get('/i/:id', "Images#show")->with('id', '[0-9]+');
-$router->get('/i/new', "Images#new");
-
-# Tags
-$router->get('/t/:id', "Images#tag")->with('id', '[0-9]+');
-
-# Users
-$router->get('/u/:id', 'Users#show');
-
-
-# Accounts
-$router->get('/accounts/register', "Accounts#register");
-$router->post('/accounts/register', "Accounts#register");
-$router->get('/accounts/login', "Accounts#login");
-$router->post('/accounts/login', "Accounts#login");
-$router->get('/accounts/confirm', "Accounts#confirm");
-$router->get('/accounts/logout', "Accounts#logout");
-$router->get('/accounts/forgot', "Accounts#forgot");
-$router->post('/accounts/forgot', "Accounts#forgot");
-$router->get('/accounts/reset', "Accounts#reset");
-$router->post('/accounts/reset', "Accounts#reset");
-
-# execute
-$router->run();
+App::getInstance()->getRouter()->run();
