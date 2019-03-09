@@ -63,7 +63,7 @@ echo "Downloading images...\n";
 $dir = "../public/uploads/pictures/";
 
 for ($i = 1; $i <= 100; $i++) {
-    file_put_contents($dir . $i . ".jpg", fopen("https://picsum.photos/200/300/?random" . $i, 'r'));
+    file_put_contents($dir . $i . ".jpg", fopen("https://picsum.photos/200/300/?random", 'r'));
 }
 
 echo "Importing SQL file...\n";
