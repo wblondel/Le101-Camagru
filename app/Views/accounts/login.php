@@ -16,9 +16,10 @@
     </div>
 
     <div class="form-group">
-        <label>
-            <input type="checkbox" name="remember" tabindex="3"> <?= _("Remember Me") ?>
-        </label>
+        <div class="custom-checkbox custom-control">
+            <input type="checkbox" name="remember" id="remember" class="custom-control-input" tabindex="3">
+            <label for="remember" class="custom-control-label"><?= _("Remember Me") ?></label>
+        </div>
     </div>
 
     <div class="form-group no-margin">
@@ -26,7 +27,7 @@
             <?= _("Login") ?>
         </button>
     </div>
-    <div class="margin-top20 text-center">
+    <div class="mt-4 text-center">
         <?= _("Don't have an account?") ?> <a href="/accounts/register" tabindex="6"><?= _("Create One") ?></a>
     </div>
 

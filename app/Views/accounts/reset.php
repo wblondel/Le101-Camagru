@@ -22,7 +22,7 @@
                 one lowercase letter, one digit, and one special character.') ?>
     </div>
 
-    <div class="form-group no-margin">
+    <div class="form-group m-0">
         <button type="submit" class="btn btn-primary btn-block">
             <?= _("Change password") ?>
         </button>

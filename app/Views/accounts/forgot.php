@@ -14,7 +14,7 @@
         </div>
     </div>
 
-    <div class="form-group no-margin">
+    <div class="form-group m-0">
         <button type="submit" class="btn btn-primary btn-block">
             <?= _("Reset Password") ?>
         </button>

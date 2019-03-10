@@ -28,7 +28,7 @@
     <div class="form-group">
         <label for="password_confirm"><?= _("Password (confirmation)") ?></label>
         <input id="password_confirm" type="password" class="form-control" name="password_confirm" required data-eye>
-        <?php if(isset($errors["password_confirm"])) : ?>
+        <?php if (isset($errors["password_confirm"])) : ?>
             <div class="invalid-feedback" style="display:block;"><?= $errors["password_confirm"]; ?></div>
         <?php endif ?>
     </div>
@@ -39,17 +39,21 @@
     </div>
 
     <div class="form-group">
-        <label>
-            <input type="checkbox" name="agree" value="1"> <?= _("I agree to the Terms and Conditions") ?>
-        </label>
+        <div class="custom-checkbox custom-control">
+            <input type="checkbox" name="agree" id="agree" class="custom-control-input" required="">
+            <label for="agree" class="custom-control-label"><?= _("I agree to the Terms and Conditions") ?></label>
+            <?php if (isset($errors["agree"])) : ?>
+                <div class="invalid-feedback" style="display:block;"><?= $errors["agree"]; ?></div>
+            <?php endif ?>
+        </div>
     </div>
 
-    <div class="form-group no-margin">
+    <div class="form-group m-0">
         <button type="submit" class="btn btn-primary btn-block">
             <?= _("Register") ?>
         </button>
     </div>
-    <div class="margin-top20 text-center">
+    <div class="mt-4 text-center">
         <?= _("Already have an account?") ?> <a href="/accounts/login"><?= _("Log in here.") ?></a>
     </div>
 
