@@ -109,3 +109,4 @@ tags
 config/database.php
 config/apis.php
 public/uploads
+.php_cs.cache
