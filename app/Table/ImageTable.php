@@ -6,6 +6,7 @@ use Core\Table\Table;
 
 /**
  * Class ImageTable
+ *
  * @package App\Table
  */
 class ImageTable extends Table
@@ -14,6 +15,7 @@ class ImageTable extends Table
 
     /**
      * Récupère les dernières images.
+     *
      * @return array
      */
     public function last()
@@ -27,6 +29,7 @@ class ImageTable extends Table
 
     /**
      * Récupère les dernières images avec les tags associés.
+     *
      * @return array
      */
     public function lastWithTags()
@@ -41,7 +44,9 @@ class ImageTable extends Table
 
     /**
      * Récupère une image en liant les tags associés
+     *
      * @param $id int
+     *
      * @return \App\Entity\ImageEntity
      */
     public function findWithTags(int $id)
@@ -56,7 +61,9 @@ class ImageTable extends Table
 
     /**
      * Récupère les dernières images du tag donné
+     *
      * @param $tag_id int
+     *
      * @return array
      */
     public function lastByTag(int $tag_id)

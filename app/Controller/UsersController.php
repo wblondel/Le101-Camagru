@@ -2,15 +2,11 @@
 
 namespace App\Controller;
 
-use Core\Auth\DBAuth;
-use Core\HTML\BootstrapForm;
-use Core\Email\Email;
-use \App;
-use Core\String\Str;
-use Core\Validator\Validator;
+use App;
 
 /**
  * Class AccountsController
+ *
  * @package App\Controller
  */
 class UsersController extends AppController
@@ -23,6 +19,9 @@ class UsersController extends AppController
         $this->loadModel('User');
     }
 
+    /**
+     * @param $id
+     */
     public function show($id)
     {
         $logged = $this->logged;

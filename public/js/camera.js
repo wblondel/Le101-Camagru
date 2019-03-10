@@ -9,7 +9,7 @@ if (navigator.mediaDevices === undefined) {
 // with getUserMedia as it would overwrite existing properties.
 // Here, we will just add the getUserMedia property if it's missing.
 if (navigator.mediaDevices.getUserMedia === undefined) {
-    navigator.mediaDevices.getUserMedia = function(constraints) {
+    navigator.mediaDevices.getUserMedia = function (constraints) {
 
         // First get ahold of the legacy getUserMedia, if present
         var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
@@ -21,14 +21,14 @@ if (navigator.mediaDevices.getUserMedia === undefined) {
         }
 
         // Otherwise, wrap the call to the old navigator.getUserMedia with a Promise
-        return new Promise(function(resolve, reject) {
+        return new Promise(function (resolve, reject) {
             getUserMedia.call(navigator, constraints, resolve, reject);
         });
     }
 }
 
-navigator.mediaDevices.getUserMedia({ audio: false, video: true })
-    .then(function(stream) {
+navigator.mediaDevices.getUserMedia({audio: false, video: true})
+    .then(function (stream) {
         var video = document.getElementById("video");
         var button = document.getElementById('startbutton');
 
@@ -39,7 +39,7 @@ navigator.mediaDevices.getUserMedia({ audio: false, video: true })
             // Avoid using this in new browsers, as it is going away.
             video.src = window.URL.createObjectURL(stream);
         }
-        video.onloadedmetadata = function(e) {
+        video.onloadedmetadata = function (e) {
             video.play();
         };
 
@@ -53,22 +53,21 @@ navigator.mediaDevices.getUserMedia({ audio: false, video: true })
             image.src = canvas.toDataURL("image/png");
         })
     })
-    .catch(function(err) {
+    .catch(function (err) {
         console.log(err.name + ": " + err.message);
     });
 
 function previewFile() {
     var preview = document.getElementById("photo");
-    var file    = document.querySelector('input[type=file]').files[0];
-    var reader  = new FileReader();
+    var file = document.querySelector('input[type=file]').files[0];
+    var reader = new FileReader();
     var imageType = /image.*/;
 
     reader.addEventListener("load", function () {
         preview.src = reader.result;
     }, false);
 
-    if (file.type.match(imageType))
-    {
+    if (file.type.match(imageType)) {
         if (file) {
             reader.readAsDataURL(file);
         }

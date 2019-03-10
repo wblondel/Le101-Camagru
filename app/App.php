@@ -1,9 +1,9 @@
-<?php declare (strict_types = 1);
+<?php declare (strict_types=1);
 
 use Core\Config;
 use Core\Database\MysqlDatabase;
-use Core\Session\Session;
 use Core\Router;
+use Core\Session\Session;
 
 /**
  * Class App
@@ -11,7 +11,6 @@ use Core\Router;
 class App
 {
     public $title = "Camagru";
-
     private $router;
     private $db_instance;
     private $session_instance;
@@ -36,6 +35,11 @@ class App
         Core\Autoloader::register();
     }
 
+    /**
+     * @param $name
+     *
+     * @return mixed
+     */
     public function getTable($name)
     {
         $class_name = '\\App\\Table\\' . ucfirst($name) . 'Table';
@@ -71,6 +75,9 @@ class App
         return $this->session_instance;
     }
 
+    /**
+     * @return Router\Router
+     */
     public function getRouter()
     {
         if (!isset($_GET['url'])) {

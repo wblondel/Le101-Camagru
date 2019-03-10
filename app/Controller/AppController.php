@@ -2,12 +2,13 @@
 
 namespace App\Controller;
 
+use App;
 use Core\Auth\DBAuth;
 use Core\Controller\Controller;
-use \App;
 
 /**
  * Class AppController
+ *
  * @package App\Controller
  */
 class AppController extends Controller

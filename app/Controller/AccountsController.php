@@ -2,15 +2,16 @@
 
 namespace App\Controller;
 
+use App;
 use Core\Auth\DBAuth;
-use Core\HTML\BootstrapForm;
 use Core\Email\Email;
-use \App;
+use Core\HTML\BootstrapForm;
 use Core\String\Str;
 use Core\Validator\Validator;
 
 /**
  * Class AccountsController
+ *
  * @package App\Controller
  */
 class AccountsController extends AppController
@@ -59,10 +60,10 @@ class AccountsController extends AppController
                                 ->setTo($_POST['email'], $_POST['username'])
                                 ->setFrom('contact@camagru.fr', 'Camagru.fr')
                                 ->setSubject(_("Welcome to Camagru - Confirm your account"))
-                                ->setMessage('<strong>'.
-                                    _("To confirm your account, please click on this link:").
-                                    '</strong><br><a href="https://camagru.fr/accounts/confirm/?id='.$user_id.
-                                    '&token='.$token.'">' . _("Confirm my account") . '</a>')
+                                ->setMessage('<strong>' .
+                                    _("To confirm your account, please click on this link:") .
+                                    '</strong><br><a href="https://camagru.fr/accounts/confirm/?id=' . $user_id .
+                                    '&token=' . $token . '">' . _("Confirm my account") . '</a>')
                                 ->setReplyTo('contact@camagru.fr')
                                 ->setHtml()
                                 ->send();
@@ -91,7 +92,7 @@ class AccountsController extends AppController
             ];
 
             $page_title = _("Create an account");
-            $this->render('accounts.register', compact('page_title','form', 'errors', 'res'));
+            $this->render('accounts.register', compact('page_title', 'form', 'errors', 'res'));
         } else {
             $session->setFlash('success', _("You're already logged in."));
             $this->redirect();
@@ -106,7 +107,7 @@ class AccountsController extends AppController
         $session = App::getInstance()->getSession();
         $auth = new DBAuth(App::getInstance()->getDb(), $session);
 
-        if ($this->logged  === false) {
+        if ($this->logged === false) {
             if (!empty($_POST)) {
                 // Build POST request:
                 $recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify';
@@ -150,7 +151,7 @@ class AccountsController extends AppController
         $session = App::getInstance()->getSession();
         $auth = new DBAuth(App::getInstance()->getDb(), $session);
 
-        if ($this->logged  === false) {
+        if ($this->logged === false) {
             if (isset($_GET['id']) && ctype_digit($_GET['id']) && isset($_GET['token']) && !empty($_GET['token'])) {
                 if ($auth->confirm($_GET['id'], $_GET['token'])) {
                     $session->setFlash('success', _("Your account is now activated. You can log in."));

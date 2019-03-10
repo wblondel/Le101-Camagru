@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 function ask_user($message, $expected_answer = "yes")
 {
@@ -19,9 +19,9 @@ if (ask_user("Restoring database to default state - are you sure?") === true) {
     $port = 3306;
     $options = [
         \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ,
-        \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
-        \PDO::ATTR_EMULATE_PREPARES   => true,
-        \PDO::ATTR_CURSOR             => \PDO::CURSOR_FWDONLY,
+        \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+        \PDO::ATTR_EMULATE_PREPARES => true,
+        \PDO::ATTR_CURSOR => \PDO::CURSOR_FWDONLY,
     ];
 
     try {
@@ -42,7 +42,7 @@ if (ask_user("Restoring database to default state - are you sure?") === true) {
     if ($res === false) {
         die('ERROR');
     }
-    echo ("DONE\n");
+    echo("DONE\n");
 
     if (ask_user("Do you want to import the demo content (users and images)?") === true) {
         $filePath = 'demo_content.sql';
@@ -63,7 +63,7 @@ if (ask_user("Restoring database to default state - are you sure?") === true) {
         if ($res === false) {
             die('ERROR');
         }
-        echo ("DONE\n");
+        echo("DONE\n");
     } else {
         die("Aborting.\n");
     }

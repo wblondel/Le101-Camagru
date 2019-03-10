@@ -2,11 +2,12 @@
 
 namespace App\Controller;
 
-use \App;
+use App;
 use Core\Auth\DBAuth;
 
 /**
  * Class DebugController
+ *
  * @package App\Controller
  */
 class ImagesController extends AppController
@@ -33,7 +34,7 @@ class ImagesController extends AppController
             'css' => ['gallery.css', 'progressive-image.css']
         ];
 
-        $this->render('images.index', compact(  'images', 'logged', 'res'));
+        $this->render('images.index', compact('images', 'logged', 'res'));
     }
 
     public function new()
@@ -54,6 +55,9 @@ class ImagesController extends AppController
         $this->render('images.new', compact('page_title', 'res'));
     }
 
+    /**
+     * @param int $id
+     */
     public function tag(int $id)
     {
         $logged = $this->logged;
@@ -72,6 +76,9 @@ class ImagesController extends AppController
         $this->render('images.tag', compact('images', 'tag', 'logged', 'res'));
     }
 
+    /**
+     * @param int $id
+     */
     public function show(int $id)
     {
         $logged = $this->logged;

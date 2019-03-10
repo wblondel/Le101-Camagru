@@ -6,10 +6,10 @@ use Core\Table\Table;
 
 /**
  * Class TagTable
+ *
  * @package App\Table
  */
 class TagTable extends Table
 {
     protected $table = 'tags';
-
 }

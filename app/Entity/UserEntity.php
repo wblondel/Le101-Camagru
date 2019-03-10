@@ -6,6 +6,7 @@ use Core\Entity\Entity;
 
 /**
  * Class TagEntity
+ *
  * @package App\Entity
  */
 class UserEntity extends Entity

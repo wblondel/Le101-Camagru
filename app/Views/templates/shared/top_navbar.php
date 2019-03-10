@@ -10,25 +10,25 @@
                 <a class="nav-link" href="/"><?= _("Gallery") ?> <span class="sr-only"><?= _("(current)") ?></span></a>
             </li>
             <?php if ($logged === true) : ?>
-            <li class="nav-item">
-                <a class="nav-link" href="#"><?= _("Post a picture") ?></a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><?= _("Post a picture") ?></a>
+                </li>
             <?php endif; ?>
         </ul>
         <ul class="navbar-nav">
             <?php if ($logged === false) : ?>
-            <li class="nav-item">
-                <a class="nav-link" href="/accounts/login"><?= _("Login") ?></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/accounts/register"><?= _("Register") ?></a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/accounts/login"><?= _("Login") ?></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/accounts/register"><?= _("Register") ?></a>
+                </li>
             <?php else : ?>
-            <li class="nav-item">
-                <a class="nav-link" href="/accounts/logout"><?= _("Logout") ?></a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/accounts/logout"><?= _("Logout") ?></a>
+                </li>
             <?php endif; ?>
         </ul>
         <!--</div>-->
     </nav>
-</div> 
+</div>

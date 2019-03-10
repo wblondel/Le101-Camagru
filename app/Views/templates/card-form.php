@@ -1,15 +1,15 @@
 <!doctype html>
 <html lang="<?= substr("fr-FR.utf8", 0, 2); ?>">
 <head>
-    <?php require 'shared/headers.php';?>
-    <?php require 'shared/css.php';?>
+    <?php require 'shared/headers.php'; ?>
+    <?php require 'shared/css.php'; ?>
 
     <script src='https://www.google.com/recaptcha/api.js?render=6LfuiosUAAAAABVTWn8C4YVGPOMvflgbvyftzCI3'></script>
 
     <script>
-        grecaptcha.ready(function() {
+        grecaptcha.ready(function () {
             grecaptcha.execute('6LfuiosUAAAAABVTWn8C4YVGPOMvflgbvyftzCI3', {action: 'action_name'})
-                .then(function(token) {
+                .then(function (token) {
                     var recaptchaResponse = document.getElementById('recaptchaResponse');
                     recaptchaResponse.value = token;
                 });
@@ -27,7 +27,7 @@
                         <img src="/img/logo.jpg">
                     </a>
                 </div>
-                <?php require 'shared/flashes.php';?>
+                <?php require 'shared/flashes.php'; ?>
                 <div class="card fat">
                     <div class="card-body">
                         <?= $content; ?>
@@ -41,6 +41,6 @@
     </div>
 </section>
 
-<?php require 'shared/js.php';?>
+<?php require 'shared/js.php'; ?>
 </body>
 </html>

@@ -1,17 +1,17 @@
-<?php 
+<?php
 /**
-     * Import SQL File
-     *
-     * @param $pdo
-     * @param $sqlFile
-     * @param null $tablePrefix
-     * @param null $InFilePath
-     * @return bool
-     */
+ * Import SQL File
+ *
+ * @param $pdo
+ * @param $sqlFile
+ * @param null $tablePrefix
+ * @param null $InFilePath
+ *
+ * @return bool
+ */
 function importSqlFile($pdo, $sqlFile, $tablePrefix = null, $InFilePath = null)
 {
     try {
-
         // Enable LOAD LOCAL INFILE
         $pdo->setAttribute(\PDO::MYSQL_ATTR_LOCAL_INFILE, true);
 

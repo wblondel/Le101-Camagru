@@ -1,13 +1,10 @@
 <?php declare(strict_types=1);
 
-use Core\Router;
-
 define('ROOT', dirname(__DIR__));
 
-# We load our App
+// We load our App
 require ROOT . '/app/App.php';
 App::load();
-
 
 // ==========
 // = locale =

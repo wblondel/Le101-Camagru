@@ -1,25 +1,29 @@
-(function() {
-    var addEventListener =  window.addEventListener || function(n,f) { window.attachEvent('on'+n, f); },
-        removeEventListener = window.removeEventListener || function(n,f,b) { window.detachEvent('on'+n, f); };
+(function () {
+    var addEventListener = window.addEventListener || function (n, f) {
+            window.attachEvent('on' + n, f);
+        },
+        removeEventListener = window.removeEventListener || function (n, f, b) {
+            window.detachEvent('on' + n, f);
+        };
 
     var lazyLoader = {
         cache: [],
         mobileScreenSize: 500,
         //tinyGif: 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==',
 
-        addObservers: function() {
+        addObservers: function () {
             addEventListener('scroll', lazyLoader.throttledLoad);
             addEventListener('resize', lazyLoader.throttledLoad);
         },
 
-        removeObservers: function() {
+        removeObservers: function () {
             removeEventListener('scroll', lazyLoader.throttledLoad, false);
             removeEventListener('resize', lazyLoader.throttledLoad, false);
         },
 
         throttleTimer: new Date().getTime(),
 
-        throttledLoad: function() {
+        throttledLoad: function () {
             var now = new Date().getTime();
             if ((now - lazyLoader.throttleTimer) >= 200) {
                 lazyLoader.throttleTimer = now;
@@ -27,7 +31,7 @@
             }
         },
 
-        loadVisibleImages: function() {
+        loadVisibleImages: function () {
             var scrollY = window.pageYOffset || document.documentElement.scrollTop;
             var pageHeight = window.innerHeight || document.documentElement.clientHeight;
             var range = {
@@ -44,14 +48,13 @@
                 if ((imagePosition >= range.min - imageHeight) && (imagePosition <= range.max)) {
                     var mobileSrc = image.getAttribute('data-src-mobile');
 
-                    image.onload = function() {
+                    image.onload = function () {
                         this.className = this.className.replace(/(^|\s+)lazy-load(\s+|$)/, '$1lazy-loaded$2');
                     };
 
                     if (mobileSrc && screen.width <= lazyLoader.mobileScreenSize) {
                         image.src = mobileSrc;
-                    }
-                    else {
+                    } else {
                         image.src = image.getAttribute('data-src');
                     }
 
@@ -71,10 +74,10 @@
             }
         },
 
-        init: function() {
+        init: function () {
             // Patch IE7- (querySelectorAll)
             if (!document.querySelectorAll) {
-                document.querySelectorAll = function(selector) {
+                document.querySelectorAll = function (selector) {
                     var doc = document,
                         head = doc.documentElement.firstChild,
                         styleTag = doc.createElement('STYLE');
@@ -104,7 +107,7 @@
                 removeEventListener('load', _lazyLoaderInit, false);
             });
         }
-    }
+    };
 
     // For IE7 compatibility
     // Adapted from http://www.quirksmode.org/js/findpos.html

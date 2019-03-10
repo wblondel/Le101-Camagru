@@ -1,6 +1,6 @@
-window.onload = function() {
+window.onload = function () {
     var elements = document.querySelectorAll("input[type='password'][data-eye]");
-    Array.prototype.forEach.call(elements, function(element, i) {
+    Array.prototype.forEach.call(elements, function (element, i) {
         var newDiv = document.createElement('div');
         newDiv.style.position = "relative";
         wrapAll([element], newDiv);
@@ -10,7 +10,7 @@ window.onload = function() {
         var newDiv2 = document.createElement('div');
         newDiv2.innerHTML = "Show";
         newDiv2.className = "btn btn-primary btn-sm";
-        newDiv2.id = "passeye-toggle-"+i;
+        newDiv2.id = "passeye-toggle-" + i;
         newDiv2.style.position = "absolute";
         newDiv2.style.right = "10px";
         newDiv2.style.top = "50%";
@@ -27,25 +27,24 @@ window.onload = function() {
         newInput.id = "passeye-"+i;
         element.insertAdjacentHTML('afterend', nodeToString(newInput));*/
 
-       /* element.addEventListener("keyup paste", function() {
-            document.getElementById("passeye-"+i).value = element.value;
-        });*/
-        var el = document.getElementById("passeye-toggle-"+i);
-        el.addEventListener("click", function() {
+        /* element.addEventListener("keyup paste", function() {
+             document.getElementById("passeye-"+i).value = element.value;
+         });*/
+        var el = document.getElementById("passeye-toggle-" + i);
+        el.addEventListener("click", function () {
             if (element.classList.contains('show')) {
                 element.type = "password";
                 element.classList.remove("show");
                 el.classList.remove("btn-outline-primary");
             } else {
                 element.type = "text";
-               /* element.value = document.getElementById("passeye-"+i).value;*/
+                /* element.value = document.getElementById("passeye-"+i).value;*/
                 element.classList.add("show");
                 el.classList.add("btn-outline-primary");
             }
         });
     });
 };
-
 
 
 // Wrap wrapper around nodes
@@ -73,9 +72,9 @@ function wrapAll(nodes, wrapper) {
 }
 
 
-function nodeToString ( node ) {
-    var tmpNode = document.createElement( "div" );
-    tmpNode.appendChild( node.cloneNode( true ) );
+function nodeToString(node) {
+    var tmpNode = document.createElement("div");
+    tmpNode.appendChild(node.cloneNode(true));
     var str = tmpNode.innerHTML;
     tmpNode = node = null; // prevent memory leaks in IE
     return str;

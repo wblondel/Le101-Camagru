@@ -6,8 +6,9 @@
                     <video id="video"><?= _("Video stream not available.") ?></video>
                     <div class="text-center">
                         <button id="startbutton"><?= _("Take photo") ?></button>
-                        <input type="file" id="selectedFile" style="display: none;" onchange="previewFile()" />
-                        <input id="uploadbutton" type="button" value="<?= _("Upload photo") ?>" onclick="document.getElementById('selectedFile').click();" />
+                        <input type="file" id="selectedFile" style="display: none;" onchange="previewFile()"/>
+                        <input id="uploadbutton" type="button" value="<?= _("Upload photo") ?>"
+                               onclick="document.getElementById('selectedFile').click();"/>
                     </div>
                 </div>
                 <canvas id="canvas">

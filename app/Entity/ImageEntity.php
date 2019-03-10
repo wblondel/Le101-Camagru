@@ -7,6 +7,7 @@ use Core\String\Str;
 
 /**
  * Class ImageEntity
+ *
  * @package App\Entity
  */
 class ImageEntity extends Entity
@@ -35,24 +36,41 @@ class ImageEntity extends Entity
         return substr($this->description, 0, 30) . '...';
     }
 
+    /**
+     * @return string
+     */
     public function getLongDesc()
     {
         return substr($this->description, 0, 80) . '...';
     }
 
+    /**
+     * @return string
+     */
     public function getAlt()
     {
         return "Small desc";
     }
 
+    /**
+     * @return string
+     */
     public function getElapsedTime()
     {
         return Str::time_elapsed_string($this->created_at);
     }
 
+    /**
+     * @return string
+     */
     public function getCreationDate()
     {
-        return date('d/m/Y', strtotime($this->created_at));
+        $date = date('d/m/Y', strtotime($this->created_at));
+        if ($date === false) {
+            return "";
+        } else {
+            return $date;
+        }
     }
 
     public function getLikesNb()
