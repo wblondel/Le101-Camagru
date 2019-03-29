@@ -1,21 +1,21 @@
-<?php
+<?php declare(strict_types=1);
 /**
  * Import SQL File
  *
- * @param $pdo
- * @param $sqlFile
- * @param null $tablePrefix
- * @param null $InFilePath
+ * @param PDO $pdo
+ * @param string $sqlFile
+ * @param string $tablePrefix
+ * @param string $inFilePath
  *
  * @return bool
  */
-function importSqlFile($pdo, $sqlFile, $tablePrefix = null, $InFilePath = null)
+function import_sql_file(PDO $pdo, string $sqlFile, string $tablePrefix = null, string $inFilePath = null)
 {
     try {
         // Enable LOAD LOCAL INFILE
-        $pdo->setAttribute(\PDO::MYSQL_ATTR_LOCAL_INFILE, true);
+        $pdo->setAttribute(PDO::MYSQL_ATTR_LOCAL_INFILE, true);
 
-        $errorDetect = false;
+        $hasError = false;
 
         // Temporary variable, used to store current query
         $tmpLine = '';
@@ -31,7 +31,7 @@ function importSqlFile($pdo, $sqlFile, $tablePrefix = null, $InFilePath = null)
             }
 
             // Read & replace prefix
-            $line = str_replace(['<<prefix>>', '<<InFilePath>>'], [$tablePrefix, $InFilePath], $line);
+            $line = str_replace(['<<prefix>>', '<<InFilePath>>'], [$tablePrefix, $inFilePath], $line);
 
             // Add this line to the current segment
             $tmpLine .= $line;
@@ -41,9 +41,10 @@ function importSqlFile($pdo, $sqlFile, $tablePrefix = null, $InFilePath = null)
                 try {
                     // Perform the Query
                     $pdo->exec($tmpLine);
-                } catch (\PDOException $e) {
-                    echo "<br><pre>Error performing Query: '<strong>" . $tmpLine . "</strong>': " . $e->getMessage() . "</pre>\n";
-                    $errorDetect = true;
+                } catch (PDOException $e) {
+                    echo "<br><pre>Error performing Query: '<strong>" . $tmpLine . "</strong>': " .
+                        $e->getMessage() . "</pre>\n";
+                    $hasError = true;
                 }
 
                 // Reset temp variable to empty
@@ -52,10 +53,10 @@ function importSqlFile($pdo, $sqlFile, $tablePrefix = null, $InFilePath = null)
         }
 
         // Check if error is detected
-        if ($errorDetect) {
+        if ($hasError) {
             return false;
         }
-    } catch (\Exception $e) {
+    } catch (Exception $e) {
         echo "<br><pre>Exception => " . $e->getMessage() . "</pre>\n";
         return false;
     }
