@@ -44,6 +44,8 @@ class ImagesController extends AppController
         $auth = new DBAuth($db, $session);
         $auth->restrict();
 
+        $logged = $this->logged;
+
         $this->template = 'default';
 
         $res = [
@@ -52,7 +54,7 @@ class ImagesController extends AppController
         ];
 
         $pageTitle = _("Share a picture");
-        $this->render('images.new', compact('pageTitle', 'res'));
+        $this->render('images.new', compact('pageTitle', 'logged', 'res'));
     }
 
     /**
