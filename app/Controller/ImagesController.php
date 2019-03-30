@@ -46,7 +46,7 @@ class ImagesController extends AppController
 
         $this->render(
             'images.new',
-            null,
+            [],
             _("Share a picture"),
             ['js' => ['camera.js'], 'css' => ['camera.css']]
         );
