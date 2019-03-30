@@ -1,9 +1,10 @@
 <?php declare(strict_types=1);
 
 define('ROOT', dirname(__DIR__));
+define('DS', DIRECTORY_SEPARATOR);
 
 // We load our App
-require ROOT . '/app/App.php';
+require ROOT . DS . 'app' . DS . 'App.php';
 App::load();
 
 // ==========
@@ -22,7 +23,7 @@ putenv("LANG=" . $default_lang);
 setlocale(LC_ALL, $default_lang);
 
 // this will make Gettext look for /locales/<lang>/LC_MESSAGES/main.mo
-bindtextdomain('main', ROOT . '/locales');
+bindtextdomain('main', ROOT . DS . 'locales');
 
 // indicates in what encoding the file should be read
 bind_textdomain_codeset('main', 'UTF-8');
@@ -34,4 +35,8 @@ textdomain('main');
 // = router =
 // ==========
 
-App::getInstance()->getRouter()->run();
+if (!isset($_GET['url'])) {
+    $_GET['url'] = '/';
+}
+
+App::getInstance()->getRouter($_GET['url'])->run();

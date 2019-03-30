@@ -20,13 +20,13 @@ class UsersController extends AppController
     }
 
     /**
-     * @param $id
+     * @param string $username
      */
-    public function show($id)
+    public function show(string $username)
     {
         $logged = $this->logged;
 
-        $user = $this->User->find(intval($id));
+        $user = $this->User->findbyUsername($username);
 
         if ($user === false) {
             $this->notFound();

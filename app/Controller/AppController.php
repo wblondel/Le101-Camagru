@@ -31,10 +31,10 @@ class AppController extends Controller
     }
 
     /**
-     * @param $model_name
+     * @param $modelName
      */
-    protected function loadModel($model_name)
+    protected function loadModel($modelName)
     {
-        $this->$model_name = App::getInstance()->getTable($model_name);
+        $this->$modelName = App::getInstance()->getTable($modelName);
     }
 }

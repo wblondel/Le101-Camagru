@@ -45,7 +45,7 @@ class ImageTable extends Table
     /**
      * Récupère une image en liant les tags associés
      *
-     * @param $id int
+     * @param int $id
      *
      * @return \App\Entity\ImageEntity
      */
@@ -62,7 +62,7 @@ class ImageTable extends Table
     /**
      * Récupère les dernières images du tag donné
      *
-     * @param $tag_id int
+     * @param int $tag_id
      *
      * @return array
      */

@@ -12,26 +12,26 @@ class App
 {
     public $title = "Camagru";
     private $router;
-    private $db_instance;
-    private $session_instance;
-    private static $_instance;
+    private $dbInstance;
+    private $sessionInstance;
+    private static $instance;
 
     /**
      * @return App
      */
     public static function getInstance()
     {
-        if (is_null(self::$_instance)) {
-            self::$_instance = new App();
+        if (is_null(self::$instance)) {
+            self::$instance = new App();
         }
-        return self::$_instance;
+        return self::$instance;
     }
 
     public static function load()
     {
-        require ROOT . '/app/Autoloader.php';
+        require ROOT . DS . 'app' . DS . 'Autoloader.php';
         App\Autoloader::register();
-        require ROOT . '/core/Autoloader.php';
+        require ROOT . DS . 'core' . DS . 'Autoloader.php';
         Core\Autoloader::register();
     }
 
@@ -42,8 +42,8 @@ class App
      */
     public function getTable($name)
     {
-        $class_name = '\\App\\Table\\' . ucfirst($name) . 'Table';
-        return new $class_name($this->getDb());
+        $className = '\\App\\Table\\' . ucfirst($name) . 'Table';
+        return new $className($this->getDb());
     }
 
     /**
@@ -51,16 +51,16 @@ class App
      */
     public function getDb()
     {
-        $config = Config::getInstance(ROOT . '/config/database.php');
-        if (is_null($this->db_instance)) {
-            $this->db_instance = new MysqlDatabase(
+        $config = Config::getInstance(ROOT . DS . 'config' . DS . 'database.php');
+        if (is_null($this->dbInstance)) {
+            $this->dbInstance = new MysqlDatabase(
                 $config->getStg('db_name'),
                 $config->getStg('db_user'),
                 $config->getStg('db_pass'),
                 $config->getStg('db_host')
             );
         }
-        return $this->db_instance;
+        return $this->dbInstance;
     }
 
     /**
@@ -69,45 +69,52 @@ class App
     public function getSession()
     {
         $session = Session::getInstance();
-        if (is_null($this->session_instance)) {
-            $this->session_instance = $session;
+        if (is_null($this->sessionInstance)) {
+            $this->sessionInstance = $session;
         };
-        return $this->session_instance;
+        return $this->sessionInstance;
     }
 
     /**
+     * @param string $url
+     *
      * @return Router\Router
      */
-    public function getRouter()
+    public function getRouter(string $url)
     {
-        if (!isset($_GET['url'])) {
-            $_GET['url'] = '/';
-        }
-
-        $router = new Router\Router($_GET['url']);
+        $router = new Router\Router($url);
 
         # Images
         $router->get('/', "Images#index");
-        $router->get('/i/:id', "Images#show")->with('id', '[0-9]+');
+        $router->get('/i/:id', "Images#show")
+            ->with('id', '[0-9]+');
         $router->get('/i/new', "Images#new");
 
         # Tags
-        $router->get('/t/:id', "Images#tag")->with('id', '[0-9]+');
+        $router->get('/t/:tagId', "Images#tag")
+            ->with('tagId', '[0-9]+');
 
         # Users
-        $router->get('/u/:id', 'Users#show');
+        $router->get('/u/:username', 'Users#show')
+            ->with('username', '[a-zA-Z0-9]+');
 
         # Accounts
         $router->get('/accounts/register', "Accounts#register");
         $router->post('/accounts/register', "Accounts#register");
         $router->get('/accounts/login', "Accounts#login");
         $router->post('/accounts/login', "Accounts#login");
-        $router->get('/accounts/confirm', "Accounts#confirm");
+        $router->get('/accounts/confirm/:id/:token', "Accounts#confirm")
+            ->with('id', '[0-9]+')
+            ->with('token', '[a-zA-Z0-9]+');
         $router->get('/accounts/logout', "Accounts#logout");
         $router->get('/accounts/forgot', "Accounts#forgot");
         $router->post('/accounts/forgot', "Accounts#forgot");
-        $router->get('/accounts/reset', "Accounts#reset");
-        $router->post('/accounts/reset', "Accounts#reset");
+        $router->get('/accounts/reset/:userId/:token', "Accounts#reset")
+            ->with('userId', '[0-9]+')
+            ->with('token', '[a-zA-Z0-9]+');
+        $router->post('/accounts/reset/:userId/:token', "Accounts#reset")
+            ->with('userId', '[0-9]+')
+            ->with('token', '[a-zA-Z0-9]+');
 
         $this->router = $router;
         return $this->router;

@@ -51,22 +51,22 @@ class ImagesController extends AppController
             'css' => ['camera.css']
         ];
 
-        $page_title = _("Share a picture");
-        $this->render('images.new', compact('page_title', 'res'));
+        $pageTitle = _("Share a picture");
+        $this->render('images.new', compact('pageTitle', 'res'));
     }
 
     /**
-     * @param int $id
+     * @param int $tagId
      */
-    public function tag(int $id)
+    public function tag(int $tagId)
     {
         $logged = $this->logged;
 
-        if (($tag = $this->Tag->find($id)) === false) {
+        if (($tag = $this->Tag->find($tagId)) === false) {
             $this->notFound();
         }
 
-        $images = $this->Image->lastByTag($id);
+        $images = $this->Image->lastByTag($tagId);
 
         $res = [
             'js' => ['progressive-image.js'],
@@ -77,16 +77,16 @@ class ImagesController extends AppController
     }
 
     /**
-     * @param int $id
+     * @param int $imageId
      */
-    public function show(int $id)
+    public function show(int $imageId)
     {
         $logged = $this->logged;
 
-        $single_image = $this->Image->find($id);
-        $user_info = $this->User->find(intval($single_image->users_id));
+        $singleImage = $this->Image->find($imageId);
+        $userInfo = $this->User->find(intval($singleImage->users_id));
 
-        if ($single_image === false) {
+        if ($singleImage === false) {
             $this->notFound();
         }
 
@@ -95,6 +95,6 @@ class ImagesController extends AppController
             'css' => ['gallery.css', 'progressive-image.css']
         ];
 
-        $this->render('images.show', compact('user_info', 'single_image', 'logged', 'res'));
+        $this->render('images.show', compact('userInfo', 'singleImage', 'logged', 'res'));
     }
 }
