@@ -21,9 +21,9 @@ class ImageTable extends Table
     public function last()
     {
         return $this->query("
-            SELECT images.id, images.description, images.users_id, images.created_at, images.modified_at, images.filename
-            FROM images
-            ORDER BY images.created_at DESC
+            SELECT {$this->table}.*
+            FROM {$this->table}
+            ORDER BY {$this->table}.created_at DESC
         ");
     }
 
@@ -79,7 +79,8 @@ class ImageTable extends Table
     public function lastByUserId(int $userId)
     {
         return $this->query("
-            SELECT {$this->table}.* FROM {$this->table}
+            SELECT {$this->table}.*
+            FROM {$this->table}
             JOIN users ON {$this->table}.users_id=users.id
             WHERE users_id = ?
             ORDER BY {$this->table}.created_at DESC",
