@@ -25,8 +25,6 @@ class UsersController extends AppController
      */
     public function show(string $username)
     {
-        $logged = $this->logged;
-
         $user = $this->User->findbyUsername($username);
 
         if ($user === false) {
@@ -40,6 +38,6 @@ class UsersController extends AppController
             'css' => ['gallery.css', 'progressive-image.css']
         ];
 
-        $this->render('users.show', compact('user', 'logged', 'res', 'images'));
+        $this->render('users.show', compact('user', 'res', 'images'));
     }
 }

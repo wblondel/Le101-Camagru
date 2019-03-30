@@ -9,14 +9,14 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/"><?= _("Gallery") ?> <span class="sr-only"><?= _("(current)") ?></span></a>
             </li>
-            <?php if ($logged === true) : ?>
+            <?php if ($this->logged) : ?>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><?= _("Post a picture") ?></a>
                 </li>
             <?php endif; ?>
         </ul>
         <ul class="navbar-nav">
-            <?php if ($logged === false) : ?>
+            <?php if (!$this->logged) : ?>
                 <li class="nav-item">
                     <a class="nav-link" href="/accounts/login"><?= _("Login") ?></a>
                 </li>

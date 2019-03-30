@@ -24,8 +24,6 @@ class ImagesController extends AppController
 
     public function index()
     {
-        $logged = $this->logged;
-
         //$images = $this->Image->lastWithTags();
         $images = $this->Image->last();
 
@@ -34,7 +32,7 @@ class ImagesController extends AppController
             'css' => ['gallery.css', 'progressive-image.css']
         ];
 
-        $this->render('images.index', compact('images', 'logged', 'res'));
+        $this->render('images.index', compact('images', 'res'));
     }
 
     public function new()
@@ -44,8 +42,6 @@ class ImagesController extends AppController
         $auth = new DBAuth($db, $session);
         $auth->restrict();
 
-        $logged = $this->logged;
-
         $this->template = 'default';
 
         $res = [
@@ -54,7 +50,7 @@ class ImagesController extends AppController
         ];
 
         $pageTitle = _("Share a picture");
-        $this->render('images.new', compact('pageTitle', 'logged', 'res'));
+        $this->render('images.new', compact('pageTitle', 'res'));
     }
 
     /**
@@ -62,8 +58,6 @@ class ImagesController extends AppController
      */
     public function tag(int $tagId)
     {
-        $logged = $this->logged;
-
         if (($tag = $this->Tag->find($tagId)) === false) {
             $this->notFound();
         }
@@ -75,7 +69,7 @@ class ImagesController extends AppController
             'css' => ['gallery.css', 'progressive-image.css']
         ];
 
-        $this->render('images.tag', compact('images', 'tag', 'logged', 'res'));
+        $this->render('images.tag', compact('images', 'tag', 'res'));
     }
 
     /**
@@ -83,8 +77,6 @@ class ImagesController extends AppController
      */
     public function show(int $imageId)
     {
-        $logged = $this->logged;
-
         $singleImage = $this->Image->find($imageId);
         $userInfo = $this->User->find(intval($singleImage->users_id));
 
@@ -97,6 +89,6 @@ class ImagesController extends AppController
             'css' => ['gallery.css', 'progressive-image.css']
         ];
 
-        $this->render('images.show', compact('userInfo', 'singleImage', 'logged', 'res', 'userInfo'));
+        $this->render('images.show', compact('userInfo', 'singleImage', 'res', 'userInfo'));
     }
 }
