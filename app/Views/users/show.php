@@ -28,7 +28,7 @@
                                                 class="btn btn-sm btn-outline-secondary"><?= _("Like") ?></button>
                                     </div>
                                     <small class="text-muted my-tooltip"><?= $image->getElapsedTime() ?>
-                                        <span class="my-tooltiptext"><?= $image['created_at_nat'] ?></span>
+                                        <span class="my-tooltiptext"><?= $image->getCreationDate() ?></span>
                                     </small>
                                 </div>
                             </div>
