@@ -27,12 +27,12 @@ class ImagesController extends AppController
         //$images = $this->Image->lastWithTags();
         $images = $this->Image->last();
 
-        $res = [
-            'js' => ['progressive-image.js'],
-            'css' => ['gallery.css', 'progressive-image.css']
-        ];
-
-        $this->render('images.index', compact('images', 'res'));
+        $this->render(
+            'images.index',
+            compact('images'),
+            null,
+            ['js' => ['progressive-image.js'], 'css' => ['gallery.css', 'progressive-image.css']]
+        );
     }
 
     public function new()
@@ -44,13 +44,12 @@ class ImagesController extends AppController
 
         $this->template = 'default';
 
-        $res = [
-            'js' => ['camera.js'],
-            'css' => ['camera.css']
-        ];
-
-        $pageTitle = _("Share a picture");
-        $this->render('images.new', compact('pageTitle', 'res'));
+        $this->render(
+            'images.new',
+            null,
+            _("Share a picture"),
+            ['js' => ['camera.js'], 'css' => ['camera.css']]
+        );
     }
 
     /**
@@ -64,12 +63,12 @@ class ImagesController extends AppController
 
         $images = $this->Image->lastByTag($tagId);
 
-        $res = [
-            'js' => ['progressive-image.js'],
-            'css' => ['gallery.css', 'progressive-image.css']
-        ];
-
-        $this->render('images.tag', compact('images', 'tag', 'res'));
+        $this->render(
+            'images.tag',
+            compact('images', 'tag'),
+            null,
+            ['js' => ['progressive-image.js'], 'css' => ['gallery.css', 'progressive-image.css']]
+        );
     }
 
     /**
@@ -84,11 +83,11 @@ class ImagesController extends AppController
             $this->notFound();
         }
 
-        $res = [
-            'js' => ['progressive-image.js'],
-            'css' => ['gallery.css', 'progressive-image.css']
-        ];
-
-        $this->render('images.show', compact('userInfo', 'singleImage', 'res', 'userInfo'));
+        $this->render(
+            'images.show',
+            compact('singleImage', 'userInfo'),
+            null,
+            ['js' => ['progressive-image.js'], 'css' => ['gallery.css', 'progressive-image.css']]
+        );
     }
 }

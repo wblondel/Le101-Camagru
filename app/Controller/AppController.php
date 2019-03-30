@@ -21,7 +21,7 @@ class AppController extends Controller
      */
     public function __construct()
     {
-        $this->viewPath = ROOT . '/app/Views/';
+        $this->viewPath = ROOT . DS.'app'.DS.'Views'.DS;
         $auth = new DBAuth(App::getInstance()->getDb(), App::getInstance()->getSession());
         $auth->connectFromCookie();
         $this->logged = $auth->isLogged();

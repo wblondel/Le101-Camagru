@@ -33,11 +33,11 @@ class UsersController extends AppController
 
         $images = $this->Image->lastByUserId(intval($user->id));
 
-        $res = [
-            'js' => ['progressive-image.js'],
-            'css' => ['gallery.css', 'progressive-image.css']
-        ];
-
-        $this->render('users.show', compact('user', 'res', 'images'));
+        $this->render(
+            'users.show',
+            compact('user', 'images'),
+            null,
+            ['js' => ['progressive-image.js'], 'css' => ['gallery.css', 'progressive-image.css']]
+        );
     }
 }
