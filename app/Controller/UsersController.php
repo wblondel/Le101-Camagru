@@ -17,6 +17,7 @@ class UsersController extends AppController
     {
         parent::__construct();
         $this->loadModel('User');
+        $this->loadModel('Image');
     }
 
     /**
@@ -32,11 +33,13 @@ class UsersController extends AppController
             $this->notFound();
         }
 
+        $images = $this->Image->lastByUserId(intval($user->id));
+
         $res = [
             'js' => ['progressive-image.js'],
             'css' => ['gallery.css', 'progressive-image.css']
         ];
 
-        $this->render('users.show', compact('user', 'logged', 'res'));
+        $this->render('users.show', compact('user', 'logged', 'res', 'images'));
     }
 }

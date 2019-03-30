@@ -75,4 +75,13 @@ class ImageTable extends Table
             WHERE 1 = 0
         ");
     }
+
+    public function lastByUserId(int $userId)
+    {
+        return $this->query("
+            SELECT {$this->table}.* FROM {$this->table}
+            JOIN users ON {$this->table}.users_id=users.id
+            WHERE users_id = ?",
+            [$userId]);
+    }
 }
