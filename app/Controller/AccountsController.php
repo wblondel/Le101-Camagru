@@ -86,13 +86,12 @@ class AccountsController extends AppController
 
             $form = new BootstrapForm($_POST);
 
-            $res = [
-                'js' => ['login-register.js'],
-                'css' => ['login-register.css']
-            ];
-
-            $pageTitle = _("Create an account");
-            $this->render('accounts.register', compact('pageTitle', 'form', 'errors', 'res'));
+            $this->render(
+                'accounts.register',
+                compact('form', 'errors'),
+                _("Create an account"),
+                ['js' => ['login-register.js'], 'css' => ['login-register.css']]
+            );
         } else {
             $session->setFlash('success', _("You're already logged in."));
             $this->redirect();
