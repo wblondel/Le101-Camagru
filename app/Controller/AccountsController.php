@@ -132,13 +132,12 @@ class AccountsController extends AppController
 
             $form = new BootstrapForm($_POST);
 
-            $res = [
-                'js' => ['login-register.js'],
-                'css' => ['login-register.css']
-            ];
-
-            $pageTitle = _("Log in");
-            $this->render('accounts.login', compact('pageTitle', 'form', 'res'));
+            $this->render(
+                'accounts.login',
+                compact('form'),
+                _("Log in"),
+                ['js' => ['login-register.js'], 'css' => ['login-register.css']]
+            );
         } else {
             $session->setFlash('success', _("You're already logged in."));
             $this->redirect();
@@ -237,13 +236,12 @@ class AccountsController extends AppController
 
             $form = new BootstrapForm($_POST);
 
-            $res = [
-                'js' => ['login-register.js'],
-                'css' => ['login-register.css']
-            ];
-
-            $pageTitle = _("Reset your password");
-            $this->render('accounts.forgot', compact('pageTitle', 'form', 'errors', 'res'));
+            $this->render(
+                'accounts.forgot',
+                compact('form', 'errors'),
+                _("Reset your password"),
+                ['js' => ['login-register.js'], 'css' => ['login-register.css']]
+            );
         } else {
             $this->redirect();
         }
@@ -295,13 +293,12 @@ class AccountsController extends AppController
 
                 $form = new BootstrapForm($_POST);
 
-                $res = [
-                    'js' => ['login-register.js'],
-                    'css' => ['login-register.css']
-                ];
-
-                $pageTitle = _("Set your new password");
-                $this->render('accounts.reset', compact('pageTitle', 'form', 'errors', 'res'));
+                $this->render(
+                    'accounts.reset',
+                    compact('form', 'errors'),
+                    _("Set your new password"),
+                    ['js' => ['login-register.js'], 'css' => ['login-register.css']]
+                );
             } else {
                 $session->setFlash('danger', _("Invalid token."));
                 $this->redirect();
