@@ -96,7 +96,7 @@ class App
 
         # Users
         $router->get('/u/:username', 'Users#show')
-            ->with('username', '[a-zA-Z0-9]+');
+            ->with('username', '[a-zA-Z0-9_]+');
 
         # Accounts
         $router->get('/accounts/register', "Accounts#register");
