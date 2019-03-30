@@ -97,6 +97,6 @@ class ImagesController extends AppController
             'css' => ['gallery.css', 'progressive-image.css']
         ];
 
-        $this->render('images.show', compact('userInfo', 'singleImage', 'logged', 'res'));
+        $this->render('images.show', compact('userInfo', 'singleImage', 'logged', 'res', 'userInfo'));
     }
 }
