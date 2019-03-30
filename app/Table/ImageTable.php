@@ -81,7 +81,8 @@ class ImageTable extends Table
         return $this->query("
             SELECT {$this->table}.* FROM {$this->table}
             JOIN users ON {$this->table}.users_id=users.id
-            WHERE users_id = ?",
+            WHERE users_id = ?
+            ORDER BY {$this->table}.created_at DESC",
             [$userId]);
     }
 }
