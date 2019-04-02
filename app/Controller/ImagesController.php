@@ -111,14 +111,22 @@ class ImagesController extends AppController
         $auth = new DBAuth($db, $session);
         $auth->restrict();
 
-        if (!empty($_POST)) {
+        if (!empty($_POST) && $this->isAjax()) {
             $result = $this->Like->create([
                 'users_id' => $session->read('auth'),
                 'images_id' => $imageId,
             ]);
-        }
 
-        // TODO: Return correct AJAX response
+            // TODO: Return correct AJAX response
+            header('Content-Type: application/json');
+            echo json_encode(['return' => $result]);
+
+            //         echo json_encode($errors);
+            //        header('Content-Type: application/json');
+            //        http_response_code(400);
+        } else {
+            $this->forbidden();
+        }
     }
 
     // TODO: Move this function somewhere more appropriate
