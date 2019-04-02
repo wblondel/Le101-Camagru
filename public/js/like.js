@@ -1,31 +1,3 @@
-var getHttpRequest = function () {
-    var httpRequest = false;
-
-    if (window.XMLHttpRequest) { // Mozilla, Safari,...
-        httpRequest = new XMLHttpRequest();
-        if (httpRequest.overrideMimeType) {
-            httpRequest.overrideMimeType('text/xml');
-        }
-    } else if (window.ActiveXObject) { // IE
-        try {
-            httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
-        } catch (e) {
-            try {
-                httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-            } catch (e) {
-                // test
-            }
-        }
-    }
-
-    if (!httpRequest) {
-        alert('Abandon :( Impossible de créer une instance XMLHTTP');
-        return false;
-    }
-
-    return httpRequest
-};
-
 window.onload = function () {
     var forms = document.querySelectorAll(".image-like");
 
@@ -39,7 +11,7 @@ window.onload = function () {
             var data = new FormData(form);
             // remove this and replace with csrf
             data.append("test", "test");
-            var xhr = getHttpRequest();
+            var xhr = XMLHttpRequest();
 
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4) {
