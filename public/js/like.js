@@ -27,7 +27,7 @@ var getHttpRequest = function () {
 };
 
 window.onload = function () {
-    var forms = document.querySelectorAll("#image-like");
+    var forms = document.querySelectorAll(".image-like");
 
     Array.prototype.forEach.call(forms, function (form, i) {
         var button = form.querySelector("button[type=submit]");
