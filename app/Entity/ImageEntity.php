@@ -17,7 +17,7 @@ class ImageEntity extends Entity
      */
     public function getFilePath()
     {
-        return '/uploads/pictures/' . $this->filename;
+        return DS.'uploads'.DS.'pictures'.DS . $this->filename;
     }
 
     /**
