@@ -111,14 +111,21 @@ class ImagesController extends AppController
         $auth = new DBAuth($db, $session);
         $auth->restrict();
 
-        if (!empty($_POST) && $this->isAjax()) {
-            header('Content-Type: application/json');
-            try {
-                $result = $this->Like->create([
-                    'users_id' => $session->read('auth'),
-                    'images_id' => $imageId,
-                ]);
-            } catch (\PDOException $e) {
+
+        if ($this->isAjax()) {
+            if (!empty($_POST)) {
+                header('Content-Type: application/json');
+
+                try {
+                    $result = $this->Like->create([
+                        'users_id' => $session->read('auth'),
+                        'images_id' => $imageId,
+                    ]);
+                } catch (\PDOException $e) {
+                    http_response_code(400);
+                    $result = false;
+                }
+            } else {
                 http_response_code(400);
                 $result = false;
             }
