@@ -12,6 +12,7 @@
                 .then(function (token) {
                     var recaptchaResponse = document.getElementById('recaptchaResponse');
                     recaptchaResponse.value = token;
+                    document.getElementById('submit').removeAttribute('disabled');
                 });
         });
     </script>

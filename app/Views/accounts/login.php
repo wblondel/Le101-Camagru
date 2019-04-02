@@ -23,7 +23,7 @@
     </div>
 
     <div class="form-group no-margin">
-        <button type="submit" class="btn btn-primary btn-block" tabindex="4">
+        <button type="submit" id="submit" class="btn btn-primary btn-block" tabindex="4" disabled>
             <?= _("Login") ?>
         </button>
     </div>

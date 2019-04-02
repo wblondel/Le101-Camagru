@@ -15,7 +15,7 @@
     </div>
 
     <div class="form-group m-0">
-        <button type="submit" class="btn btn-primary btn-block">
+        <button type="submit" id="submit" class="btn btn-primary btn-block" disabled>
             <?= _("Reset Password") ?>
         </button>
     </div>
