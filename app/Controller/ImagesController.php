@@ -20,8 +20,12 @@ class ImagesController extends AppController
         $this->loadModel('Image');
         $this->loadModel('Tag');
         $this->loadModel('User');
+        $this->loadModel('Like');
     }
 
+    /**
+     *  Main page: public gallery
+     */
     public function index()
     {
         //$images = $this->Image->lastWithTags();
@@ -35,6 +39,30 @@ class ImagesController extends AppController
         );
     }
 
+    /**
+     * Single image page
+     * @param int $imageId
+     */
+    public function show(int $imageId)
+    {
+        $singleImage = $this->Image->find($imageId);
+        $userInfo = $this->User->find(intval($singleImage->users_id));
+
+        if ($singleImage === false) {
+            $this->notFound();
+        }
+
+        $this->render(
+            'images.show',
+            compact('singleImage', 'userInfo'),
+            null,
+            ['js' => ['progressive-image.js'], 'css' => ['gallery.css', 'progressive-image.css']]
+        );
+    }
+
+    /**
+     * Take a picture page
+     */
     public function new()
     {
         $session = App::getInstance()->getSession();
@@ -53,6 +81,7 @@ class ImagesController extends AppController
     }
 
     /**
+     * Explore a tag
      * @param int $tagId
      */
     public function tag(int $tagId)
@@ -72,22 +101,30 @@ class ImagesController extends AppController
     }
 
     /**
+     * Like an image
      * @param int $imageId
      */
-    public function show(int $imageId)
+    public function like(int $imageId)
     {
-        $singleImage = $this->Image->find($imageId);
-        $userInfo = $this->User->find(intval($singleImage->users_id));
+        $session = App::getInstance()->getSession();
+        $db = App::getInstance()->getDb();
+        $auth = new DBAuth($db, $session);
+        $auth->restrict();
 
-        if ($singleImage === false) {
-            $this->notFound();
+        if (!empty($_POST)) {
+            $result = $this->Like->create([
+                'users_id' => $session->read('auth'),
+                'images_id' => $imageId,
+            ]);
         }
 
-        $this->render(
-            'images.show',
-            compact('singleImage', 'userInfo'),
-            null,
-            ['js' => ['progressive-image.js'], 'css' => ['gallery.css', 'progressive-image.css']]
-        );
+        // TODO: Return correct AJAX response
+    }
+
+    // TODO: Move this function somewhere more appropriate
+    private function isAjax()
+    {
+        return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
+            strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
     }
 }

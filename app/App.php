@@ -90,6 +90,14 @@ class App
             ->with('id', '[0-9]+');
         $router->get('/i/new', "Images#new");
 
+        # Comments
+        $router->post('/c/add', "Comments#add");
+        $router->post('/c/remove', "Comments#remove");
+
+        # Likes
+        $router->post('/react/:imageId', "Images#like")
+            ->with('imageId', '[0-9]+');
+
         # Tags
         $router->get('/t/:tagId', "Images#tag")
             ->with('tagId', '[0-9]+');
