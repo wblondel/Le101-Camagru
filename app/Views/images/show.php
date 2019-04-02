@@ -20,11 +20,11 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <a href="<?= $singleImage->getURL() ?>">
-                                        <button type="button"
-                                                class="btn btn-sm btn-outline-secondary"><?= _("View") ?></button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary"><?= _("View") ?></button>
                                     </a>
-                                    <button type="button"
-                                            class="btn btn-sm btn-outline-secondary"><?= _("Like") ?></button>
+                                    <form action="/react/<?= $singleImage->id ?>" method="POST" class="image-like">
+                                        <button type="submit" class="btn btn-sm btn-outline-secondary"><?= _("Like") ?></button>
+                                    </form>
                                 </div>
                                 <small class="text-muted my-tooltip"><?= $singleImage->getElapsedTime() ?>
                                     <span class="my-tooltiptext"><?= $singleImage->getCreationDate() ?></span>
