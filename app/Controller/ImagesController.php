@@ -112,18 +112,17 @@ class ImagesController extends AppController
         $auth->restrict();
 
         if (!empty($_POST) && $this->isAjax()) {
+            header('Content-Type: application/json');
             try {
                 $result = $this->Like->create([
                     'users_id' => $session->read('auth'),
                     'images_id' => $imageId,
                 ]);
             } catch (\PDOException $e) {
-                header('Content-Type: application/json');
                 http_response_code(400);
+                $result = false;
             }
-
-            // TODO: Return correct AJAX response
-            echo json_encode(['return' => $result]);
+            echo json_encode(['result' => $result]);
         } else {
             $this->forbidden();
         }
