@@ -11,7 +11,7 @@ window.onload = function () {
             var data = new FormData(form);
             // remove this and replace with csrf
             data.append("test", "test");
-            var xhr = XMLHttpRequest();
+            var xhr = new XMLHttpRequest();
 
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4) {
