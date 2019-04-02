@@ -111,7 +111,6 @@ class ImagesController extends AppController
         $auth = new DBAuth($db, $session);
         $auth->restrict();
 
-
         if ($this->isAjax()) {
             if (!empty($_POST)) {
                 header('Content-Type: application/json');

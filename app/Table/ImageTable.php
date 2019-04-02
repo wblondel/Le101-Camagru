@@ -21,9 +21,11 @@ class ImageTable extends Table
     public function last()
     {
         return $this->query("
-            SELECT {$this->table}.*, users.username
+            SELECT {$this->table}.*, users.username, COUNT(likes.images_id) as likes
             FROM {$this->table}
             JOIN users ON {$this->table}.users_id=users.id
+            LEFT JOIN likes ON {$this->table}.id=likes.images_id
+            GROUP BY images.id
             ORDER BY {$this->table}.created_at DESC
         ");
     }
