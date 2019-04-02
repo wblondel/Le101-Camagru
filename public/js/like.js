@@ -38,7 +38,7 @@ window.onload = function () {
 
             var data = new FormData(form);
             // remove this and replace with csrf
-            formData.append("test", "test");
+            data.append("test", "test");
             var xhr = getHttpRequest();
 
             xhr.onreadystatechange = function () {
