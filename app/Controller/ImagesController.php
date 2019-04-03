@@ -131,7 +131,7 @@ class ImagesController extends AppController
                             'images_id' => $imageId,
                         ]);
                     } elseif ($_POST['reactType'] == 0) {
-                        $result = $this->Like->unlike($session->read('auth'), $imageId);
+                        $result = $this->Like->unlike(intval($session->read('auth')), $imageId);
                     }
 
                     $singleImage = $this->Image->findWithDetails($imageId, intval($userId));
