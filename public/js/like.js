@@ -21,6 +21,11 @@ window.onload = function () {
                         var results = JSON.parse(xhr.responseText);
                         console.log(results);
                         button.textContent = buttonText.replace(/\((.+?)\)/g, "("+results["likes"]+")");
+                        if (button.classList.contains('active')) {
+                            button.classList.remove('active');
+                        } else {
+                            button.classList.add('active');
+                        }
                     }
                 }
             };
