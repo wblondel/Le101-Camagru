@@ -24,10 +24,10 @@ window.onload = function () {
 
                         if (results["liked_by_user"] === 0) {
                             button.classList.remove('active');
-                            form.getElementById('reactType').value = 1;
+                            document.getElementById('reactType').value = 1;
                         } else if (results["liked_by_user"] === 1) {
                             button.classList.add('active');
-                            form.getElementById('reactType').value = 0;
+                            document.getElementById('reactType').value = 0;
                         }
                     }
                 }
