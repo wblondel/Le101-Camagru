@@ -50,7 +50,7 @@ class ImagesController extends AppController
         if (!$userId) {
             $userId = -1;
         }
-        $singleImage = $this->Image->findWithDetails($imageId, $userId);
+        $singleImage = $this->Image->findWithDetails($imageId, intval($userId));
 
         if ($singleImage === false) {
             $this->notFound();
