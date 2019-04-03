@@ -111,9 +111,8 @@ class ImagesController extends AppController
         $auth->restrict();
 
         if ($this->isAjax()) {
+            header('Content-Type: application/json');
             if (!empty($_POST)) {
-                header('Content-Type: application/json');
-
                 try {
                     $result = $this->Like->create([
                         'users_id' => $session->read('auth'),
