@@ -146,16 +146,16 @@ VALUES
 (3,3,1,"Commentaire de test"),
 (4,4,1,"Commentaire de test"),
 (5,5,1,"Commentaire de test"),
-(1,1,1,"Commentaire de test"),
-(2,2,1,"Commentaire de test"),
-(3,3,1,"Commentaire de test"),
-(4,4,1,"Commentaire de test"),
-(5,5,1,"Commentaire de test"),
-(6,1,2,"Commentaire de test"),
-(7,2,2,"Commentaire de test"),
-(8,2,2,"Commentaire de test"),
-(9,3,2,"Commentaire de test"),
-(10,4,2,"Commentaire de test");
+(6,1,1,"Commentaire de test"),
+(7,2,1,"Commentaire de test"),
+(8,3,1,"Commentaire de test"),
+(9,4,1,"Commentaire de test"),
+(10,5,1,"Commentaire de test"),
+(11,1,2,"Commentaire de test"),
+(12,2,2,"Commentaire de test"),
+(13,2,2,"Commentaire de test"),
+(14,3,2,"Commentaire de test"),
+(15,4,2,"Commentaire de test");
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
