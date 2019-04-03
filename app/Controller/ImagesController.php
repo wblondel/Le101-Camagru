@@ -131,27 +131,27 @@ class ImagesController extends AppController
                             'users_id' => $session->read('auth'),
                             'images_id' => $imageId,
                         ]);
+
+                        $singleImage = $this->Image->findWithDetails($imageId, intval($userId));
+                        $user = $this->User->find(intval($userId));
+                        $userImage = $this->User->find(intval($singleImage->users_id));
+
+                        $mailer = Email::make()
+                            ->setTo($userImage->email, $userImage->username)
+                            ->setFrom('contact@camagru.fr', 'Camagru.fr')
+                            ->setSubject($user->username . " " . _("liked your image"))
+                            ->setMessage('<p>' .
+                                _("Hello") . ' ' . $userImage->username . '</p><br>' .
+                                $user->username . ' ' . 'liked your image:' . ' ' .
+                                '<a href="https://camagru.fr' . $singleImage->getUrl() . '">https://camagru.fr' . $singleImage->getUrl() . '</a>')
+                            ->setReplyTo('contact@camagru.fr')
+                            ->setHtml()
+                            ->send();
                     } elseif ($_POST['reactType'] == 0) {
                         $result = $this->Like->unlike(intval($session->read('auth')), $imageId);
+                        $singleImage = $this->Image->findWithDetails($imageId, intval($userId));
                     }
 
-                    $singleImage = $this->Image->findWithDetails($imageId, intval($userId));
-
-                    $user = $this->User->find(intval($userId));
-                    $userImage = $this->User->find(intval($singleImage->users_id));
-
-                    $mailer = Email::make()
-                        ->setTo($userImage->email, $userImage->username)
-                        ->setFrom('contact@camagru.fr', 'Camagru.fr')
-                        ->setSubject($user->username . " " . _("liked your image"))
-                        ->setMessage('<p>' .
-                            _("Hello") . ' ' . $userImage->username . '</p><br>' .
-                            $user->username . ' ' . 'liked your image:' . ' ' .
-                            '<a href="' . $singleImage->getUrl() . '">' . $singleImage->getUrl() . '</a>')
-                        ->setReplyTo('contact@camagru.fr')
-                        ->setHtml()
-                        ->send();
-                    
                     echo json_encode([
                         'result' => $result,
                         'likes' => $singleImage->likes,
