@@ -8,7 +8,7 @@
 
     <script>
         grecaptcha.ready(function () {
-            grecaptcha.execute('6LfuiosUAAAAABVTWn8C4YVGPOMvflgbvyftzCI3', {action: 'action_name'})
+            grecaptcha.execute('6Lfp6ZsUAAAAABXVFIvCFaK19RIHpILl3OzIvJdM', {action: 'action_name'})
                 .then(function (token) {
                     var recaptchaResponse = document.getElementById('recaptchaResponse');
                     recaptchaResponse.value = token;
