@@ -20,7 +20,7 @@ window.onload = function () {
                     } else {
                         var results = JSON.parse(xhr.responseText);
                         console.log(results);
-                        button.textContent = results["likes"];
+                        button.textContent = buttonText.replace(/\((.+?)\)/g, "("+results["likes"]+")");
                     }
                 }
             };
