@@ -55,13 +55,11 @@
                                 </li>
                                 <?php endforeach; ?>
                             </ul>
-                            <form class="form-inline" role="form">
-                                <div class="form-group">
-                                    <input class="form-control" type="text" placeholder="Your comments" />
-                                </div>
-                                <div class="form-group">
-                                    <button class="btn btn-default">Add</button>
-                                </div>
+                            <form class="form-inline">
+                                <label class="sr-only" for="commentContent">Your comment</label>
+                                <input type="text" class="form-control mb-2 mr-sm-2" id="commentContent" placeholder="Your comment">
+
+                                <button type="submit" class="btn btn-primary mb-2">Add</button>
                             </form>
                         </div>
                     </div>
