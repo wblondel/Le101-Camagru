@@ -9,7 +9,7 @@
                 <?php endforeach; ?>
             <?php endif; ?>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="card mb-4 box-shadow">
                         <img class="card-img-top lazy-load" height="0" data-src="<?= $singleImage->getFilePath() ?>"
                              src="" alt="<?= $singleImage->getAlt() ?>">
@@ -31,6 +31,52 @@
                                     <span class="my-tooltiptext"><?= $singleImage->getCreationDate() ?></span>
                                 </small>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="detailBox">
+                        <div class="titleBox">
+                            <label>Comment Box</label>
+                        </div>
+                        <div class="commentBox">
+                            <p class="commentBoxDescription">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        </div>
+                        <div class="actionBox">
+                            <ul class="commentList">
+                                <li>
+                                    <div class="commenterImage">
+                                        <img src="http://placekitten.com/50/50">
+                                    </div>
+                                    <div class="commentText">
+                                        <p>Test comment</p><span class="date sub-text">on March 5th, 2014</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="commenterImage">
+                                        <img src="http://placekitten.com/50/50">
+                                    </div>
+                                    <div class="commentText">
+                                        <p>Test comment</p><span class="date sub-text">on March 5th, 2014</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="commenterImage">
+                                        <img src="http://placekitten.com/50/50">
+                                    </div>
+                                    <div class="commentText">
+                                        <p>Test comment</p><span class="date sub-text">on March 5th, 2014</span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <form class="form-inline" role="form">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" placeholder="Your comments" />
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-default">Add</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

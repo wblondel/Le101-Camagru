@@ -65,7 +65,7 @@ class ImagesController extends AppController
             'images.show',
             compact('singleImage'),
             null,
-            ['js' => ['progressive-image.js', 'like.js'], 'css' => ['gallery.css', 'progressive-image.css']]
+            ['js' => ['progressive-image.js', 'like.js'], 'css' => ['gallery.css', 'progressive-image.css', 'comments.css']]
         );
     }
 
