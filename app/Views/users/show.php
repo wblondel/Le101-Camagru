@@ -21,11 +21,12 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <a href="<?= $image->getURL() ?>">
-                                            <button type="button"
-                                                    class="btn btn-sm btn-outline-secondary"><?= _("View") ?></button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary"><?= _("View") ?></button>
                                         </a>
-                                        <button type="button"
-                                                class="btn btn-sm btn-outline-secondary"><?= _("Like") ?></button>
+                                        <form action="/react/<?= $image->id ?>" method="POST" class="image-like">
+                                            <input type="hidden" class="reactType" name="reactType" value="<?= ($image->liked_by_user ? '0': '1') ;?>">
+                                            <button type="submit" class="btn btn-sm btn-outline-secondary <?= ($image->liked_by_user ? 'active' : '') ;?>"><?= _("Like") ?><?= " (" . $image->likes . ")"?></button>
+                                        </form>
                                     </div>
                                     <small class="text-muted my-tooltip"><?= $image->getElapsedTime() ?>
                                         <span class="my-tooltiptext"><?= $image->getCreationDate() ?></span>
