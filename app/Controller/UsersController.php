@@ -37,7 +37,7 @@ class UsersController extends AppController
             $connectedUserId = -1;
         }
 
-        $images = $this->Image->lastByUserId($connectedUserId, intval($user->id));
+        $images = $this->Image->lastByUserId(intval($connectedUserId), intval($user->id));
 
         $this->render(
             'users.show',
