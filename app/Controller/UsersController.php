@@ -31,7 +31,13 @@ class UsersController extends AppController
             $this->notFound();
         }
 
-        $images = $this->Image->lastByUserId(intval($user->id));
+        $session = App::getInstance()->getSession();
+        $connectedUserId = $session->read('auth');
+        if (!$connectedUserId) {
+            $connectedUserId = -1;
+        }
+
+        $images = $this->Image->lastByUserId($connectedUserId, intval($user->id));
 
         $this->render(
             'users.show',

@@ -21,7 +21,7 @@ class ImageTable extends Table
     public function last(int $userId)
     {
         return $this->query(
-            "SELECT {$this->table}.*, users.username,COUNT(likes.images_id) as likes, COUNT(IF(likes.users_id=?,1,NULL)) 'liked_by_user'
+            "SELECT {$this->table}.*, users.username, COUNT(likes.images_id) as likes, COUNT(IF(likes.users_id=?,1,NULL)) 'liked_by_user'
             FROM {$this->table}
             JOIN users ON {$this->table}.users_id=users.id
             LEFT JOIN likes ON {$this->table}.id=likes.images_id
@@ -84,15 +84,16 @@ class ImageTable extends Table
         ");
     }
 
-    public function lastByUserId(int $userId)
+    public function lastByUserId(int $connectedUserId, int $userId)
     {
         return $this->query(
-            "SELECT {$this->table}.*
+            "SELECT {$this->table}.*, COUNT(likes.images_id) as likes, COUNT(IF(likes.users_id=?,1,NULL)) 'liked_by_user'
             FROM {$this->table}
             JOIN users ON {$this->table}.users_id=users.id
+            LEFT JOIN likes ON {$this->table}.id=likes.images_id
             WHERE users_id = ?
             ORDER BY {$this->table}.created_at DESC",
-            [$userId]
+            [$connectedUserId, $userId]
         );
     }
 }
