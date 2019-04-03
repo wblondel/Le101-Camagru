@@ -62,7 +62,7 @@ class ImagesController extends AppController
             $this->notFound();
         }
 
-        $comments = $this->Comment->findForImage($singleImage->id);
+        $comments = $this->Comment->findForImage(intval($singleImage->id));
 
         $this->render(
             'images.show',
