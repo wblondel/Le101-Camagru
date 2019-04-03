@@ -137,7 +137,7 @@ class ImagesController extends AppController
 
                     $singleImage = $this->Image->findWithDetails($imageId, intval($userId));
 
-                    $user = $this->User->find($userId);
+                    $user = $this->User->find(intval($userId));
                     $userImage = $this->User->find($singleImage->users_id);
 
                     $mailer = Email::make()
