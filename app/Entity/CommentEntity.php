@@ -11,4 +11,16 @@ use Core\Entity\Entity;
  */
 class CommentEntity extends Entity
 {
+    /**
+     * @return string
+     */
+    public function getCreationDate()
+    {
+        $date = date('d/m/Y', strtotime($this->created_at));
+        if ($date === false) {
+            return "";
+        } else {
+            return $date;
+        }
+    }
 }

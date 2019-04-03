@@ -44,30 +44,16 @@
                         </div>
                         <div class="actionBox">
                             <ul class="commentList">
+                                <?php foreach ($comments as $comment) : ?>
                                 <li>
                                     <div class="commenterImage">
                                         <img src="https://placekitten.com/50/50">
                                     </div>
                                     <div class="commentText">
-                                        <p>Test comment</p><span class="date sub-text">on March 5th, 2014</span>
+                                        <p><? $comment->comment;?></p><span class="date sub-text"><?= $comment->getCreationDate() ?></span>
                                     </div>
                                 </li>
-                                <li>
-                                    <div class="commenterImage">
-                                        <img src="https://placekitten.com/50/50">
-                                    </div>
-                                    <div class="commentText">
-                                        <p>Test comment</p><span class="date sub-text">on March 5th, 2014</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="commenterImage">
-                                        <img src="https://placekitten.com/50/50">
-                                    </div>
-                                    <div class="commentText">
-                                        <p>Test comment</p><span class="date sub-text">on March 5th, 2014</span>
-                                    </div>
-                                </li>
+                                <?php endforeach; ?>
                             </ul>
                             <form class="form-inline" role="form">
                                 <div class="form-group">

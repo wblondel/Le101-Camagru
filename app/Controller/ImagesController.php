@@ -64,9 +64,10 @@ class ImagesController extends AppController
 
         $comments = $this->Comment->findForImage(intval($singleImage->id));
 
+
         $this->render(
             'images.show',
-            compact('singleImage'),
+            compact('singleImage', 'comments'),
             null,
             ['js' => ['progressive-image.js', 'like.js'], 'css' => ['gallery.css', 'progressive-image.css', 'comments.css']]
         );
