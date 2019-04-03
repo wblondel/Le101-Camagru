@@ -43,7 +43,7 @@ class UsersController extends AppController
             'users.show',
             compact('user', 'images'),
             null,
-            ['js' => ['progressive-image.js'], 'css' => ['gallery.css', 'progressive-image.css']]
+            ['js' => ['progressive-image.js', 'like.js'], 'css' => ['gallery.css', 'progressive-image.css']]
         );
     }
 }
