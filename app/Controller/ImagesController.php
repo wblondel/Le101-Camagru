@@ -119,18 +119,18 @@ class ImagesController extends AppController
                         'users_id' => $session->read('auth'),
                         'images_id' => $imageId,
                     ]);
+                    echo json_encode([
+                        'result' => $result,
+                        'likes' => $this->Like->getLikes($imageId)->likes
+                    ]);
                 } catch (\PDOException $e) {
                     http_response_code(400);
-                    $result = false;
+                    echo json_encode(['result' => false]);
                 }
             } else {
                 http_response_code(400);
-                $result = false;
+                echo json_encode(['result' => false]);
             }
-            echo json_encode([
-                'result' => $result,
-                'likes' => $this->Like->getLikes($imageId)->likes
-            ]);
         } else {
             $this->forbidden();
         }
