@@ -4,7 +4,7 @@
     <?php require 'shared/headers.php'; ?>
     <?php require 'shared/css.php'; ?>
 
-    <script src='https://www.google.com/recaptcha/api.js?render=6LfuiosUAAAAABVTWn8C4YVGPOMvflgbvyftzCI3'></script>
+    <script src='https://www.google.com/recaptcha/api.js?render=6Lfp6ZsUAAAAABXVFIvCFaK19RIHpILl3OzIvJdM'></script>
 
     <script>
         grecaptcha.ready(function () {
