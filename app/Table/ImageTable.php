@@ -91,8 +91,8 @@ class ImageTable extends Table
             FROM {$this->table}
             JOIN users ON {$this->table}.users_id=users.id
             LEFT JOIN likes ON {$this->table}.id=likes.images_id
-            GROUP BY {$this->table}.id
             WHERE {$this->table}.users_id = ?
+            GROUP BY {$this->table}.id
             ORDER BY {$this->table}.created_at DESC",
             [$connectedUserId, $userId]
         );
