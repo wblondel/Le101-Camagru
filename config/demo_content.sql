@@ -139,7 +139,7 @@ VALUES
 -- Table `comments`
 -- -----------------------------------------------------
 
-INSERT INTO `comments` (`id`,`users_id`,`images_id`)
+INSERT INTO `comments` (`id`,`users_id`,`images_id`,`comment`)
 VALUES
 (1,1,1,"Commentaire de test"),
 (2,2,1,"Commentaire de test"),
