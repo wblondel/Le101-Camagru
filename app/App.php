@@ -91,8 +91,10 @@ class App
         $router->get('/i/new', "Images#new");
 
         # Comments
-        $router->post('/c/add', "Comments#add");
-        $router->post('/c/remove', "Comments#remove");
+        $router->post('/c/add/:imageId', "Comments#add")
+            ->with('imageId', '[0-9]+');
+        $router->post('/c/remove/:commentId', "Comments#remove")
+            ->with('commentId', '[0-9]+');
 
         # Likes
         $router->post('/react/:imageId', "Images#like")

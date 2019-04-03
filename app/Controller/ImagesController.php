@@ -7,7 +7,7 @@ use Core\Auth\DBAuth;
 use Core\Email\Email;
 
 /**
- * Class DebugController
+ * Class ImagesController
  *
  * @package App\Controller
  */
@@ -120,15 +120,15 @@ class ImagesController extends AppController
         $auth = new DBAuth($db, $session);
         $auth->restrict();
 
-        $userId = $session->read('auth');
-
         if ($this->isAjax()) {
             header('Content-Type: application/json');
             if (!empty($_POST)) {
                 try {
+                    $userId = $session->read('auth');
+
                     if ($_POST['reactType'] == 1) {
                         $result = $this->Like->create([
-                            'users_id' => $session->read('auth'),
+                            'users_id' => $userId,
                             'images_id' => $imageId,
                         ]);
 
@@ -148,7 +148,7 @@ class ImagesController extends AppController
                             ->setHtml()
                             ->send();
                     } elseif ($_POST['reactType'] == 0) {
-                        $result = $this->Like->unlike(intval($session->read('auth')), $imageId);
+                        $result = $this->Like->unlike(intval($userId), $imageId);
                         $singleImage = $this->Image->findWithDetails($imageId, intval($userId));
                     }
 

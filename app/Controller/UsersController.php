@@ -5,7 +5,7 @@ namespace App\Controller;
 use App;
 
 /**
- * Class AccountsController
+ * Class UsersController
  *
  * @package App\Controller
  */
