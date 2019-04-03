@@ -155,7 +155,7 @@ VALUES
 (12,2,2,"Commentaire de test","2011-01-27 13:06:15"),
 (13,2,2,"Commentaire de test","2012-01-27 13:06:15"),
 (14,3,2,"Commentaire de test","2013-01-27 13:06:15"),
-(15,4,2,"Commentaire de test"."2014-01-27 13:06:15");
+(15,4,2,"Commentaire de test","2014-01-27 13:06:15");
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
