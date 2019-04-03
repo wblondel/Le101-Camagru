@@ -45,8 +45,7 @@ class ImagesController extends AppController
      */
     public function show(int $imageId)
     {
-        $singleImage = $this->Image->find($imageId);
-        $userInfo = $this->User->find(intval($singleImage->users_id));
+        $singleImage = $this->Image->findWithDetails($imageId);
 
         if ($singleImage === false) {
             $this->notFound();
@@ -54,7 +53,7 @@ class ImagesController extends AppController
 
         $this->render(
             'images.show',
-            compact('singleImage', 'userInfo'),
+            compact('singleImage'),
             null,
             ['js' => ['progressive-image.js', 'like.js'], 'css' => ['gallery.css', 'progressive-image.css']]
         );

@@ -25,7 +25,7 @@ class ImageTable extends Table
             FROM {$this->table}
             JOIN users ON {$this->table}.users_id=users.id
             LEFT JOIN likes ON {$this->table}.id=likes.images_id
-            GROUP BY images.id
+            GROUP BY {$this->table}.id
             ORDER BY {$this->table}.created_at DESC
         ");
     }
@@ -46,20 +46,25 @@ class ImageTable extends Table
     }
 
     /**
-     * Récupère une image en liant les tags associés
+     * Récupère une image en liant les infos associées (likes, tags, user)
      *
-     * @param int $id
+     * @param int $imageId
      *
      * @return \App\Entity\ImageEntity
      */
-    public function findWithTags(int $id)
+    public function findWithDetails(int $imageId)
     {
-        // TODO: [SQL] Récupère une image en liant les tags associés
-        return $this->query("
-            SELECT *
-            FROM images
-            WHERE 1 = 0
-        ");
+        return $this->query(
+            "SELECT {$this->table}.*, users.username, COUNT(likes.images_id) as likes
+            FROM {$this->table}
+            JOIN users ON {$this->table}.users_id=users.id
+            LEFT JOIN likes ON {$this->table}.id=likes.images_id
+            GROUP BY {$this->table}.id
+            ORDER BY {$this->table}.created_at DESC
+            WHERE {$this->table}.id = ?",
+            [$imageId],
+            true
+        );
     }
 
     /**
@@ -81,12 +86,13 @@ class ImageTable extends Table
 
     public function lastByUserId(int $userId)
     {
-        return $this->query("
-            SELECT {$this->table}.*
+        return $this->query(
+            "SELECT {$this->table}.*
             FROM {$this->table}
             JOIN users ON {$this->table}.users_id=users.id
             WHERE users_id = ?
             ORDER BY {$this->table}.created_at DESC",
-            [$userId]);
+            [$userId]
+        );
     }
 }
