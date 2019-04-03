@@ -39,7 +39,7 @@ class LikeTable extends Table
      *
      * @return mixed
      */
-    public function delete(int $userId, int $imageId)
+    public function unlike(int $userId, int $imageId)
     {
         return $this->query(
             "DELETE FROM {$this->table} WHERE users_id = ? AND images_id = ?",
