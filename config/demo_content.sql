@@ -139,23 +139,23 @@ VALUES
 -- Table `comments`
 -- -----------------------------------------------------
 
-INSERT INTO `comments` (`id`,`users_id`,`images_id`,`comment`)
+INSERT INTO `comments` (`id`,`users_id`,`images_id`,`comment`,`created_at`)
 VALUES
-(1,1,1,"Commentaire de test"),
-(2,2,1,"Commentaire de test"),
-(3,3,1,"Commentaire de test"),
-(4,4,1,"Commentaire de test"),
-(5,5,1,"Commentaire de test"),
-(6,1,1,"Commentaire de test"),
-(7,2,1,"Commentaire de test"),
-(8,3,1,"Commentaire de test"),
-(9,4,1,"Commentaire de test"),
-(10,5,1,"Commentaire de test"),
-(11,1,2,"Commentaire de test"),
-(12,2,2,"Commentaire de test"),
-(13,2,2,"Commentaire de test"),
-(14,3,2,"Commentaire de test"),
-(15,4,2,"Commentaire de test");
+(1,1,1,"Commentaire de test","2010-01-27 13:06:15"),
+(2,2,1,"Commentaire de test","2011-01-27 13:06:15"),
+(3,3,1,"Commentaire de test","2012-01-27 13:06:15"),
+(4,4,1,"Commentaire de test","2013-01-27 13:06:15"),
+(5,5,1,"Commentaire de test","2014-01-27 13:06:15"),
+(6,1,1,"Commentaire de test","2015-01-27 13:06:15"),
+(7,2,1,"Commentaire de test","2016-01-27 13:06:15"),
+(8,3,1,"Commentaire de test","2017-01-27 13:06:15"),
+(9,4,1,"Commentaire de test","2018-01-27 13:06:15"),
+(10,5,1,"Commentaire de test","2019-01-27 13:06:15"),
+(11,1,2,"Commentaire de test","2010-01-27 13:06:15"),
+(12,2,2,"Commentaire de test","2011-01-27 13:06:15"),
+(13,2,2,"Commentaire de test","2012-01-27 13:06:15"),
+(14,3,2,"Commentaire de test","2013-01-27 13:06:15"),
+(15,4,2,"Commentaire de test"."2014-01-27 13:06:15");
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
