@@ -23,7 +23,7 @@
                                         <button type="button" class="btn btn-sm btn-outline-secondary"><?= _("View") ?></button>
                                     </a>
                                     <form action="/react/<?= $singleImage->id ?>" method="POST" class="image-like">
-                                        <button type="submit" class="btn btn-sm btn-outline-secondary <?php ($singleImage->liked_by_user ? 'active' : '') ;?>"><?= _("Like") ?><?= " (" . $singleImage->likes . ")"?></button>
+                                        <button type="submit" class="btn btn-sm btn-outline-secondary <?= ($singleImage->liked_by_user ? 'active' : '') ;?>"><?= _("Like") ?><?= " (" . $singleImage->likes . ")"?></button>
                                     </form>
                                 </div>
                                 <small class="text-muted my-tooltip"><?= $singleImage->getElapsedTime() ?>
