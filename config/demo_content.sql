@@ -135,6 +135,20 @@ VALUES
 (99,"Nulla facilisis. Suspendisse commodo tincidunt",5,"2010-05-24 12:36:27","2017-08-30 05:41:31","99.jpg"),
 (100,"amet ornare lectus justo",5,"2013-02-08 22:59:08","2012-08-13 19:32:58","100.jpg");
 
+-- -----------------------------------------------------
+-- Table `comments`
+-- -----------------------------------------------------
+INSERT INTO `comments` VALUES (1,1,1,"Commentaire de test");
+INSERT INTO `comments` VALUES (2,2,1,"Commentaire de test");
+INSERT INTO `comments` VALUES (3,3,1,"Commentaire de test");
+INSERT INTO `comments` VALUES (4,4,1,"Commentaire de test");
+INSERT INTO `comments` VALUES (5,5,1,"Commentaire de test");
+INSERT INTO `comments` VALUES (6,1,2,"Commentaire de test");
+INSERT INTO `comments` VALUES (7,2,2,"Commentaire de test");
+INSERT INTO `comments` VALUES (8,2,2,"Commentaire de test");
+INSERT INTO `comments` VALUES (9,3,2,"Commentaire de test");
+INSERT INTO `comments` VALUES (10,4,2,"Commentaire de test");
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
