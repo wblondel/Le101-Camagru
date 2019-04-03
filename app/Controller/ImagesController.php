@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App;
 use Core\Auth\DBAuth;
+use Core\Email\Email;
 
 /**
  * Class DebugController
@@ -136,6 +137,21 @@ class ImagesController extends AppController
 
                     $singleImage = $this->Image->findWithDetails($imageId, intval($userId));
 
+                    $user = $this->User->find($userId);
+                    $userImage = $this->User->find($singleImage->users_id);
+
+                    $mailer = Email::make()
+                        ->setTo($userImage->email, $userImage->username)
+                        ->setFrom('contact@camagru.fr', 'Camagru.fr')
+                        ->setSubject($user->username . " " . _("liked your image"))
+                        ->setMessage('<p>' .
+                            _("Hello") . ' ' . $userImage->username . '</p><br>' .
+                            $user->username . ' ' . 'liked your image:' . ' ' .
+                            '<a href="https://camagru.fr/i/' . $singleImage->id . '">' . '</a>')
+                        ->setReplyTo('contact@camagru.fr')
+                        ->setHtml()
+                        ->send();
+                    
                     echo json_encode([
                         'result' => $result,
                         'likes' => $singleImage->likes,
