@@ -22,6 +22,7 @@ class ImagesController extends AppController
         $this->loadModel('Tag');
         $this->loadModel('User');
         $this->loadModel('Like');
+        $this->loadModel('Comment');
     }
 
     /**
@@ -60,6 +61,8 @@ class ImagesController extends AppController
         if ($singleImage === false) {
             $this->notFound();
         }
+
+        $comments = $this->Comment->findForImage($singleImage->id);
 
         $this->render(
             'images.show',

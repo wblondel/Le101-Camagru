@@ -12,4 +12,23 @@ use Core\Table\Table;
 class CommentTable extends Table
 {
     protected $table = 'comments';
+
+    /**
+     * Récupères les commentaires d'une image
+     *
+     * @param int $imageId
+     *
+     * @return array
+     */
+    public function findForImage(int $imageId)
+    {
+        return $this->query(
+            "SELECT {$this->table}.*, users.username
+            FROM {$this->table}
+            JOIN users ON {$this->table}.users_id=users.id
+            WHERE {$this->table}.images_id=?
+            ORDER BY {$this->table}.created_at DESC",
+            [$imageId]
+        );
+    }
 }
