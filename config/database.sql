@@ -110,6 +110,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `users_id` INT(11) NOT NULL,
   `images_id` INT(11) NOT NULL,
+  `comment` LONGTEXT CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NOT NULL,
   `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`, `users_id`, `images_id`),
   INDEX `fk_comments_users1_idx` (`users_id` ASC),
