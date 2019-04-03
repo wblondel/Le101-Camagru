@@ -49,20 +49,19 @@ class ImageTable extends Table
      * Récupère une image en liant les infos associées (likes, tags, user)
      *
      * @param int $imageId
+     * @param int $userId
      *
      * @return \App\Entity\ImageEntity
      */
-    public function findWithDetails(int $imageId)
+    public function findWithDetails(int $imageId, int $userId)
     {
         return $this->query(
-            "SELECT {$this->table}.*, users.username, COUNT(likes.images_id) as likes
+            "SELECT {$this->table}.*, users.username, COUNT(likes.images_id) as likes, COUNT(IF(likes.users_id=?,1,NULL)) 'liked_by_user'
             FROM {$this->table}
             JOIN users ON {$this->table}.users_id=users.id
             LEFT JOIN likes ON {$this->table}.id=likes.images_id
-            WHERE {$this->table}.id = ?
-            GROUP BY {$this->table}.id
-            ORDER BY {$this->table}.created_at DESC",
-            [$imageId],
+            WHERE {$this->table}.id = ?",
+            [$userId, $imageId],
             true
         );
     }

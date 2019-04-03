@@ -45,7 +45,12 @@ class ImagesController extends AppController
      */
     public function show(int $imageId)
     {
-        $singleImage = $this->Image->findWithDetails($imageId);
+        $session = App::getInstance()->getSession();
+        $userId = $session->read('auth');
+        if (!$userId) {
+            $userId = -1;
+        }
+        $singleImage = $this->Image->findWithDetails($imageId, $userId);
 
         if ($singleImage === false) {
             $this->notFound();
