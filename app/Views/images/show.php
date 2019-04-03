@@ -46,7 +46,7 @@
                             <ul class="commentList">
                                 <li>
                                     <div class="commenterImage">
-                                        <img src="http://placekitten.com/50/50">
+                                        <img src="https://placekitten.com/50/50">
                                     </div>
                                     <div class="commentText">
                                         <p>Test comment</p><span class="date sub-text">on March 5th, 2014</span>
@@ -54,7 +54,7 @@
                                 </li>
                                 <li>
                                     <div class="commenterImage">
-                                        <img src="http://placekitten.com/50/50">
+                                        <img src="https://placekitten.com/50/50">
                                     </div>
                                     <div class="commentText">
                                         <p>Test comment</p><span class="date sub-text">on March 5th, 2014</span>
@@ -62,7 +62,7 @@
                                 </li>
                                 <li>
                                     <div class="commenterImage">
-                                        <img src="http://placekitten.com/50/50">
+                                        <img src="https://placekitten.com/50/50">
                                     </div>
                                     <div class="commentText">
                                         <p>Test comment</p><span class="date sub-text">on March 5th, 2014</span>
