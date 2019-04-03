@@ -22,10 +22,12 @@ window.onload = function () {
                         console.log(results);
                         button.textContent = buttonText.replace(/\((.+?)\)/g, "("+results["likes"]+")");
 
-                        if (results["liked_by_user"] === 0 && button.classList.contains('active')) {
+                        if (results["liked_by_user"] === 0) {
                             button.classList.remove('active');
-                        } else if (results["liked_by_user"] === 1 && !button.classList.contains('active')) {
+                            form.getElementById('reactType').value = 1;
+                        } else if (results["liked_by_user"] === 1) {
                             button.classList.add('active');
+                            form.getElementById('reactType').value = 0;
                         }
                     }
                 }

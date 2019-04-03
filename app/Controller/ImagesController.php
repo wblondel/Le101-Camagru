@@ -121,19 +121,21 @@ class ImagesController extends AppController
 
         $userId = $session->read('auth');
 
-
-
-
-
-
         if ($this->isAjax()) {
             header('Content-Type: application/json');
             if (!empty($_POST)) {
                 try {
-                    $result = $this->Like->create([
-                        'users_id' => $session->read('auth'),
-                        'images_id' => $imageId,
-                    ]);
+                    if ($_POST['reactType'] == 1) {
+                        $result = $this->Like->create([
+                            'users_id' => $session->read('auth'),
+                            'images_id' => $imageId,
+                        ]);
+                    } elseif ($_POST['reactType'] == 0) {
+                        $result = $this->Like->delete([
+                            'users_id' => $session->read('auth'),
+                            'images_id' => $imageId,
+                        ]);
+                    }
 
                     $singleImage = $this->Image->findWithDetails($imageId, intval($userId));
 

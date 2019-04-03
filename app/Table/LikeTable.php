@@ -30,4 +30,21 @@ class LikeTable extends Table
             true
         );
     }
+
+    /**
+     * Delete a record.
+     *
+     * @param int $userId
+     * @param int $imageId
+     *
+     * @return mixed
+     */
+    public function delete(int $userId, int $imageId)
+    {
+        return $this->query(
+            "DELETE FROM {$this->table} WHERE users_id = ? AND images_id = ?",
+            [$userId, $imageId],
+            true
+        );
+    }
 }
