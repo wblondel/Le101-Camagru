@@ -73,12 +73,6 @@ class ImageEntity extends Entity
         }
     }
 
-    public function getLikesNb()
-    {
-        // TODO: Remove this override so that it returns the true number of likes
-        return 0;
-    }
-
     public function getCommentsNb()
     {
         // TODO: Remove this override so that it returns the true number of comments
