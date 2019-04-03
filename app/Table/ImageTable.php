@@ -57,9 +57,9 @@ class ImageTable extends Table
         return $this->query(
             "SELECT {$this->table}.*, users.username, COUNT(likes.images_id) as likes
             FROM {$this->table}
-            WHERE {$this->table}.id = ?
             JOIN users ON {$this->table}.users_id=users.id
             LEFT JOIN likes ON {$this->table}.id=likes.images_id
+            WHERE {$this->table}.id = ?
             GROUP BY {$this->table}.id
             ORDER BY {$this->table}.created_at DESC",
             [$imageId],
