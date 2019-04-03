@@ -127,7 +127,10 @@ class ImagesController extends AppController
                 http_response_code(400);
                 $result = false;
             }
-            echo json_encode(['result' => $result]);
+            echo json_encode([
+                'result' => $result,
+                'likes' => $this->Like->getLikes($imageId)
+            ]);
         } else {
             $this->forbidden();
         }
