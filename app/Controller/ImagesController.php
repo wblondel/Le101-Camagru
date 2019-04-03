@@ -129,7 +129,7 @@ class ImagesController extends AppController
             }
             echo json_encode([
                 'result' => $result,
-                'likes' => $this->Like->getLikes($imageId)
+                'likes' => $this->Like->getLikes($imageId)->likes
             ]);
         } else {
             $this->forbidden();
