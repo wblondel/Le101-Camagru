@@ -119,6 +119,13 @@ class ImagesController extends AppController
         $auth = new DBAuth($db, $session);
         $auth->restrict();
 
+        $userId = $session->read('auth');
+
+
+
+
+
+
         if ($this->isAjax()) {
             header('Content-Type: application/json');
             if (!empty($_POST)) {
@@ -127,9 +134,13 @@ class ImagesController extends AppController
                         'users_id' => $session->read('auth'),
                         'images_id' => $imageId,
                     ]);
+
+                    $singleImage = $this->Image->findWithDetails($imageId, intval($userId));
+
                     echo json_encode([
                         'result' => $result,
-                        'likes' => $this->Like->getLikes($imageId)->likes
+                        'likes' => $singleImage->likes,
+                        'liked_by_user' => intval($singleImage->liked_by_user)
                     ]);
                 } catch (\PDOException $e) {
                     http_response_code(400);

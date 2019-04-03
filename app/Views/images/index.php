@@ -34,6 +34,7 @@
                                             <button type="button" class="btn btn-sm btn-outline-secondary"><?= _("View") ?></button>
                                         </a>
                                         <form action="/react/<?= $image->id ?>" method="POST" class="image-like">
+                                            <input type="hidden" id="reactType" name="reactType" value="<?= ($image->liked_by_user ? '0': '1') ;?>">
                                             <button type="submit" class="btn btn-sm btn-outline-secondary <?= ($image->liked_by_user ? 'active' : '') ;?>"><?= _("Like") ?><?= " (" . $image->likes . ")"?></button>
                                         </form>
                                     </div>

@@ -9,8 +9,8 @@ window.onload = function () {
             e.preventDefault();
 
             var data = new FormData(form);
-            // remove this and replace with csrf
-            data.append("test", "test");
+            // TODO: Replace with real CSRF token
+            data.append("csrf", "test");
             var xhr = new XMLHttpRequest();
 
             xhr.onreadystatechange = function () {
@@ -21,9 +21,10 @@ window.onload = function () {
                         var results = JSON.parse(xhr.responseText);
                         console.log(results);
                         button.textContent = buttonText.replace(/\((.+?)\)/g, "("+results["likes"]+")");
-                        if (button.classList.contains('active')) {
+
+                        if (results["liked_by_user"] === 0 && button.classList.contains('active')) {
                             button.classList.remove('active');
-                        } else {
+                        } else if (results["liked_by_user"] === 1 && !button.classList.contains('active')) {
                             button.classList.add('active');
                         }
                     }
