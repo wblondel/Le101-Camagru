@@ -147,7 +147,7 @@ class ImagesController extends AppController
                         ->setMessage('<p>' .
                             _("Hello") . ' ' . $userImage->username . '</p><br>' .
                             $user->username . ' ' . 'liked your image:' . ' ' .
-                            '<a href="https://camagru.fr/i/' . $singleImage->id . '">' . '</a>')
+                            '<a href="' . $singleImage->getUrl() . '">' . $singleImage->getUrl() . '</a>')
                         ->setReplyTo('contact@camagru.fr')
                         ->setHtml()
                         ->send();
