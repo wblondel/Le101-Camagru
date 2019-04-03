@@ -28,8 +28,12 @@ class ImagesController extends AppController
      */
     public function index()
     {
-        //$images = $this->Image->lastWithTags();
-        $images = $this->Image->last();
+        $session = App::getInstance()->getSession();
+        $userId = $session->read('auth');
+        if (!$userId) {
+            $userId = -1;
+        }
+        $images = $this->Image->last(intval($userId));
 
         $this->render(
             'images.index',
