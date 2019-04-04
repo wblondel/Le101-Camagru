@@ -399,6 +399,7 @@ class AccountsController extends AppController
                     if (!is_null($dangerMessages)) {
                         $session->setFlash('danger', $dangerMessages);
                     }
+                    $errors = $validator->getErrors();
                     $this->redirect('accounts', 'edit');
                 } else {
                     $errors = $validator->getErrors();
