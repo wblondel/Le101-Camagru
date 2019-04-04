@@ -25,7 +25,7 @@ function processCommentForms()
                         commentToAppend = document.createElement('li');
                         /*TODO: Show username and add link to user profile*/
                         commentToAppend.innerHTML = '<div class="commenterImage"><img src="https://placekitten.com/50/50"></div><div class="commentText"><p>' + results['comment']['content'] + '</p><span class="date sub-text">' + results['comment']['createdDate'] + '</span></div>';
-                        commentsList.appendChild();
+                        commentsList.appendChild(commentToAppend);
                     }
                 }
             };
