@@ -19,6 +19,7 @@ class CommentsController extends AppController
     {
         parent::__construct();
         $this->loadModel('Comment');
+        $this->loadModel('Image');
     }
 
     /**
