@@ -25,11 +25,10 @@ function processCommentForms()
                         commentToAppend = document.createElement('li');
                         commentToAppend.innerHTML = results['comment'];
                         commentsList.prepend(commentToAppend);
-
-                        commentFormTextbox = commentForm.querySelector("input[type=text]");
-                        commentFormTextbox.value = null;
-                        button.removeAttribute('disabled');
                     }
+                    commentFormTextbox = commentForm.querySelector("input[type=text]");
+                    commentFormTextbox.value = null;
+                    button.removeAttribute('disabled');
                 }
             };
 
