@@ -31,4 +31,24 @@ class CommentTable extends Table
             [$imageId]
         );
     }
+
+    /**
+     * Récupère un commentaire en liant les infos associées (user)
+     *
+     * @param int $commentId
+     *
+     * @return \App\Entity\CommentEntity
+     */
+    public function findWithDetails(int $commentId)
+    {
+        return $this->query(
+            "SELECT {$this->table}.*, users.username,
+            FROM {$this->table}
+            JOIN users ON {$this->table}.users_id=users.id
+            LEFT JOIN likes ON {$this->table}.id=likes.images_id
+            WHERE {$this->table}.id = ?",
+            [$commentId],
+            true
+        );
+    }
 }

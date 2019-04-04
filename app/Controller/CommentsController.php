@@ -33,8 +33,6 @@ class CommentsController extends AppController
         $auth = new DBAuth($db, $session);
         $auth->restrict();
 
-        $userId = $session->read('auth');
-
         if ($this->isAjax()) {
             header('Content-Type: application/json');
             if (!empty($_POST)) {
@@ -45,9 +43,11 @@ class CommentsController extends AppController
                         'comment' => $_POST['commentContent']
                     ]);
 
+                    $insertedComment = $this->Comment->findWithDetails(intval($db->lastInsertId()));
+
                     echo json_encode([
                         'result' => $result,
-                        'commentId' => $db->lastInsertId()
+                        'comment' => $insertedComment
                     ]);
                 } catch (\PDOException $e) {
                     http_response_code(400);
