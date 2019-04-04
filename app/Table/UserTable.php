@@ -53,4 +53,19 @@ class UserTable extends Table
             true
         );
     }
+
+    /**
+     * @param string $userId
+     * @param string $emailOnCommentPreference
+     *
+     * @return mixed
+     */
+    public function changeEmailOnCommentPreference(string $userId, string $emailOnCommentPreference)
+    {
+        return $this->query(
+            'UPDATE users SET receive_email_on_comment = ? WHERE id = ?',
+            [$emailOnCommentPreference, $userId],
+            true
+        );
+    }
 }

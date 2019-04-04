@@ -336,6 +336,7 @@ class AccountsController extends AppController
 
                 $validator->isAlphaNum('username', _("Your username should contain letters and numbers only."));
                 $validator->isEmail('email', _("Your email isn't valid."));
+                $validator->isBoolean('receive_email_on_comment', _("Choosen option isn't valid."));
 
                 if ($validator->isValid()) {
                     if ($_POST['username'] != $userInfo->username) {
@@ -369,6 +370,17 @@ class AccountsController extends AppController
                             }
                         } else {
                             $errors = $validator->getErrors();
+                        }
+                    }
+
+                    if ($_POST['receive_email_on_comment'] != $userInfo->receive_email_on_comment) {
+                        $res = $this->User->changeEmailOnCommentPreference($userId, $_POST['receive_email_on_comment']);
+                        if ($res) {
+                            $session->setFlash('success', _("Your email preference has been modified."));
+                            $this->redirect('accounts', 'edit');
+                        } else {
+                            $session->setFlash('danger', _("Error while changing email preference."));
+                            $this->redirect('accounts', 'edit');
                         }
                     }
                 } else {
