@@ -1,13 +1,13 @@
 window.onload = function () {
-    var forms = document.querySelectorAll(".form-image-comment");
+    var forms_comment = document.querySelectorAll(".form-image-comment");
 
-    Array.prototype.forEach.call(forms, function (form, i) {
-        var button = form.querySelector("button[type=submit]");
+    Array.prototype.forEach.call(forms_comment, function (form_content, i) {
+        var button = form_content.querySelector("button[type=submit]");
 
-        form.addEventListener('submit', function (e) {
+        form_content.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            var data = new FormData(form);
+            var data = new FormData(form_content);
             // TODO: Replace with real CSRF token
             data.append("csrf", "test");
             var xhr = new XMLHttpRequest();
@@ -25,7 +25,7 @@ window.onload = function () {
                 }
             };
 
-            xhr.open('POST', form.getAttribute('action'), true);
+            xhr.open('POST', form_content.getAttribute('action'), true);
             xhr.setRequestHeader('X-Requested-With', 'xmlhttprequest');
             xhr.send(data);
         });
