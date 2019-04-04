@@ -365,7 +365,7 @@ class AccountsController extends AppController
 
         $this->render(
             'accounts.edit',
-            compact('form', 'errors'),
+            compact('form', 'errors', 'userInfo'),
             _("Edit Profile"),
             ['js' => ['login-register.js'], 'css' => ['login-register.css']]
         );

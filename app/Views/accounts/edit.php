@@ -3,7 +3,7 @@
 
     <div class="form-group">
         <label for="username"><?= _("Username") ?></label>
-        <input id="username" type="text" class="form-control" name="username" placeholder="Username" required autofocus>
+        <input id="username" type="text" class="form-control" name="username" placeholder="Username" value="<?= $userInfo->username ?>" required autofocus>
         <?php if (isset($errors["username"])) : ?>
             <div class="invalid-feedback" style="display:block;"><?= $errors["username"]; ?></div>
         <?php endif ?>
@@ -11,7 +11,7 @@
 
     <div class="form-group">
         <label for="email"><?= _("E-Mail Address") ?></label>
-        <input id="email" type="email" class="form-control" name="email" placeholder="Email" required>
+        <input id="email" type="email" class="form-control" name="email" placeholder="Email" value="<?= $userInfo->email ?>" required>
         <?php if (isset($errors["email"])) : ?>
             <div class="invalid-feedback" style="display:block;"><?= $errors["email"]; ?></div>
         <?php endif ?>
