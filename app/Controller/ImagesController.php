@@ -139,20 +139,6 @@ class ImagesController extends AppController
                         ]);
 
                         $singleImage = $this->Image->findWithDetails($imageId, intval($userId));
-                        $user = $this->User->find(intval($userId));
-                        $userImage = $this->User->find(intval($singleImage->users_id));
-
-                        $mailer = Email::make()
-                            ->setTo($userImage->email, $userImage->username)
-                            ->setFrom('contact@camagru.fr', 'Camagru.fr')
-                            ->setSubject($user->username . " " . _("liked your image"))
-                            ->setMessage('<p>' .
-                                _("Hello") . ' ' . $userImage->username . '</p><br>' .
-                                $user->username . ' ' . 'liked your image:' . ' ' .
-                                '<a href="https://camagru.fr' . $singleImage->getUrl() . '">https://camagru.fr' . $singleImage->getUrl() . '</a>')
-                            ->setReplyTo('contact@camagru.fr')
-                            ->setHtml()
-                            ->send();
                     } elseif ($_POST['reactType'] == 0) {
                         $result = $this->Like->unlike(intval($userId), $imageId);
                         $singleImage = $this->Image->findWithDetails($imageId, intval($userId));
