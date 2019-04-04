@@ -16,7 +16,7 @@
                         <noscript><img class="card-img-top" src="<?= $singleImage->getFilePath() ?>"
                                        alt="<?= htmlentities($singleImage->getAlt()) ?>"></noscript>
                         <div class="card-body">
-                            <p class="card-text"><?= htmlentities($singleImage->getShortDesc()) ?><br><small><a href="/u/<?= $singleImage->username ?>">@<?= $singleImage->username ?></a></small></p>
+                            <p class="card-text"><?= htmlentities($singleImage->description) ?><br><small><a href="/u/<?= $singleImage->username ?>">@<?= $singleImage->username ?></a></small></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <a href="<?= $singleImage->getURL() ?>">
