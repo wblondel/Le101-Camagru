@@ -338,12 +338,25 @@ class AccountsController extends AppController
                 $validator->isEmail('email', _("Your email isn't valid."));
 
                 if ($validator->isValid()) {
-                    $successMessages = null;
-                    $dangerMessages = null;
                     if ($_POST['username'] != $userInfo->username) {
                         $validator->isUnique('username', $db, 'users', _("This username is already taken."));
+                    }
 
-                        if ($validator->isValid()) {
+                    if ($_POST['email'] != $userInfo->email) {
+                        $validator->isUnique('email', $db, 'users', _("This email is already taken."));
+                    }
+
+                    if (isset($_POST['receive_email_on_comment'])) {
+                        if ($_POST['receive_email_on_comment'] != "on") {
+                            $validator->isBoolean('receive_email_on_comment', _("Your email preference isn't valid."));
+                        }
+                    }
+
+                    if ($validator->isValid()) {
+                        $successMessages = null;
+                        $dangerMessages = null;
+
+                        if ($_POST['username'] != $userInfo->username) {
                             $res = $this->User->changeUsername($userId, $_POST['username']);
                             if ($res) {
                                 $successMessages .= _("Your username has been modified.") . "<br>";
@@ -351,12 +364,8 @@ class AccountsController extends AppController
                                 $dangerMessages .= _("Error while changing username.") . "<br>";
                             }
                         }
-                    }
 
-                    if ($_POST['email'] != $userInfo->email) {
-                        $validator->isUnique('email', $db, 'users', _("This email is already taken."));
-
-                        if ($validator->isValid()) {
+                        if ($_POST['email'] != $userInfo->email) {
                             $res = $this->User->changeEmail($userId, $_POST['email']);
                             if ($res) {
                                 $successMessages .= _("Your email has been modified.") . "<br>";
@@ -364,38 +373,41 @@ class AccountsController extends AppController
                                 $dangerMessages .= _("Error while changing email.") . "<br>";
                             }
                         }
-                    }
 
-                    if (isset($_POST['receive_email_on_comment'])) {
-                        if ($_POST['receive_email_on_comment'] == "on") {
-                            if ($userInfo->receive_email_on_comment != "1") {
-                                $res = $this->User->changeEmailOnCommentPreference($userId, "1");
+                        if (isset($_POST['receive_email_on_comment'])) {
+                            if ($_POST['receive_email_on_comment'] == "on") {
+                                if ($userInfo->receive_email_on_comment != "1") {
+                                    $res = $this->User->changeEmailOnCommentPreference($userId, "1");
 
-                                if ($res) {
-                                    $successMessages .= _("Your email preference has been modified.") . "<br>";
-                                } else {
-                                    $dangerMessages .= _("Error while changing email preference.") . "<br>";
+                                    if ($res) {
+                                        $successMessages .= _("Your email preference has been modified.") . "<br>";
+                                    } else {
+                                        $dangerMessages .= _("Error while changing email preference.") . "<br>";
+                                    }
                                 }
                             }
                         } else {
-                            $validator->isBoolean('receive_email_on_comment', _("Your email preference isn't valid."));
-                        }
-                    } else {
-                        $res = $this->User->changeEmailOnCommentPreference($userId, "0");
+                            if ($userInfo->receive_email_on_comment != "0") {
+                                $res = $this->User->changeEmailOnCommentPreference($userId, "0");
 
-                        if ($res) {
-                            $successMessages .= _("Your email preference has been modified.");
-                        } else {
-                            $dangerMessages .= _("Error while changing email preference.");
+                                if ($res) {
+                                    $successMessages .= _("Your email preference has been modified.");
+                                } else {
+                                    $dangerMessages .= _("Error while changing email preference.");
+                                }
+                            }
                         }
+
+                        if (!is_null($successMessages)) {
+                            $session->setFlash('success', $successMessages);
+                        }
+                        if (!is_null($dangerMessages)) {
+                            $session->setFlash('danger', $dangerMessages);
+                        }
+                        $this->redirect('accounts', 'edit');
+                    } else {
+                        $errors = $validator->getErrors();
                     }
-                    if (!is_null($successMessages)) {
-                        $session->setFlash('success', $successMessages);
-                    }
-                    if (!is_null($dangerMessages)) {
-                        $session->setFlash('danger', $dangerMessages);
-                    }
-                    $errors = $validator->getErrors();
                 } else {
                     $errors = $validator->getErrors();
                 }
