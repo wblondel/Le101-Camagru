@@ -18,9 +18,12 @@
     </div>
 
     <div class="form-group no-margin">
-        <button type="submit" id="submit" class="btn btn-primary btn-block" tabindex="4" disabled>
+        <button type="submit" id="submit" class="btn btn-primary btn-block" disabled>
             <?= _("Save") ?>
         </button>
+    </div>
+    <div class="mt-4 text-center">
+        <a href="/accounts/password/change"><?= _("Changez votre mot de passe") ?></a>
     </div>
 
     <div class="form-group">
