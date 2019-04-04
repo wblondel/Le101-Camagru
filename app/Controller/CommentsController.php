@@ -33,8 +33,11 @@ class CommentsController extends AppController
         $auth = new DBAuth($db, $session);
         $auth->restrict();
 
+        sleep(1);
+
         if ($this->isAjax()) {
             header('Content-Type: application/json');
+
             if (!empty($_POST)) {
                 try {
                     $result = $this->Comment->create([
@@ -75,6 +78,8 @@ class CommentsController extends AppController
         $auth->restrict();
 
         $userId = $session->read('auth');
+
+        sleep(1);
 
         if ($this->isAjax()) {
             header('Content-Type: application/json');
