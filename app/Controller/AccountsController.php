@@ -338,15 +338,17 @@ class AccountsController extends AppController
                 $validator->isEmail('email', _("Your email isn't valid."));
 
                 if ($validator->isValid()) {
+                    $successMessages = null;
+                    $dangerMessages = null;
                     if ($_POST['username'] != $userInfo->username) {
                         $validator->isUnique('username', $db, 'users', _("This username is already taken."));
 
                         if ($validator->isValid()) {
                             $res = $this->User->changeUsername($userId, $_POST['username']);
                             if ($res) {
-                                $session->setFlash('success', _("Your username has been modified."));
+                                $successMessages .= _("Your username has been modified.") . "<br>";
                             } else {
-                                $session->setFlash('danger', _("Error while changing username."));
+                                $dangerMessages .= _("Error while changing username.") . "<br>";
                             }
                         } else {
                             $errors = $validator->getErrors();
@@ -359,9 +361,9 @@ class AccountsController extends AppController
                         if ($validator->isValid()) {
                             $res = $this->User->changeEmail($userId, $_POST['email']);
                             if ($res) {
-                                $session->setFlash('success', _("Your email has been modified."));
+                                $successMessages .= _("Your email has been modified.") . "<br>";
                             } else {
-                                $session->setFlash('danger', _("Error while changing email."));
+                                $dangerMessages .= _("Error while changing email.") . "<br>";
                             }
                         } else {
                             $errors = $validator->getErrors();
@@ -374,9 +376,9 @@ class AccountsController extends AppController
                                 $res = $this->User->changeEmailOnCommentPreference($userId, "1");
 
                                 if ($res) {
-                                    $session->setFlash('success', _("Your email preference has been modified."));
+                                    $successMessages .= _("Your email preference has been modified.") . "<br>";
                                 } else {
-                                    $session->setFlash('danger', _("Error while changing email preference."));
+                                    $dangerMessages .= _("Error while changing email preference.") . "<br>";
                                 }
                             }
                         } else {
@@ -386,13 +388,15 @@ class AccountsController extends AppController
                         $res = $this->User->changeEmailOnCommentPreference($userId, "0");
 
                         if ($res) {
-                            $session->setFlash('success', _("Your email preference has been modified."));
+                            $successMessages .= _("Your email preference has been modified.");
                             $this->redirect('accounts', 'edit');
                         } else {
-                            $session->setFlash('danger', _("Error while changing email preference."));
+                            $dangerMessages .= _("Error while changing email preference.");
                             $this->redirect('accounts', 'edit');
                         }
                     }
+                    $session->setFlash('success', $successMessages);
+                    $session->setFlash('danger', $dangerMessages);
                     $this->redirect('accounts', 'edit');
                 } else {
                     $errors = $validator->getErrors();
