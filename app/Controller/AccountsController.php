@@ -374,7 +374,7 @@ class AccountsController extends AppController
 
                     if (isset($_POST['receive_email_on_comment'])) {
                         if ($_POST['receive_email_on_comment'] == "on") {
-                            if ($_POST['receive_email_on_comment'] != $userInfo->receive_email_on_comment) {
+                            if ($userInfo->receive_email_on_comment != "1") {
                                 $res = $this->User->changeEmailOnCommentPreference($userId, "1");
 
                                 if ($res) {
