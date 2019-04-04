@@ -17,6 +17,7 @@ use Core\Validator\Validator;
 class AccountsController extends AppController
 {
     protected $template = "card-form";
+    private $recaptchaSecret = "";
 
     public function __construct()
     {
@@ -37,11 +38,10 @@ class AccountsController extends AppController
             if (!empty($_POST)) {
                 // Build POST request:
                 $recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
-                $recaptchaSecret = "SECRET_KEY";
                 $recaptchaResponse = $_POST['recaptcha_response'];
 
                 // Make and decode POST request:
-                $recaptcha = file_get_contents($recaptchaUrl . '?secret=' . $recaptchaSecret . '&response=' . $recaptchaResponse);
+                $recaptcha = file_get_contents($recaptchaUrl . '?secret=' . $this->recaptchaSecret . '&response=' . $recaptchaResponse);
                 $recaptcha = json_decode($recaptcha);
 
                 // Take action based on the score returned:
@@ -116,11 +116,10 @@ class AccountsController extends AppController
             if (!empty($_POST)) {
                 // Build POST request:
                 $recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
-                $recaptchaSecret = "SECRET_KEY";
                 $recaptchaResponse = $_POST['recaptcha_response'];
 
                 // Make and decode POST request:
-                $recaptcha = file_get_contents($recaptchaUrl . '?secret=' . $recaptchaSecret . '&response=' . $recaptchaResponse);
+                $recaptcha = file_get_contents($recaptchaUrl . '?secret=' . $this->recaptchaSecret . '&response=' . $recaptchaResponse);
                 $recaptcha = json_decode($recaptcha);
 
                 // Take action based on the score returned:
@@ -194,11 +193,10 @@ class AccountsController extends AppController
             if (!empty($_POST)) {
                 // Build POST request:
                 $recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
-                $recaptchaSecret = "SECRET_KEY";
                 $recaptchaResponse = $_POST['recaptcha_response'];
 
                 // Make and decode POST request:
-                $recaptcha = file_get_contents($recaptchaUrl . '?secret=' . $recaptchaSecret . '&response=' . $recaptchaResponse);
+                $recaptcha = file_get_contents($recaptchaUrl . '?secret=' . $this->recaptchaSecret . '&response=' . $recaptchaResponse);
                 $recaptcha = json_decode($recaptcha);
 
                 // Take action based on the score returned:
@@ -269,11 +267,10 @@ class AccountsController extends AppController
                 if (!empty($_POST)) {
                     // Build POST request:
                     $recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
-                    $recaptchaSecret = "SECRET_KEY";
                     $recaptchaResponse = $_POST['recaptcha_response'];
 
                     // Make and decode POST request:
-                    $recaptcha = file_get_contents($recaptchaUrl . '?secret=' . $recaptchaSecret . '&response=' . $recaptchaResponse);
+                    $recaptcha = file_get_contents($recaptchaUrl . '?secret=' . $this->recaptchaSecret . '&response=' . $recaptchaResponse);
                     $recaptcha = json_decode($recaptcha);
 
                     // Take action based on the score returned:
@@ -327,11 +324,10 @@ class AccountsController extends AppController
         if (!empty($_POST)) {
             // Build POST request:
             $recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
-            $recaptchaSecret = "SECRET_KEY";
             $recaptchaResponse = $_POST['recaptcha_response'];
 
             // Make and decode POST request:
-            $recaptcha = file_get_contents($recaptchaUrl . '?secret=' . $recaptchaSecret . '&response=' . $recaptchaResponse);
+            $recaptcha = file_get_contents($recaptchaUrl . '?secret=' . $this->recaptchaSecret . '&response=' . $recaptchaResponse);
             $recaptcha = json_decode($recaptcha);
 
             // Take action based on the score returned:
