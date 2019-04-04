@@ -57,7 +57,7 @@ class ImageTable extends Table
     public function findWithDetails(int $imageId, int $userId)
     {
         return $this->query(
-            "SELECT {$this->table}.*, users.username, COUNT(likes.images_id) as likes, COUNT(IF(likes.users_id=?,1,NULL)) 'liked_by_user'
+            "SELECT {$this->table}.*, users.username, users.email, COUNT(likes.images_id) as likes, COUNT(IF(likes.users_id=?,1,NULL)) 'liked_by_user'
             FROM {$this->table}
             JOIN users ON {$this->table}.users_id=users.id
             LEFT JOIN likes ON {$this->table}.id=likes.images_id
