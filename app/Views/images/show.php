@@ -50,7 +50,7 @@
                                         <img src="https://placekitten.com/50/50">
                                     </div>
                                     <div class="commentText">
-                                        <p><?= $comment->comment;?></p><span class="date sub-text"><?= $comment->getCreationDate() ?></span>
+                                        <p><?= htmlentities($comment->comment);?></p><span class="date sub-text"><?= $comment->getCreationDate() ?></span>
                                     </div>
                                 </li>
                                 <?php endforeach; ?>
