@@ -322,7 +322,7 @@ class AccountsController extends AppController
         $auth->restrict();
 
         $userId = $session->read('auth');
-        $userInfo = $this->User->find($userId);
+        $userInfo = $this->User->find(intval($userId));
 
         if (!empty($_POST)) {
             // Build POST request:
