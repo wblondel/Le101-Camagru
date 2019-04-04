@@ -38,6 +38,7 @@
 
 .commentList li > div {
     display:table-cell;
+    word-break: break-all;
 }
 
 .commenterImage {
