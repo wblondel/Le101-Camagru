@@ -457,8 +457,7 @@ class AccountsController extends AppController
 
                 if ($validator->isValid()) {
                     $oldPassword = $auth->hashPassword($_POST['old_password']);
-                    $user = $this->User->find(intval($userId));
-                    if ($user->checkPassword($userId, $oldPassword)) {
+                    if ($this->User->checkPassword($userId, $oldPassword)) {
                         $newPassword = $auth->hashPassword($_POST['password']);
                         $auth->resetPassword(strval($userId), $newPassword);
                         $session->setFlash('success', _("Your password has been modified."));
