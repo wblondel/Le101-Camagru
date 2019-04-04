@@ -55,7 +55,7 @@
                                 </li>
                                 <?php endforeach; ?>
                             </ul>
-                            <form action="/c/add/<?= $singleImage->id ?>" method="post">
+                            <form action="/c/add/<?= $singleImage->id ?>" method="post" class="form-image-comment">
                                 <div class="form-row">
                                     <div class="col-10">
                                         <label class="sr-only" for="commentContent">Your comment</label>
