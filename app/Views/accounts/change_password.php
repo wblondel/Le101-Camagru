@@ -2,7 +2,15 @@
 <form method="POST">
 
     <div class="form-group">
-        <label for="password"><?= _("Password") ?></label>
+        <label for="old_password"><?= _("Old Password") ?></label>
+        <input id="old_password" type="password" class="form-control" name="old_password" value="" required autofocus data-eye>
+        <?php if (isset($errors["old_password"])) : ?>
+            <div class="invalid-feedback" style="display:block;"><?= $errors["old_password"]; ?></div>
+        <?php endif ?>
+    </div>
+
+    <div class="form-group">
+        <label for="password"><?= _("New Password") ?></label>
         <input id="password" type="password" class="form-control" name="password" value="" required autofocus data-eye>
         <?php if (isset($errors["password"])) : ?>
             <div class="invalid-feedback" style="display:block;"><?= $errors["password"]; ?></div>
@@ -10,7 +18,7 @@
     </div>
 
     <div class="form-group">
-        <label for="password_confirm"><?= _("Password (confirmation)") ?></label>
+        <label for="password_confirm"><?= _("New Password (confirmation)") ?></label>
         <input id="password_confirm" type="password" class="form-control" name="password_confirm" required data-eye>
         <?php if (isset($errors["password_confirm"])) : ?>
             <div class="invalid-feedback" style="display:block;"><?= $errors["password_confirm"]; ?></div>
