@@ -68,19 +68,4 @@ class UserTable extends Table
             true
         );
     }
-
-    /**
-     * @param string $userId
-     * @param string $password
-     *
-     * @return mixed
-     */
-    public function checkPassword(string $userId, string $password)
-    {
-        return $this->query(
-            "SELECT * FROM {$this->table} WHERE id = ? AND password = ?",
-            [$userId, $password],
-            true
-        );
-    }
 }
