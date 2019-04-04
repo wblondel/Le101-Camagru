@@ -21,6 +21,9 @@
         <div class="custom-checkbox custom-control">
             <input type="checkbox" name="receive_email_on_comment" id="receive_email_on_comment" class="custom-control-input" <?= ($userInfo->receive_email_on_comment ? 'checked' : '')?>>
             <label for="receive_email_on_comment" class="custom-control-label"><?= _("Receive an email when someone comments on my images") ?></label>
+            <?php if (isset($errors["receive_email_on_comment"])) : ?>
+                <div class="invalid-feedback" style="display:block;"><?= $errors["receive_email_on_comment"]; ?></div>
+            <?php endif ?>
         </div>
     </div>
 
