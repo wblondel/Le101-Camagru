@@ -59,7 +59,7 @@
                                 <div class="form-row">
                                     <div class="col-10">
                                         <label class="sr-only" for="commentContent">Your comment</label>
-                                        <input type="text" class="form-control mb-2 mr-sm-2" id="commentContent" placeholder="Your comment">
+                                        <input type="text" class="form-control mb-2 mr-sm-2" id="commentContent" name="commentContent" placeholder="Your comment">
                                     </div>
                                     <div class="col">
                                         <button type="submit" class="btn btn-primary mb-2">Add</button>
