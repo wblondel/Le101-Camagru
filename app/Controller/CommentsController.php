@@ -42,7 +42,7 @@ class CommentsController extends AppController
                     $result = $this->Comment->create([
                         'users_id' => $session->read('auth'),
                         'images_id' => $imageId,
-                        'comment' => $_POST['comment']
+                        'comment' => $_POST['commentContent']
                     ]);
 
                     echo json_encode([
