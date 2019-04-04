@@ -457,7 +457,7 @@ class AccountsController extends AppController
 
                 if ($validator->isValid()) {
                     $oldPassword = $auth->hashPassword($_POST['old_password']);
-                    $user = $this->User->find($userId);
+                    $user = $this->User->find(intval($userId));
 
                     if (password_verify($oldPassword, $user->password)) {
                         $newPassword = $auth->hashPassword($_POST['password']);
