@@ -23,11 +23,11 @@
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
                             <img class="card-img-top lazy-load" height="0" data-src="<?= $image->getFilePath() ?>"
-                                 src="" alt="<?= $image->getAlt() ?>">
+                                 src="" alt="<?= htmlentities($image->getAlt()) ?>">
                             <noscript><img class="card-img-top" src="<?= $image->getFilePath() ?>"
-                                           alt="<?= $image->getAlt() ?>"></noscript>
+                                           alt="<?= htmlentities($image->getAlt()) ?>"></noscript>
                             <div class="card-body">
-                                <p class="card-text"><?= $image->getShortDesc() ?><br><small><a href="/u/<?= $image->username ?>">@<?= $image->username ?></a></small></p>
+                                <p class="card-text"><?= htmlentities($image->getShortDesc()) ?><br><small><a href="/u/<?= $image->username ?>">@<?= $image->username ?></a></small></p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <a href="<?= $image->getURL() ?>">

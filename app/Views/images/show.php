@@ -12,11 +12,11 @@
                 <div class="col-md-6">
                     <div class="card mb-4 box-shadow">
                         <img class="card-img-top lazy-load" height="0" data-src="<?= $singleImage->getFilePath() ?>"
-                             src="" alt="<?= $singleImage->getAlt() ?>">
+                             src="" alt="<?= htmlentities($singleImage->getAlt()) ?>">
                         <noscript><img class="card-img-top" src="<?= $singleImage->getFilePath() ?>"
-                                       alt="<?= $singleImage->getAlt() ?>"></noscript>
+                                       alt="<?= htmlentities($singleImage->getAlt()) ?>"></noscript>
                         <div class="card-body">
-                            <p class="card-text"><?= $singleImage->getShortDesc() ?><br><small><a href="/u/<?= $singleImage->username ?>">@<?= $singleImage->username ?></a></small></p>
+                            <p class="card-text"><?= htmlentities($singleImage->getShortDesc()) ?><br><small><a href="/u/<?= $singleImage->username ?>">@<?= $singleImage->username ?></a></small></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <a href="<?= $singleImage->getURL() ?>">
