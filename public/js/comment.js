@@ -25,10 +25,14 @@ function processCommentForms()
                         commentToAppend = document.createElement('li');
                         commentToAppend.innerHTML = results['comment'];
                         commentsList.prepend(commentToAppend);
-
+                        button.classList.remove('disabled');
                     }
                 }
             };
+
+            if (!button.classList.contains('disabled')) {
+                button.classList.add('disabled');
+            }
 
             xhr.open('POST', commentForm.getAttribute('action'), true);
             xhr.setRequestHeader('X-Requested-With', 'xmlhttprequest');
