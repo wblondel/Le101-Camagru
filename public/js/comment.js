@@ -29,6 +29,7 @@ function processCommentForms()
                     commentFormTextbox = commentForm.querySelector("input[type=text]");
                     commentFormTextbox.value = null;
                     button.removeAttribute('disabled');
+                    commentFormTextbox.focus();
                 }
             };
 
