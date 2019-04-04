@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Camagru\n"
-"POT-Creation-Date: 2019-04-04 12:46+0200\n"
-"PO-Revision-Date: 2019-04-04 12:46+0200\n"
+"POT-Creation-Date: 2019-04-04 12:58+0200\n"
+"PO-Revision-Date: 2019-04-04 13:00+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -255,6 +255,11 @@ msgstr "Modifier mon mot de passe"
 msgid "Edit your profile"
 msgstr "Modifier votre profil"
 
+#: app/Views/accounts/change_password.php:42 app/Views/accounts/edit.php:39
+#: app/Views/templates/shared/top_navbar.php:31
+msgid "Logout"
+msgstr "Se déconnecter"
+
 #: app/Views/accounts/edit.php:5 app/Views/accounts/login.php:5
 #: app/Views/accounts/register.php:5
 msgid "Username"
@@ -340,13 +345,13 @@ msgstr "Vous aussi, soyez cool"
 
 #: app/Views/images/index.php:5
 msgid ""
-"Show off how cool you are by donec suscipit nulla ut massa fringilla aliquet "
-"a id elit. Sed porta lobortis lectus ac scelerisque. Aenean eget urna nulla. "
-"Vestibulum sed nisl eu tortor dignissim ultricies."
+"Impress your friends, show off how cool you are to your loved ones, or make "
+"your dog jealous by creating awesome photo collages for free! Register now "
+"and be a king on Camagru!"
 msgstr ""
-"Montrez votre swag en donec suscipit nulla ut massa fringilla aliquet a id "
-"elit. Sed porta lobortis lectus ac scelerisque. Aenean eget urna nulla. "
-"Vestibulum sed nisl eu tortor dignissim ultricies."
+"Impressionnez vos amis, montrez votre swag à vos êtres chers, ou rendez "
+"votre chien jaloux en créant des magnifiques photo collages gratuitement ! "
+"Inscrivez-vous dès maintenant et devenez le roi sur Camagru!"
 
 #: app/Views/images/index.php:7
 msgid "Take a picture"
@@ -420,13 +425,18 @@ msgstr "Publier une photo"
 msgid "My account"
 msgstr "Mon compte"
 
-#: app/Views/templates/shared/top_navbar.php:31
-msgid "Logout"
-msgstr "Se déconnecter"
-
 #: core/Auth/Auth.php:45
 msgid "You can't access this page."
 msgstr "Vous n'avez pas accès à cette page."
+
+#~ msgid ""
+#~ "Show off how cool you are by donec suscipit nulla ut massa fringilla "
+#~ "aliquet a id elit. Sed porta lobortis lectus ac scelerisque. Aenean eget "
+#~ "urna nulla. Vestibulum sed nisl eu tortor dignissim ultricies."
+#~ msgstr ""
+#~ "Montrez votre swag en donec suscipit nulla ut massa fringilla aliquet a "
+#~ "id elit. Sed porta lobortis lectus ac scelerisque. Aenean eget urna "
+#~ "nulla. Vestibulum sed nisl eu tortor dignissim ultricies."
 
 #~ msgid "ADMIN"
 #~ msgstr "ADMINISTRATION"

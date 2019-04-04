@@ -2,7 +2,7 @@
     <section class="jumbotron text-center">
         <div class="container">
             <h1 class="jumbotron-heading"><?= _("You can be cool too") ?></h1>
-            <p class="lead text-muted"><?= _("Show off how cool you are by donec suscipit nulla ut massa fringilla aliquet a id elit. Sed porta lobortis lectus ac scelerisque. Aenean eget urna nulla. Vestibulum sed nisl eu tortor dignissim ultricies.") ?></p>
+            <p class="lead text-muted"><?= _("Impress your friends, show off how cool you are to your loved ones, or make your dog jealous by creating awesome photo collages for free! Register now and be a king on Camagru!") ?></p>
             <p>
                 <a href="/i/new" class="btn btn-primary my-2"><?= _("Take a picture") ?></a>
             </p>
