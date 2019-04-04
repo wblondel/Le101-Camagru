@@ -42,7 +42,7 @@ class CommentTable extends Table
     public function findWithDetails(int $commentId)
     {
         return $this->query(
-            "SELECT {$this->table}.*, users.username,
+            "SELECT {$this->table}.*, users.username
             FROM {$this->table}
             JOIN users ON {$this->table}.users_id=users.id
             WHERE {$this->table}.id = ?",
