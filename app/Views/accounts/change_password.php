@@ -36,7 +36,7 @@
         </button>
     </div>
     <div class="mt-4 text-center">
-        <a href="/accounts/edit"><?= _("Editez votre profil") ?></a>
+        <a href="/accounts/edit"><?= _("Edit your profile") ?></a>
     </div>
 
     <div class="form-group">

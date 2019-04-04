@@ -33,7 +33,7 @@
         </button>
     </div>
     <div class="mt-4 text-center">
-        <a href="/accounts/password/change"><?= _("Changez votre mot de passe") ?></a>
+        <a href="/accounts/password/change"><?= _("Modify your password") ?></a>
     </div>
 
     <div class="form-group">

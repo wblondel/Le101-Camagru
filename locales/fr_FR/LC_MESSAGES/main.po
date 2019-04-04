@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Camagru\n"
-"POT-Creation-Date: 2019-04-04 12:32+0200\n"
-"PO-Revision-Date: 2019-04-04 12:41+0200\n"
+"POT-Creation-Date: 2019-04-04 12:46+0200\n"
+"PO-Revision-Date: 2019-04-04 12:46+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -252,8 +252,8 @@ msgid "Change password"
 msgstr "Modifier mon mot de passe"
 
 #: app/Views/accounts/change_password.php:39
-msgid "Editez votre profil"
-msgstr ""
+msgid "Edit your profile"
+msgstr "Modifier votre profil"
 
 #: app/Views/accounts/edit.php:5 app/Views/accounts/login.php:5
 #: app/Views/accounts/register.php:5
@@ -274,8 +274,8 @@ msgid "Save"
 msgstr "Sauvegarder"
 
 #: app/Views/accounts/edit.php:36
-msgid "Changez votre mot de passe"
-msgstr ""
+msgid "Modify your password"
+msgstr "Modifier votre mot de passe"
 
 #: app/Views/accounts/forgot.php:1
 msgid "Forgot Password"
