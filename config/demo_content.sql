@@ -5,11 +5,11 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Table `users`
 -- -----------------------------------------------------
-INSERT INTO `users` VALUES (1,'demo_user_1','$2y$10$YGrnNg9aWveISimj.70mJOhjdUI14ZSSoWAccUBa9Pz8YJcvotbJS','demo1@local.dev',NULL,'2019-03-09 01:04:26',NULL,NULL,NULL,'2019-03-09 01:04:15');
-INSERT INTO `users` VALUES (2,'demo_user_2','$2y$10$YGrnNg9aWveISimj.70mJOhjdUI14ZSSoWAccUBa9Pz8YJcvotbJS','demo2@local.dev',NULL,'2019-03-09 01:04:26',NULL,NULL,NULL,'2019-03-09 01:04:15');
-INSERT INTO `users` VALUES (3,'demo_user_3','$2y$10$YGrnNg9aWveISimj.70mJOhjdUI14ZSSoWAccUBa9Pz8YJcvotbJS','demo3@local.dev',NULL,'2019-03-09 01:04:26',NULL,NULL,NULL,'2019-03-09 01:04:15');
-INSERT INTO `users` VALUES (4,'demo_user_4','$2y$10$YGrnNg9aWveISimj.70mJOhjdUI14ZSSoWAccUBa9Pz8YJcvotbJS','demo4@local.dev',NULL,'2019-03-09 01:04:26',NULL,NULL,NULL,'2019-03-09 01:04:15');
-INSERT INTO `users` VALUES (5,'demo_user_5','$2y$10$YGrnNg9aWveISimj.70mJOhjdUI14ZSSoWAccUBa9Pz8YJcvotbJS','demo5@local.dev',NULL,'2019-03-09 01:04:26',NULL,NULL,NULL,'2019-03-09 01:04:15');
+INSERT INTO `users` VALUES (1,'demo_user_1','$2y$10$YGrnNg9aWveISimj.70mJOhjdUI14ZSSoWAccUBa9Pz8YJcvotbJS','demo1@local.dev',NULL,'2019-03-09 01:04:26',NULL,NULL,NULL,1,'2019-03-09 01:04:15');
+INSERT INTO `users` VALUES (2,'demo_user_2','$2y$10$YGrnNg9aWveISimj.70mJOhjdUI14ZSSoWAccUBa9Pz8YJcvotbJS','demo2@local.dev',NULL,'2019-03-09 01:04:26',NULL,NULL,NULL,1,'2019-03-09 01:04:15');
+INSERT INTO `users` VALUES (3,'demo_user_3','$2y$10$YGrnNg9aWveISimj.70mJOhjdUI14ZSSoWAccUBa9Pz8YJcvotbJS','demo3@local.dev',NULL,'2019-03-09 01:04:26',NULL,NULL,NULL,1,'2019-03-09 01:04:15');
+INSERT INTO `users` VALUES (4,'demo_user_4','$2y$10$YGrnNg9aWveISimj.70mJOhjdUI14ZSSoWAccUBa9Pz8YJcvotbJS','demo4@local.dev',NULL,'2019-03-09 01:04:26',NULL,NULL,NULL,1,'2019-03-09 01:04:15');
+INSERT INTO `users` VALUES (5,'demo_user_5','$2y$10$YGrnNg9aWveISimj.70mJOhjdUI14ZSSoWAccUBa9Pz8YJcvotbJS','demo5@local.dev',NULL,'2019-03-09 01:04:26',NULL,NULL,NULL,1,'2019-03-09 01:04:15');
 
 -- -----------------------------------------------------
 -- Table `images`
