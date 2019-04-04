@@ -41,7 +41,7 @@ class ImagesController extends AppController
             'images.index',
             compact('images'),
             null,
-            ['js' => ['progressive-image.js', 'like.js'], 'css' => ['gallery.css', 'progressive-image.css']]
+            ['js' => ['main.js', 'progressive-image.js', 'like.js'], 'css' => ['gallery.css', 'progressive-image.css']]
         );
     }
 
@@ -69,7 +69,7 @@ class ImagesController extends AppController
             'images.show',
             compact('singleImage', 'comments'),
             null,
-            ['js' => ['progressive-image.js', 'like.js', 'comment.js'], 'css' => ['gallery.css', 'progressive-image.css', 'comments.css']]
+            ['js' => ['main.js', 'progressive-image.js', 'like.js', 'comment.js'], 'css' => ['gallery.css', 'progressive-image.css', 'comments.css']]
         );
     }
 
@@ -109,7 +109,7 @@ class ImagesController extends AppController
             'images.tag',
             compact('images', 'tag'),
             null,
-            ['js' => ['progressive-image.js', 'like.js'], 'css' => ['gallery.css', 'progressive-image.css']]
+            ['js' => ['main.js', 'progressive-image.js', 'like.js'], 'css' => ['gallery.css', 'progressive-image.css']]
         );
     }
 

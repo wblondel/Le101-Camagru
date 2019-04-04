@@ -1,4 +1,5 @@
-window.onload = function () {
+function processCommentForms()
+{
     var forms_comment = document.querySelectorAll(".form-image-comment");
 
     Array.prototype.forEach.call(forms_comment, function (form_content, i) {
@@ -30,4 +31,6 @@ window.onload = function () {
             xhr.send(data);
         });
     });
-};
+}
+
+addLoadEvent(processCommentForms);

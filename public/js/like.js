@@ -1,4 +1,5 @@
-window.onload = function () {
+function processLikeForms()
+{
     var forms_like = document.querySelectorAll(".image-like");
 
     Array.prototype.forEach.call(forms_like, function (form_like, i) {
@@ -38,4 +39,6 @@ window.onload = function () {
             xhr.send(data);
         });
     });
-};
+}
+
+addLoadEvent(processLikeForms);
