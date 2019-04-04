@@ -38,23 +38,30 @@ class CommentsController extends AppController
         if ($this->isAjax()) {
             header('Content-Type: application/json');
 
-            if (!empty($_POST)) {
-                try {
-                    $result = $this->Comment->create([
-                        'users_id' => $session->read('auth'),
-                        'images_id' => $imageId,
-                        'comment' => $_POST['commentContent']
-                    ]);
+            if (!empty($_POST) && isset($_POST['commentContent'])) {
+                $commentContent = trim($_POST['commentContent']);
 
-                    $insertedComment = $this->Comment->findWithDetails(intval($db->lastInsertId()));
-
-                    echo json_encode([
-                        'result' => $result,
-                        'comment' => $insertedComment->getHTML()
-                    ]);
-                } catch (\PDOException $e) {
+                if ($commentContent === '') {
                     http_response_code(400);
                     echo json_encode(['result' => false]);
+                } else {
+                    try {
+                        $result = $this->Comment->create([
+                            'users_id' => $session->read('auth'),
+                            'images_id' => $imageId,
+                            'comment' => $commentContent
+                        ]);
+
+                        $insertedComment = $this->Comment->findWithDetails(intval($db->lastInsertId()));
+
+                        echo json_encode([
+                            'result' => $result,
+                            'comment' => $insertedComment->getHTML()
+                        ]);
+                    } catch (\PDOException $e) {
+                        http_response_code(400);
+                        echo json_encode(['result' => false]);
+                    }
                 }
             } else {
                 http_response_code(400);
