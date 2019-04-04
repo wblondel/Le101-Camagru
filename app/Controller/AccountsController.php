@@ -336,7 +336,6 @@ class AccountsController extends AppController
 
                 $validator->isAlphaNum('username', _("Your username should contain letters and numbers only."));
                 $validator->isEmail('email', _("Your email isn't valid."));
-                $validator->isBoolean('receive_email_on_comment', _("Choosen option isn't valid."));
 
                 if ($validator->isValid()) {
                     if ($_POST['username'] != $userInfo->username) {
@@ -373,8 +372,25 @@ class AccountsController extends AppController
                         }
                     }
 
-                    if ($_POST['receive_email_on_comment'] != $userInfo->receive_email_on_comment) {
-                        $res = $this->User->changeEmailOnCommentPreference($userId, $_POST['receive_email_on_comment']);
+                    if (isset($_POST['receive_email_on_comment'])) {
+                        if ($_POST['receive_email_on_comment'] == "on") {
+                            if ($_POST['receive_email_on_comment'] != $userInfo->receive_email_on_comment) {
+                                $res = $this->User->changeEmailOnCommentPreference($userId, "1");
+
+                                if ($res) {
+                                    $session->setFlash('success', _("Your email preference has been modified."));
+                                    $this->redirect('accounts', 'edit');
+                                } else {
+                                    $session->setFlash('danger', _("Error while changing email preference."));
+                                    $this->redirect('accounts', 'edit');
+                                }
+                            }
+                        } else {
+                            $validator->isBoolean('receive_email_on_comment', _("Your email preference isn't valid."));
+                        }
+                    } else {
+                        $res = $this->User->changeEmailOnCommentPreference($userId, "0");
+
                         if ($res) {
                             $session->setFlash('success', _("Your email preference has been modified."));
                             $this->redirect('accounts', 'edit');
@@ -385,6 +401,7 @@ class AccountsController extends AppController
                     }
                 } else {
                     $errors = $validator->getErrors();
+                    $this->redirect('accounts', 'edit');
                 }
             } else {
                 $this->forbidden();
