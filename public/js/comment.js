@@ -1,14 +1,14 @@
 function processCommentForms()
 {
-    var forms_comment = document.querySelectorAll(".form-image-comment");
+    var commentForms = document.querySelectorAll(".form-image-comment");
 
-    Array.prototype.forEach.call(forms_comment, function (form_content, i) {
-        var button = form_content.querySelector("button[type=submit]");
+    Array.prototype.forEach.call(commentForms, function (commentForm, i) {
+        var button = commentForm.querySelector("button[type=submit]");
 
-        form_content.addEventListener('submit', function (e) {
+        commentForm.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            var data = new FormData(form_content);
+            var data = new FormData(commentForm);
             // TODO: Replace with real CSRF token
             data.append("csrf", "test");
             var xhr = new XMLHttpRequest();
@@ -21,7 +21,7 @@ function processCommentForms()
                         var results = JSON.parse(xhr.responseText);
                         console.log(results);
 
-                        commentsList = form_content.parentElement.getElementsByClassName("commentList");
+                        commentsList = commentForm.parentElement.getElementsByClassName("commentList")[0];
                         commentToAppend = document.createElement('li');
                         /*TODO: Show username and add link to user profile*/
                         commentToAppend.innerHTML = '<div class="commenterImage"><img src="https://placekitten.com/50/50"></div><div class="commentText"><p>' + results['comment']['content'] + '</p><span class="date sub-text">' + results['comment']['createdDate'] + '</span></div>';
@@ -30,7 +30,7 @@ function processCommentForms()
                 }
             };
 
-            xhr.open('POST', form_content.getAttribute('action'), true);
+            xhr.open('POST', commentForm.getAttribute('action'), true);
             xhr.setRequestHeader('X-Requested-With', 'xmlhttprequest');
             xhr.send(data);
         });
