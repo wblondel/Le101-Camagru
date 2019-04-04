@@ -46,12 +46,7 @@
                             <ul class="commentList">
                                 <?php foreach ($comments as $comment) : ?>
                                 <li>
-                                    <div class="commenterImage">
-                                        <img src="https://placekitten.com/50/50">
-                                    </div>
-                                    <div class="commentText">
-                                        <p><?= htmlentities($comment->comment);?></p><span class="date sub-text"><?= $comment->getCreationDate() ?></span>
-                                    </div>
+                                    <?= $comment->getHTML(); ?>
                                 </li>
                                 <?php endforeach; ?>
                             </ul>

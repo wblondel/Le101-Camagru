@@ -23,7 +23,6 @@ function processCommentForms()
 
                         commentsList = commentForm.parentElement.getElementsByClassName("commentList")[0];
                         commentToAppend = document.createElement('li');
-                        /*TODO: Show username and add link to user profile*/
                         commentToAppend.innerHTML = results['comment'];
                         commentsList.prepend(commentToAppend);
 
