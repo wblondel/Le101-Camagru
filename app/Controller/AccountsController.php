@@ -311,6 +311,9 @@ class AccountsController extends AppController
         }
     }
 
+    /**
+     * Edit a user profile
+     */
     public function edit()
     {
         $session = App::getInstance()->getSession();
@@ -422,6 +425,55 @@ class AccountsController extends AppController
             'accounts.edit',
             compact('form', 'errors', 'userInfo'),
             _("Edit Profile"),
+            ['js' => ['login-register.js'], 'css' => ['login-register.css']]
+        );
+    }
+
+    public function passwordChange()
+    {
+        $session = App::getInstance()->getSession();
+        $db = App::getInstance()->getDb();
+        $auth = new DBAuth($db, $session);
+        $auth->restrict();
+
+        $userId = $session->read('auth');
+
+        if (!empty($_POST)) {
+            // Build POST request:
+            $recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
+            $recaptchaResponse = $_POST['recaptcha_response'];
+
+            // Make and decode POST request:
+            $recaptcha = file_get_contents($recaptchaUrl . '?secret=' . $this->recaptchaSecret . '&response=' . $recaptchaResponse);
+            $recaptcha = json_decode($recaptcha);
+
+            // Take action based on the score returned:
+            if ($recaptcha->score >= 0.1) {
+                $validator = new Validator($_POST);
+
+                if ($validator->isConfirmed('password', _("The passwords do not match."))) {
+                    $validator->isPasswordStrong('password', _("The password you chose isn't strong enough."));
+                }
+
+                if ($validator->isValid()) {
+                    $password = $auth->hashPassword($_POST['password']);
+                    $auth->resetPassword(strval($userId), $password);
+                    $session->setFlash('success', _("Your password has been modified."));
+                    $this->redirect('accounts', 'passwordChange');
+                } else {
+                    $errors = $validator->getErrors();
+                }
+            } else {
+                $this->forbidden();
+            }
+        }
+
+        $form = new BootstrapForm($_POST);
+
+        $this->render(
+            'accounts.change_password',
+            compact('form', 'errors'),
+            _("Set your new password"),
             ['js' => ['login-register.js'], 'css' => ['login-register.css']]
         );
     }
