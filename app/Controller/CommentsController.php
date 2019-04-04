@@ -57,15 +57,15 @@ class CommentsController extends AppController
                         $insertedComment = $this->Comment->findWithDetails(intval($db->lastInsertId()));
 
                         $singleImage = $this->Image->findWithDetails($imageId, intval($session->read('auth')));
-                        $loggedUserInfo = $this->User->find(intval($session->read('auth')));
+                        $authorUserInfo = $this->User->find(intval($singleImage->users_id));
 
-                        if ($loggedUserInfo->send_email_on_comment) {
+                        if ($authorUserInfo->send_email_on_comment) {
                             $mailer = Email::make()
-                                ->setTo($singleImage->email, $singleImage->username)
+                                ->setTo($authorUserInfo->email, $authorUserInfo->username)
                                 ->setFrom('contact@camagru.fr', 'Camagru.fr')
                                 ->setSubject($insertedComment->username . " " . _("commented your image"))
                                 ->setMessage('<p>' .
-                                    _("Hello") . ' ' . $singleImage->username . '</p><br>' .
+                                    _("Hello") . ' ' . $authorUserInfo->username . '</p><br>' .
                                     $insertedComment->username . ' ' . 'commented your image:' . ' ' .
                                     '<a href="https://camagru.fr' . $singleImage->getUrl() . '">https://camagru.fr' . $singleImage->getUrl() . '</a>' .
                                     '<p>' . htmlentities($insertedComment->comment) . '</p>')
