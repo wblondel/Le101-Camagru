@@ -389,10 +389,8 @@ class AccountsController extends AppController
 
                         if ($res) {
                             $successMessages .= _("Your email preference has been modified.");
-                            $this->redirect('accounts', 'edit');
                         } else {
                             $dangerMessages .= _("Error while changing email preference.");
-                            $this->redirect('accounts', 'edit');
                         }
                     }
                     if (!is_null($successMessages)) {
