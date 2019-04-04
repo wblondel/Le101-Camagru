@@ -23,4 +23,19 @@ class UserTable extends Table
     {
         return $this->query("SELECT * FROM {$this->table} WHERE username = ?", [$username], true);
     }
+
+    /**
+     * @param string $userId
+     * @param string $email
+     *
+     * @return mixed
+     */
+    public function changeEmail(string $userId, string $email)
+    {
+        return $this->query(
+            'UPDATE users SET email = ? WHERE id = ?',
+            [$email, $userId],
+            true
+        );
+    }
 }

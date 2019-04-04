@@ -334,22 +334,18 @@ class AccountsController extends AppController
             if ($recaptcha->score >= 0.1) {
                 $validator = new Validator($_POST);
 
-                /*
-                if ($validator->isConfirmed('password', _("The passwords do not match."))) {
-                    if ($validator->isAlphaNum('username', _("Your username should contain letters and numbers only."))) {
-                        $validator->isUnique('username', $db, 'users', _("This username is already taken."));
-                    }
-                    if ($validator->isEmail('email', _("Your email isn't valid."))) {
-                        $validator->isUnique('email', $db, 'users', _("This email is already taken."));
-                    }
-                    $validator->isPasswordStrong('password', _("The password you chose isn't strong enough."));
+                if ($validator->isAlphaNum('username', _("Your username should contain letters and numbers only."))) {
+                    $validator->isUnique('username', $db, 'users', _("This username is already taken."));
                 }
-                */
+                if ($validator->isEmail('email', _("Your email isn't valid."))) {
+                    $validator->isUnique('email', $db, 'users', _("This email is already taken."));
+                }
 
                 if ($validator->isValid()) {
-                    if ($userId) {
-                        // c'est bon
-                        $this->redirect();
+                    $res = $this->User->changeEmail($userId, $_POST['email']);
+                    if ($res) {
+                        $session->setFlash('success', _("Your email has been modified."));
+                        $this->redirect('accounts', 'edit');
                     } else {
                         $session->setFlash('danger', _("Error while changing preferencess."));
                     }
