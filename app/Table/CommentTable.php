@@ -45,7 +45,6 @@ class CommentTable extends Table
             "SELECT {$this->table}.*, users.username,
             FROM {$this->table}
             JOIN users ON {$this->table}.users_id=users.id
-            LEFT JOIN likes ON {$this->table}.id=likes.images_id
             WHERE {$this->table}.id = ?",
             [$commentId],
             true
