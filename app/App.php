@@ -125,6 +125,10 @@ class App
         $router->post('/accounts/reset/:userId/:token', "Accounts#reset")
             ->with('userId', '[0-9]+')
             ->with('token', '[a-zA-Z0-9]+');
+        $router->get('/accounts/edit', "Accounts#edit");
+        $router->post('/accounts/edit', "Accounts#edit");
+        $router->get('/accounts/password/change', "Accounts#passwordChange");
+        $router->post('/accounts/password/change', "Accounts#passwordChange");
 
         $this->router = $router;
         return $this->router;

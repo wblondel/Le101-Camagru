@@ -307,4 +307,65 @@ class AccountsController extends AppController
             $this->redirect();
         }
     }
+
+    public function edit()
+    {
+        $session = App::getInstance()->getSession();
+        $db = App::getInstance()->getDb();
+        $auth = new DBAuth($db, $session);
+        $auth->restrict();
+
+        $userId = $session->read('auth');
+        $userInfo = $this->User->find($userId);
+
+        if (!empty($_POST)) {
+            // Build POST request:
+            $recaptchaUrl = 'https://www.google.com/recaptcha/api/siteverify';
+            $recaptchaSecret = "SECRET_KEY";
+            $recaptchaResponse = $_POST['recaptcha_response'];
+
+            // Make and decode POST request:
+            $recaptcha = file_get_contents($recaptchaUrl . '?secret=' . $recaptchaSecret . '&response=' . $recaptchaResponse);
+            $recaptcha = json_decode($recaptcha);
+
+            // Take action based on the score returned:
+            if ($recaptcha->score >= 0.1) {
+                $validator = new Validator($_POST);
+
+                /*
+                if ($validator->isConfirmed('password', _("The passwords do not match."))) {
+                    if ($validator->isAlphaNum('username', _("Your username should contain letters and numbers only."))) {
+                        $validator->isUnique('username', $db, 'users', _("This username is already taken."));
+                    }
+                    if ($validator->isEmail('email', _("Your email isn't valid."))) {
+                        $validator->isUnique('email', $db, 'users', _("This email is already taken."));
+                    }
+                    $validator->isPasswordStrong('password', _("The password you chose isn't strong enough."));
+                }
+                */
+
+                if ($validator->isValid()) {
+                    if ($userId) {
+                        // c'est bon
+                        $this->redirect();
+                    } else {
+                        $session->setFlash('danger', _("Error while changing preferencess."));
+                    }
+                } else {
+                    $errors = $validator->getErrors();
+                }
+            } else {
+                $this->forbidden();
+            }
+        }
+
+        $form = new BootstrapForm($_POST);
+
+        $this->render(
+            'accounts.edit',
+            compact('form', 'errors'),
+            _("Edit Profile"),
+            ['js' => ['login-register.js'], 'css' => ['login-register.css']]
+        );
+    }
 }

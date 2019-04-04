@@ -25,6 +25,9 @@
                 </li>
             <?php else : ?>
                 <li class="nav-item">
+                    <a class="nav-link" href="/accounts/edit"><?= _("My account") ?></a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/accounts/logout"><?= _("Logout") ?></a>
                 </li>
             <?php endif; ?>
