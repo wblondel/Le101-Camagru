@@ -334,20 +334,42 @@ class AccountsController extends AppController
             if ($recaptcha->score >= 0.1) {
                 $validator = new Validator($_POST);
 
-                if ($validator->isAlphaNum('username', _("Your username should contain letters and numbers only."))) {
-                    $validator->isUnique('username', $db, 'users', _("This username is already taken."));
-                }
-                if ($validator->isEmail('email', _("Your email isn't valid."))) {
-                    $validator->isUnique('email', $db, 'users', _("This email is already taken."));
-                }
+                $validator->isAlphaNum('username', _("Your username should contain letters and numbers only."));
+                $validator->isEmail('email', _("Your email isn't valid."));
 
                 if ($validator->isValid()) {
-                    $res = $this->User->changeEmail($userId, $_POST['email']);
-                    if ($res) {
-                        $session->setFlash('success', _("Your email has been modified."));
-                        $this->redirect('accounts', 'edit');
-                    } else {
-                        $session->setFlash('danger', _("Error while changing preferencess."));
+                    if ($_POST['username'] != $userInfo->username) {
+                        $validator->isUnique('username', $db, 'users', _("This username is already taken."));
+
+                        if ($validator->isValid()) {
+                            $res = $this->User->changeUsername($userId, $_POST['username']);
+                            if ($res) {
+                                $session->setFlash('success', _("Your username has been modified."));
+                                $this->redirect('accounts', 'edit');
+                            } else {
+                                $session->setFlash('danger', _("Error while changing username."));
+                                $this->redirect('accounts', 'edit');
+                            }
+                        } else {
+                            $errors = $validator->getErrors();
+                        }
+                    }
+
+                    if ($_POST['email'] != $userInfo->email) {
+                        $validator->isUnique('email', $db, 'users', _("This email is already taken."));
+
+                        if ($validator->isValid()) {
+                            $res = $this->User->changeEmail($userId, $_POST['email']);
+                            if ($res) {
+                                $session->setFlash('success', _("Your email has been modified."));
+                                $this->redirect('accounts', 'edit');
+                            } else {
+                                $session->setFlash('danger', _("Error while changing email."));
+                                $this->redirect('accounts', 'edit');
+                            }
+                        } else {
+                            $errors = $validator->getErrors();
+                        }
                     }
                 } else {
                     $errors = $validator->getErrors();
