@@ -350,8 +350,6 @@ class AccountsController extends AppController
                             } else {
                                 $dangerMessages .= _("Error while changing username.") . "<br>";
                             }
-                        } else {
-                            $errors = $validator->getErrors();
                         }
                     }
 
@@ -365,8 +363,6 @@ class AccountsController extends AppController
                             } else {
                                 $dangerMessages .= _("Error while changing email.") . "<br>";
                             }
-                        } else {
-                            $errors = $validator->getErrors();
                         }
                     }
 
