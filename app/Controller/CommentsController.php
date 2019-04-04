@@ -47,12 +47,7 @@ class CommentsController extends AppController
 
                     echo json_encode([
                         'result' => $result,
-                        'comment' => [
-                            'id' => $insertedComment->id,
-                            'content' => htmlentities($insertedComment->comment),
-                            'username' => $insertedComment->username,
-                            'createdDate' => $insertedComment->getCreationDate()
-                        ]
+                        'comment' => $insertedComment->getHTML()
                     ]);
                 } catch (\PDOException $e) {
                     http_response_code(400);
