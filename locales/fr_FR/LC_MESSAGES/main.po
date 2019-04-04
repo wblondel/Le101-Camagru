@@ -1,59 +1,72 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Camagru\n"
-"POT-Creation-Date: 2019-01-14 20:52+0100\n"
-"PO-Revision-Date: 2019-01-14 20:52+0100\n"
+"POT-Creation-Date: 2019-04-04 12:32+0200\n"
+"PO-Revision-Date: 2019-04-04 12:41+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: app\n"
 "X-Poedit-SearchPath-1: core\n"
 
-#: app/Controller/ImagesController.php:53
-msgid "Share a picture"
-msgstr "Publier une photo"
+#: app/Controller/AccountsController.php:51
+#: app/Controller/AccountsController.php:280
+#: app/Controller/AccountsController.php:454
+msgid "The passwords do not match."
+msgstr "Les mots de passe ne correspondent pas."
 
-#: app/Controller/UsersController.php:33
+#: app/Controller/AccountsController.php:52
+#: app/Controller/AccountsController.php:340
 msgid "Your username should contain letters and numbers only."
 msgstr ""
 "Votre nom d'utilisateur ne doit contenir que des caractères alphanumériques."
 
-#: app/Controller/UsersController.php:34
+#: app/Controller/AccountsController.php:53
+#: app/Controller/AccountsController.php:345
 msgid "This username is already taken."
 msgstr "Ce nom d'utilisateur est déjà pris."
 
-#: app/Controller/UsersController.php:36
+#: app/Controller/AccountsController.php:55
+#: app/Controller/AccountsController.php:206
+#: app/Controller/AccountsController.php:341
 msgid "Your email isn't valid."
 msgstr "Votre adresse email n'est pas valide."
 
-#: app/Controller/UsersController.php:37
+#: app/Controller/AccountsController.php:56
+#: app/Controller/AccountsController.php:349
 msgid "This email is already taken."
 msgstr "Cette adresse email est déjà prise."
 
-#: app/Controller/UsersController.php:47
+#: app/Controller/AccountsController.php:58
+#: app/Controller/AccountsController.php:281
+#: app/Controller/AccountsController.php:455
+msgid "The password you chose isn't strong enough."
+msgstr "Le mot de passe que vous avez choisi n’est pas assez fort."
+
+#: app/Controller/AccountsController.php:68
 msgid "Welcome to Camagru - Confirm your account"
 msgstr "Bienvenue sur Camagru - Confirmez votre compte"
 
-#: app/Controller/UsersController.php:49
+#: app/Controller/AccountsController.php:70
 msgid "To confirm your account, please click on this link:"
 msgstr "Pour confirmer votre compte, veuillez cliquer sur ce lien :"
 
-#: app/Controller/UsersController.php:51
+#: app/Controller/AccountsController.php:72
 msgid "Confirm my account"
 msgstr "Confirmer mon compte"
 
-#: app/Controller/UsersController.php:56
+#: app/Controller/AccountsController.php:77
 msgid "Please check your emails to activate your account."
 msgstr "Consultez votre boîte mail pour confirmer votre compte."
 
-#: app/Controller/UsersController.php:58
+#: app/Controller/AccountsController.php:79
 msgid ""
 "You've been registered, but the confirmation email couldn't be sent.\n"
 "Please contact the administrators."
@@ -61,56 +74,57 @@ msgstr ""
 "Votre compte a été créé, mais l'envoi du mail de confirmation a échoué.\n"
 "Veuillez contacter un administrateur."
 
-#: app/Controller/UsersController.php:62
+#: app/Controller/AccountsController.php:83
 msgid "Error while registering."
 msgstr "Erreur lors de l'inscription."
 
-#: app/Controller/UsersController.php:75
+#: app/Controller/AccountsController.php:98
 msgid "Create an account"
 msgstr "Créer un compte"
 
-#: app/Controller/UsersController.php:78 app/Controller/UsersController.php:111
-#: app/Controller/UsersController.php:133
+#: app/Controller/AccountsController.php:102
+#: app/Controller/AccountsController.php:147
+#: app/Controller/AccountsController.php:169
 msgid "You're already logged in."
 msgstr "Vous êtes déjà connecté."
 
-#: app/Controller/UsersController.php:94
+#: app/Controller/AccountsController.php:128
 msgid "You are now logged in."
 msgstr "Vous êtes maintenant connecté."
 
-#: app/Controller/UsersController.php:97
+#: app/Controller/AccountsController.php:131
 msgid "Invalid credentials."
 msgstr "Identifiants incorrects."
 
-#: app/Controller/UsersController.php:108
+#: app/Controller/AccountsController.php:143
 msgid "Log in"
 msgstr "Connexion"
 
-#: app/Controller/UsersController.php:124
+#: app/Controller/AccountsController.php:163
 msgid "Your account is now activated. You can log in."
 msgstr "Votre compte est maintenant activé. Vous pouvez vous connecter."
 
-#: app/Controller/UsersController.php:127
+#: app/Controller/AccountsController.php:166
 msgid "We couldn't activate your account."
 msgstr "Votre compte n'a pas pu être activé."
 
-#: app/Controller/UsersController.php:147
+#: app/Controller/AccountsController.php:183
 msgid "You're now logged out."
 msgstr "Vous êtes maintenant déconnecté."
 
-#: app/Controller/UsersController.php:164
+#: app/Controller/AccountsController.php:216
 msgid "Camagru - Reset your password"
 msgstr "Camagru - Réinitialiser le mot de passe"
 
-#: app/Controller/UsersController.php:166
+#: app/Controller/AccountsController.php:218
 msgid "To reset your password, please click on this link:"
 msgstr "Pour modifier votre mot de passe, veuillez cliquer sur ce lien :"
 
-#: app/Controller/UsersController.php:168
+#: app/Controller/AccountsController.php:220
 msgid "Reset my password"
 msgstr "Réinitialiser le mot de passe"
 
-#: app/Controller/UsersController.php:173
+#: app/Controller/AccountsController.php:225
 msgid ""
 "Please check your inbox for an email we just sent you with instructions for "
 "how to reset your password and log into your account."
@@ -118,7 +132,7 @@ msgstr ""
 "Les instructions pour réinitialiser votre mot de passe vous ont été envoyées "
 "par email."
 
-#: app/Controller/UsersController.php:176
+#: app/Controller/AccountsController.php:228
 msgid ""
 "The reset instructions couldn't be sent.\n"
 "Please contact the administrators."
@@ -126,25 +140,199 @@ msgstr ""
 "Votre compte a été créé, mais l'envoi du mail de confirmation a échoué.\n"
 "Veuillez contacter un administrateur."
 
-#: app/Controller/UsersController.php:179
+#: app/Controller/AccountsController.php:231
 msgid "This email doesn't match any registered account."
 msgstr "Cet email ne correspond à aucun compte enregistré."
 
-#: app/Controller/UsersController.php:190
+#: app/Controller/AccountsController.php:246
 msgid "Reset your password"
 msgstr "Réinitialiser le mot de passe"
 
-#: app/Controller/UsersController.php:213
+#: app/Controller/AccountsController.php:287
 msgid "Your password has been modified. Please log in."
 msgstr "Votre mot de passe a été modifié. Vous pouvez vous connecter."
 
-#: app/Controller/UsersController.php:225
+#: app/Controller/AccountsController.php:302
+#: app/Controller/AccountsController.php:483
 msgid "Set your new password"
 msgstr "Réinitialiser mon mot de passe"
 
-#: app/Controller/UsersController.php:228
+#: app/Controller/AccountsController.php:306
 msgid "Invalid token."
 msgstr "Jeton incorrect."
+
+#: app/Controller/AccountsController.php:354
+msgid "Your email preference isn't valid."
+msgstr ""
+"Le paramètre que vous avez choisi pour les notifications par email n’est pas "
+"valide."
+
+#: app/Controller/AccountsController.php:365
+msgid "Your username has been modified."
+msgstr "Votre nom d’utilisateur a été modifié."
+
+#: app/Controller/AccountsController.php:367
+msgid "Error while changing username."
+msgstr "Erreur lors de la modification de votre nom d’utilisateur."
+
+#: app/Controller/AccountsController.php:374
+msgid "Your email has been modified."
+msgstr "Votre adresse email a été modifiée."
+
+#: app/Controller/AccountsController.php:376
+msgid "Error while changing email."
+msgstr "Erreur lors de la modification de votre adresse email."
+
+#: app/Controller/AccountsController.php:386
+#: app/Controller/AccountsController.php:397
+msgid "Your email preference has been modified."
+msgstr "Votre préférence pour les notifications par email a été modifiée."
+
+#: app/Controller/AccountsController.php:388
+#: app/Controller/AccountsController.php:399
+msgid "Error while changing email preference."
+msgstr ""
+"Erreur lors de la modification de votre paramètre pour les notifications par "
+"email."
+
+#: app/Controller/AccountsController.php:427 app/Views/accounts/edit.php:1
+msgid "Edit Profile"
+msgstr "Modifier le profil"
+
+#: app/Controller/AccountsController.php:465
+msgid "Your password has been modified."
+msgstr "Votre mot de passe a été modifié."
+
+#: app/Controller/AccountsController.php:467
+msgid "Your didn't enter the correct current password."
+msgstr "Vous n’avez pas saisi le bon mot de passe."
+
+#: app/Controller/CommentsController.php:66
+msgid "commented your image"
+msgstr "a commenté votre photo"
+
+#: app/Controller/CommentsController.php:68
+msgid "Hello"
+msgstr "Bonjour"
+
+#: app/Controller/ImagesController.php:91
+msgid "Share a picture"
+msgstr "Publier une photo"
+
+#: app/Views/accounts/change_password.php:1 app/Views/accounts/forgot.php:19
+#: app/Views/accounts/reset.php:1
+msgid "Reset Password"
+msgstr "Réinitialiser mon mot de passe"
+
+#: app/Views/accounts/change_password.php:5
+msgid "Old Password"
+msgstr "Ancien mot de passe"
+
+#: app/Views/accounts/change_password.php:13
+msgid "New Password"
+msgstr "Nouveau mot de passe"
+
+#: app/Views/accounts/change_password.php:21
+msgid "New Password (confirmation)"
+msgstr "Nouveau mot de passe (confirmation)"
+
+#: app/Views/accounts/change_password.php:29 app/Views/accounts/register.php:37
+#: app/Views/accounts/reset.php:21
+msgid ""
+"Your password must be at least 8 characters, and contain at least one "
+"uppercase letter,\n"
+"                one lowercase letter, one digit, and one special character."
+msgstr ""
+"Votre mot de passe doit avoir au minimum 8 caractères, and contenir au moins "
+"une majuscule,\n"
+"                une minuscule, une chiffre, et un caractère spécial."
+
+#: app/Views/accounts/change_password.php:35 app/Views/accounts/reset.php:27
+msgid "Change password"
+msgstr "Modifier mon mot de passe"
+
+#: app/Views/accounts/change_password.php:39
+msgid "Editez votre profil"
+msgstr ""
+
+#: app/Views/accounts/edit.php:5 app/Views/accounts/login.php:5
+#: app/Views/accounts/register.php:5
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: app/Views/accounts/edit.php:13 app/Views/accounts/forgot.php:5
+#: app/Views/accounts/register.php:13
+msgid "E-Mail Address"
+msgstr "Adresse email"
+
+#: app/Views/accounts/edit.php:23
+msgid "Receive an email when someone comments on my images"
+msgstr "Recevoir un email lorsque quelqu’un commente une de mes photos"
+
+#: app/Views/accounts/edit.php:32
+msgid "Save"
+msgstr "Sauvegarder"
+
+#: app/Views/accounts/edit.php:36
+msgid "Changez votre mot de passe"
+msgstr ""
+
+#: app/Views/accounts/forgot.php:1
+msgid "Forgot Password"
+msgstr "Mot de passe oublié"
+
+#: app/Views/accounts/forgot.php:13
+msgid "By clicking \"Reset Password\" we will send a password reset link"
+msgstr ""
+"Cliquer sur \"Réinitialiser mon mot de passe\" et nous vous enverrons les "
+"instructions par mail"
+
+#: app/Views/accounts/login.php:1 app/Views/accounts/login.php:27
+#: app/Views/templates/shared/top_navbar.php:21
+msgid "Login"
+msgstr "Connexion"
+
+#: app/Views/accounts/login.php:10 app/Views/accounts/register.php:21
+#: app/Views/accounts/reset.php:5
+msgid "Password"
+msgstr "Mot de passe"
+
+#: app/Views/accounts/login.php:12
+msgid "Forgot Password?"
+msgstr "Mot de passe oublié ?"
+
+#: app/Views/accounts/login.php:21
+msgid "Remember Me"
+msgstr "Rester connecté"
+
+#: app/Views/accounts/login.php:31
+msgid "Don't have an account?"
+msgstr "Vous n'avez pas de compte ?"
+
+#: app/Views/accounts/login.php:31
+msgid "Create One"
+msgstr "Créez-en un"
+
+#: app/Views/accounts/register.php:1 app/Views/accounts/register.php:53
+#: app/Views/templates/shared/top_navbar.php:24
+msgid "Register"
+msgstr "S'inscrire"
+
+#: app/Views/accounts/register.php:29 app/Views/accounts/reset.php:13
+msgid "Password (confirmation)"
+msgstr "Mot de passe (confirmation)"
+
+#: app/Views/accounts/register.php:44
+msgid "I agree to the Terms and Conditions"
+msgstr "J'accepte les conditions d'utilisation"
+
+#: app/Views/accounts/register.php:57
+msgid "Already have an account?"
+msgstr "Vous avez déjà un compte ?"
+
+#: app/Views/accounts/register.php:57
+msgid "Log in here."
+msgstr "Connectez-vous."
 
 #: app/Views/images/index.php:4
 msgid "You can be cool too"
@@ -164,13 +352,13 @@ msgstr ""
 msgid "Take a picture"
 msgstr "Prendre une photo"
 
-#: app/Views/images/index.php:31 app/Views/images/show.php:20
-#: app/Views/images/tag.php:21
+#: app/Views/images/index.php:34 app/Views/images/show.php:23
+#: app/Views/images/tag.php:24 app/Views/users/show.php:24
 msgid "View"
 msgstr "Voir"
 
-#: app/Views/images/index.php:32 app/Views/images/show.php:21
-#: app/Views/images/tag.php:22
+#: app/Views/images/index.php:38 app/Views/images/show.php:27
+#: app/Views/images/tag.php:28 app/Views/users/show.php:28
 msgid "Like"
 msgstr "Aimer"
 
@@ -186,27 +374,11 @@ msgstr "Prendre une photo"
 msgid "Upload photo"
 msgstr "Charger une photo"
 
-#: app/Views/images/new.php:16
+#: app/Views/images/new.php:17
 msgid "The screen capture will appear in this box."
 msgstr "La photo capturée apparaîtra dans ce cadre."
 
-#: app/Views/templates/shared/footer.php:4
-msgid "ADMIN"
-msgstr "ADMINISTRATION"
-
-#: app/Views/templates/shared/footer.php:5
-msgid "REGISTER"
-msgstr "S'INSCRIRE"
-
 #: app/Views/templates/shared/footer.php:6
-msgid "LOGIN"
-msgstr "SE CONNECTER"
-
-#: app/Views/templates/shared/footer.php:7
-msgid "LOGOUT"
-msgstr "SE DECONNECTER"
-
-#: app/Views/templates/shared/footer.php:10
 msgid "Le 101 is a joke."
 msgstr "Le 101 est une blague."
 
@@ -233,101 +405,49 @@ msgstr[0] "%d commentaire"
 msgstr[1] "%d commentaires"
 
 #: app/Views/templates/shared/top_navbar.php:10
-msgid "Home"
-msgstr "Accueil"
+msgid "Gallery"
+msgstr "Galerie"
 
 #: app/Views/templates/shared/top_navbar.php:10
 msgid "(current)"
 msgstr "(courant)"
 
-#: app/Views/templates/shared/top_navbar.php:13
-msgid "A page..."
-msgstr "Une page..."
+#: app/Views/templates/shared/top_navbar.php:14
+msgid "Post a picture"
+msgstr "Publier une photo"
 
-#: app/Views/templates/shared/top_navbar.php:16
-msgid "Another page..."
-msgstr "Une autre page..."
+#: app/Views/templates/shared/top_navbar.php:28
+msgid "My account"
+msgstr "Mon compte"
 
-#: app/Views/templates/shared/top_navbar.php:22 app/Views/users/login.php:1
-#: app/Views/users/login.php:26
-msgid "Login"
-msgstr "Connexion"
-
-#: app/Views/templates/shared/top_navbar.php:25 app/Views/users/register.php:1
-#: app/Views/users/register.php:36
-msgid "Register"
-msgstr "S'inscrire"
-
-#: app/Views/templates/shared/top_navbar.php:29
+#: app/Views/templates/shared/top_navbar.php:31
 msgid "Logout"
 msgstr "Se déconnecter"
 
-#: app/Views/users/forgot.php:1
-msgid "Forgot Password"
-msgstr "Mot de passe oublié"
-
-#: app/Views/users/forgot.php:5 app/Views/users/register.php:13
-msgid "E-Mail Address"
-msgstr "Adresse email"
-
-#: app/Views/users/forgot.php:8
-msgid "By clicking \"Reset Password\" we will send a password reset link"
-msgstr ""
-"Cliquer sur \"Réinitialiser mon mot de passe\" et nous vous enverrons les "
-"instructions par mail"
-
-#: app/Views/users/forgot.php:14 app/Views/users/reset.php:1
-msgid "Reset Password"
-msgstr "Réinitialiser mon mot de passe"
-
-#: app/Views/users/login.php:5 app/Views/users/register.php:5
-msgid "Username"
-msgstr "Nom d'utilisateur"
-
-#: app/Views/users/login.php:10 app/Views/users/register.php:21
-#: app/Views/users/reset.php:5
-msgid "Password"
-msgstr "Mot de passe"
-
-#: app/Views/users/login.php:12
-msgid "Forgot Password?"
-msgstr "Mot de passe oublié ?"
-
-#: app/Views/users/login.php:20
-msgid "Remember Me"
-msgstr "Rester connecté"
-
-#: app/Views/users/login.php:30
-msgid "Don't have an account?"
-msgstr "Vous n'avez pas de compte ?"
-
-#: app/Views/users/login.php:30
-msgid "Create One"
-msgstr "Créez-en un"
-
-#: app/Views/users/register.php:30
-msgid "I agree to the Terms and Conditions"
-msgstr "J'accepte les conditions d'utilisation"
-
-#: app/Views/users/register.php:40
-msgid "Already have an account?"
-msgstr "Vous avez déjà un compte ?"
-
-#: app/Views/users/register.php:40
-msgid "Log in here."
-msgstr "Connectez-vous."
-
-#: app/Views/users/reset.php:10
-msgid "Password (confirmation)"
-msgstr "Mot de passe (confirmation)"
-
-#: app/Views/users/reset.php:16
-msgid "Change password"
-msgstr "Modifier mon mot de passe"
-
-#: core/Auth/Auth.php:39
+#: core/Auth/Auth.php:45
 msgid "You can't access this page."
 msgstr "Vous n'avez pas accès à cette page."
+
+#~ msgid "ADMIN"
+#~ msgstr "ADMINISTRATION"
+
+#~ msgid "REGISTER"
+#~ msgstr "S'INSCRIRE"
+
+#~ msgid "LOGIN"
+#~ msgstr "SE CONNECTER"
+
+#~ msgid "LOGOUT"
+#~ msgstr "SE DECONNECTER"
+
+#~ msgid "Home"
+#~ msgstr "Accueil"
+
+#~ msgid "A page..."
+#~ msgstr "Une page..."
+
+#~ msgid "Another page..."
+#~ msgstr "Une autre page..."
 
 #~ msgid "You're not logged in."
 #~ msgstr "Vous n'êtes pas connecté."
