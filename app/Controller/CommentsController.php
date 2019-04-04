@@ -47,6 +47,7 @@ class CommentsController extends AppController
 
                     echo json_encode([
                         'result' => $result,
+                        'commentId' => $db->lastInsertId()
                     ]);
                 } catch (\PDOException $e) {
                     http_response_code(400);
