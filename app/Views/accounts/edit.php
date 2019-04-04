@@ -17,6 +17,13 @@
         <?php endif ?>
     </div>
 
+    <div class="form-group">
+        <div class="custom-checkbox custom-control">
+            <input type="checkbox" name="receive_email_on_comment" id="receive_email_on_comment" class="custom-control-input" <?= ($userInfo->receive_email_on_comment ? 'checked' : '')?>>
+            <label for="receive_email_on_comment" class="custom-control-label"><?= _("Receive an email when someone comments on my images") ?></label>
+        </div>
+    </div>
+
     <div class="form-group no-margin">
         <button type="submit" id="submit" class="btn btn-primary btn-block" disabled>
             <?= _("Save") ?>

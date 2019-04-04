@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `reset_token` VARCHAR(255) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NULL DEFAULT NULL,
   `reset_at` DATETIME NULL DEFAULT NULL,
   `remember_token` VARCHAR(255) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NULL DEFAULT NULL,
-  `send_email_on_comment` BOOLEAN NOT NULL DEFAULT 1,
+  `receive_email_on_comment` BOOLEAN NOT NULL DEFAULT 1,
   `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `users_username_uindex` (`username` ASC),

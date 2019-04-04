@@ -59,7 +59,7 @@ class CommentsController extends AppController
                         $singleImage = $this->Image->findWithDetails($imageId, intval($session->read('auth')));
                         $authorUserInfo = $this->User->find(intval($singleImage->users_id));
 
-                        if ($authorUserInfo->send_email_on_comment) {
+                        if ($authorUserInfo->receive_email_on_comment) {
                             $mailer = Email::make()
                                 ->setTo($authorUserInfo->email, $authorUserInfo->username)
                                 ->setFrom('contact@camagru.fr', 'Camagru.fr')
