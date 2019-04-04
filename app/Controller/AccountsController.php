@@ -39,7 +39,7 @@ class AccountsController extends AppController
                 $recaptcha = json_decode($recaptcha);
 
                 // Take action based on the score returned:
-                if ($recaptcha->score >= 0.5) {
+                if ($recaptcha->score >= 0.1) {
                     $validator = new Validator($_POST);
 
                     if ($validator->isConfirmed('password', _("The passwords do not match."))) {
@@ -118,7 +118,7 @@ class AccountsController extends AppController
                 $recaptcha = json_decode($recaptcha);
 
                 // Take action based on the score returned:
-                if ($recaptcha->score >= 0.5) {
+                if ($recaptcha->score >= 0.1) {
                     if ($auth->login($_POST['username'], $_POST['password'], isset($_POST['remember']))) {
                         $session->setFlash('success', _("You are now logged in."));
                         $this->redirect();
@@ -196,7 +196,7 @@ class AccountsController extends AppController
                 $recaptcha = json_decode($recaptcha);
 
                 // Take action based on the score returned:
-                if ($recaptcha->score >= 0.5) {
+                if ($recaptcha->score >= 0.1) {
                     $validator = new Validator($_POST);
 
                     $validator->isEmail('email', _("Your email isn't valid."));
@@ -271,7 +271,7 @@ class AccountsController extends AppController
                     $recaptcha = json_decode($recaptcha);
 
                     // Take action based on the score returned:
-                    if ($recaptcha->score >= 0.5) {
+                    if ($recaptcha->score >= 0.1) {
                         $validator = new Validator($_POST);
 
                         if ($validator->isConfirmed('password', _("The passwords do not match."))) {
