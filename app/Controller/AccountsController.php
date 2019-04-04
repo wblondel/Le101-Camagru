@@ -18,6 +18,12 @@ class AccountsController extends AppController
 {
     protected $template = "card-form";
 
+    public function __construct()
+    {
+        parent::__construct();
+        $this->loadModel('User');
+    }
+
     /**
      * Register a user.
      */
