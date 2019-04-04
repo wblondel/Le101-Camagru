@@ -38,4 +38,19 @@ class UserTable extends Table
             true
         );
     }
+
+    /**
+     * @param string $userId
+     * @param string $username
+     *
+     * @return mixed
+     */
+    public function changeUsername(string $userId, string $username)
+    {
+        return $this->query(
+            'UPDATE users SET username = ? WHERE id = ?',
+            [$username, $userId],
+            true
+        );
+    }
 }
