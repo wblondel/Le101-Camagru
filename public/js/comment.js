@@ -24,7 +24,7 @@ function processCommentForms()
                         commentsList = commentForm.parentElement.getElementsByClassName("commentList")[0];
                         commentToAppend = document.createElement('li');
                         /*TODO: Show username and add link to user profile*/
-                        commentToAppend.innerHTML = '<div class="commenterImage"><img src="https://placekitten.com/50/50"></div><div class="commentText"><p>' + results['comment']['content'] + '</p><span class="date sub-text">' + results['comment']['createdDate'] + '</span></div>';
+                        commentToAppend.innerHTML = '<div class="commenterImage"><img src="https://placekitten.com/50/50"></div><div class="commentText"><p>' + results['comment']['username'] + ': </p><p>' + results['comment']['content'] + '</p><span class="date sub-text">' + results['comment']['createdDate'] + '</span></div>';
                         commentsList.prepend(commentToAppend);
 
                     }
