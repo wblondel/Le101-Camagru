@@ -27,10 +27,15 @@ class CommentEntity extends Entity
     public function getHTML()
     {
         return '<div class="commenterImage">' .
-                    '<img src="https://placekitten.com/50/50">' .
+                    '<a href="/u/' . $this->username . '">' .
+                        '<img src="https://placekitten.com/50/50">' .
+                    '</a>' .
                 '</div>' .
                 '<div class="commentText">' .
-                    '<p>' . $this->username . ': ' . htmlentities($this->comment) . '</p>' .
+                    '<p>' .
+                        '<a href="/u/' . $this->username . '">' . $this->username . '</a>' .
+                        ': ' . htmlentities($this->comment) .
+                    '</p>' .
                     '<span class="date sub-text">' . $this->getCreationDate() . '</span>' .
                 '</div>';
     }
