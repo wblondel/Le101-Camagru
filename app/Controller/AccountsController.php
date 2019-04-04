@@ -345,10 +345,8 @@ class AccountsController extends AppController
                             $res = $this->User->changeUsername($userId, $_POST['username']);
                             if ($res) {
                                 $session->setFlash('success', _("Your username has been modified."));
-                                $this->redirect('accounts', 'edit');
                             } else {
                                 $session->setFlash('danger', _("Error while changing username."));
-                                $this->redirect('accounts', 'edit');
                             }
                         } else {
                             $errors = $validator->getErrors();
@@ -362,10 +360,8 @@ class AccountsController extends AppController
                             $res = $this->User->changeEmail($userId, $_POST['email']);
                             if ($res) {
                                 $session->setFlash('success', _("Your email has been modified."));
-                                $this->redirect('accounts', 'edit');
                             } else {
                                 $session->setFlash('danger', _("Error while changing email."));
-                                $this->redirect('accounts', 'edit');
                             }
                         } else {
                             $errors = $validator->getErrors();
@@ -379,10 +375,8 @@ class AccountsController extends AppController
 
                                 if ($res) {
                                     $session->setFlash('success', _("Your email preference has been modified."));
-                                    $this->redirect('accounts', 'edit');
                                 } else {
                                     $session->setFlash('danger', _("Error while changing email preference."));
-                                    $this->redirect('accounts', 'edit');
                                 }
                             }
                         } else {
@@ -399,6 +393,7 @@ class AccountsController extends AppController
                             $this->redirect('accounts', 'edit');
                         }
                     }
+                    $this->redirect('accounts', 'edit');
                 } else {
                     $errors = $validator->getErrors();
                     $this->redirect('accounts', 'edit');
