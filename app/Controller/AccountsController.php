@@ -395,8 +395,12 @@ class AccountsController extends AppController
                             $this->redirect('accounts', 'edit');
                         }
                     }
-                    $session->setFlash('success', $successMessages);
-                    $session->setFlash('danger', $dangerMessages);
+                    if (!is_null($successMessages)) {
+                        $session->setFlash('success', $successMessages);
+                    }
+                    if (!is_null($dangerMessages)) {
+                        $session->setFlash('danger', $dangerMessages);
+                    }
                     $this->redirect('accounts', 'edit');
                 } else {
                     $errors = $validator->getErrors();
