@@ -62,6 +62,12 @@ navigator.mediaDevices.getUserMedia({audio: false, video: true})
 
 var effectCanvas = document.getElementById("effect-canvas");
 var effectCanvasContext = effectCanvas.getContext("2d");
+var offsetX=effectCanvas.offsetLeft;
+var offsetY=effectCanvas.offsetTop;
+var effectCanvasWidth = effectCanvas.width;
+var effectCanvasHeight = effectCanvas.height;
+var isDragging=false;
+var effectImgElement;
 
 // add a clickEventListener to all effects
 var effects = document.querySelectorAll(".effect");
@@ -69,18 +75,60 @@ var effects = document.querySelectorAll(".effect");
 Array.prototype.forEach.call(effects, function (effect, i) {
     effect.addEventListener("click", function (e) {
         e.preventDefault();
-        var effectImgElement = effect.getElementsByTagName('img')[0];
-
-        drawImage(effectImgElement);
+        effectImgElement = effect.getElementsByTagName('img')[0];
+        drawImage();
     })
 });
 
-function drawImage(img)
+function drawImage()
 {
-    effectCanvas.width = img.width;
-    effectCanvas.height = img.height;
-    effectCanvasContext.drawImage(img, 0, 0, img.width, img.height);
+    effectCanvas.width = effectImgElement.width;
+    effectCanvas.height = effectImgElement.height;
+    effectCanvasContext.drawImage(effectImgElement, 0, 0, effectImgElement.width, effectImgElement.height);
 }
+
+function handleMouseDown(e)
+{
+    canMouseX=parseInt(e.clientX-offsetX);
+    canMouseY=parseInt(e.clientY-offsetY);
+    // set the drag flag
+    isDragging=true;
+}
+
+function handleMouseUp(e)
+{
+    canMouseX=parseInt(e.clientX-offsetX);
+    canMouseY=parseInt(e.clientY-offsetY);
+    // clear the drag flag
+    isDragging=false;
+}
+
+function handleMouseOut(e)
+{
+    canMouseX=parseInt(e.clientX-offsetX);
+    canMouseY=parseInt(e.clientY-offsetY);
+    // user has left the canvas, so clear the drag flag
+    //isDragging=false;
+}
+
+function handleMouseMove(e)
+{
+    canMouseX=parseInt(e.clientX-offsetX);
+    canMouseY=parseInt(e.clientY-offsetY);
+    // if the drag flag is set, clear the canvas and draw the image
+    if (isDragging) {
+        effectCanvasContext.clearRect(0,0,effectCanvasWidth,effectCanvasHeight);
+        effectCanvasContext.drawImage(effectImgElement,canMouseX-128/2,canMouseY-120/2,128,120);
+    }
+}
+
+effectCanvas.addEventListener("mousedown", function (e) {handleMouseDown(e);});
+effectCanvas.addEventListener("mousemove", function (e) {handleMouseMove(e);});
+effectCanvas.addEventListener("mouseup", function (e) {handleMouseUp(e);});
+effectCanvas.addEventListener("mouseout", function (e) {handleMouseOut(e);});
+
+// ----------------------------
+
 
 function previewFile() {
     var preview = document.getElementById("photo");
