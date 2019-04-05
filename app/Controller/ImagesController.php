@@ -140,6 +140,8 @@ class ImagesController extends AppController
             } else {
                 $this->forbidden();
             }
+        } else {
+            $this->badRequest();
         }
     }
 
