@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Camagru\n"
-"POT-Creation-Date: 2019-04-05 11:34+0200\n"
-"PO-Revision-Date: 2019-04-05 11:34+0200\n"
+"POT-Creation-Date: 2019-04-06 00:09+0200\n"
+"PO-Revision-Date: 2019-04-06 00:10+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -216,9 +216,13 @@ msgstr "a commenté votre photo"
 msgid "Hello"
 msgstr "Bonjour"
 
-#: app/Controller/ImagesController.php:94
+#: app/Controller/ImagesController.php:161
 msgid "Share a picture"
 msgstr "Publier une photo"
+
+#: app/Controller/ImagesController.php:195
+msgid "The image has been succesfully deleted."
+msgstr "Image supprimée avec succès."
 
 #: app/Views/accounts/change_password.php:1 app/Views/accounts/forgot.php:19
 #: app/Views/accounts/reset.php:1
@@ -368,31 +372,19 @@ msgstr "Voir"
 msgid "Like"
 msgstr "Aimer"
 
-#: app/Views/images/new.php:6
-msgid "Video stream not available."
-msgstr "Le flux vidéo n'est pas disponible."
+#: app/Views/images/show.php:31
+msgid "Delete"
+msgstr "Supprimer"
 
-#: app/Views/images/new.php:8
-msgid "Take photo"
-msgstr "Prendre une photo"
-
-#: app/Views/images/new.php:10
-msgid "Upload photo"
-msgstr "Charger une photo"
-
-#: app/Views/images/new.php:17
-msgid "The screen capture will appear in this box."
-msgstr "La photo capturée apparaîtra dans ce cadre."
-
-#: app/Views/images/show.php:40
+#: app/Views/images/show.php:46
 msgid "Comments"
 msgstr "Commentaires"
 
-#: app/Views/images/show.php:53 app/Views/images/show.php:54
+#: app/Views/images/show.php:59 app/Views/images/show.php:60
 msgid "Your comment"
 msgstr "Votre commentaire"
 
-#: app/Views/images/show.php:57
+#: app/Views/images/show.php:63
 msgid "Add"
 msgstr "Publier"
 
@@ -441,6 +433,18 @@ msgstr "Mon compte"
 #: core/Auth/Auth.php:45
 msgid "You can't access this page."
 msgstr "Vous n'avez pas accès à cette page."
+
+#~ msgid "Video stream not available."
+#~ msgstr "Le flux vidéo n'est pas disponible."
+
+#~ msgid "Take photo"
+#~ msgstr "Prendre une photo"
+
+#~ msgid "Upload photo"
+#~ msgstr "Charger une photo"
+
+#~ msgid "The screen capture will appear in this box."
+#~ msgstr "La photo capturée apparaîtra dans ce cadre."
 
 #~ msgid "Publier"
 #~ msgstr "Add"
