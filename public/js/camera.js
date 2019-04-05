@@ -127,7 +127,9 @@ function _MouseEvents(img)
 
 function _DrawImage(img)
 {
-    effectCanvasContext.drawImage(img, currentX-(img.width/2), currentY-(img.height/2));
+    effectCanvas.width = img.width;
+    effectCanvas.height = img.height;
+    effectCanvasContext.drawImage(img, currentX-(img.width/2), currentY-(img.height/2), img.width, img.height);
 }
 
 // ------------------------------------
