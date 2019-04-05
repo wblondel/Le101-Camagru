@@ -171,6 +171,7 @@ function previewFile()
         var replacement = document.createElement("img");
         replacement.src = reader.result;
         replacement.id = "video";
+        replacement.width = this.width;
 
         preview.parentNode.replaceChild(replacement, preview);
 
