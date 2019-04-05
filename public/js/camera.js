@@ -62,9 +62,6 @@ navigator.mediaDevices.getUserMedia({audio: false, video: true})
 
 var effectCanvas = document.getElementById("effect-canvas");
 var effectCanvasContext = effectCanvas.getContext("2d");
-var isDraggable = false;
-var currentX = 0;
-var currentY = 0;
 
 // add a clickEventListener to all effects
 var effects = document.querySelectorAll(".effect");
@@ -73,69 +70,19 @@ Array.prototype.forEach.call(effects, function (effect, i) {
     effect.addEventListener("click", function (e) {
         e.preventDefault();
         var effectImgElement = effect.getElementsByTagName('img')[0];
-        _Go(effectImgElement);
+
+        drawImage(effectImgElement);
     })
 });
 
-function _Go(img)
-{
-    _MouseEvents(img);
-
-    setInterval(function () {
-        _ResetCanvas();
-        _DrawImage(img);
-    }, 1000/30);
-}
-
-function _ResetCanvas()
-{
-    effectCanvasContext.fillStyle = '#fff';
-    effectCanvasContext.fillRect(0,0, effectCanvas.width, effectCanvas.height);
-}
-
-function _MouseEvents(img)
-{
-    effectCanvas.onmousedown = function (e) {
-        var mouseX = e.pageX - this.offsetLeft;
-        var mouseY = e.pageY - this.offsetTop;
-
-        if (mouseX >= (currentX - img.width/2) &&
-            mouseX <= (currentX + img.width/2) &&
-            mouseY >= (currentY - img.height/2) &&
-            mouseY <= (currentY + img.height/2)) {
-            isDraggable = true;
-            //currentX = mouseX;
-            //currentY = mouseY;
-        }
-    };
-
-    effectCanvas.onmousemove = function (e) {
-        if (isDraggable) {
-            currentX = e.pageX - this.offsetLeft;
-            currentY = e.pageY - this.offsetTop;
-        }
-    };
-
-    effectCanvas.onmouseup = function (e) {
-        isDraggable = false;
-    };
-
-    effectCanvas.onmouseout = function (e) {
-        isDraggable = false;
-    };
-}
-
-function _DrawImage(img)
+function drawImage(img)
 {
     effectCanvas.width = img.width;
     effectCanvas.height = img.height;
-    effectCanvasContext.drawImage(img, currentX-(img.width/2), currentY-(img.height/2), img.width, img.height);
+    effectCanvasContext.drawImage(img, 0, 0, img.width, img.height);
 }
 
-// ------------------------------------
-
-function previewFile()
-{
+function previewFile() {
     var preview = document.getElementById("photo");
     var file = document.querySelector('input[type=file]').files[0];
     var reader = new FileReader();
