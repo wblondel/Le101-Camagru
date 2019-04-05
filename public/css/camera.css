@@ -25,6 +25,13 @@
     display: block;
 }
 
+#pictures-history {
+    overflow: auto;
+    list-style:none;
+    max-height:500px;
+}
+
+
 #startbutton, #uploadbutton {
     display: inline-block;
     position: relative;
