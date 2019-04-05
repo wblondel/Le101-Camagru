@@ -29,7 +29,7 @@
                                     <?php if ($singleImage->owned_by_current_user === true) : ?>
                                         <form action="/i/del/<?= $singleImage->id ?>" method="POST">
                                             <button type="submit" class="btn btn-sm btn-outline-secondary"><?= _("Delete") ?></button>
-                                            <input type="hidden" name="token" value="<?= App::getInstance()->getSession()->read('csrf_token') ?>">
+                                            <input type="hidden" name="csrf_token" value="<?= App::getInstance()->getSession()->read('csrf_token') ?>">
                                         </form>
                                     <?php endif; ?>
                                 </div>
