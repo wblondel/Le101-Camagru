@@ -115,7 +115,7 @@ class ImagesController extends AppController
 
 
                     if ($screenshotImage !== false || $effectImage !== false) {
-                        $this->imagecopymerge_alpha($screenshotImage, $effectImage, intval($positionPost[0]), intval($positionPost[1]), 0, 0, imagesx($effectImage), imagesy($effectImage), 100);
+                        $this->imagecopymerge_alpha($screenshotImage, $effectImage, intval($positionPost[0]), intval($positionPost[1]), 0, 0, imagesx($effectImage), imagesy($effectImage), 1);
                         $userId = $session->read('auth');
 
                         // enregistrement de l'image sur le serveur
