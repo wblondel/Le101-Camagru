@@ -118,7 +118,7 @@ class ImagesController extends AppController
                         if ($res) {
                             $userId = $session->read('auth');
                             // todo : enregistrement de l'image sur le serveur
-                            imagejpeg($screenshotImage, "/public/uploads/pictures/" . sha1($screenshotImage) . ".jpg");
+                            imagejpeg($screenshotImage, "/public/uploads/pictures/" . uniqid() . ".jpg");
 
                             // todo : enregistrement dans la base de donnees
                             echo json_encode([
