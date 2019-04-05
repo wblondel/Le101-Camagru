@@ -72,13 +72,13 @@ navigator.mediaDevices.getUserMedia({audio: false, video: true})
         };
 
         button.addEventListener("click", function () {
+            var video = document.getElementById("video");
+
             // change maxheight of history list
             var historyList = document.getElementById("pictures-history");
             historyList.style.maxHeight = video.clientHeight + "px";
 
             // Get a screenshot of the video
-            var video = document.getElementById("video");
-
             if (video.tagName === "video") {
                 var screenshotCanvas = document.getElementById("screenshot-canvas");
                 screenshotCanvas.width = video.clientWidth;
