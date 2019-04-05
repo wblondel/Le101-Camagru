@@ -157,6 +157,43 @@ VALUES
 (14,3,2,"Commentaire de test","2013-01-27 13:06:15"),
 (15,4,2,"Commentaire de test","2014-01-27 13:06:15");
 
+-- -----------------------------------------------------
+-- Table `effects`
+-- -----------------------------------------------------
+
+INSERT INTO `effects` (`name`,`filename`)
+VALUES
+("game_alien_T","game_icon_characters/game_alien_T.png"),
+("game_angel_T","game_icon_characters/game_angel_T.png"),
+("game_basic_guy_T","game_icon_characters/game_basic_guy_T.png"),
+("game_Borg_T","game_icon_characters/game_Borg_T.png"),
+("game_Bricky_T","game_icon_characters/game_Bricky_T.png"),
+("game_camouflage_T","game_icon_characters/game_camouflage_T.png"),
+("game_candy_T","game_icon_characters/game_candy_T.png"),
+("game_checkered_man_T","game_icon_characters/game_checkered_man_T.png"),
+("game_chef_T","game_icon_characters/game_chef_T.png"),
+("game_cowboy_T","game_icon_characters/game_cowboy_T.png"),
+("game_dandy_T","game_icon_characters/game_dandy_T.png"),
+("game_devil_T","game_icon_characters/game_devil_T.png"),
+("game_geek_T","game_icon_characters/game_geek_T.png"),
+("game_geisha_T","game_icon_characters/game_geisha_T.png"),
+("game_girl_T","game_icon_characters/game_girl_T.png"),
+("game_ninja_T","game_icon_characters/game_ninja_T.png"),
+("game_nurse_T","game_icon_characters/game_nurse_T.png"),
+("game_pirate_T","game_icon_characters/game_pirate_T.png"),
+("game_policeman_T","game_icon_characters/game_policeman_T.png"),
+("game_princess_T","game_icon_characters/game_princess_T.png"),
+("game_punker_T","game_icon_characters/game_punker_T.png"),
+("game_santa_T","game_icon_characters/game_santa_T.png"),
+("game_striped_man_T","game_icon_characters/game_striped_man_T.png"),
+("game_wearing_shades_T","game_icon_characters/game_wearing_shades_T.png"),
+("game_icon_bad_Fox_T","game_icon_characters/other_game_icons/game_icon_bad_Fox_T.png"),
+("Jumping_Green_egg_man_T","game_icon_characters/other_game_icons/Jumping_Green_egg_man_T.png"),
+("Jumping_Pixel_Guy_T","game_icon_characters/other_game_icons/Jumping_Pixel_Guy_T.png"),
+("pacman_like_icon_T","game_icon_characters/other_game_icons/pacman_like_icon_T.png"),
+("Pixel_Guy_T","game_icon_characters/other_game_icons/Pixel_Guy_T.png"),
+("space_invader_T","game_icon_characters/other_game_icons/space_invader_T.png");
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
