@@ -7,7 +7,7 @@
                         <video id="video">Video stream not available.</video>
                         <canvas id="effect-canvas"></canvas>
                         <div class="text-center">
-                            <button id="startbutton">Take photo</button>
+                            <button id="startbutton" disabled>Take photo</button>
                             <input type="file" id="selectedFile" style="display: none;" onchange="previewFile()"/>
                             <input id="uploadbutton" type="button" value="Upload photo" onclick="document.getElementById('selectedFile').click();"/>
                         </div>

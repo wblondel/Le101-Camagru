@@ -73,6 +73,9 @@ navigator.mediaDevices.getUserMedia({audio: false, video: true})
             var historyList = document.getElementById("pictures-history");
             historyList.style.maxHeight = video.clientHeight + "px";
 
+            // enable startbutton
+            button.removeAttribute("disabled");
+
             // Get a screenshot of the video
             var screenshotCanvas = document.getElementById("screenshot-canvas");
             screenshotCanvas.width = video.clientWidth;
@@ -147,6 +150,8 @@ function previewFile()
     var imageType = /image.*/;
 
     reader.addEventListener("load", function () {
+        preview.pause();
+        preview.srcObject = null;
         preview.src = reader.result;
     }, false);
 
