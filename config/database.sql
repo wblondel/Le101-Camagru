@@ -60,6 +60,24 @@ ROW_FORMAT = DYNAMIC;
 
 
 -- -----------------------------------------------------
+-- Table `effects`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `effects` ;
+
+CREATE TABLE IF NOT EXISTS `effects` (
+    `id` INT(11) NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(255) CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci' NOT NULL,
+    `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `modified_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    `filename` VARCHAR(255) NOT NULL,
+    PRIMARY KEY (`id`))
+  ENGINE = InnoDB
+  DEFAULT CHARACTER SET = utf8mb4
+  COLLATE = utf8mb4_unicode_ci
+  ROW_FORMAT = DYNAMIC;
+
+
+-- -----------------------------------------------------
 -- Table `tags`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `tags` ;
