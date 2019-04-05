@@ -22,14 +22,11 @@
             </div>
             <div class="container effect-group">
                 <div class="row text-center">
-                    <div class="col-sm-2">1</div>
-                    <div class="col-sm-2">2</div>
-                    <div class="col-sm-2">3</div>
-                    <div class="col-sm-2">4</div>
-                    <div class="col-sm-2">5</div>
-                    <div class="col-sm-2">6</div>
-                    <div class="col-sm-2">7</div>
-                    <div class="col-sm-2">8</div>
+                    <?php foreach ($effects as $effect) : ?>
+                        <div class="col-sm-2">
+                            <img src="/img/effects/<?= $effect->filename ?>" class="img-fluid" alt="Responsive image">
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
