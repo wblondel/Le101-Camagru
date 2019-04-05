@@ -11,7 +11,7 @@
             </li>
             <?php if ($this->logged) : ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><?= _("Post a picture") ?></a>
+                    <a class="nav-link" href="/i/new"><?= _("Post a picture") ?></a>
                 </li>
             <?php endif; ?>
         </ul>
