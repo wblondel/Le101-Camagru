@@ -83,16 +83,16 @@ var effectCanvas = document.getElementById("effect-canvas");
 var context = effectCanvas.getContext('2d');
 effectCanvas.addEventListener('mousedown', function (event) {
     dragStart = {
-        x: event.pageX - canvas.offsetLeft,
-        y: event.pageY - canvas.offsetTop
+        x: event.pageX - effectCanvas.offsetLeft,
+        y: event.pageY - effectCanvas.offsetTop
     };
     drag = true;
 });
 effectCanvas.addEventListener('mousemove', function (event) {
     if (drag) {
         dragEnd = {
-            x: event.pageX - canvas.offsetLeft,
-            y: event.pageY - canvas.offsetTop
+            x: event.pageX - effectCanvas.offsetLeft,
+            y: event.pageY - effectCanvas.offsetTop
         };
         context.translate(dragEnd.x - dragStart.x, dragEnd.y - dragStart.y);
         //clear();
