@@ -65,6 +65,7 @@ class App
 
     /**
      * @return Session
+     * @throws Exception
      */
     public function getSession()
     {
@@ -72,6 +73,7 @@ class App
         if (is_null($this->sessionInstance)) {
             $this->sessionInstance = $session;
         };
+        $this->sessionInstance->write('csrf_token', bin2hex(random_bytes(32)));
         return $this->sessionInstance;
     }
 
