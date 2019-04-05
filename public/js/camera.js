@@ -70,7 +70,7 @@ navigator.mediaDevices.getUserMedia({audio: false, video: true})
 
         button.addEventListener("click", function () {
             // Get a screenshot of the video
-            var screenshotCanvas = document.getElementById("screenshotCanvas");
+            var screenshotCanvas = document.getElementById("screenshot-canvas");
             screenshotCanvas.width = video.clientWidth;
             screenshotCanvas.height = video.clientHeight;
             var screenshotCanvasContext = screenshotCanvas.getContext("2d");
