@@ -14,12 +14,8 @@
                     </div>
                     <canvas id="screenshot-canvas" style="display:none;"></canvas>
                 </div>
-                <div class="col-sm-3">
-                    <canvas id="canvas">
-                    </canvas>
-                    <div class="output">
-                        <img id="photo" alt="The screen capture will appear in this box.">
-                    </div>
+                <div class="col-sm-3" id="pictures-history">
+
                 </div>
             </div>
             <div class="container effect-group">

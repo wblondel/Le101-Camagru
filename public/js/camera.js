@@ -98,7 +98,12 @@ navigator.mediaDevices.getUserMedia({audio: false, video: true})
                         var results = JSON.parse(xhr.responseText);
                         console.log(results);
 
-                        imageToPut = results['finalImage'];
+                        var imageToPut = results['imageFilename'];
+
+                        var picturesHistory = document.getElementById("pictures-history");
+                        divToAppend = document.createElement('li');
+                        divToAppend.innerHTML = '<img src="/uploads/pictures/' + imageToPut + '" class="img-fluid" alt="' + imageToPut + '">';
+                        picturesHistory.prepend(divToAppend);
                         // Write the image to the history
                         /*
                         var canvas = document.getElementById("canvas");
