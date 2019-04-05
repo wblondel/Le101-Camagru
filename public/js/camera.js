@@ -75,6 +75,13 @@ Array.prototype.forEach.call(effects, function (effect, i) {
     })
 });
 
+function clear() {
+    context.save();
+    context.setTransform(1, 0, 0, 1, 0, 0);
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.restore();
+}
+
 // add drag events
 var drag = false;
 var dragStart;
@@ -95,7 +102,7 @@ effectCanvas.addEventListener('mousemove', function (event) {
             y: event.pageY - effectCanvas.offsetTop
         };
         context.translate(dragEnd.x - dragStart.x, dragEnd.y - dragStart.y);
-        //clear();
+        clear();
         //draw();
         dragStart = dragEnd
     }
