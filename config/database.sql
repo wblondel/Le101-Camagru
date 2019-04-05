@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `images` (
   CONSTRAINT `fk_images_users`
     FOREIGN KEY (`users_id`)
     REFERENCES `users` (`id`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
@@ -137,12 +137,12 @@ CREATE TABLE IF NOT EXISTS `comments` (
   CONSTRAINT `fk_comments_users1`
     FOREIGN KEY (`users_id`)
     REFERENCES `users` (`id`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_comments_images1`
     FOREIGN KEY (`images_id`)
     REFERENCES `images` (`id`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
@@ -164,12 +164,12 @@ CREATE TABLE IF NOT EXISTS `likes` (
   CONSTRAINT `fk_likes_users1`
     FOREIGN KEY (`users_id`)
     REFERENCES `users` (`id`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_likes_images1`
     FOREIGN KEY (`images_id`)
     REFERENCES `images` (`id`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
