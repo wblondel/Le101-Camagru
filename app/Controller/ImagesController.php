@@ -117,14 +117,29 @@ class ImagesController extends AppController
                         $res = imagecopymerge($screenshotImage, $effectImage, intval($positionPost[0]), intval($positionPost[1]), 0, 0, imagesx($effectImage), imagesy($effectImage), 100);
                         if ($res) {
                             $userId = $session->read('auth');
-                            // todo : enregistrement de l'image sur le serveur
-                            imagejpeg($screenshotImage, ROOT . "/public/uploads/pictures/" . uniqid() . ".jpg");
 
-                            // todo : enregistrement dans la base de donnees
-                            echo json_encode([
-                                'result' => true,
-                                'finalImage' => base64_encode($screenshotDecoded)
+                            // enregistrement de l'image sur le serveur
+                            $imageFilename = uniqid() . ".jpg";
+                            imagejpeg($screenshotImage, ROOT . "/public/uploads/pictures/" . $imageFilename);
+
+                            // enregistrement dans la base de donnees
+                            $resCreate = $this->Image->create([
+                                'description' => '',
+                                'users_id' => $userId,
+                                'filename' => $imageFilename,
+                            ]);
+
+                            if ($resCreate) {
+                                echo json_encode([
+                                    'result' => true,
+                                    'imageFilename' => $imageFilename,
+                                    'imageId' => $db->lastInsertId()
                                 ]);
+                            } else {
+                                unlink(ROOT . "/public/uploads/pictures/" . $imageFilename);
+                                http_response_code(400);
+                                echo json_encode(['result' => false]);
+                            }
                             imagedestroy($screenshotImage);
                             imagedestroy($effectImage);
                         } else {
@@ -144,7 +159,6 @@ class ImagesController extends AppController
             } else {
                 $this->forbidden();
             }
-
         } else {
             $this->template = 'default';
             $this->render(
