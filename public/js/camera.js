@@ -71,7 +71,7 @@ navigator.mediaDevices.getUserMedia({audio: false, video: true})
         button.addEventListener("click", function () {
             // change maxheight of history list
             var historyList = document.getElementById("pictures-history");
-            historyList.maxHeight = video.clientHeight;
+            historyList.maxHeight = video.clientHeight + "px";
 
             // Get a screenshot of the video
             var screenshotCanvas = document.getElementById("screenshot-canvas");
