@@ -142,22 +142,6 @@ navigator.mediaDevices.getUserMedia({audio: false, video: true})
 
 // ----------------------------
 
-function replaceElement(source, newType)
-{
-    // Create the document fragment
-    const frag = document.createDocumentFragment();
-    // Fill it with what's in the source element
-    while (source.firstChild) {
-        frag.appendChild(source.firstChild);
-    }
-    // Create the new element
-    const newElem = document.createElement(newType);
-    // Empty the document fragment into it
-    newElem.appendChild(frag);
-    // Replace the source element with the new element on the page
-    source.parentNode.replaceChild(newElem, source);
-}
-
 function previewFile()
 {
     var preview = document.getElementById("video");
@@ -171,7 +155,9 @@ function previewFile()
         preview.srcObject = null;
 
         // replace video by image
-        replaceElement(preview, 'img');
+        var replacement = document.createElement('img');
+
+        preview.parentNode.replaceChild(replacement, preview);
 
         preview.src = reader.result;
     }, false);
