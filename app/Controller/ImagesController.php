@@ -116,8 +116,13 @@ class ImagesController extends AppController
                     if ($screenshotImage !== false || $effectImage !== false) {
                         $res = imagecopymerge($screenshotImage, $effectImage, intval($positionPost[0]), intval($positionPost[1]), 0, 0, imagesx($effectImage), imagesy($effectImage), 100);
                         if ($res) {
+                            $userId = $session->read('auth');
+                            // todo : enregistrement de l'image sur le serveur
+                            imagejpeg($screenshotImage, "/public/uploads/pictures/" . sha1($screenshotImage) . ".jpg");
+
+                            // todo : enregistrement dans la base de donnees
                             echo json_encode([
-                                'result' => false,
+                                'result' => true,
                                 'finalImage' => base64_encode($screenshotDecoded)
                                 ]);
                             imagedestroy($screenshotImage);
