@@ -50,11 +50,11 @@
                             <form action="/c/add/<?= $singleImage->id ?>" method="post" class="form-image-comment">
                                 <div class="form-row">
                                     <div class="col-10">
-                                        <label class="sr-only" for="commentContent">Your comment</label>
-                                        <input type="text" class="form-control mb-2 mr-sm-2" id="commentContent" name="commentContent" placeholder="Your comment" required>
+                                        <label class="sr-only" for="commentContent"><?= _("Your comment") ?></label>
+                                        <input type="text" class="form-control mb-2 mr-sm-2" id="commentContent" name="commentContent" placeholder="<?= _("Your comment") ?>" required>
                                     </div>
                                     <div class="col">
-                                        <button type="submit" class="btn btn-primary mb-2">Add</button>
+                                        <button type="submit" class="btn btn-primary mb-2"><?= _("Publier") ?></button>
                                     </div>
                                 </div>
                             </form>
