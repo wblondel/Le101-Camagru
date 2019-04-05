@@ -37,7 +37,7 @@
                 <div class="col-md-6">
                     <div class="detailBox">
                         <div class="titleBox">
-                            <label>Comment Box</label>
+                            <label><?= _("Comments") ?></label>
                         </div>
                         <div class="actionBox">
                             <ul class="commentList">
