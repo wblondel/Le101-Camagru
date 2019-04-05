@@ -20,13 +20,17 @@
                     </div>
                 </div>
             </div>
-            <div class="row flex-row flex-nowrap">
-                <!-- scrollable items to put on webcam images -->
-                <?php foreach ($effects as $effect) : ?>
-                    <div class="col-xs-4">
-                        <p>Test</p>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="effects_list">
+                    <!-- scrollable items to put on webcam images -->
+                    <?php foreach ($effects as $effect) : ?>
+                        <div class="effect">
+                            <p>Test</p>
+                        </div>
+                    <?php endforeach; ?>
                     </div>
-                <?php endforeach; ?>
+                </div>
             </div>
         </div>
     </div>
