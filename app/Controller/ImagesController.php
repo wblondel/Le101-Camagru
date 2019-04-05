@@ -114,7 +114,7 @@ class ImagesController extends AppController
                     $effectImage = imagecreatefromstring($effectDecoded);
 
                     if ($screenshotImage !== false || $effectImage !== false) {
-                        $res = imagecopymerge($screenshotImage, $effectImage, $positionPost[0], $positionPost[1], 0, 0, imagesx($effectImage), imagesy($effectImage), 100);
+                        $res = imagecopymerge($screenshotImage, $effectImage, intval($positionPost[0]), intval($positionPost[1]), 0, 0, imagesx($effectImage), imagesy($effectImage), 100);
                         if ($res) {
                             echo json_encode([
                                 'result' => false,
