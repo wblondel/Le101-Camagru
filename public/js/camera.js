@@ -68,6 +68,8 @@ Array.prototype.forEach.call(effects, function (effect, i) {
 
         var effectImgElement = effect.getElementsByTagName('img')[0];
         var effectCanvas = document.getElementById("effect-canvas").getContext("2d");
+        effectCanvas.width = effectImgElement.width;
+        effectCanvas.height = effectImgElement.height;
         effectCanvas.drawImage(effectImgElement, 0, 0, effectImgElement.width, effectImgElement.height);
     })
 });
