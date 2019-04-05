@@ -26,6 +26,11 @@
                                         <input type="hidden" class="reactType" name="reactType" value="<?= ($singleImage->liked_by_user ? '0': '1') ;?>">
                                         <button type="submit" class="btn btn-sm btn-outline-secondary <?= ($singleImage->liked_by_user ? 'active' : '') ;?>"><?= _("Like") ?><?= " (" . $singleImage->likes . ")"?></button>
                                     </form>
+                                    <?php if ($singleImage->owned_by_current_user === true) : ?>
+                                        <form action="/i/del/<?= $singleImage->id ?>" method="POST">
+                                            <button type="submit" class="btn btn-sm btn-outline-secondary"><?= _("Delete") ?></button>
+                                        </form>
+                                    <?php endif; ?>
                                 </div>
                                 <small class="text-muted my-tooltip"><?= $singleImage->getElapsedTime() ?>
                                     <span class="my-tooltiptext"><?= $singleImage->getCreationDate() ?></span>

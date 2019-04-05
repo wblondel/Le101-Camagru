@@ -94,6 +94,8 @@ class App
         $router->get('/i/:id', "Images#show")
             ->with('id', '[0-9]+');
         $router->get('/i/new', "Images#new");
+        $router->post('/i/del/:imageId', "Images#delete")
+            ->with('imageId', '[0-9]+');
 
         # Comments
         $router->post('/c/add/:imageId', "Comments#add")
