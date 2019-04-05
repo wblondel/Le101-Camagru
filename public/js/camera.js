@@ -12,6 +12,7 @@ Array.prototype.forEach.call(effects, function (effect, i) {
         e.preventDefault();
         effectImgElement = effect.getElementsByTagName('img')[0];
         // enable startbutton
+        var button = document.getElementById('startbutton');
         button.removeAttribute("disabled");
         drawImage();
     })
