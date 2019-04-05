@@ -4,10 +4,8 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-9">
                     <div class="camera">
-                        <video id="video">
-                            Video stream not available.
-                            <canvas id="effect-canvas"></canvas>
-                        </video>
+                        <video id="video">Video stream not available.</video>
+                        <canvas id="effect-canvas"></canvas>
                         <div class="text-center">
                             <button id="startbutton">Take photo</button>
                             <input type="file" id="selectedFile" style="display: none;" onchange="previewFile()"/>
