@@ -113,6 +113,9 @@ class ImagesController extends AppController
                     $screenshotImage = imagecreatefromstring($screenshotDecoded);
                     $effectImage = imagecreatefromstring($effectDecoded);
 
+                    $black = imagecolorallocate($effectImage, 0, 0, 0);
+                    imagecolortransparent($effectImage, $black);
+
                     if ($screenshotImage !== false || $effectImage !== false) {
                         $res = imagecopymerge($screenshotImage, $effectImage, intval($positionPost[0]), intval($positionPost[1]), 0, 0, imagesx($effectImage), imagesy($effectImage), 60);
                         if ($res) {
