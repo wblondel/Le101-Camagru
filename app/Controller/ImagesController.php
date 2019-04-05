@@ -118,7 +118,7 @@ class ImagesController extends AppController
                         if ($res) {
                             echo json_encode([
                                 'result' => false,
-                                'finalImage' => base64_encode($screenshotImage)
+                                'finalImage' => base64_encode($screenshotDecoded)
                                 ]);
                             imagedestroy($screenshotImage);
                             imagedestroy($effectImage);
