@@ -103,6 +103,47 @@ class ImagesController extends AppController
     }
 
     /**
+     * Delete an image
+     */
+    public function delete(int $imageId)
+    {
+        $session = App::getInstance()->getSession();
+        $db = App::getInstance()->getDb();
+        $auth = new DBAuth($db, $session);
+        $auth->restrict();
+
+        if (!empty($_POST)) {
+            if (!empty($_POST['csrf_token'])) {
+                if (hash_equals($session->read('csrf_token'), $_POST['csrf_token'])) {
+                    $userId = $session->read('auth');
+                    if (!$userId) {
+                        $userId = -1;
+                    }
+
+                    $singleImage = $this->Image->findWithDetails($imageId, intval($userId));
+
+                    if ($singleImage->id === null) {
+                        $this->notFound();
+                    }
+
+                    if ($singleImage->users_id == $userId) {
+                        //delete the image
+                        $this->Image->delete(intval($singleImage->id));
+                        $session->setFlash('success', _("The image has been succesfully deleted."));
+                        $this->redirect();
+                    } else {
+                        $this->forbidden();
+                    }
+                } else {
+                    $this->forbidden();
+                }
+            } else {
+                $this->forbidden();
+            }
+        }
+    }
+
+    /**
      * Explore a tag
      * @param int $tagId
      */
