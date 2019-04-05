@@ -66,7 +66,7 @@ class ImagesController extends AppController
         }
 
         if ($singleImage->users_id == $userId) {
-            $singleImage['owned_by_current_user'] = true;
+            $singleImage->owned_by_current_user = true;
         }
 
         $comments = $this->Comment->findForImage(intval($singleImage->id));
