@@ -75,7 +75,34 @@ Array.prototype.forEach.call(effects, function (effect, i) {
     })
 });
 
-
+// add drag events
+var drag = false;
+var dragStart;
+var dragEnd;
+var effectCanvas = document.getElementById("effect-canvas");
+var context = effectCanvas.getContext('2d');
+effectCanvas.addEventListener('mousedown', function (event) {
+    dragStart = {
+        x: event.pageX - canvas.offsetLeft,
+        y: event.pageY - canvas.offsetTop
+    };
+    drag = true;
+});
+effectCanvas.addEventListener('mousemove', function (event) {
+    if (drag) {
+        dragEnd = {
+            x: event.pageX - canvas.offsetLeft,
+            y: event.pageY - canvas.offsetTop
+        };
+        context.translate(dragEnd.x - dragStart.x, dragEnd.y - dragStart.y);
+        //clear();
+        //draw();
+        dragStart = dragEnd
+    }
+});
+effectCanvas.addEventListener('mouseup',function (event) {
+    drag = false;
+});
 
 function previewFile() {
     var preview = document.getElementById("photo");
