@@ -77,12 +77,19 @@ navigator.mediaDevices.getUserMedia({audio: false, video: true})
             historyList.style.maxHeight = video.clientHeight + "px";
 
             // Get a screenshot of the video
-            var screenshotCanvas = document.getElementById("screenshot-canvas");
-            screenshotCanvas.width = video.clientWidth;
-            screenshotCanvas.height = video.clientHeight;
-            var screenshotCanvasContext = screenshotCanvas.getContext("2d");
-            screenshotCanvasContext.drawImage(video, 0, 0, screenshotCanvas.width, screenshotCanvas.height);
-            var screenshotDataURI = screenshotCanvas.toDataURL('image/jpeg');
+            var video = document.getElementById("video");
+
+            if (video.tagName === "video") {
+                var screenshotCanvas = document.getElementById("screenshot-canvas");
+                screenshotCanvas.width = video.clientWidth;
+                screenshotCanvas.height = video.clientHeight;
+                var screenshotCanvasContext = screenshotCanvas.getContext("2d");
+                screenshotCanvasContext.drawImage(video, 0, 0, screenshotCanvas.width, screenshotCanvas.height);
+                var screenshotDataURI = screenshotCanvas.toDataURL('image/jpeg');
+            } else {
+                var screenshotDataURI = video.src;
+            }
+
 
             // Get the effect
             var effectDataURI = effectCanvas.toDataURL('image/jpeg');
