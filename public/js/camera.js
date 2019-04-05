@@ -155,11 +155,10 @@ function previewFile()
         preview.srcObject = null;
 
         // replace video by image
-        var replacement = document.createElement('img');
+        var replacement = document.createElement("img");
+        replacement.src = reader.result;
 
         preview.parentNode.replaceChild(replacement, preview);
-
-        preview.src = reader.result;
     }, false);
 
     if (file.type.match(imageType)) {
