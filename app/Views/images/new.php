@@ -12,7 +12,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-3 px-0">
                     <canvas id="canvas">
                     </canvas>
                     <div class="output">
