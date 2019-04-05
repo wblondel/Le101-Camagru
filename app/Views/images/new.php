@@ -2,7 +2,7 @@
     <div class="py-5 bg-light">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 col-sm-9">
+                <div class="col-xs-12 col-sm-9 px-0">
                     <div class="camera">
                         <video id="video">Video stream not available.</video>
                         <canvas id="effect-canvas"></canvas>
