@@ -12,6 +12,7 @@
                             <input id="uploadbutton" type="button" value="Upload photo" onclick="document.getElementById('selectedFile').click();"/>
                         </div>
                     </div>
+                    <canvas id="screenshot-canvas" style="display:none;"></canvas>
                 </div>
                 <div class="col-sm-3">
                     <canvas id="canvas">
