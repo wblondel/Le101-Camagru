@@ -117,7 +117,7 @@ class ImagesController extends AppController
                     imagecolortransparent($effectImage, $black);
 
                     if ($screenshotImage !== false || $effectImage !== false) {
-                        $res = imagecopymerge($screenshotImage, $effectImage, intval($positionPost[0]), intval($positionPost[1]), 0, 0, imagesx($effectImage), imagesy($effectImage), 60);
+                        $res = imagecopymerge($screenshotImage, $effectImage, intval($positionPost[0]), intval($positionPost[1]), 0, 0, imagesx($effectImage), imagesy($effectImage), 100);
                         if ($res) {
                             $userId = $session->read('auth');
 
