@@ -23,7 +23,12 @@ function drawImage()
     var divCamera = document.getElementsByClassName("camera")[0];
     var divVideo = document.getElementById("video");
 
-    effectCanvas.style.paddingLeft = ((divCamera.clientWidth - divVideo.width) / 2) + "px";
+    var divCameraWidth = divCamera.clientWidth;
+    var divVideoWidth = divVideo.width;
+    if (divVideoWidth === 0) {
+        divVideoWidth = divVideo.clientWidth;
+    }
+    effectCanvas.style.paddingLeft = ((divCameraWidth - divVideoWidth) / 2) + "px";
     effectCanvas.width = effectImgElement.width;
     effectCanvas.height = effectImgElement.height;
     effectCanvas.style.paddingLeft =
