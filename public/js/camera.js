@@ -66,6 +66,9 @@ Array.prototype.forEach.call(effects, function (effect, i) {
     effect.addEventListener("click", function (e) {
         e.preventDefault();
 
+        var effectImgElement = effect.getElementsByTagName('img')[0];
+        var effectCanvas = document.getElementById("effect-canvas").getContext("2d");
+        effectCanvas.drawImage(effectImgElement, 0, 0);
     })
 });
 
