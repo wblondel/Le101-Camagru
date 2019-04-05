@@ -115,6 +115,39 @@ class ImagesController extends AppController
 
 
                     if ($screenshotImage !== false || $effectImage !== false) {
+                        $w = imagesx($effectImage);
+                        $h = imagesy($effectImage);
+                        if (!imageistruecolor($effectImage)) {
+                            $original_transparency = imagecolortransparent($effectImage);
+                            //we have a transparent color
+                            if ($original_transparency >= 0) {
+                                //get the actual transparent color
+                                $rgb = imagecolorsforindex($effectImage, $original_transparency);
+                                $original_transparency = ($rgb['red'] << 16) | ($rgb['green'] << 8) | $rgb['blue'];
+                                //change the transparent color to black, since transparent goes to black anyways (no way to remove transparency in GIF)
+                                imagecolortransparent($effectImage, imagecolorallocate($effectImage, 0, 0, 0));
+                            }
+                            //create truecolor image and transfer
+                            $truecolor = imagecreatetruecolor($w, $h);
+                            imagealphablending($effectImage, false);
+                            imagesavealpha($effectImage, true);
+                            imagecopy($truecolor, $effectImage, 0, 0, 0, 0, $w, $h);
+                            imagedestroy($effectImage);
+                            $effectImage = $truecolor;
+                            //remake transparency (if there was transparency)
+                            if ($original_transparency >= 0) {
+                                imagealphablending($effectImage, false);
+                                imagesavealpha($effectImage, true);
+                                for ($x = 0; $x < $w; $x++) {
+                                    for ($y = 0; $y < $h; $y++) {
+                                        if (imagecolorat($effectImage, $x, $y) == $original_transparency) {
+                                            imagesetpixel($effectImage, $x, $y, 127 << 24);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
                         imagecopy($screenshotImage, $effectImage, intval($positionPost[0]), intval($positionPost[1]), 0, 0, imagesx($effectImage), imagesy($effectImage));
                         $userId = $session->read('auth');
 
