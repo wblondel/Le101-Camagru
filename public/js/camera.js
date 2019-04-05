@@ -171,14 +171,19 @@ function previewFile()
         var replacement = document.createElement("img");
         replacement.src = reader.result;
         replacement.id = "video";
-        replacement.width = this.width;
 
         preview.parentNode.replaceChild(replacement, preview);
 
         var button = document.getElementById('startbutton');
         button.removeEventListener("click", takePhoto);
         button.addEventListener("click", takePhoto);
+
+        replacement.onload = function () {
+            alert( replacement.width+", "+replacement.height );
+        };
     }, false);
+
+
 
     if (file.type.match(imageType)) {
         if (file) {
