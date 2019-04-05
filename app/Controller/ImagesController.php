@@ -113,11 +113,9 @@ class ImagesController extends AppController
                     $screenshotImage = imagecreatefromstring($screenshotDecoded);
                     $effectImage = imagecreatefromstring($effectDecoded);
 
-                    $black = imagecolorallocate($effectImage, 0, 0, 0);
-                    imagecolortransparent($effectImage, $black);
 
                     if ($screenshotImage !== false || $effectImage !== false) {
-                        $res = imagecopymerge($screenshotImage, $effectImage, intval($positionPost[0]), intval($positionPost[1]), 0, 0, imagesx($effectImage), imagesy($effectImage), 100);
+                        $res = imagecopymerge_alpha($screenshotImage, $effectImage, intval($positionPost[0]), intval($positionPost[1]), 0, 0, imagesx($effectImage), imagesy($effectImage), 100);
                         if ($res) {
                             $userId = $session->read('auth');
 
@@ -291,5 +289,19 @@ class ImagesController extends AppController
     {
         return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
             strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
+    }
+
+    private function imagecopymerge_alpha($dst_im, $src_im, $dst_x, $dst_y, $src_x, $src_y, $src_w, $src_h, $pct){
+        // creating a cut resource
+        $cut = imagecreatetruecolor($src_w, $src_h);
+
+        // copying relevant section from background to the cut resource
+        imagecopy($cut, $dst_im, 0, 0, $dst_x, $dst_y, $src_w, $src_h);
+
+        // copying relevant section from watermark to the cut resource
+        imagecopy($cut, $src_im, 0, 0, $src_x, $src_y, $src_w, $src_h);
+
+        // insert cut resource to destination image
+        imagecopymerge($dst_im, $cut, $dst_x, $dst_y, 0, 0, $src_w, $src_h, $pct);
     }
 }
