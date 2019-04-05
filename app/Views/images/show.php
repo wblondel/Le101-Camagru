@@ -54,7 +54,7 @@
                                         <input type="text" class="form-control mb-2 mr-sm-2" id="commentContent" name="commentContent" placeholder="<?= _("Your comment") ?>" required>
                                     </div>
                                     <div class="col">
-                                        <button type="submit" class="btn btn-primary mb-2"><?= _("Publier") ?></button>
+                                        <button type="submit" class="btn btn-primary mb-2"><?= _("Add") ?></button>
                                     </div>
                                 </div>
                             </form>
