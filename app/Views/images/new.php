@@ -23,17 +23,17 @@
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-xs-4 thumb">
                     <a class="thumbnail" href="#">
-                        <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+                        <img class="img-responsive" src="https://placehold.it/400x300" alt="">
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-4 col-xs-4 thumb">
                     <a class="thumbnail" href="#">
-                        <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+                        <img class="img-responsive" src="https://placehold.it/400x300" alt="">
                     </a>
                 </div>
                 <div class="col-lg-4 col-md-4 col-xs-4 thumb">
                     <a class="thumbnail" href="#">
-                        <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+                        <img class="img-responsive" src="https://placehold.it/400x300" alt="">
                     </a>
                 </div>
         </div>
