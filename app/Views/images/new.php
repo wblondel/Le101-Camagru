@@ -21,15 +21,21 @@
                 </div>
             </div>
             <div class="row">
-                <div class="effects_list">
-                    <!-- scrollable items to put on webcam images -->
-                    <?php foreach ($effects as $effect) : ?>
-                        <div class="col-sm-4 effect">
-                            <p>Test</p>
-                        </div>
-                    <?php endforeach; ?>
+                <div class="col-lg-4 col-md-4 col-xs-4 thumb">
+                    <a class="thumbnail" href="#">
+                        <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+                    </a>
                 </div>
-            </div>
+                <div class="col-lg-4 col-md-4 col-xs-4 thumb">
+                    <a class="thumbnail" href="#">
+                        <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-4 thumb">
+                    <a class="thumbnail" href="#">
+                        <img class="img-responsive" src="http://placehold.it/400x300" alt="">
+                    </a>
+                </div>
         </div>
     </div>
 </main>
