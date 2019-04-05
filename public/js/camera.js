@@ -88,7 +88,7 @@ function takePhoto()
     historyList.style.maxHeight = video.clientHeight + "px";
 
     // Get a screenshot of the video
-    if (video.tagName === "video") {
+    if (video.tagName.toLowerCase() === "video") {
         var screenshotCanvas = document.getElementById("screenshot-canvas");
         screenshotCanvas.width = video.clientWidth;
         screenshotCanvas.height = video.clientHeight;
@@ -162,7 +162,7 @@ function previewFile()
 
     reader.addEventListener("load", function () {
         // stop video
-        if (preview.tagName === "video") {
+        if (preview.tagName.toLowerCase() === "video") {
             preview.pause();
             preview.srcObject = null;
         }
