@@ -141,7 +141,7 @@ navigator.mediaDevices.getUserMedia({audio: false, video: true})
 
 function previewFile()
 {
-    var preview = document.getElementById("photo");
+    var preview = document.getElementById("video");
     var file = document.querySelector('input[type=file]').files[0];
     var reader = new FileReader();
     var imageType = /image.*/;
