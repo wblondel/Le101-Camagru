@@ -66,7 +66,7 @@ class CommentsController extends AppController
                                 ->setSubject($insertedComment->username . " " . _("commented your image"))
                                 ->setMessage('<p>' .
                                     _("Hello") . ' ' . $authorUserInfo->username . '</p><br>' .
-                                    $insertedComment->username . ' ' . 'commented your image:' . ' ' .
+                                    $insertedComment->username . ' ' . _("commented your image") . ': ' .
                                     '<a href="https://camagru.fr' . $singleImage->getUrl() . '">https://camagru.fr' . $singleImage->getUrl() . '</a>' .
                                     '<p>' . htmlentities($insertedComment->comment) . '</p>')
                                 ->setReplyTo('contact@camagru.fr')

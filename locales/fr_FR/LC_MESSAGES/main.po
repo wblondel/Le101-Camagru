@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Camagru\n"
-"POT-Creation-Date: 2019-04-04 12:58+0200\n"
-"PO-Revision-Date: 2019-04-04 13:00+0200\n"
+"POT-Creation-Date: 2019-04-05 10:48+0200\n"
+"PO-Revision-Date: 2019-04-05 10:48+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -208,6 +208,7 @@ msgid "Your didn't enter the correct current password."
 msgstr "Vous n’avez pas saisi le bon mot de passe."
 
 #: app/Controller/CommentsController.php:66
+#: app/Controller/CommentsController.php:69
 msgid "commented your image"
 msgstr "a commenté votre photo"
 
