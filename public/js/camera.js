@@ -11,6 +11,8 @@ Array.prototype.forEach.call(effects, function (effect, i) {
     effect.addEventListener("click", function (e) {
         e.preventDefault();
         effectImgElement = effect.getElementsByTagName('img')[0];
+        // enable startbutton
+        button.removeAttribute("disabled");
         drawImage();
     })
 });
@@ -72,9 +74,6 @@ navigator.mediaDevices.getUserMedia({audio: false, video: true})
             // change maxheight of history list
             var historyList = document.getElementById("pictures-history");
             historyList.style.maxHeight = video.clientHeight + "px";
-
-            // enable startbutton
-            button.removeAttribute("disabled");
 
             // Get a screenshot of the video
             var screenshotCanvas = document.getElementById("screenshot-canvas");
