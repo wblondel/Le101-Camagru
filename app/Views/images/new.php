@@ -21,15 +21,13 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="effects_list">
+                <div class="effects_list">
                     <!-- scrollable items to put on webcam images -->
                     <?php foreach ($effects as $effect) : ?>
-                        <div class="effect">
+                        <div class="col-sm-4 effect">
                             <p>Test</p>
                         </div>
                     <?php endforeach; ?>
-                    </div>
                 </div>
             </div>
         </div>
