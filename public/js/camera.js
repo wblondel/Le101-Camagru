@@ -20,8 +20,13 @@ Array.prototype.forEach.call(effects, function (effect, i) {
 
 function drawImage()
 {
+    var divCamera = document.getElementsByClassName("camera")[0];
+    var divVideo = document.getElementById("video");
+
+    effectCanvas.style.paddingLeft = ((divCamera.clientWidth - divVideo.width) / 2) + "px";
     effectCanvas.width = effectImgElement.width;
     effectCanvas.height = effectImgElement.height;
+    effectCanvas.style.paddingLeft =
     effectCanvasContext.drawImage(effectImgElement, 0, 0, effectImgElement.width, effectImgElement.height);
 }
 
