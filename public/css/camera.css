@@ -1,7 +1,7 @@
 #video {
     border: 1px solid black;
     box-shadow: 2px 2px 3px black;
-    width: 100%;
+    max-width: 100%;
 }
 
 .camera {
