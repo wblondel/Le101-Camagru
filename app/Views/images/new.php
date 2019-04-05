@@ -20,22 +20,18 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-xs-4 thumb">
-                    <a class="thumbnail" href="#">
-                        <img class="img-responsive" src="https://placehold.it/400x300" alt="">
-                    </a>
+            <div class="container effect-group">
+                <div class="row text-center">
+                    <div class="col-xs-4">1</div>
+                    <div class="col-xs-4">2</div>
+                    <div class="col-xs-4">3</div>
+                    <div class="col-xs-4">4</div>
+                    <div class="col-xs-4">5</div>
+                    <div class="col-xs-4">6</div>
+                    <div class="col-xs-4">7</div>
+                    <div class="col-xs-4">8</div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-xs-4 thumb">
-                    <a class="thumbnail" href="#">
-                        <img class="img-responsive" src="https://placehold.it/400x300" alt="">
-                    </a>
-                </div>
-                <div class="col-lg-4 col-md-4 col-xs-4 thumb">
-                    <a class="thumbnail" href="#">
-                        <img class="img-responsive" src="https://placehold.it/400x300" alt="">
-                    </a>
-                </div>
+            </div>
         </div>
     </div>
 </main>
