@@ -23,6 +23,7 @@ class ImagesController extends AppController
         $this->loadModel('User');
         $this->loadModel('Like');
         $this->loadModel('Comment');
+        $this->loadModel('Effect');
     }
 
     /**
@@ -94,9 +95,11 @@ class ImagesController extends AppController
 
         $this->template = 'default';
 
+        $effects = $this->Effect->all();
+
         $this->render(
             'images.new',
-            [],
+            compact('effects'),
             _("Share a picture"),
             ['js' => ['camera.js'], 'css' => ['camera.css']]
         );
