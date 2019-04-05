@@ -14,7 +14,7 @@
     display: none;
 }
 
-.effect-canvas {
+#effect-canvas {
     position: absolute;
     top: 0;
     left: 0;
