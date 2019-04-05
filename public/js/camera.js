@@ -178,7 +178,9 @@ function previewFile()
         button.removeEventListener("click", takePhoto);
         button.addEventListener("click", takePhoto);
 
-        console.log(reader);
+        replacement.onload = function () {
+            console.log(replacement.width);
+        }
     }, false);
 
 
