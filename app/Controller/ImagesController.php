@@ -93,16 +93,62 @@ class ImagesController extends AppController
         $auth = new DBAuth($db, $session);
         $auth->restrict();
 
-        $this->template = 'default';
-
         $effects = $this->Effect->all();
 
-        $this->render(
-            'images.new',
-            compact('effects'),
-            _("Share a picture"),
-            ['js' => ['camera.js'], 'css' => ['camera.css']]
-        );
+        if (!empty($_POST)) {
+            if ($this->isAjax()) {
+                header('Content-Type: application/json');
+
+                if (isset($_POST['screenshot']) && isset($_POST['effect']) && isset($_POST['position'])) {
+                    $screenshotPost = $_POST['screenshot'];
+                    $effectPost = $_POST['effect'];
+                    $positionPost = $_POST['position'];
+
+                    $screenshotEncoded = substr($screenshotPost, strpos($screenshotPost, ",") + 1);
+                    $effectEncoded = substr($effectPost, strpos($effectPost, ",") + 1);
+
+                    $screenshotDecoded = base64_decode($screenshotEncoded);
+                    $effectDecoded = base64_decode($effectEncoded);
+
+                    $screenshotImage = imagecreatefromstring($screenshotDecoded);
+                    $effectImage = imagecreatefromstring($effectDecoded);
+
+                    if ($screenshotImage !== false || $effectImage !== false) {
+                        $res = imagecopymerge($screenshotDecoded, $effectDecoded, $positionPost[0], $positionPost[1], 0, 0, imagesx($effectImage), imagesy($effectImage), 100);
+                        if ($res) {
+                            echo json_encode([
+                                'result' => false,
+                                'finalImage' => base64_encode($screenshotImage)
+                                ]);
+                            imagedestroy($screenshotImage);
+                            imagedestroy($effectImage);
+                        } else {
+                            imagedestroy($screenshotImage);
+                            imagedestroy($effectImage);
+                            http_response_code(400);
+                            echo json_encode(['result' => false]);
+                        }
+                    } else {
+                        http_response_code(400);
+                        echo json_encode(['result' => false]);
+                    }
+                } else {
+                    http_response_code(400);
+                    echo json_encode(['result' => false]);
+                }
+            } else {
+                $this->forbidden();
+            }
+
+        } else {
+            $this->template = 'default';
+            $this->render(
+                'images.new',
+                compact('effects'),
+                _("Share a picture"),
+                ['js' => ['camera.js'], 'css' => ['camera.css']]
+            );
+        }
     }
 
     /**
