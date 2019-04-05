@@ -73,7 +73,10 @@ class App
         if (is_null($this->sessionInstance)) {
             $this->sessionInstance = $session;
         };
-        $this->sessionInstance->write('csrf_token', bin2hex(random_bytes(32)));
+        if (!($this->sessionInstance->read('csrf_token') === null)) {
+            $this->sessionInstance->write('csrf_token', bin2hex(random_bytes(32)));
+        }
+
         return $this->sessionInstance;
     }
 
