@@ -62,11 +62,6 @@ navigator.mediaDevices.getUserMedia({audio: false, video: true})
 
 var effectCanvas = document.getElementById("effect-canvas");
 var effectCanvasContext = effectCanvas.getContext("2d");
-var offsetX=effectCanvas.offsetLeft;
-var offsetY=effectCanvas.offsetTop;
-var effectCanvasWidth = effectCanvas.width;
-var effectCanvasHeight = effectCanvas.height;
-var isDragging=false;
 var effectImgElement;
 
 // add a clickEventListener to all effects
@@ -87,50 +82,10 @@ function drawImage()
     effectCanvasContext.drawImage(effectImgElement, 0, 0, effectImgElement.width, effectImgElement.height);
 }
 
-function handleMouseDown(e)
-{
-    canMouseX=parseInt(e.clientX-offsetX);
-    canMouseY=parseInt(e.clientY-offsetY);
-    // set the drag flag
-    isDragging=true;
-}
-
-function handleMouseUp(e)
-{
-    canMouseX=parseInt(e.clientX-offsetX);
-    canMouseY=parseInt(e.clientY-offsetY);
-    // clear the drag flag
-    isDragging=false;
-}
-
-function handleMouseOut(e)
-{
-    canMouseX=parseInt(e.clientX-offsetX);
-    canMouseY=parseInt(e.clientY-offsetY);
-    // user has left the canvas, so clear the drag flag
-    //isDragging=false;
-}
-
-function handleMouseMove(e)
-{
-    canMouseX=parseInt(e.clientX-offsetX);
-    canMouseY=parseInt(e.clientY-offsetY);
-    // if the drag flag is set, clear the canvas and draw the image
-    if (isDragging) {
-        effectCanvasContext.clearRect(0,0,effectCanvasWidth,effectCanvasHeight);
-        effectCanvasContext.drawImage(effectImgElement,canMouseX,canMouseY,0,0);
-    }
-}
-
-effectCanvas.addEventListener("mousedown", function (e) {handleMouseDown(e);});
-effectCanvas.addEventListener("mousemove", function (e) {handleMouseMove(e);});
-effectCanvas.addEventListener("mouseup", function (e) {handleMouseUp(e);});
-effectCanvas.addEventListener("mouseout", function (e) {handleMouseOut(e);});
-
 // ----------------------------
 
-
-function previewFile() {
+function previewFile()
+{
     var preview = document.getElementById("photo");
     var file = document.querySelector('input[type=file]').files[0];
     var reader = new FileReader();
