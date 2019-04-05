@@ -31,6 +31,9 @@
     max-height:500px;
 }
 
+#pictures-history li {
+    margin-top:10px;
+}
 
 #startbutton, #uploadbutton {
     display: inline-block;
