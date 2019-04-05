@@ -197,6 +197,7 @@ class ImagesController extends AppController
                     if ($singleImage->users_id == $userId) {
                         //delete the image
                         $this->Image->delete(intval($singleImage->id));
+                        unlink(ROOT . "/public/uploads/pictures/" . $singleImage->filename);
                         $session->setFlash('success', _("The image has been succesfully deleted."));
                         $this->redirect();
                     } else {
