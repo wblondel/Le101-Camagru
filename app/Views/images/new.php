@@ -23,8 +23,8 @@
             <div class="container effect-group">
                 <div class="row text-center">
                     <?php foreach ($effects as $effect) : ?>
-                        <div class="col-sm-2">
-                            <img src="/img/effects/<?= $effect->filename ?>" class="img-fluid" alt="Responsive image">
+                        <div class="col-sm-2 effect">
+                            <img src="/img/effects/<?= $effect->filename ?>" class="img-fluid" alt="<?= $effect->name ?>">
                         </div>
                     <?php endforeach; ?>
                 </div>
