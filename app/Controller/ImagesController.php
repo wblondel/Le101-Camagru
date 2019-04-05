@@ -120,7 +120,7 @@ class ImagesController extends AppController
 
                         // enregistrement de l'image sur le serveur
                         $imageFilename = uniqid() . ".jpg";
-                        imagejpeg($screenshotImage, ROOT . "/public/uploads/pictures/" . $imageFilename);
+                        imagejpeg($screenshotImage, ROOT . "/public/uploads/pictures/" . $imageFilename, 100);
 
                         // enregistrement dans la base de donnees
                         $resCreate = $this->Image->create([
