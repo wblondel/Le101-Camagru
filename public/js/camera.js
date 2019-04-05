@@ -151,8 +151,10 @@ function previewFile()
 
     reader.addEventListener("load", function () {
         // stop video
-        preview.pause();
-        preview.srcObject = null;
+        if (preview.tagName === "video") {
+            preview.pause();
+            preview.srcObject = null;
+        }
 
         // replace video by image
         var replacement = document.createElement("img");
