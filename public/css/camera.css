@@ -7,8 +7,7 @@
 #photo {
     border: 1px solid black;
     box-shadow: 2px 2px 3px black;
-    width: 320px;
-    height: 240px;
+    max-width: 100%;
 }
 
 #canvas {
@@ -16,7 +15,6 @@
 }
 
 .output {
-    width: 340px;
     display: block;
 }
 
