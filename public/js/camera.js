@@ -157,6 +157,7 @@ function previewFile()
         // replace video by image
         var replacement = document.createElement("img");
         replacement.src = reader.result;
+        replacement.id = "video";
 
         preview.parentNode.replaceChild(replacement, preview);
     }, false);
