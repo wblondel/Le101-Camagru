@@ -58,6 +58,13 @@ navigator.mediaDevices.getUserMedia({audio: false, video: true})
     });
 
 
+// ----------------------------------------------
+
+var effectCanvas = document.getElementById("effect-canvas");
+var effectCanvasContext = effectCanvas.getContext("2d");
+var isDraggable = false;
+var currentX = 0;
+var currentY = 0;
 
 // add a clickEventListener to all effects
 var effects = document.querySelectorAll(".effect");
@@ -65,53 +72,68 @@ var effects = document.querySelectorAll(".effect");
 Array.prototype.forEach.call(effects, function (effect, i) {
     effect.addEventListener("click", function (e) {
         e.preventDefault();
-
         var effectImgElement = effect.getElementsByTagName('img')[0];
-        var effectCanvas = document.getElementById("effect-canvas");
-        var effectCanvas2d = effectCanvas.getContext("2d");
-        effectCanvas.width = effectImgElement.width;
-        effectCanvas.height = effectImgElement.height;
-        effectCanvas2d.drawImage(effectImgElement, 0, 0, effectImgElement.width, effectImgElement.height);
+        _Go(effectImgElement);
     })
 });
 
-function clear() {
-    context.save();
-    context.setTransform(1, 0, 0, 1, 0, 0);
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    context.restore();
+function _Go(img)
+{
+    _MouseEvents(img);
+
+    setInterval(function () {
+        _ResetCanvas();
+        _DrawImage(img);
+    }, 1000/30);
 }
 
-// add drag events
-var drag = false;
-var dragStart;
-var dragEnd;
-var effectCanvas = document.getElementById("effect-canvas");
-var context = effectCanvas.getContext('2d');
-effectCanvas.addEventListener('mousedown', function (event) {
-    dragStart = {
-        x: event.pageX - effectCanvas.offsetLeft,
-        y: event.pageY - effectCanvas.offsetTop
-    };
-    drag = true;
-});
-effectCanvas.addEventListener('mousemove', function (event) {
-    if (drag) {
-        dragEnd = {
-            x: event.pageX - effectCanvas.offsetLeft,
-            y: event.pageY - effectCanvas.offsetTop
-        };
-        context.translate(dragEnd.x - dragStart.x, dragEnd.y - dragStart.y);
-        clear();
-        //draw();
-        dragStart = dragEnd
-    }
-});
-effectCanvas.addEventListener('mouseup',function (event) {
-    drag = false;
-});
+function _ResetCanvas()
+{
+    effectCanvasContext.fillStyle = '#fff';
+    effectCanvasContext.fillRect(0,0, effectCanvas.width, effectCanvas.height);
+}
 
-function previewFile() {
+function _MouseEvents(img)
+{
+    effectCanvas.onmousedown = function (e) {
+        var mouseX = e.pageX - this.offsetLeft;
+        var mouseY = e.pageY - this.offsetTop;
+
+        if (mouseX >= (currentX - img.width/2) &&
+            mouseX <= (currentX + img.width/2) &&
+            mouseY >= (currentY - img.height/2) &&
+            mouseY <= (currentY + img.height/2)) {
+            isDraggable = true;
+            //currentX = mouseX;
+            //currentY = mouseY;
+        }
+    };
+
+    effectCanvas.onmousemove = function (e) {
+        if (isDraggable) {
+            currentX = e.pageX - this.offsetLeft;
+            currentY = e.pageY - this.offsetTop;
+        }
+    };
+
+    effectCanvas.onmouseup = function (e) {
+        isDraggable = false;
+    };
+
+    effectCanvas.onmouseout = function (e) {
+        isDraggable = false;
+    };
+}
+
+function _DrawImage(img)
+{
+    effectCanvasContext.drawImage(img, currentX-(img.width/2), currentY-(img.height/2));
+}
+
+// ------------------------------------
+
+function previewFile()
+{
     var preview = document.getElementById("photo");
     var file = document.querySelector('input[type=file]').files[0];
     var reader = new FileReader();
