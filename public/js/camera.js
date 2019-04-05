@@ -118,7 +118,7 @@ function handleMouseMove(e)
     // if the drag flag is set, clear the canvas and draw the image
     if (isDragging) {
         effectCanvasContext.clearRect(0,0,effectCanvasWidth,effectCanvasHeight);
-        effectCanvasContext.drawImage(effectImgElement,canMouseX-128/2,canMouseY-120/2,128,120);
+        effectCanvasContext.drawImage(effectImgElement,canMouseX,canMouseY,0,0);
     }
 }
 
