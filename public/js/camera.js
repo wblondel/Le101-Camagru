@@ -173,6 +173,10 @@ function previewFile()
         replacement.id = "video";
 
         preview.parentNode.replaceChild(replacement, preview);
+
+        var button = document.getElementById('startbutton');
+        button.removeEventListener("click", takePhoto);
+        button.addEventListener("click", takePhoto);
     }, false);
 
     if (file.type.match(imageType)) {
