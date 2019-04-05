@@ -13,7 +13,11 @@
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <!-- scrollable capture history -->
+                    <canvas id="canvas">
+                    </canvas>
+                    <div class="output">
+                        <img id="photo" alt="The screen capture will appear in this box.">
+                    </div>
                 </div>
             </div>
             <div class="row">
