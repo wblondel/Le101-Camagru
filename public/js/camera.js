@@ -182,6 +182,8 @@ function previewFile()
         var button = document.getElementById('startbutton');
         button.removeEventListener("click", takePhoto);
         button.addEventListener("click", takePhoto);
+        button.setAttribute("disabled", '');
+        effectCanvasContext.clearRect(0, 0, effectCanvas.width, effectCanvas.height);
 
         replacement.onload = function () {
             console.log(replacement.width);
