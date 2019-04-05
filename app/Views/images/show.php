@@ -39,9 +39,6 @@
                         <div class="titleBox">
                             <label>Comment Box</label>
                         </div>
-                        <div class="commentBox">
-                            <p class="commentBoxDescription">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                        </div>
                         <div class="actionBox">
                             <ul class="commentList">
                                 <?php foreach ($comments as $comment) : ?>
